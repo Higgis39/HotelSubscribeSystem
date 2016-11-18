@@ -1,10 +1,10 @@
-package OrderBLtest;
+package Order模块.HotelViewOrder;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
-import OrderBL.*;
+import Order模块.HotelViewOrder.*;
 
 public class testHotelViewOrder {
 	public void testfindSpecificOrder(String HotelID){

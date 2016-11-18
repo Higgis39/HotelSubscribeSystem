@@ -1,10 +1,10 @@
-package Manager;
+package Useræ¨¡å—.Manager;
 
 import java.util.ArrayList;
 
-import ManageMessage.CreditChange;
-import ManageMessage.PersonalMessage;
-import ManageMessage.UserPO;
+import Useræ¨¡å—.ManageMessage.CreditChange;
+import Useræ¨¡å—.ManageMessage.PersonalMessage;
+import Useræ¨¡å—.ManageMessage.UserPO;
 
 public class MockUserPO extends UserPO{
 	ArrayList<MockUserPO> userPO = new ArrayList<MockUserPO>();
@@ -32,28 +32,28 @@ public class MockUserPO extends UserPO{
 		userPO.add(this);
 	}
 	
-	//²é¿´¸öÈËĞÅÏ¢
+	//ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public PersonalMessage getMessage(){
 		return new PersonalMessage(name,phonenumber,creditvalue);
 	}
 	
-	//²é¿´¸öÈËĞÅÓÃ±ä»¯
+	//ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã±ä»¯
 	public CreditChange getCreditChange(){
 		return creditchange;
 	}
 	
-	//ĞŞ¸Ä¸öÈËĞÅÏ¢
+	//ï¿½Ş¸Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public PersonalMessage ChangeMessage(String newname,String newphonenumber){
 		return new PersonalMessage(newname,newphonenumber,creditvalue);
 	}
 	
-	//³äÖµĞÅÓÃÖµ
+	//ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Öµ
 	public int RechargeCredit(int creditRecharge){
 		creditvalue = creditvalue+creditRecharge;
 		return creditvalue;
 	}
 	
-	//×¢²á»áÔ±
+	//×¢ï¿½ï¿½ï¿½Ô±
 	public boolean RegisterVIP(int VIPtype,String companyORbirthday){
 		if(VIPtype==0){
 			IsVIP = true;
@@ -71,7 +71,7 @@ public class MockUserPO extends UserPO{
 		return true;
 	}
 	
-	//¹ÜÀíÈËÔ±²é¿´ÓÃ»§ĞÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½é¿´ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	public PersonalMessage ViewClient(boolean IsManager,String id){
 		if(IsManager==false){
 			return null;
@@ -84,7 +84,7 @@ public class MockUserPO extends UserPO{
 		return null;
 	}
 	
-	//¹ÜÀíÈËÔ±ĞŞ¸ÄÓÃ»§ĞÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ş¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	public PersonalMessage ChangeClient(boolean IsManager,String id,String name,String phonenumber){
 		if(IsManager==false){
 			return null;

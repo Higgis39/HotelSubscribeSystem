@@ -1,9 +1,9 @@
-package Log;
+package User模块.Log;
 
 import java.util.ArrayList;
 
-import ManageMessage.CreditChange;
-import ManageMessage.MockUserPO;
+import User模块.ManageMessage.CreditChange;
+import User模块.ManageMessage.MockUserPO;
 
 public class MockUserList {
 	

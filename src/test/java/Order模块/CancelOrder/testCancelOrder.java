@@ -1,8 +1,8 @@
-package OrderBLtest;
+package Order模块.CancelOrder;
 import static org.junit.Assert.*;
 import org.junit.Test;
-import OrderBL.MockCancelOrder;
-import OrderBL.OrderPO;
+import Order模块.CancelOrder.MockCancelOrder;
+import Order模块.CancelOrder.OrderPO;
 
 public class testCancelOrder {
 	MockCancelOrder eo=new MockCancelOrder();
@@ -10,6 +10,6 @@ public class testCancelOrder {
 	@Test
     public void testCancel(String OrderID){
     	eo.Cancel(po.getOrderID());
-    	assertEquals("�ѳ���",po.getState());
+    	assertEquals("�ѳ���",po.getState());
     }
 }

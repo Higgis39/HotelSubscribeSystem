@@ -1,4 +1,4 @@
-package ManageMessage;
+package Useræ¨¡å—.ManageMessage;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -11,12 +11,12 @@ public class ManageMessageTest{
 	CreditChange crechan = new CreditChange(credit);
 	
 	@Test
-	//Test1 ²é¿´¸öÈËĞÅÏ¢
+	//Test1 ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public void testGetMessage(){
-		PersonalMessage m1 = new PersonalMessage("ÍõÔ¶","15052346789",100);
-		PersonalMessage m2 = new PersonalMessage("Àî¸Õ","13256743690",50);
-		MockUserPO mock1 = new MockUserPO("","ÍõÔ¶","",0,100,"15052346789",crechan);
-		MockUserPO mock2 = new MockUserPO("","Àî¸Õ","",0,50,"13256743690",crechan);
+		PersonalMessage m1 = new PersonalMessage("ï¿½ï¿½Ô¶","15052346789",100);
+		PersonalMessage m2 = new PersonalMessage("ï¿½ï¿½ï¿½","13256743690",50);
+		MockUserPO mock1 = new MockUserPO("","ï¿½ï¿½Ô¶","",0,100,"15052346789",crechan);
+		MockUserPO mock2 = new MockUserPO("","ï¿½ï¿½ï¿½","",0,50,"13256743690",crechan);
 		assertEquals(m1.creditvalue,mock1.getMessage().creditvalue);
 		assertEquals(m1.name,mock1.getMessage().name);
 		assertEquals(m1.phonenumber,mock1.getMessage().phonenumber);
@@ -26,53 +26,53 @@ public class ManageMessageTest{
 	}
 	
 	@Test
-	//Test2²é¿´ĞÅÓÃ±ä»¯
+	//Test2ï¿½é¿´ï¿½ï¿½ï¿½Ã±ä»¯
 	public void testGetCreditChange(){
-		String change1 = "Ôö¼Ó100";
-		String change2 = "Ôö¼Ó100";
-		String change3 = "¼õÉÙ50";
-		String change4 = "Ôö¼Ó500";
+		String change1 = "ï¿½ï¿½ï¿½ï¿½100";
+		String change2 = "ï¿½ï¿½ï¿½ï¿½100";
+		String change3 = "ï¿½ï¿½ï¿½ï¿½50";
+		String change4 = "ï¿½ï¿½ï¿½ï¿½500";
 		ArrayList<String> credit = new ArrayList<String>();
 		credit.add(change1);
 		credit.add(change2);
 		credit.add(change3);
 		credit.add(change4);
 		CreditChange crechan = new CreditChange(credit);
-		MockUserPO m = new MockUserPO("","ÍõÔ¶","",0,100,"15052346789",crechan);
+		MockUserPO m = new MockUserPO("","ï¿½ï¿½Ô¶","",0,100,"15052346789",crechan);
 		assertEquals(crechan.creditchange,m.getCreditChange().creditchange);
 	}
 	
 	@Test
-	//Test3ĞŞ¸Ä¸öÈËĞÅÏ¢
+	//Test3ï¿½Ş¸Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public void testChangeMessage(){
-		MockUserPO mock1 = new MockUserPO("","ÍõÔ¶","",0,100,"15052346789",crechan);
-		MockUserPO mock2 = new MockUserPO("","Àî¸Õ","",0,50,"13256743690",crechan);
+		MockUserPO mock1 = new MockUserPO("","ï¿½ï¿½Ô¶","",0,100,"15052346789",crechan);
+		MockUserPO mock2 = new MockUserPO("","ï¿½ï¿½ï¿½","",0,50,"13256743690",crechan);
 		
-		PersonalMessage m3 = new PersonalMessage("ÍõÔ¶","15159762139",100);
-		PersonalMessage m4 = new PersonalMessage("ÀîĞ¡¸Õ","13767895467",50);
+		PersonalMessage m3 = new PersonalMessage("ï¿½ï¿½Ô¶","15159762139",100);
+		PersonalMessage m4 = new PersonalMessage("ï¿½ï¿½Ğ¡ï¿½ï¿½","13767895467",50);
 		
-		assertEquals(m3.creditvalue,mock1.ChangeMessage("ÍõÔ¶","15159762139").creditvalue);
-		assertEquals(m3.name,mock1.ChangeMessage("ÍõÔ¶","15159762139").name);
-		assertEquals(m3.phonenumber,mock1.ChangeMessage("ÍõÔ¶","15159762139").phonenumber);
-		assertEquals(m4.creditvalue,mock2.ChangeMessage("ÀîĞ¡¸Õ","13767895467").creditvalue);
-		assertEquals(m4.name,mock2.ChangeMessage("ÀîĞ¡¸Õ","13767895467").name);
-		assertEquals(m4.phonenumber,mock2.ChangeMessage("ÀîĞ¡¸Õ","13767895467").phonenumber);
+		assertEquals(m3.creditvalue,mock1.ChangeMessage("ï¿½ï¿½Ô¶","15159762139").creditvalue);
+		assertEquals(m3.name,mock1.ChangeMessage("ï¿½ï¿½Ô¶","15159762139").name);
+		assertEquals(m3.phonenumber,mock1.ChangeMessage("ï¿½ï¿½Ô¶","15159762139").phonenumber);
+		assertEquals(m4.creditvalue,mock2.ChangeMessage("ï¿½ï¿½Ğ¡ï¿½ï¿½","13767895467").creditvalue);
+		assertEquals(m4.name,mock2.ChangeMessage("ï¿½ï¿½Ğ¡ï¿½ï¿½","13767895467").name);
+		assertEquals(m4.phonenumber,mock2.ChangeMessage("ï¿½ï¿½Ğ¡ï¿½ï¿½","13767895467").phonenumber);
 	}
 	
 	@Test
-	//Test4³äÖµĞÅÓÃÖµ
+	//Test4ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Öµ
 	public void testRechargeCredit(){
-		MockUserPO mock1 = new MockUserPO("","ÍõÔ¶","",0,100,"15052346789",crechan);
-		MockUserPO mock2 = new MockUserPO("","Àî¸Õ","",0,50,"13256743690",crechan);
+		MockUserPO mock1 = new MockUserPO("","ï¿½ï¿½Ô¶","",0,100,"15052346789",crechan);
+		MockUserPO mock2 = new MockUserPO("","ï¿½ï¿½ï¿½","",0,50,"13256743690",crechan);
 		
 		assertEquals(300,mock1.RechargeCredit(200));
 		assertEquals(450,mock2.RechargeCredit(400));
 	}
 	
 	@Test
-	//Test5 ×¢²á»áÔ±
+	//Test5 ×¢ï¿½ï¿½ï¿½Ô±
 	public void testRegisterVIP(){
-		MockUserPO mock = new MockUserPO("","ÍõÔ¶","",0,100,"15052346789",crechan);
+		MockUserPO mock = new MockUserPO("","ï¿½ï¿½Ô¶","",0,100,"15052346789",crechan);
 		assertEquals(true,mock.RegisterVIP(0,"1980.11.11"));
 	}
 }

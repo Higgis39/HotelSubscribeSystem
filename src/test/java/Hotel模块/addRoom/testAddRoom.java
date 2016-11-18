@@ -1,4 +1,4 @@
-package addRoom;
+package Hotelæ¨¡å—.addRoom;
 
 import static org.junit.Assert.*;
 
@@ -9,11 +9,11 @@ public class testAddRoom {
 	@Test
 	public void test() {
 		
-		MockHotel hotel=new MockHotel("Èç¼Ò");
-		RoomPO room1 = new RoomPO(2301, 2, 198, "Ë«ÈË¼ä");
-		RoomPO room2 = new RoomPO(2302, 2, 258, "Ë«ÈË¼ä");
-		RoomPO room3 = new RoomPO(2303, 2, 298, "´ó´²·¿");
-		RoomPO room4 = new RoomPO(2304, 1, 128, "µ¥ÈË¼ä");
+		MockHotel hotel=new MockHotel("ï¿½ï¿½ï¿½");
+		RoomPO room1 = new RoomPO(2301, 2, 198, "Ë«ï¿½Ë¼ï¿½");
+		RoomPO room2 = new RoomPO(2302, 2, 258, "Ë«ï¿½Ë¼ï¿½");
+		RoomPO room3 = new RoomPO(2303, 2, 298, "ï¿½ó´²·ï¿½");
+		RoomPO room4 = new RoomPO(2304, 1, 128, "ï¿½ï¿½ï¿½Ë¼ï¿½");
 		
 		room1.addRoom();
 		room3.addRoom();

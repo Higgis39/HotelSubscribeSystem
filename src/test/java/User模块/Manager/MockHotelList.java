@@ -1,4 +1,4 @@
-package Manager;
+package Useræ¨¡å—.Manager;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ public class MockHotelList {
 		this.Hotelphone = Hotelphone;
 	}
 	
-	//Ìí¼Ó¾Æµê
+	//ï¿½ï¿½Ó¾Æµï¿½
 	public boolean AddHotel(boolean IsManager,String hotelname,String addresss,String phoneNumber){
 		if(IsManager==false){
 			return false;
@@ -26,7 +26,7 @@ public class MockHotelList {
 		}
 	}
 	
-	//Ìí¼Ó¾Æµê¹¤×÷ÈËÔ±
+	//ï¿½ï¿½Ó¾Æµê¹¤ï¿½ï¿½ï¿½ï¿½Ô±
 	public boolean AddHotelWorker(boolean IsManager,String workername,String hotelname){
 		if(IsManager==false){
 			return false;

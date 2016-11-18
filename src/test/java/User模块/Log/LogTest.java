@@ -1,4 +1,4 @@
-package Log;
+package User模块.Log;
 
 import static org.junit.Assert.*;
 

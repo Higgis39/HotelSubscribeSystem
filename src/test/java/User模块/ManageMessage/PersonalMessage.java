@@ -1,4 +1,4 @@
-package ManageMessage;
+package User模块.ManageMessage;
 
 public class PersonalMessage {
 	public String name;

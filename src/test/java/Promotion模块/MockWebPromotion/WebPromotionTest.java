@@ -1,4 +1,4 @@
-package Mock.MockWeb;
+package Promotion妯″潡.MockWebPromotion;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,8 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import Mock.MockHotel.MockHotelPromotionList;
-import Mock.MockHotel.MockPromotion;
+
 
 public class WebPromotionTest {
 	
@@ -20,9 +19,9 @@ public class WebPromotionTest {
 		MockWebPromotionList mock2 = new MockWebPromotionList();
 		MockPromotion mock3 = new MockPromotion();
 		MockPromotion mock4 = new MockPromotion();
-		assertEquals(true,mock1.addPromotion(true, "双十一活动折扣", 0.5));
-		assertEquals(false,mock2.addPromotion(false, "VIP会员特定商圈专属折扣", 1));
-		assertEquals(0.72,mock3.businessDistrict(true, "仙林中心", 4));
-		assertEquals(0.4,mock4.businessDistrict(true, "新街口", 10));
+		assertEquals(true,mock1.addPromotion(true, "双十一锟筋动锟桔匡拷", 0.5));
+		assertEquals(false,mock2.addPromotion(false, "VIP锟斤拷员锟截讹拷锟斤拷圈专锟斤拷锟桔匡拷", 1));
+		assertEquals(0.72,mock3.businessDistrict(true, "锟斤拷锟斤拷锟斤拷锟斤拷", 4));
+		assertEquals(0.4,mock4.businessDistrict(true, "锟铰街匡拷", 10));
 	}
 }

@@ -1,4 +1,4 @@
-package Mock.MockHotel;
+package Promotion模块.MockHotelPromotion;
 
 import java.util.ArrayList;
 import java.util.Date;

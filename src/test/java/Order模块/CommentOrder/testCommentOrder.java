@@ -1,14 +1,14 @@
-package OrderBLtest;
+package Orderæ¨¡å—.CommentOrder;
 import static org.junit.Assert.*;
 import org.junit.Test;
-import OrderBL.*;
+import Orderæ¨¡å—.CommentOrder.*;
 
 public class testCommentOrder {
 	MockCommentOrder co=new MockCommentOrder();
 	OrderPO po = new OrderPO("0000","2016.11.11","2016.11.12","IKEA",256.00);
 	@Test
     public void testComment(){
-		co.Comment(po.getOrderID(), "ºÜ²»´í¡£");
-		assertEquals("ºÜ²»´í",po.getComment());
+		co.Comment(po.getOrderID(), "ï¿½Ü²ï¿½ï¿½ï¿½");
+		assertEquals("ï¿½Ü²ï¿½ï¿½ï¿½",po.getComment());
 	}
 }

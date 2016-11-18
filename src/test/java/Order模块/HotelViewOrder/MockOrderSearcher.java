@@ -1,4 +1,4 @@
-package OrderBL;
+package Order模块.HotelViewOrder;
 import java.util.ArrayList;
 
 public class MockOrderSearcher {

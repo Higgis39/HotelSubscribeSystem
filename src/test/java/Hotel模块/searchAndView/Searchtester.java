@@ -1,4 +1,4 @@
-package searchAndView;
+package Hotelæ¨¡å—.searchAndView;
 
 import static org.junit.Assert.*;
 
@@ -6,16 +6,16 @@ import org.junit.Test;
 
 public class Searchtester{
 
-	//²âÊÔËÑË÷¾Æµê
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½
 	@Test
 	public void testsearch() {
-		MockHotel Hotel1 = new MockHotel("ÄÏ¾©", "ÆÜÏ¼Çø");
-		MockHotel Hotel2 = new MockHotel("ÄÏ¾©", "WifiÈ«¸²¸Ç");
+		MockHotel Hotel1 = new MockHotel("ï¿½Ï¾ï¿½", "ï¿½ï¿½Ï¼ï¿½ï¿½");
+		MockHotel Hotel2 = new MockHotel("ï¿½Ï¾ï¿½", "WifiÈ«ï¿½ï¿½ï¿½ï¿½");
 		
-		HotelPO hotel1 = new HotelPO("Èç¼Ò", "ÄÏ¾©", "ÆÜÏ¼Çø", "", "Wifi½öÔÚ·¿¼äÄÚÓĞĞ§", "8.8", 4.0);
-		HotelPO hotel2 = new HotelPO("ººÍ¥", "ÄÏ¾©", "ĞşÎäÇø", "", "WifiÈ«¸²¸Ç", "9.0", 4.2);
-		HotelPO hotel3 = new HotelPO("ÆßÌì", "ÉÏº£", "ÆÕÍÓÇø", "", "WifiÈ«¸²¸Ç", "9.1", 4.1);
-		HotelPO hotel4 = new HotelPO("¸ñÁÖºÀÌ©", "ÄÏ¾©", "ÆÜÏ¼Çø", "", "WifiÈ«¸²¸Ç", "8.6", 3.8);
+		HotelPO hotel1 = new HotelPO("ï¿½ï¿½ï¿½", "ï¿½Ï¾ï¿½", "ï¿½ï¿½Ï¼ï¿½ï¿½", "", "Wifiï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ§", "8.8", 4.0);
+		HotelPO hotel2 = new HotelPO("ï¿½ï¿½Í¥", "ï¿½Ï¾ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "", "WifiÈ«ï¿½ï¿½ï¿½ï¿½", "9.0", 4.2);
+		HotelPO hotel3 = new HotelPO("ï¿½ï¿½ï¿½ï¿½", "ï¿½Ïºï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "", "WifiÈ«ï¿½ï¿½ï¿½ï¿½", "9.1", 4.1);
+		HotelPO hotel4 = new HotelPO("ï¿½ï¿½ï¿½Öºï¿½Ì©", "ï¿½Ï¾ï¿½", "ï¿½ï¿½Ï¼ï¿½ï¿½", "", "WifiÈ«ï¿½ï¿½ï¿½ï¿½", "8.6", 3.8);
 		
 		assertEquals(true, Hotel1.Search(hotel1.getAddress(), hotel1.getArea()));
 		assertEquals(false, Hotel1.Search(hotel2.getAddress(), hotel2.getArea()));
@@ -28,16 +28,16 @@ public class Searchtester{
 		
 	}
 	
-	//²âÊÔä¯ÀÀ¾Æµê
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½
 	@Test
 	public void testview() {
-		MockHotel Hotel1 = new MockHotel("ÄÏ¾©", "ÆÜÏ¼Çø");
+		MockHotel Hotel1 = new MockHotel("ï¿½Ï¾ï¿½", "ï¿½ï¿½Ï¼ï¿½ï¿½");
 		
-		HotelPO hotel1 = new HotelPO("Èç¼Ò", "ÄÏ¾©", "ÆÜÏ¼Çø", "", "Wifi½öÔÚ·¿¼äÄÚÓĞĞ§", "8.8", 4.0);
-		HotelPO hotel2 = new HotelPO("¸ñÁÖºÀÌ©", "ÄÏ¾©", "ÆÜÏ¼Çø", "", "WifiÈ«¸²¸Ç", "8.6", 3.8);
+		HotelPO hotel1 = new HotelPO("ï¿½ï¿½ï¿½", "ï¿½Ï¾ï¿½", "ï¿½ï¿½Ï¼ï¿½ï¿½", "", "Wifiï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ§", "8.8", 4.0);
+		HotelPO hotel2 = new HotelPO("ï¿½ï¿½ï¿½Öºï¿½Ì©", "ï¿½Ï¾ï¿½", "ï¿½ï¿½Ï¼ï¿½ï¿½", "", "WifiÈ«ï¿½ï¿½ï¿½ï¿½", "8.6", 3.8);
 		
-		assertEquals(hotel1.getHotelMessage(), Hotel1.View("Èç¼Ò"));
-		assertEquals("No Hotel",Hotel1.View("ººÍ¥"));
-		assertEquals(hotel2.getHotelMessage(),Hotel1.View("¸ñÁÖºÀÌ©"));
+		assertEquals(hotel1.getHotelMessage(), Hotel1.View("ï¿½ï¿½ï¿½"));
+		assertEquals("No Hotel",Hotel1.View("ï¿½ï¿½Í¥"));
+		assertEquals(hotel2.getHotelMessage(),Hotel1.View("ï¿½ï¿½ï¿½Öºï¿½Ì©"));
 	}
 }

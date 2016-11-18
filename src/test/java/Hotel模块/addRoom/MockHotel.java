@@ -1,4 +1,4 @@
-package addRoom;
+package Hotel模块.addRoom;
 
 import java.util.ArrayList;
 

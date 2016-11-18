@@ -1,7 +1,9 @@
-package OrderBLtest;
+package Order模块.CreateOrder;
 import static org.junit.Assert.*;
 import org.junit.Test;
-import OrderBL.*;
+
+import Order模块.CommentOrder.MockPromotionPO;
+import Order模块.CreateOrder.*;
 
 public class testCreateOrder {
 	MockCreateOrder co=new MockCreateOrder();

@@ -1,7 +1,7 @@
-package OrderBLtest;
+package Orderæ¨¡å—.WebsiteViewOrder;
 import static org.junit.Assert.*;
 import org.junit.Test;
-import OrderBL.*;
+import Orderæ¨¡å—.WebsiteViewOrder.*;
 
 public class testWebsiteViewOrder {
 	MockWebsiteViewOrder wo=new MockWebsiteViewOrder();
@@ -9,6 +9,6 @@ public class testWebsiteViewOrder {
 	@Test
 	public void testRecover(String orderID){
 		wo.Recover(po.getOrderID());
-		assertEquals("ÒÑÖ´ĞĞ",po.getState());
+		assertEquals("ï¿½ï¿½Ö´ï¿½ï¿½",po.getState());
 	}
 }

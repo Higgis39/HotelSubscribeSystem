@@ -1,4 +1,4 @@
-package Mock.MockHotel;
+package Promotionæ¨¡å—.MockHotelPromotion;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,7 +34,7 @@ public class MockPromotion {
 		this.level = level;
 	}
 	
-	//Ìí¼Ó²ßÂÔ
+	//ï¿½ï¿½Ó²ï¿½ï¿½ï¿½
 	public ArrayList<String> addHotelPromotion(boolean isStaff, String name, double d){
 		if(isStaff==false){
 			return null;
@@ -47,7 +47,7 @@ public class MockPromotion {
 		return Hotelpromotion;
 	}
 	
-	//Ìí¼Ó¾ÆµêÌØ¶¨Ê±¼ä´ÙÏú²ßÂÔ
+	//ï¿½ï¿½Ó¾Æµï¿½ï¿½Ø¶ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public boolean addHotelPromotionTime(boolean isStaff, Date begintime, Date endtime){
 		if(isStaff==false){
 			return false;
@@ -58,7 +58,7 @@ public class MockPromotion {
 		}
 	}
 	
-	//Ìí¼ÓÉúÈÕÌØ»İÕÛ¿Û
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø»ï¿½ï¿½Û¿ï¿½
 	public boolean addBirthday(boolean isStaff){
 		if(isStaff==false){
 			return false;
@@ -66,7 +66,7 @@ public class MockPromotion {
 		return true;
 	}
 	
-	//Ìí¼ÓÈı¼ä¼°ÒÔÉÏÔ¤¶©ÌØ»İ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä¼°ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½Ø»ï¿½
 	public boolean addThreemore(boolean isStaff){
 		if(isStaff==false){
 			return false;
@@ -74,7 +74,7 @@ public class MockPromotion {
 		return true;
 	}
 	
-	//Ìí¼ÓºÏ×÷ÆóÒµ¿Í»§ÕÛ¿Û
+	//ï¿½ï¿½Óºï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½Í»ï¿½ï¿½Û¿ï¿½
 	public boolean addCompany(boolean isStaff){
 		if(isStaff==false){
 			return false;
@@ -82,7 +82,7 @@ public class MockPromotion {
 		return true;
 	}
 	
-	//É¾³ıÏúÊÛ²ßÂÔ
+	//É¾ï¿½ï¿½ï¿½ï¿½ï¿½Û²ï¿½ï¿½ï¿½
 	public boolean deletePromotion(boolean isStaff){
 		if(isStaff==false){
 			return false;
@@ -90,7 +90,7 @@ public class MockPromotion {
 		return true;
 	}
 	
-	//¸üĞÂÏúÊÛ²ßÂÔ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û²ï¿½ï¿½ï¿½
 	public  ArrayList<String> updatePromotion(boolean isStaff, String name, double d){
 		if(isStaff==false){
 			return null;
@@ -103,12 +103,12 @@ public class MockPromotion {
 		return Hotelpromotion;
 	}
 	
-	//Ö´ĞĞÏúÊÛ²ßÂÔ
+	//Ö´ï¿½ï¿½ï¿½ï¿½ï¿½Û²ï¿½ï¿½ï¿½
 	public boolean executePromotion(boolean isStaff, String promotionName){
-		if(promotionName == "ÉúÈÕÌØ»İÕÛ¿Û"){
+		if(promotionName == "ï¿½ï¿½ï¿½ï¿½ï¿½Ø»ï¿½ï¿½Û¿ï¿½"){
 			return addBirthday(isStaff);
 		}
-		else if(promotionName == "Èı¼ä¼°ÒÔÉÏÔ¤¶©ÌØ»İ"){
+		else if(promotionName == "ï¿½ï¿½ï¿½ä¼°ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½Ø»ï¿½"){
 			return addThreemore(isStaff);
 		}
 		return false;
@@ -126,7 +126,7 @@ public class MockPromotion {
 		return Webpromotion;
 	}
 	
-	//Ìí¼ÓÍøÕ¾ÌØ¶¨Ê±¼ä´ÙÏú²ßÂÔ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾ï¿½Ø¶ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		public boolean addWebPromotionTime(boolean isMarket, Date begintime, Date endtime){
 			if(isMarket==false){
 				return false;
@@ -137,16 +137,16 @@ public class MockPromotion {
 			}
 		}
 	
-	//ÖÆ¶¨×¨ÊôÉÌÈ¦²ßÂÔ
+	//ï¿½Æ¶ï¿½×¨ï¿½ï¿½ï¿½ï¿½È¦ï¿½ï¿½ï¿½ï¿½
 	public double businessDistrict(boolean isMarket, String hotelAddress, int level){
 		if(isMarket==false){
 			return 0;
 		}
 		switch(hotelAddress){
-		case "ÏÉÁÖÖĞĞÄ" :
+		case "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" :
 			discount = 0.9;
 			break;
-		case "ĞÂ½Ö¿Ú" :
+		case "ï¿½Â½Ö¿ï¿½" :
 			discount = 0.8;
 			break;
 		}
@@ -154,7 +154,7 @@ public class MockPromotion {
 		return discount;
 	}
 	
-	//ÖÆ¶¨»áÔ±µÈ¼¶²ßÂÔ
+	//ï¿½Æ¶ï¿½ï¿½ï¿½Ô±ï¿½È¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int membershipLevel(boolean isMarket, int credit){
 		if(isMarket==false){
 			return 0;

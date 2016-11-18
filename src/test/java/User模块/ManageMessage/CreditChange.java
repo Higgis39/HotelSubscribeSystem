@@ -1,4 +1,4 @@
-package ManageMessage;
+package User模块.ManageMessage;
 import java.util.ArrayList;
 
 public class CreditChange {

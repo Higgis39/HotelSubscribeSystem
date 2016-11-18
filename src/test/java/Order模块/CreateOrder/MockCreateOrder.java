@@ -1,4 +1,6 @@
-package OrderBL;
+package Order模块.CreateOrder;
+
+import Order模块.CommentOrder.MockPromotionPO;
 
 public class MockCreateOrder {
 	public OrderPO NewOrder;

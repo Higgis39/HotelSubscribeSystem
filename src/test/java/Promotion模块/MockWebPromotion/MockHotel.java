@@ -1,6 +1,6 @@
-package Mock.MockWeb;
+package Promotion模块.MockWebPromotion;
 
-import businesslogic.hotelbl.Hotel;
+
 
 public class MockHotel extends Hotel{
 	String address;

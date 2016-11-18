@@ -1,4 +1,4 @@
-package OrderBL;
+package Order模块.CommentOrder;
 public class OrderPO {
 	int RoomNum;
 	String beginDate;

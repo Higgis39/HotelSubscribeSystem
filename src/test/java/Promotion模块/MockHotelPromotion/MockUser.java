@@ -1,8 +1,8 @@
-package Mock.MockHotel;
+package Promotionæ¨¡å—.MockHotelPromotion;
 
 import java.util.Date;
 
-import businesslogic.userbl.User;
+
 
 public class MockUser extends User{
 	Date birthday;
@@ -16,12 +16,12 @@ public class MockUser extends User{
 		this.company = company;
 	}
 	
-	//»ñµÃÓÃ»§ÉúÈÕĞÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public Date getBirthday(){
 		return birthday;
 	}
 	
-	//»ñµÃºÏ×÷ÆóÒµ¿Í»§ĞÅÏ¢
+	//ï¿½ï¿½Ãºï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½Í»ï¿½ï¿½ï¿½Ï¢
 	public String getCompany(){
 		return company;
 	}

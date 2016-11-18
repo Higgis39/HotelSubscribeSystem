@@ -1,21 +1,21 @@
-package update;
+package Hotelæ¨¡å—.update;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import update.MockHotel;
+import Hotelæ¨¡å—.update.MockHotel;
 
 public class testUpdate {
 
 	@Test
 	public void test() {
-		MockHotel hotel=new MockHotel("Èç¼Ò");
-		OrderPO order1 = new OrderPO(98701, "11.12", "11.12", "12:00", "Unfinished", "Èç¼Ò", 128, "");
-		OrderPO order2 = new OrderPO(98702, "11.12", "11.12", "12:00", "Unfinished", "Èç¼Ò", 158, "");
-		OrderPO order3 = new OrderPO(98703, "11.12", "11.12", "16:00", "Unfinished", "Èç¼Ò", 128, "");
-		OrderPO order4 = new OrderPO(98704, "11.12", "11.12", "16:00", "Unfinished", "Èç¼Ò", 158, "");
-		OrderPO order5 = new OrderPO(98705, "11.12", "11.12", "18:00", "Unfinished", "Èç¼Ò", 128, "");
+		MockHotel hotel=new MockHotel("ï¿½ï¿½ï¿½");
+		OrderPO order1 = new OrderPO(98701, "11.12", "11.12", "12:00", "Unfinished", "ï¿½ï¿½ï¿½", 128, "");
+		OrderPO order2 = new OrderPO(98702, "11.12", "11.12", "12:00", "Unfinished", "ï¿½ï¿½ï¿½", 158, "");
+		OrderPO order3 = new OrderPO(98703, "11.12", "11.12", "16:00", "Unfinished", "ï¿½ï¿½ï¿½", 128, "");
+		OrderPO order4 = new OrderPO(98704, "11.12", "11.12", "16:00", "Unfinished", "ï¿½ï¿½ï¿½", 158, "");
+		OrderPO order5 = new OrderPO(98705, "11.12", "11.12", "18:00", "Unfinished", "ï¿½ï¿½ï¿½", 128, "");
 		
 		hotel.update(order1, "00:00");
 		hotel.update(order4, "12:00");

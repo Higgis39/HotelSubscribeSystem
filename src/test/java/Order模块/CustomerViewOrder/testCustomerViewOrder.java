@@ -1,7 +1,7 @@
-package OrderBLtest;
+package Order模块.CustomerViewOrder;
 import static org.junit.Assert.*;
 import org.junit.Test;
-import OrderBL.*;
+import Order模块.CustomerViewOrder.*;
 import java.util.ArrayList;
 
 public class testCustomerViewOrder {

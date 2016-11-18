@@ -1,4 +1,7 @@
-package OrderBL;
+package Order模块.WebsiteViewOrder;
+
+import Order模块.CommentOrder.MockPromotionPO;
+
 public class OrderPO {
 	int RoomNum;
 	String beginDate;

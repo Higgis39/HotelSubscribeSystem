@@ -1,4 +1,4 @@
-package searchAndView;
+package Hotelæ¨¡å—.searchAndView;
 
 public class MockHotel extends Hotel{
 	String condition1;
@@ -16,8 +16,8 @@ public class MockHotel extends Hotel{
 	}
 	
 	public String View(String name){
-		HotelPO hotel1 = new HotelPO("Èç¼Ò", "ÄÏ¾©", "ÆÜÏ¼Çø", "", "Wifi½öÔÚ·¿¼äÄÚÓĞĞ§", "8.8", 4.0);
-		HotelPO hotel2 = new HotelPO("¸ñÁÖºÀÌ©", "ÄÏ¾©", "ÆÜÏ¼Çø", "", "WifiÈ«¸²¸Ç", "8.6", 3.8);
+		HotelPO hotel1 = new HotelPO("ï¿½ï¿½ï¿½", "ï¿½Ï¾ï¿½", "ï¿½ï¿½Ï¼ï¿½ï¿½", "", "Wifiï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ§", "8.8", 4.0);
+		HotelPO hotel2 = new HotelPO("ï¿½ï¿½ï¿½Öºï¿½Ì©", "ï¿½Ï¾ï¿½", "ï¿½ï¿½Ï¼ï¿½ï¿½", "", "WifiÈ«ï¿½ï¿½ï¿½ï¿½", "8.6", 3.8);
 		String HotelName1=hotel1.getName();
 		String HotelName2=hotel2.getName();
 		if(HotelName1==name){

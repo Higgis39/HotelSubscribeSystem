@@ -1,8 +1,10 @@
-package OrderBLtest;
+package Order模块.ExcuteOrder;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import OrderBL.*;
+
+import Order模块.CancelOrder.OrderPO;
+import Order模块.ExcuteOrder.*;
 
 public class testExcuteOrder {
 	MockExcuteOrder eo=new MockExcuteOrder();
@@ -10,7 +12,7 @@ public class testExcuteOrder {
 	@Test
 	public void testExcute(){
 		eo.Excute(po.getOrderID());
-		assertEquals("��ִ��",po.getState());
+		assertEquals("��ִ��",po.getState());
 	}
 	
 	@Test

@@ -1,4 +1,4 @@
-package update;
+package Hotel模块.update;
 
 public class OrderPO {
 	int id;

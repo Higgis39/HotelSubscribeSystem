@@ -1,25 +1,25 @@
-package maintain;
+package Hotelæ¨¡å—.maintain;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import maintain.HotelPO;
-import maintain.MockHotel;
+import Hotelæ¨¡å—.maintain.HotelPO;
+import Hotelæ¨¡å—.maintain.MockHotel;
 
 public class testupdate {
 
 	@Test
 	public void testupdate() {
-		MockHotel Hotel1 = new MockHotel("Èç¼Ò");
-		MockHotel Hotel2 = new MockHotel("¸ñÁÖºÀÌ©");
+		MockHotel Hotel1 = new MockHotel("ï¿½ï¿½ï¿½");
+		MockHotel Hotel2 = new MockHotel("ï¿½ï¿½ï¿½Öºï¿½Ì©");
 
-//      ÏÂÃæÏÔÊ¾µÄÊÇÒªĞŞ¸ÄµÄ¾Æµê±¾À´µÄĞÅÏ¢
-//		HotelPO hotel1 = new HotelPO("Èç¼Ò", "151XXXX7532", "ÄÏ¾©", "ÆÜÏ¼Çø", "", "Wifi½öÔÚ·¿¼äÄÚÓĞĞ§", "8.8", 4.0);
-//		HotelPO hotel2 = new HotelPO("¸ñÁÖºÀÌ©", "152XXXX5098", "ÄÏ¾©", "ÆÜÏ¼Çø", "", "WifiÈ«¸²¸Ç", "8.6", 3.8);
+//      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Òªï¿½Ş¸ÄµÄ¾Æµê±¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+//		HotelPO hotel1 = new HotelPO("ï¿½ï¿½ï¿½", "151XXXX7532", "ï¿½Ï¾ï¿½", "ï¿½ï¿½Ï¼ï¿½ï¿½", "", "Wifiï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ§", "8.8", 4.0);
+//		HotelPO hotel2 = new HotelPO("ï¿½ï¿½ï¿½Öºï¿½Ì©", "152XXXX5098", "ï¿½Ï¾ï¿½", "ï¿½ï¿½Ï¼ï¿½ï¿½", "", "WifiÈ«ï¿½ï¿½ï¿½ï¿½", "8.6", 3.8);
 		
-		assertEquals(true, Hotel1.UpdateHotelMessage("Èç¼Ò", "151XXXX5535"));
-		assertEquals(true, Hotel2.UpdateHotelMessage("¸ñÁÖºÀÌ©", "152XXXX5095"));
+		assertEquals(true, Hotel1.UpdateHotelMessage("ï¿½ï¿½ï¿½", "151XXXX5535"));
+		assertEquals(true, Hotel2.UpdateHotelMessage("ï¿½ï¿½ï¿½Öºï¿½Ì©", "152XXXX5095"));
 	}
 
 }

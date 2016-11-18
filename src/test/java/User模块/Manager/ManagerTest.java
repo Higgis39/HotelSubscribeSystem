@@ -1,4 +1,4 @@
-package Manager;
+package Useræ¨¡å—.Manager;
 
 import static org.junit.Assert.*;
 
@@ -6,20 +6,20 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import ManageMessage.CreditChange;
-import ManageMessage.PersonalMessage;
+import Useræ¨¡å—.ManageMessage.CreditChange;
+import Useræ¨¡å—.ManageMessage.PersonalMessage;
 
 public class ManagerTest {
 	ArrayList<String> credit = new ArrayList<String>();
 	CreditChange crechan = new CreditChange(credit);
 	
 	@Test
-	//Test1 ¹ÜÀíÈËÔ±²é¿´ÓÃ»§ĞÅÏ¢
+	//Test1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½é¿´ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	public void testViewClient(){
-		PersonalMessage m1 = new PersonalMessage("ÍõÔ¶","15052346789",100);
-		PersonalMessage m2 = new PersonalMessage("Àî¸Õ","13256743690",50);
-		MockUserPO mock1 = new MockUserPO("1001","ÍõÔ¶","",0,100,"15052346789",crechan);
-		MockUserPO mock2 = new MockUserPO("1002","Àî¸Õ","",0,50,"13256743690",crechan);
+		PersonalMessage m1 = new PersonalMessage("ï¿½ï¿½Ô¶","15052346789",100);
+		PersonalMessage m2 = new PersonalMessage("ï¿½ï¿½ï¿½","13256743690",50);
+		MockUserPO mock1 = new MockUserPO("1001","ï¿½ï¿½Ô¶","",0,100,"15052346789",crechan);
+		MockUserPO mock2 = new MockUserPO("1002","ï¿½ï¿½ï¿½","",0,50,"13256743690",crechan);
 		assertEquals(m1.name,mock1.ViewClient(true,"1001").name);
 		assertEquals(m1.phonenumber,mock1.ViewClient(true,"1001").phonenumber);
 		assertEquals(m1.creditvalue,mock1.ViewClient(true,"1001").creditvalue);
@@ -29,41 +29,41 @@ public class ManagerTest {
 	}
 	
 	@Test
-	//Test2 ¹ÜÀíÈËÔ±ĞŞ¸ÄÓÃ»§ĞÅÏ¢
+	//Test2 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ş¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	public void testChangeCliet(){
-		PersonalMessage m3 = new PersonalMessage("ÍõÔ¶","15055446789",100);
-		PersonalMessage m4 = new PersonalMessage("ÀîÏş¸Õ","13256743632",50);
-		MockUserPO mock1 = new MockUserPO("1001","ÍõÔ¶","",0,100,"15052346789",crechan);
-		MockUserPO mock2 = new MockUserPO("1002","Àî¸Õ","",0,50,"13256743690",crechan);
-		assertEquals(m3.name,mock1.ChangeClient(true,"1001","ÍõÔ¶","15055446789").name);
-		assertEquals(m3.phonenumber,mock1.ChangeClient(true,"1001","ÍõÔ¶","15055446789").phonenumber);
-		assertEquals(m3.creditvalue,mock1.ChangeClient(true,"1001","ÍõÔ¶","15055446789").creditvalue);
-		assertEquals(m4.name,mock2.ChangeClient(true,"1002","ÀîÏş¸Õ","13256743632").name);
-		assertEquals(m4.phonenumber,mock2.ChangeClient(true,"1002","ÀîÏş¸Õ","13256743632").phonenumber);
-		assertEquals(m4.creditvalue,mock2.ChangeClient(true,"1002","ÀîÏş¸Õ","13256743632").creditvalue);
+		PersonalMessage m3 = new PersonalMessage("ï¿½ï¿½Ô¶","15055446789",100);
+		PersonalMessage m4 = new PersonalMessage("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½","13256743632",50);
+		MockUserPO mock1 = new MockUserPO("1001","ï¿½ï¿½Ô¶","",0,100,"15052346789",crechan);
+		MockUserPO mock2 = new MockUserPO("1002","ï¿½ï¿½ï¿½","",0,50,"13256743690",crechan);
+		assertEquals(m3.name,mock1.ChangeClient(true,"1001","ï¿½ï¿½Ô¶","15055446789").name);
+		assertEquals(m3.phonenumber,mock1.ChangeClient(true,"1001","ï¿½ï¿½Ô¶","15055446789").phonenumber);
+		assertEquals(m3.creditvalue,mock1.ChangeClient(true,"1001","ï¿½ï¿½Ô¶","15055446789").creditvalue);
+		assertEquals(m4.name,mock2.ChangeClient(true,"1002","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½","13256743632").name);
+		assertEquals(m4.phonenumber,mock2.ChangeClient(true,"1002","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½","13256743632").phonenumber);
+		assertEquals(m4.creditvalue,mock2.ChangeClient(true,"1002","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½","13256743632").creditvalue);
 	}
 	
 	@Test
-	//Test3 ¹ÜÀíÈËÔ±Ìí¼Ó¾Æµê
+	//Test3 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ó¾Æµï¿½
 	public void testAddHotel(){
 		ArrayList<String> Hotelname = new ArrayList<String>();
 		ArrayList<String> Hoteladdress = new ArrayList<String>();
 		ArrayList<String> Hotelphone = new ArrayList<String>();
 		MockHotelList mock = new MockHotelList(Hotelname,Hoteladdress,Hotelphone);
-		assertEquals(true,mock.AddHotel(true, "Èç¼Ò¾Æµê","ÄÏ¾©¾­ÌìÂ·20ºÅ","87654890"));
-		assertEquals(true,mock.AddHotel(true, "ººÍ¥¾Æµê","ÄÏ¾©ĞÂ½Ö¿Ú32ºÅ","87690987"));
-		assertEquals(false,mock.AddHotel(false, "ººÍ¥¾Æµê","ÄÏ¾©ĞÂ½Ö¿Ú32ºÅ","87690987"));
+		assertEquals(true,mock.AddHotel(true, "ï¿½ï¿½Ò¾Æµï¿½","ï¿½Ï¾ï¿½ï¿½ï¿½ï¿½ï¿½Â·20ï¿½ï¿½","87654890"));
+		assertEquals(true,mock.AddHotel(true, "ï¿½ï¿½Í¥ï¿½Æµï¿½","ï¿½Ï¾ï¿½ï¿½Â½Ö¿ï¿½32ï¿½ï¿½","87690987"));
+		assertEquals(false,mock.AddHotel(false, "ï¿½ï¿½Í¥ï¿½Æµï¿½","ï¿½Ï¾ï¿½ï¿½Â½Ö¿ï¿½32ï¿½ï¿½","87690987"));
 	}
 	
 	@Test
-	//Test4 ¹ÜÀíÈËÔ±Ìí¼Ó¾Æµê¹¤×÷ÈËÔ±
+	//Test4 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ó¾Æµê¹¤ï¿½ï¿½ï¿½ï¿½Ô±
 	public void testAddHotelWorker(){
 		ArrayList<String> Hotelname = new ArrayList<String>();
 		ArrayList<String> Hoteladdress = new ArrayList<String>();
 		ArrayList<String> Hotelphone = new ArrayList<String>();
 		MockHotelList mock = new MockHotelList(Hotelname,Hoteladdress,Hotelphone);
-		assertEquals(true,mock.AddHotelWorker(true,"ĞíÓÀ","Èç¼Ò¾Æµê"));
-		assertEquals(true,mock.AddHotelWorker(true,"ÁõÓÀ","ººÍ¥¾Æµê"));
-		assertEquals(false,mock.AddHotelWorker(false,"ÁõÓÀ","ººÍ¥¾Æµê"));
+		assertEquals(true,mock.AddHotelWorker(true,"ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½Ò¾Æµï¿½"));
+		assertEquals(true,mock.AddHotelWorker(true,"ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½Í¥ï¿½Æµï¿½"));
+		assertEquals(false,mock.AddHotelWorker(false,"ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½Í¥ï¿½Æµï¿½"));
 	}
 }

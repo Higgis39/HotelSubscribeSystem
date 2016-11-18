@@ -1,4 +1,4 @@
-package Mock.MockWeb;
+package Promotion模块.MockWebPromotion;
 
 import java.util.ArrayList;
 import java.util.Date;

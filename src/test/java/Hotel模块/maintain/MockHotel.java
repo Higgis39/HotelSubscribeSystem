@@ -1,4 +1,4 @@
-package maintain;
+package Hotelæ¨¡å—.maintain;
 
 public class MockHotel extends Hotel{
 	String Hotelname;
@@ -8,8 +8,8 @@ public class MockHotel extends Hotel{
 	}
 	
 	public boolean UpdateHotelMessage(String new_name,String new_phone){
-		HotelPO hotel1 = new HotelPO("Èç¼Ò", "151XXXX7532", "ÄÏ¾©", "ÆÜÏ¼Çø", "", "Wifi½öÔÚ·¿¼äÄÚÓĞĞ§", "8.8", 4.0);
-		HotelPO hotel2 = new HotelPO("¸ñÁÖºÀÌ©", "152XXXX5098", "ÄÏ¾©", "ÆÜÏ¼Çø", "", "WifiÈ«¸²¸Ç", "8.6", 3.8);
+		HotelPO hotel1 = new HotelPO("ï¿½ï¿½ï¿½", "151XXXX7532", "ï¿½Ï¾ï¿½", "ï¿½ï¿½Ï¼ï¿½ï¿½", "", "Wifiï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ§", "8.8", 4.0);
+		HotelPO hotel2 = new HotelPO("ï¿½ï¿½ï¿½Öºï¿½Ì©", "152XXXX5098", "ï¿½Ï¾ï¿½", "ï¿½ï¿½Ï¼ï¿½ï¿½", "", "WifiÈ«ï¿½ï¿½ï¿½ï¿½", "8.6", 3.8);
 //		String HotelName1=hotel1.getName();
 //		String HotelPhone1=hotel1.getPhone();
 //		
