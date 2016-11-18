@@ -35,7 +35,7 @@ public class LogTest {
 	}
 	
 	@Test
-	//Test1 µÇÂ¼
+	//Test1 ï¿½ï¿½Â¼
 	public void testLogin(){
 		MockUserList m = new MockUserList(idList,passwordList,user_typeList);
 		assertEquals(true,m.Login("1000","qwert",0));
@@ -44,10 +44,10 @@ public class LogTest {
 	}
 	
 	@Test
-	//Test2 ×¢²áÆÕÍ¨ÓÃ»§
+	//Test2 ×¢ï¿½ï¿½ï¿½ï¿½Í¨ï¿½Ã»ï¿½
 	public void testRegisterClient(){
 		MockUserList m = new MockUserList(idList,passwordList,user_typeList);
-		assertEquals("The two passwords is different.",m.RegisterClient("ÀîÏþÐñ","asdf","asdfe"));
-		assertEquals("Register successfully! Your id is 1003",m.RegisterClient("¹ù¶°","asdf","asdf"));
+		assertEquals("The two passwords is different.",m.RegisterClient("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½","asdf","asdfe"));
+		assertEquals("Register successfully! Your id is 1003",m.RegisterClient("ï¿½ï¿½ï¿½ï¿½","asdf","asdf"));
 	}
 }
