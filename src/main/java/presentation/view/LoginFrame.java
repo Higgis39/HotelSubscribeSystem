@@ -8,8 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 
-public class mainView{
-	public mainView(){
+public class LoginFrame{
+	public LoginFrame(){
 		JFrame loginFrame = new JFrame("互联网酒店预订系统");
 		loginFrame.setLayout(null);
 		loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

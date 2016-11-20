@@ -1,5 +1,5 @@
 package User.ManageMessage;
 
-public class UserPO{
+public class UserPO {
 
 }

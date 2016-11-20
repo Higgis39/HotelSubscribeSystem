@@ -2,8 +2,8 @@ package User.Log;
 
 import java.util.ArrayList;
 
-import User.ManageMessage.CreditChange;
 import User.ManageMessage.MockUserPO;
+import businessLogic.userbl.CreditChange;
 
 public class MockUserList {
 	
@@ -17,7 +17,7 @@ public class MockUserList {
 		this.user_typeList = user_typeList;
 	}
 
-	public boolean Login(String id, String password, int user_type) {
+	public boolean Login(String id, String password,int user_type) {
 		if(getpassword(id,user_type).equals("")){
 			return false;
 		}
@@ -38,7 +38,7 @@ public class MockUserList {
 			user_typeList.add(0);
 			ArrayList<String> c = new ArrayList<String>();
 			CreditChange credit = new CreditChange(c);
-			MockUserPO u = new MockUserPO(newid,name,password1,0,0,"",credit);
+			MockUserPO u = new MockUserPO(newid,name,password1,"",0,"",credit);
 			return "Register successfully! Your id is "+newid;
 		}
 	}

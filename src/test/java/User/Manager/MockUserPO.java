@@ -2,9 +2,9 @@ package User.Manager;
 
 import java.util.ArrayList;
 
-import User.ManageMessage.CreditChange;
-import User.ManageMessage.PersonalMessage;
 import User.ManageMessage.UserPO;
+import businessLogic.userbl.CreditChange;
+import businessLogic.userbl.PersonalMessage;
 
 public class MockUserPO extends UserPO{
 	ArrayList<MockUserPO> userPO = new ArrayList<MockUserPO>();
@@ -53,7 +53,7 @@ public class MockUserPO extends UserPO{
 		return creditvalue;
 	}
 	
-	//ע����?
+	//ע����?
 	public boolean RegisterVIP(int VIPtype,String companyORbirthday){
 		if(VIPtype==0){
 			IsVIP = true;

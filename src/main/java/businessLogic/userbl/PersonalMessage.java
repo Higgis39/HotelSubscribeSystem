@@ -1,4 +1,4 @@
-package User.ManageMessage;
+package businessLogic.userbl;
 
 public class PersonalMessage {
 	public String name;

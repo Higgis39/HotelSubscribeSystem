@@ -2,12 +2,16 @@ package User.ManageMessage;
 
 import java.util.ArrayList;
 
+import businessLogic.userbl.CreditChange;
+import businessLogic.userbl.PersonalMessage;
+
+
 public class MockUserPO extends UserPO{
 	ArrayList<MockUserPO> userPO = new ArrayList<MockUserPO>();
 	String id;
 	String name;
 	String password;
-	int user_type;
+	String user_type;
 	int creditvalue;
 	String phonenumber;
 	CreditChange creditchange;
@@ -17,39 +21,27 @@ public class MockUserPO extends UserPO{
 	String birthday;
 	String company;
 	
-	public MockUserPO(String id,String name,String password,int user_type,int creditvalue,String phonenumber,CreditChange creditchange){
-		this.id = id;
-		this.name = name;
-		this.password = password;
-		this.user_type = user_type;
-		this.creditvalue = creditvalue;
-		this.phonenumber = phonenumber;
-		this.creditchange = creditchange;
-		userPO.add(this);
+	public MockUserPO(String id, String name, String password,String usertype, int creditvalue, String phonenumber,CreditChange crechan) {
+		
 	}
-	
-	//�鿴������Ϣ
+
 	public PersonalMessage getMessage(){
 		return new PersonalMessage(name,phonenumber,creditvalue);
 	}
 	
-	//�鿴�������ñ仯
 	public CreditChange getCreditChange(){
 		return creditchange;
 	}
 	
-	//�޸ĸ�����Ϣ
 	public PersonalMessage ChangeMessage(String newname,String newphonenumber){
 		return new PersonalMessage(newname,newphonenumber,creditvalue);
 	}
 	
-	//��ֵ����ֵ
 	public int RechargeCredit(int creditRecharge){
 		creditvalue = creditvalue+creditRecharge;
 		return creditvalue;
 	}
 	
-	//ע����?
 	public boolean RegisterVIP(int VIPtype,String companyORbirthday){
 		if(VIPtype==0){
 			IsVIP = true;
@@ -67,7 +59,7 @@ public class MockUserPO extends UserPO{
 		return true;
 	}
 	
-	//������Ա�鿴�û���Ϣ
+
 	public PersonalMessage ViewClient(boolean IsManager,String id){
 		if(IsManager==false){
 			return null;
@@ -80,7 +72,7 @@ public class MockUserPO extends UserPO{
 		return null;
 	}
 	
-	//������Ա�޸��û���Ϣ
+
 	public PersonalMessage ChangeClient(boolean IsManager,String id,String name,String phonenumber){
 		if(IsManager==false){
 			return null;
