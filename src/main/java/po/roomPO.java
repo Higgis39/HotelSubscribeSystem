@@ -1,5 +1,5 @@
 package po;
 
-public class roomPO {
+public class RoomPO {
 
 }

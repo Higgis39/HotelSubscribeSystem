@@ -1,5 +1,5 @@
 package dataService;
 
-public class promotiondataService {
+public class PromotionDataService {
 
 }

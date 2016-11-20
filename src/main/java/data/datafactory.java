@@ -1,5 +1,5 @@
 package data;
 
-public class datafactory {
+public class DataFactory {
 
 }

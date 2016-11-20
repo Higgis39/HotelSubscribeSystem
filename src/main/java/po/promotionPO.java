@@ -1,5 +1,5 @@
 package po;
 
-public class promotionPO {
+public class PromotionPO {
 
 }

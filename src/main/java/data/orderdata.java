@@ -1,5 +1,5 @@
 package data;
 
-public class orderdata {
+public class OrderData {
 
 }

@@ -1,5 +1,5 @@
 package vo;
 
-public class promotionVO {
+public class PromotionVO {
 
 }

@@ -1,5 +1,5 @@
 package vo;
 
-public class orderVO {
+public class OrderVO {
 
 }

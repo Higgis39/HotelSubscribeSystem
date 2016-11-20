@@ -1,5 +1,5 @@
 package po;
 
-public class orderPO {
+public class OrderPO {
 
 }

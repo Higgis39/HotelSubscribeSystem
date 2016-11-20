@@ -1,5 +1,5 @@
 package vo;
 
-public class roomVO {
+public class RoomVO {
 
 }
