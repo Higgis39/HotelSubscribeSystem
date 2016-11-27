@@ -1,6 +1,8 @@
 package businessLogic.userbl;
 
-public class MessageController {
+import businessLogicService.UserMessageBLService;
+
+public class MessageController implements UserMessageBLService {
 	User user = new User();
 	
 	/**

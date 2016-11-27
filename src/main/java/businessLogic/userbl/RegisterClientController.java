@@ -1,6 +1,8 @@
 package businessLogic.userbl;
 
-public class RegisterClientController {
+import businessLogicService.UserRegisterClientBLService;
+
+public class RegisterClientController implements UserRegisterClientBLService{
 	User user = new User();
 	
 	/**

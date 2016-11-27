@@ -1,6 +1,8 @@
 package businessLogic.userbl;
 
-public class LoginController {
+import businessLogicService.UserLoginBLService;
+
+public class LoginController implements UserLoginBLService{
 	User user = new User();
 	
 	/**

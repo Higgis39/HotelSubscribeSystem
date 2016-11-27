@@ -1,6 +1,8 @@
 package businessLogic.userbl;
 
-public class RechargeCreditController {
+import businessLogicService.UserRechargeCreditBLService;
+
+public class RechargeCreditController implements UserRechargeCreditBLService{
 	User user = new User();
 	
 	/**
