@@ -1,5 +1,5 @@
 package businessLogicService;
 
-public class PromotionblService {
+public class promotionblService {
 
 }

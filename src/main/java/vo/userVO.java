@@ -1,5 +1,5 @@
 package vo;
 
-public class UserVO {
+public class userVO {
 
 }

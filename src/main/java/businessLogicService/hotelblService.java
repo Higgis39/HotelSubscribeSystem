@@ -1,5 +1,5 @@
 package businessLogicService;
 
-public class HotelblService {
+public class hotelblService {
 
 }
