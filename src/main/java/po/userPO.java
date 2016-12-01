@@ -30,6 +30,10 @@ public class UserPO {
 		this.creditchange = creditchange;
 	}
 	
+	public UserPO(){
+		
+	}
+	
 	//得到用户名
 	public String getname(){
 		return name;
@@ -83,5 +87,49 @@ public class UserPO {
 	//得到信用变化
 	public CreditChange getcreditchange(){
 		return creditchange;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
+	}
+
+	public void setCreditvalue(int creditvalue) {
+		this.creditvalue = creditvalue;
+	}
+
+	public void setVIPtype(String vIPtype) {
+		VIPtype = vIPtype;
+	}
+
+	public void setVIPgrade(int vIPgrade) {
+		VIPgrade = vIPgrade;
+	}
+
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public void setCreditchange(CreditChange creditchange) {
+		this.creditchange = creditchange;
 	}
 }

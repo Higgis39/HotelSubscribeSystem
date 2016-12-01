@@ -22,6 +22,10 @@ public class OrderPO {
 		this.price = price;
 	}
 	
+	public OrderPO(){
+		
+	}
+	
 	public String getorderId() {
 		return orderId;
 	}
@@ -54,4 +58,44 @@ public class OrderPO {
 		return price;
 	}
 
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	public void setHotelId(String hotelId) {
+		this.hotelId = hotelId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public void setEntryTime(String entryTime) {
+		this.entryTime = entryTime;
+	}
+
+	public void setLastTime(String lastTime) {
+		this.lastTime = lastTime;
+	}
+
+	public void setOrderInfo(String orderInfo) {
+		this.orderInfo = orderInfo;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderPO [orderId=" + orderId + ", hotelId=" + hotelId + ", userId=" + userId + ", status=" + status
+				+ ", entryTime=" + entryTime + ", lastTime=" + lastTime + ", orderInfo=" + orderInfo + ", price="
+				+ price + "]";
+	}
+
+	
 }

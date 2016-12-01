@@ -30,13 +30,17 @@ public class HotelPO {
 		this.worker = worker;
 	}
 	
+	public HotelPO(){
+		
+	}
+	
 	//得到酒店账号
-	public String getid(){
+	public String getId(){
 		return hotelid;
 	}
 	
 	//得到酒店账号密码
-	public String getpassword(){
+	public String getPassword(){
 		return password;
 	}
 	
@@ -46,7 +50,7 @@ public class HotelPO {
 	}
 	
 	//得到酒店联系方式
-	public String getphonenumber(){
+	public String getPhonenumber(){
 		return phonenumber;
 	}
 	
@@ -56,10 +60,10 @@ public class HotelPO {
 	}
 	
 	//得到酒店所处商圈
-	public String getbusinessArea(){
+	public String getBusinessArea(){
 		return businessarea;
 	}
-	
+
 	//得到酒店简介
 	public String getIntroduction(){
 		return introduction;
@@ -83,5 +87,49 @@ public class HotelPO {
 	//得到酒店工作人员
 	public ArrayList<String> getWorker(){
 		return worker;
+	}
+	
+	public void setHotelid(String hotelid) {
+		this.hotelid = hotelid;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setHotelname(String hotelname) {
+		this.hotelname = hotelname;
+	}
+
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setBusinessarea(String businessarea) {
+		this.businessarea = businessarea;
+	}
+
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+
+	public void setFacilities(String facilities) {
+		this.facilities = facilities;
+	}
+
+	public void setStar(int star) {
+		this.star = star;
+	}
+
+	public void setGrade(double grade) {
+		this.grade = grade;
+	}
+
+	public void setWorker(ArrayList<String> worker) {
+		this.worker = worker;
 	}
 }
