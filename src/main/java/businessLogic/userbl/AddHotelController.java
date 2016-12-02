@@ -2,6 +2,11 @@ package businessLogic.userbl;
 
 import businessLogicService.UserAddHotelBLService;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ */
 public class AddHotelController implements UserAddHotelBLService{
 	User user = new User();
 	

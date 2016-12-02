@@ -2,6 +2,11 @@ package po;
 
 import businessLogic.userbl.CreditChange;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ */
 public class UserPO {
 	String name;
 	String id;

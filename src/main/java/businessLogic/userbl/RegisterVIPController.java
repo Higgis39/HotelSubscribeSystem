@@ -2,6 +2,11 @@ package businessLogic.userbl;
 
 import businessLogicService.UserRegisterVIPBLService;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ */
 public class RegisterVIPController implements UserRegisterVIPBLService{
 	User user = new User();
 	

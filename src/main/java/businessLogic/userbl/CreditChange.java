@@ -1,6 +1,11 @@
 package businessLogic.userbl;
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ */
 public class CreditChange {
 	public ArrayList<String> creditchange = new ArrayList<String>();
 	

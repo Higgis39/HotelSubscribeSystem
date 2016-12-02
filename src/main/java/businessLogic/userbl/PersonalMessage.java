@@ -1,5 +1,10 @@
 package businessLogic.userbl;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ */
 public class PersonalMessage {
 	public String name;
 	public String phonenumber;

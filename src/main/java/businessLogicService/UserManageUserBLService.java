@@ -1,5 +1,10 @@
 package businessLogicService;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ */
 import businessLogic.userbl.PersonalMessage;
 
 public interface UserManageUserBLService {

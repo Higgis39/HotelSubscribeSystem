@@ -2,6 +2,11 @@ package businessLogic.userbl;
 
 import businessLogicService.UserManageUserBLService;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ */
 public class ManageUserController implements UserManageUserBLService {
 	User user = new User();
 	

@@ -6,37 +6,35 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-
-
 /**
  * 
  * @author 费慧通
  *
- *用户登录阶段的界面
+ *普通客户注册的界面
  */
-public class LoginFrame extends Application{
+public class RegisterClientFrame extends Application{
 	private Stage primaryStage;
 
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-	    this.primaryStage.setTitle("登录");
+	    this.primaryStage.setTitle("注册账号");
 
 	    try{
 	    	FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(getClass().getResource("Login.fxml"));
+	        loader.setLocation(getClass().getResource("RegisterClient.fxml"));
 	        AnchorPane frame = (AnchorPane) loader.load();
 	        
 	        Scene scene = new Scene(frame);
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
-	        LoginFrameController controller = loader.getController();
-	        controller.setLoginFrame(this);
+	        RegisterClientFrameController controller = loader.getController();
+	        controller.setRegisterClientFrame(this);
 	    }catch(Exception e){
 	       	e.printStackTrace();
 	    }
 	}
-
+	
 	/**
      * Return the main stage.
     */

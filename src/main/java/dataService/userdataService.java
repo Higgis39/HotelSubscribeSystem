@@ -2,6 +2,11 @@ package dataService;
 
 import po.UserPO;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ */
 public interface UserDataService {
 	/**
 	 * 根据id进行查找单一持久化对象

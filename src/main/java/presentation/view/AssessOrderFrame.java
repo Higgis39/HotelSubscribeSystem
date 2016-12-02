@@ -6,36 +6,35 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-
-
 /**
  * 
  * @author 费慧通
  *
- *用户登录阶段的界面
+ *用户评价订单的界面，用户在该界面填写评价
  */
-public class LoginFrame extends Application{
+public class AssessOrderFrame extends Application{
 	private Stage primaryStage;
 
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-	    this.primaryStage.setTitle("登录");
+	    this.primaryStage.setTitle("评价填写");
 
 	    try{
-	    	FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(getClass().getResource("Login.fxml"));
-	        AnchorPane frame = (AnchorPane) loader.load();
-	        
-	        Scene scene = new Scene(frame);
-	        primaryStage.setScene(scene);
-	        primaryStage.show();
-	        LoginFrameController controller = loader.getController();
-	        controller.setLoginFrame(this);
+	    	 FXMLLoader loader = new FXMLLoader();
+		     loader.setLocation(getClass().getResource("AssessOrder.fxml"));
+		     AnchorPane frame = (AnchorPane) loader.load();
+		        
+		     Scene scene = new Scene(frame);
+		     primaryStage.setScene(scene);
+		     primaryStage.show();
+		     AssessOrderFrameController controller = loader.getController();
+		     controller.setAssessOrderFrame(this);
 	    }catch(Exception e){
 	       	e.printStackTrace();
 	    }
 	}
+
 
 	/**
      * Return the main stage.

@@ -6,32 +6,24 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-
-
-/**
- * 
- * @author 费慧通
- *
- *用户登录阶段的界面
- */
-public class LoginFrame extends Application{
+public class ChangeBirOrComFrame extends Application{
 	private Stage primaryStage;
 
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-	    this.primaryStage.setTitle("登录");
+	    this.primaryStage.setTitle("互联网酒店预定系统");
 
 	    try{
 	    	FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(getClass().getResource("Login.fxml"));
+	        loader.setLocation(getClass().getResource("ChangeBirOrCom.fxml"));
 	        AnchorPane frame = (AnchorPane) loader.load();
 	        
 	        Scene scene = new Scene(frame);
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
-	        LoginFrameController controller = loader.getController();
-	        controller.setLoginFrame(this);
+	        ChangeBirOrComFrameController controller = loader.getController();
+	        controller.setChangeBirOrComFrame(this);
 	    }catch(Exception e){
 	       	e.printStackTrace();
 	    }

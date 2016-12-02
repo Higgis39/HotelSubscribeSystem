@@ -9,6 +9,11 @@ import dataService.UserDataService;
 import po.HotelPO;
 import po.UserPO;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ */
 public class User{
 	UserDataService userdataservice = new UserData();
 	HotelDataService hoteldataservice = new HotelData();
@@ -36,7 +41,7 @@ public class User{
 	 * @return 创建成功则返回分配的id
 	 */
 	public String RegisterClient(String name,String password1,String password2){
-		if(password1.equals(password2)){
+		if(!password1.equals(password2)){
 			return "The two passwords is different.";
 		}else{
 			String newid = userdataservice.distributeid();
