@@ -7,14 +7,20 @@ import presentation.view.UserMainFrame;
 import presentation.view.UserPersonalFrame;
 import presentation.view.ViewCreditChangeFrame;
 import presentation.view.ChangeBirOrComFrame;
+import presentation.view.ChangeHotelMessageFrame;
 import presentation.view.ChangePersonalMessageFrame;
 import presentation.view.CheckInFrame;
 import presentation.view.CheckOutFrame;
+import presentation.view.DealOrderFrame;
 import presentation.view.DoCancelPopup;
 import presentation.view.EnterUserfulRoomFrame;
 import presentation.view.FailLoginPopup;
 import presentation.view.HistoricalOrderFrame;
+import presentation.view.HotelMainFrame;
+import presentation.view.HotelMessageFrame;
+import presentation.view.HotelPromotionFrame;
 import presentation.view.LoginFrame;
+import presentation.view.MakeHotelPromotionFrame;
 
 /**
  * 
@@ -105,6 +111,48 @@ public class ViewController{
 	 */
 	public void openCheckOutFrame(){
 		new CheckOutFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开酒店主界面
+	 */
+	public void openHotelMainFrame(){
+		new HotelMainFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开处理订单界面
+	 */
+	public void openDealOrderFrame(){
+		new DealOrderFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开促销策略界面
+	 */
+	public void openHotelPromotionFrame(){
+		new HotelPromotionFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开酒店信息界面
+	 */
+	public void openHotelMessageFrame(){
+		new HotelMessageFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开制定酒店促销策略界面
+	 */
+	public void openMakeHotelPromotionFrame(){
+		new MakeHotelPromotionFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开维护酒店基本信息界面
+	 */
+	public void openChangeHotelMessageFrame(){
+		new ChangeHotelMessageFrame().start(new Stage());
 	}
 	
 	/**

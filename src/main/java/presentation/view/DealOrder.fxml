@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.DealOrderFrameController">
+   <children>
+      <Separator layoutX="1.0" layoutY="52.0" prefHeight="15.0" prefWidth="750.0" />
+      <Button layoutX="251.0" layoutY="23.0" mnemonicParsing="false" onAction="#roomAction" text="管理房间" />
+      <Button layoutX="315.0" layoutY="23.0" mnemonicParsing="false" text="处理订单" textFill="RED" />
+      <Button layoutX="379.0" layoutY="23.0" mnemonicParsing="false" onAction="#promotionAction" text="促销策略" />
+      <Button layoutX="443.0" layoutY="23.0" mnemonicParsing="false" onAction="#hotelmessageAction" text="酒店信息" />
+      <Label fx:id="hotelname" layoutX="617.0" layoutY="27.0" text="酒店名" />
+      <Label fx:id="id" layoutX="562.0" layoutY="27.0" text="id" />
+      <Label layoutX="50.0" layoutY="25.0" text="欢迎来到互联网酒店系统！">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="83.0" text="订单类型：" />
+      <ComboBox fx:id="enterordertype" layoutX="134.0" layoutY="79.0" prefHeight="23.0" prefWidth="185.0" />
+      <Button layoutX="489.0" layoutY="79.0" mnemonicParsing="false" onAction="#viewAction" prefHeight="23.0" prefWidth="64.0" text="查看" />
+      <AnchorPane layoutY="108.0" prefHeight="387.0" prefWidth="751.0" />
+   </children>
+</AnchorPane>

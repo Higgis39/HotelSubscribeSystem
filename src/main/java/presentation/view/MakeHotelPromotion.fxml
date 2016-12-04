@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.MakeHotelPromotionFrameController">
+   <children>
+      <Label fx:id="promotiontype" layoutX="102.0" layoutY="62.0" text="促销策略类型：" />
+      <ComboBox fx:id="enterpromotiontype" layoutX="226.0" layoutY="58.0" prefWidth="150.0" />
+      <CheckBox fx:id="checkbox" layoutX="114.0" layoutY="28.0" mnemonicParsing="false" onAction="#checkboxAction" text="新增策略类型" />
+      <Label fx:id="promotionname" disable="true" layoutX="114.0" layoutY="97.0" text="策略名称：" />
+      <Label layoutX="84.0" layoutY="130.0" text="是否在生日当天优惠：" />
+      <TextField fx:id="enterpromotionname" disable="true" layoutX="226.0" layoutY="93.0" />
+      <ComboBox fx:id="enterbirthday" layoutX="226.0" layoutY="126.0" prefHeight="23.0" prefWidth="70.0" />
+      <Label layoutX="102.0" layoutY="163.0" text="最少房间数量：" />
+      <Label layoutX="114.0" layoutY="197.0" text="活动日期：" />
+      <DatePicker fx:id="begindate" layoutX="226.0" layoutY="193.0" onAction="#enterbegindateAction" prefHeight="23.0" prefWidth="111.0" />
+      <Label layoutX="337.0" layoutY="197.0" text="——" />
+      <DatePicker fx:id="enddate" layoutX="363.0" layoutY="193.0" onAction="#enterenddateAction" prefHeight="23.0" prefWidth="111.0" />
+      <Label layoutX="102.0" layoutY="230.0" text="合作企业优惠：" />
+      <ComboBox fx:id="company" layoutX="226.0" layoutY="226.0" prefHeight="23.0" prefWidth="70.0" />
+      <TextField fx:id="enterroomnum" alignment="CENTER" layoutX="250.0" layoutY="159.0" prefHeight="23.0" prefWidth="32.0" text="1" />
+      <Button layoutX="226.0" layoutY="159.0" mnemonicParsing="false" onAction="#minusAction" prefHeight="23.0" prefWidth="26.0" text="-" />
+      <Button layoutX="279.0" layoutY="159.0" mnemonicParsing="false" onAction="#plusAction" text="+" />
+      <Button layoutX="147.0" layoutY="285.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="60.0" text="确定" />
+      <Button layoutX="316.0" layoutY="285.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="60.0" text="取消" />
+   </children>
+</AnchorPane>

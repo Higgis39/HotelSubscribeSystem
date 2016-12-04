@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.HotelPromotionFrameController">
+   <children>
+      <Label layoutX="52.0" layoutY="27.0" text="欢迎来到互联网酒店系统！">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="id" layoutX="564.0" layoutY="29.0" text="id" />
+      <Label fx:id="hotelname" layoutX="619.0" layoutY="29.0" text="酒店名" />
+      <Button layoutX="445.0" layoutY="25.0" mnemonicParsing="false" onAction="#hotelmessageAction" text="酒店信息" />
+      <Button layoutX="381.0" layoutY="25.0" mnemonicParsing="false" text="促销策略" textFill="RED" />
+      <Button layoutX="317.0" layoutY="25.0" mnemonicParsing="false" onAction="#dealorderAction" text="处理订单" />
+      <Button layoutX="253.0" layoutY="25.0" mnemonicParsing="false" onAction="#roomAction" text="管理房间" />
+      <Separator layoutX="3.0" layoutY="54.0" prefHeight="15.0" prefWidth="750.0" />
+      <TableView fx:id="tableview" layoutX="127.0" layoutY="126.0" prefHeight="200.0" prefWidth="500.0">
+        <columns>
+          <TableColumn fx:id="promotiontype" prefWidth="100.0" text="促销策略类型" />
+          <TableColumn fx:id="birthday" prefWidth="100.0" text="生日优惠" />
+            <TableColumn fx:id="roomnum" prefWidth="100.0" text="房间数量要求" />
+            <TableColumn fx:id="date" prefWidth="100.0" text="活动日期" />
+            <TableColumn fx:id="companyVIP" prefWidth="100.0" text="企业会员" />
+        </columns>
+      </TableView>
+      <Hyperlink layoutX="320.0" layoutY="359.0" onAction="#linkAction" text="去制定酒店促销策略" />
+   </children>
+</AnchorPane>

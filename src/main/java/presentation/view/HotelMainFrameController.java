@@ -41,6 +41,7 @@ public class HotelMainFrameController {
 	 */
 	private void dealorderAction(){
 		//打开处理订单界面
+		viewcontrol.openDealOrderFrame();
 		hotelmainframe.getPrimaryStage().close();
 	}
 	
@@ -50,6 +51,7 @@ public class HotelMainFrameController {
 	 */
 	private void promotionAction(){
 		//打开促销策略界面
+		viewcontrol.openHotelPromotionFrame();
 		hotelmainframe.getPrimaryStage().close();
 	}
 	
@@ -59,6 +61,7 @@ public class HotelMainFrameController {
 	 */
 	private void hotelmessageAction(){
 		//打开酒店信息界面
+		viewcontrol.openHotelMessageFrame();
 		hotelmainframe.getPrimaryStage().close();
 	}
 	
