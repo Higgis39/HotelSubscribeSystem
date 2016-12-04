@@ -1,7 +1,6 @@
 package presentation.view;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 
 /**
  * 
@@ -10,9 +9,6 @@ import javafx.scene.control.Button;
  *usertypenullpopup的控制器
  */
 public class FailLoginPopupController {
-	@FXML
-	private Button confirm;
-	
 	private FailLoginPopup popup;
 	
 	@FXML

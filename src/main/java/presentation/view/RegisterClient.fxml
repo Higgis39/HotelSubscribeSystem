@@ -33,12 +33,12 @@
       <PasswordField fx:id="enterpassword2" layoutX="227.0" layoutY="326.0" />
       <PasswordField fx:id="enterpassword1" layoutX="227.0" layoutY="253.0" />
       <TextField fx:id="enterusername" layoutX="227.0" layoutY="175.0" />
-      <Button fx:id="confirm" layoutX="206.0" layoutY="402.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="28.0" prefWidth="71.0" text="注册">
+      <Button layoutX="206.0" layoutY="402.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="28.0" prefWidth="71.0" text="注册">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="cancel" layoutX="375.0" layoutY="402.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="28.0" prefWidth="71.0" text="取消">
+      <Button layoutX="375.0" layoutY="402.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="28.0" prefWidth="71.0" text="取消">
          <font>
             <Font size="14.0" />
          </font>

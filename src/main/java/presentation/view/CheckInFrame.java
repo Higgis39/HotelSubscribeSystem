@@ -10,9 +10,9 @@ import javafx.stage.Stage;
  * 
  * @author 费慧通
  *
- *修改生日/企业的界面
+ *更新入住信息的界面
  */
-public class ChangeBirOrComFrame extends Application{
+public class CheckInFrame extends Application{
 	private Stage primaryStage;
 
 	@Override
@@ -21,19 +21,20 @@ public class ChangeBirOrComFrame extends Application{
 	    this.primaryStage.setTitle("互联网酒店预定系统");
 
 	    try{
-	    	FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(getClass().getResource("ChangeBirOrCom.fxml"));
-	        AnchorPane frame = (AnchorPane) loader.load();
-	        
-	        Scene scene = new Scene(frame);
-	        primaryStage.setScene(scene);
-	        primaryStage.show();
-	        ChangeBirOrComFrameController controller = loader.getController();
-	        controller.setChangeBirOrComFrame(this);
+	    	 FXMLLoader loader = new FXMLLoader();
+		     loader.setLocation(getClass().getResource("CheckIn.fxml"));
+		     AnchorPane frame = (AnchorPane) loader.load();
+		        
+		     Scene scene = new Scene(frame);
+		     primaryStage.setScene(scene);
+		     primaryStage.show();
+		     CheckInFrameController controller = loader.getController();
+		     controller.setCheckInFrame(this);
 	    }catch(Exception e){
 	       	e.printStackTrace();
 	    }
 	}
+
 
 	/**
      * Return the main stage.

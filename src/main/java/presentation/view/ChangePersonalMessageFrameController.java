@@ -1,19 +1,20 @@
 package presentation.view;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ *ChangePersonalMessageFrame的监听
+ */
 public class ChangePersonalMessageFrameController {
 	@FXML
 	private TextField entername;
 	@FXML
 	private TextField enterphonenumber;
-	@FXML
-	private Button confirm;
-	@FXML
-	private Button cancel;
-
+	
 	private ChangePersonalMessageFrame changepersonalmessageframe;
 	
 	@FXML

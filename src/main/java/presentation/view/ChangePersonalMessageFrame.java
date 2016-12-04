@@ -6,6 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ *修改个人信息的界面
+ */
 public class ChangePersonalMessageFrame extends Application{
 	private Stage primaryStage;
 

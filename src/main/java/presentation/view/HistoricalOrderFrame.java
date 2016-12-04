@@ -6,6 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ *历史订单界面
+ */
 public class HistoricalOrderFrame extends Application{
 	private Stage primaryStage;
 

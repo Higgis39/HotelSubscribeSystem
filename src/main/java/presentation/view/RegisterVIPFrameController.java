@@ -1,12 +1,18 @@
 package presentation.view;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
+
+/**
+ * 
+ * @author 费慧通
+ *
+ *RegisterVIPFrame的监听
+ */
 public class RegisterVIPFrameController {
 	@FXML
 	private RadioButton commonVIP;
@@ -18,10 +24,6 @@ public class RegisterVIPFrameController {
 	private DatePicker enterbirthday;
 	@FXML
 	private TextField entercompany;
-	@FXML
-	private Button confirm;
-	@FXML
-	private Button cancel;
 	
 	private RegisterVIPFrame registerVIPframe;
 	

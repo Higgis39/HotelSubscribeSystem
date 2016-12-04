@@ -6,6 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ *查看信用变化的界面
+ */
 public class ViewCreditChangeFrame extends Application{
 	private Stage primaryStage;
 

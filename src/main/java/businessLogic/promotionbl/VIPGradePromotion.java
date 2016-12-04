@@ -18,16 +18,16 @@ public class VIPGradePromotion implements WebPromotionType{
 	//策略接口的实现
 	public double calculateDiscount() {
 		//获得用户的信用值
-		int credit = user.c 
+//		int credit = user.c 
 		int level;
 		//制定等级升级标准
 		int levelProportion = 10;
-		level = credit/levelProportion;
+//		level = credit/levelProportion;
 			
 		double discount;
 		//制定折扣标准
 		int discountPromotion = 20;
-		discount = 1 - level/discountPromotion;
-		return discount;
+//		discount = 1 - level/discountPromotion;
+		return 0;
 	}
 }

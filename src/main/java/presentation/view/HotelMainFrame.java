@@ -10,31 +10,32 @@ import javafx.stage.Stage;
  * 
  * @author 费慧通
  *
- *修改生日/企业的界面
+ *酒店工作人员登录酒店账号后打开的酒店的主界面
  */
-public class ChangeBirOrComFrame extends Application{
+public class HotelMainFrame extends Application{
 	private Stage primaryStage;
 
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-	    this.primaryStage.setTitle("互联网酒店预定系统");
+	    this.primaryStage.setTitle("互联网酒店系统");
 
 	    try{
-	    	FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(getClass().getResource("ChangeBirOrCom.fxml"));
-	        AnchorPane frame = (AnchorPane) loader.load();
-	        
-	        Scene scene = new Scene(frame);
-	        primaryStage.setScene(scene);
-	        primaryStage.show();
-	        ChangeBirOrComFrameController controller = loader.getController();
-	        controller.setChangeBirOrComFrame(this);
+	    	 FXMLLoader loader = new FXMLLoader();
+		     loader.setLocation(getClass().getResource("HotelMain.fxml"));
+		     AnchorPane frame = (AnchorPane) loader.load();
+		        
+		     Scene scene = new Scene(frame);
+		     primaryStage.setScene(scene);
+		     primaryStage.show();
+		     HotelMainFrameController controller = loader.getController();
+		     controller.setHotelMainFrame(this);
 	    }catch(Exception e){
 	       	e.printStackTrace();
 	    }
 	}
 
+	
 	/**
      * Return the main stage.
     */

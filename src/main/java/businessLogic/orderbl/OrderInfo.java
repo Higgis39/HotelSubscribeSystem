@@ -1,7 +1,7 @@
 package businessLogic.orderbl;
 
 import po.OrderPO;
-import po.PromotionPO;
+//import po.PromotionPO;
 import vo.OrderVO;
 
 public class OrderInfo {
@@ -16,9 +16,9 @@ public class OrderInfo {
 		return 0.0;
 	}
 	
-	private PromotionPO findBestPromotion(){
-		return new PromotionPO();
-	}
+//	private PromotionPO findBestPromotion(){
+//		return new PromotionPO();
+//	}
 	
 	public boolean addNewOrder(){
 		return false;

@@ -3,7 +3,6 @@ package presentation.view;
 import businessLogic.userbl.RegisterClientController;
 import businessLogicService.UserRegisterClientBLService;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -23,17 +22,13 @@ public class RegisterClientFrameController {
 	@FXML
 	private PasswordField enterpassword2;
 	@FXML
-	private Button confirm;
-	@FXML
-	private Button cancel;
-	@FXML
 	private Label usernameword;
 	@FXML
 	private Label password1word;
 	@FXML
 	private Label password2word;
 	
-	 RegisterClientFrame registerclientframe;
+	private RegisterClientFrame registerclientframe;
 	
 	ViewController viewcontrol = new ViewController();
 	

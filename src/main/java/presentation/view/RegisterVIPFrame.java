@@ -6,6 +6,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+
+/**
+ * 
+ * @author 费慧通
+ *
+ *注册会员的界面
+ */
 public class RegisterVIPFrame extends Application{
 	private Stage primaryStage;
 

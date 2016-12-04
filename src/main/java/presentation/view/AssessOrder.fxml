@@ -14,7 +14,7 @@
          </font>
       </Label>
       <TextArea fx:id="judge" layoutX="76.0" layoutY="110.0" onDragDetected="#judgeAction" prefHeight="233.0" prefWidth="601.0" text="请在此填写入住期间的感受，欢迎再次光临！" />
-      <Button fx:id="confirm" layoutX="466.0" layoutY="399.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="25.0" prefWidth="61.0" text="提交" />
-      <Button fx:id="cancel" layoutX="616.0" layoutY="399.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="61.0" text="取消" />
+      <Button layoutX="466.0" layoutY="399.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="25.0" prefWidth="61.0" text="提交" />
+      <Button layoutX="616.0" layoutY="399.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="61.0" text="取消" />
    </children>
 </AnchorPane>

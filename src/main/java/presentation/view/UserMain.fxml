@@ -67,7 +67,7 @@
       <ComboBox fx:id="enterprice" layoutX="365.0" layoutY="214.0" prefHeight="23.0" prefWidth="129.0" />
       <DatePicker fx:id="enterindate" layoutX="365.0" layoutY="278.0" onAction="#indateAction" prefHeight="19.0" prefWidth="129.0" />
       <DatePicker fx:id="enteroutdate" layoutX="365.0" layoutY="307.0" onAction="#outdateAction" prefHeight="19.0" prefWidth="129.0" />
-      <Button fx:id="search" layoutX="319.0" layoutY="450.0" mnemonicParsing="false" onAction="#searchAction" prefHeight="32.0" prefWidth="113.0" text="搜索">
+      <Button layoutX="319.0" layoutY="450.0" mnemonicParsing="false" onAction="#searchAction" prefHeight="32.0" prefWidth="113.0" text="搜索">
          <font>
             <Font size="18.0" />
          </font>
@@ -76,15 +76,15 @@
       <TextField fx:id="enterroomnum" alignment="CENTER" layoutX="394.0" layoutY="246.0" prefHeight="23.0" prefWidth="28.0" />
       <ComboBox fx:id="entergrade" layoutX="349.0" layoutY="372.0" prefWidth="150.0" />
       <TextField fx:id="enterstar" alignment="CENTER" layoutX="382.0" layoutY="342.0" prefHeight="19.0" prefWidth="28.0" />
-      <Button fx:id="numplus" layoutX="422.0" layoutY="246.0" mnemonicParsing="false" onAction="#numplusAction" text="+" />
-      <Button fx:id="numminus" layoutX="370.0" layoutY="246.0" mnemonicParsing="false" onAction="#numminusAction" prefHeight="23.0" prefWidth="24.0" text="-" />
-      <Button fx:id="starplus" layoutX="410.0" layoutY="342.0" mnemonicParsing="false" onAction="#starplusAction" text="+" />
-      <Button fx:id="starminus" layoutX="358.0" layoutY="342.0" mnemonicParsing="false" onAction="#starminusAction" prefHeight="23.0" prefWidth="24.0" text="-" />
+      <Button layoutX="422.0" layoutY="246.0" mnemonicParsing="false" onAction="#numplusAction" text="+" />
+      <Button layoutX="370.0" layoutY="246.0" mnemonicParsing="false" onAction="#numminusAction" prefHeight="23.0" prefWidth="24.0" text="-" />
+      <Button layoutX="410.0" layoutY="342.0" mnemonicParsing="false" onAction="#starplusAction" text="+" />
+      <Button layoutX="358.0" layoutY="342.0" mnemonicParsing="false" onAction="#starminusAction" prefHeight="23.0" prefWidth="24.0" text="-" />
       <Label fx:id="indateword" layoutX="510.0" layoutY="279.0" prefHeight="19.0" prefWidth="170.0" textFill="#eb0505" />
       <Label fx:id="outdateword" layoutX="509.0" layoutY="309.0" prefHeight="19.0" prefWidth="170.0" textFill="#eb0505" />
       <Button layoutX="299.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="酒店查询" textFill="#e80909" />
-      <Button fx:id="order" layoutX="382.0" layoutY="15.0" mnemonicParsing="false" onAction="#orderAction" prefHeight="25.0" prefWidth="85.0" text="历史订单" />
-      <Button fx:id="personal" layoutX="467.0" layoutY="15.0" mnemonicParsing="false" onAction="#personalAction" prefHeight="25.0" prefWidth="85.0" text="个人中心" />
+      <Button layoutX="382.0" layoutY="15.0" mnemonicParsing="false" onAction="#orderAction" prefHeight="25.0" prefWidth="85.0" text="历史订单" />
+      <Button layoutX="467.0" layoutY="15.0" mnemonicParsing="false" onAction="#personalAction" prefHeight="25.0" prefWidth="85.0" text="个人中心" />
       <Label fx:id="id" alignment="CENTER" layoutX="611.0" layoutY="21.0" prefHeight="15.0" prefWidth="48.0" text="id" />
    </children>
 </AnchorPane>

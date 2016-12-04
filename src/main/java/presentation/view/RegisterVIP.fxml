@@ -19,8 +19,8 @@
       <Label fx:id="birthday" layoutX="60.0" layoutY="185.0" prefHeight="16.0" prefWidth="42.0" text="生日：" />
       <DatePicker fx:id="enterbirthday" layoutX="124.0" layoutY="182.0" prefHeight="16.0" prefWidth="141.0" />
       <TextField fx:id="entercompany" layoutX="124.0" layoutY="181.0" prefHeight="23.0" prefWidth="141.0" visible="false" />
-      <Button fx:id="confirm" layoutX="144.0" layoutY="272.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="58.0" text="确定" />
-      <Button fx:id="cancel" layoutX="286.0" layoutY="272.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="58.0" text="取消" />
+      <Button layoutX="144.0" layoutY="272.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="58.0" text="确定" />
+      <Button layoutX="286.0" layoutY="272.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="58.0" text="取消" />
       <Label layoutX="295.0" layoutY="185.0" text="注册成为本系统会员之后，您可以：" />
       <Label layoutX="303.0" layoutY="215.0" text="· 普通会员享受生日当天特殊优惠" />
       <Label layoutX="303.0" layoutY="245.0" text="· 企业会员将获得合作企业的优惠" />

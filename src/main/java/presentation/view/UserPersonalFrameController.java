@@ -1,7 +1,6 @@
 package presentation.view;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import presentation.controller.ViewController;
@@ -13,16 +12,6 @@ import presentation.controller.ViewController;
  *UserPersonalFrame的监听
  */
 public class UserPersonalFrameController {
-	@FXML
-	private Button searchhotel;
-	@FXML
-	private Button order;
-	@FXML
-	private Hyperlink changepersonalmessage;
-	@FXML
-	private Hyperlink viewcreditchange;
-	@FXML
-	private Hyperlink changebirth;
 	@FXML
 	private Hyperlink registerVIP;
 	@FXML

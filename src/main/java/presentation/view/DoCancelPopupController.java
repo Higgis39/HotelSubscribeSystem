@@ -1,7 +1,6 @@
 package presentation.view;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import presentation.controller.ViewController;
 
 /**
@@ -10,12 +9,7 @@ import presentation.controller.ViewController;
  *
  *DoCancelPopup的控制器
  */
-public class DoCancelPopupController {
-	@FXML
-	private Button confirm;
-	@FXML
-	private Button cancel;
-	
+public class DoCancelPopupController {	
 	private DoCancelPopup docancelpopup;
 	
 	ViewController viewcontrol = new ViewController();

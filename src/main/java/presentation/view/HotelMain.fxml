@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.HotelMainFrameController">
+   <children>
+      <Label layoutX="48.0" layoutY="29.0" text="欢迎来到互联网酒店系统！">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="id" layoutX="560.0" layoutY="31.0" text="id" />
+      <Label fx:id="hotelname" layoutX="615.0" layoutY="31.0" text="酒店名" />
+      <Button layoutX="441.0" layoutY="27.0" mnemonicParsing="false" onAction="#hotelmessageAction" text="酒店信息" />
+      <Button layoutX="377.0" layoutY="27.0" mnemonicParsing="false" onAction="#promotionAction" text="促销策略" />
+      <Button layoutX="313.0" layoutY="27.0" mnemonicParsing="false" onAction="#dealorderAction" text="处理订单" />
+      <Button layoutX="249.0" layoutY="27.0" mnemonicParsing="false" text="管理房间" textFill="RED" />
+      <Separator layoutY="56.0" prefHeight="15.0" prefWidth="750.0" />
+      <Label layoutX="168.0" layoutY="80.0" text="可用房间信息">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <TableView fx:id="tableview" layoutX="157.0" layoutY="114.0" prefHeight="196.0" prefWidth="377.0">
+        <columns>
+            <TableColumn fx:id="roomtype" prefWidth="125.0" text="房间类型" />
+            <TableColumn fx:id="roomnum" minWidth="0.0" prefWidth="125.0" text="房间数量" />
+          <TableColumn fx:id="roomprice" prefWidth="125.0" text="原始价格" />
+        </columns>
+      </TableView>
+      <Hyperlink layoutX="358.0" layoutY="82.0" onAction="#enteruserfulroomAction" text="信息不正确？去录入可用客房" />
+      <Separator layoutY="335.0" prefHeight="15.0" prefWidth="750.0" />
+      <Hyperlink layoutX="276.0" layoutY="371.0" onAction="#checkinAction" text="有客人入住？去更新入住信息" />
+      <Hyperlink layoutX="276.0" layoutY="409.0" onAction="#checkoutAction" text="有客人退房？去更新退房信息" />
+   </children>
+</AnchorPane>

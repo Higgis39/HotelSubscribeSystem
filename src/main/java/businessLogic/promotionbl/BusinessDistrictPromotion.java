@@ -11,15 +11,15 @@ public class BusinessDistrictPromotion implements WebPromotionType{
 	double discount = 0;
 		
 	//计算会员等级折扣
-	VIPGradePromotion v = new VIPGradePromotion();
-	double VIPDiscount = v.calculateDiscount();
+//	VIPGradePromotion v = new VIPGradePromotion();
+//	double VIPDiscount = v.calculateDiscount();
 		
 	/**
 	 * 计算折扣=不同商圈折扣*不同等级折扣
 	 * @return 会员特定商圈专属折扣值
 	 */
 	public double calculateDiscount() {
-		discount = location(hotelAddress)*VIPDiscount;
+//		discount = location(hotelAddress)*VIPDiscount;
 		return discount;
 	}
 		

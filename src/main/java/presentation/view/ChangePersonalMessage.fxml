@@ -11,7 +11,7 @@
       <Label layoutX="36.0" layoutY="81.0" text="联系方式：" />
       <TextField fx:id="entername" layoutX="111.0" layoutY="31.0" />
       <TextField fx:id="enterphonenumber" layoutX="111.0" layoutY="77.0" />
-      <Button fx:id="confirm" layoutX="72.0" layoutY="135.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="60.0" text="保存" />
-      <Button fx:id="cancel" layoutX="192.0" layoutY="135.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="60.0" text="取消" />
+      <Button layoutX="72.0" layoutY="135.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="60.0" text="保存" />
+      <Button layoutX="192.0" layoutY="135.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="60.0" text="取消" />
    </children>
 </AnchorPane>

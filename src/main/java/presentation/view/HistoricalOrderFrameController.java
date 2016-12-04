@@ -1,18 +1,17 @@
 package presentation.view;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import presentation.controller.ViewController;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ *HistoricalOrderFrame的监听
+ */
 public class HistoricalOrderFrameController {
-	@FXML
-	private Button searchhotel;
-	@FXML
-	private Button personal;
-	@FXML
-	private Button view;
 	@FXML
 	private Label username;
 	@FXML

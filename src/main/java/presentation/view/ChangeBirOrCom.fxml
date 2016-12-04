@@ -9,7 +9,7 @@
    <children>
       <Label fx:id="bircom" layoutX="45.0" layoutY="67.0" text="生日：" />
       <TextField fx:id="enterbircom" layoutX="111.0" layoutY="63.0" />
-      <Button fx:id="confirm" layoutX="63.0" layoutY="135.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="59.0" text="保存" />
-      <Button fx:id="cancel" layoutX="192.0" layoutY="135.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="59.0" text="取消" />
+      <Button layoutX="63.0" layoutY="135.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="59.0" text="保存" />
+      <Button layoutX="192.0" layoutY="135.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="59.0" text="取消" />
    </children>
 </AnchorPane>

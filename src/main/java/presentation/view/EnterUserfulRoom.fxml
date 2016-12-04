@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="340.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.EnterUserfulRoomFrameController">
+   <children>
+      <Label layoutX="151.0" layoutY="72.0" text="房间类型：" />
+      <Label layoutX="151.0" layoutY="134.0" text="房间数量：" />
+      <Label layoutX="151.0" layoutY="196.0" text="原始价格：" />
+      <Button layoutX="243.0" layoutY="282.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="15.0" prefWidth="66.0" text="确定" />
+      <Button layoutX="367.0" layoutY="282.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="15.0" prefWidth="66.0" text="取消" />
+      <Button layoutX="122.0" layoutY="281.0" mnemonicParsing="false" onAction="#continueAction" prefHeight="15.0" prefWidth="66.0" text="继续添加" />
+      <ComboBox fx:id="enterroomtype" layoutX="243.0" layoutY="68.0" prefHeight="23.0" prefWidth="108.0" />
+      <TextField fx:id="enterroomnum" alignment="CENTER" layoutX="258.0" layoutY="130.0" prefHeight="23.0" prefWidth="49.0" text="1" />
+      <Button layoutX="297.0" layoutY="130.0" mnemonicParsing="false" onAction="#plusAction" text="+" />
+      <Button layoutX="243.0" layoutY="130.0" mnemonicParsing="false" onAction="#minusAction" text="-" />
+      <TextField fx:id="enterroomprice" layoutX="243.0" layoutY="192.0" prefHeight="15.0" prefWidth="88.0" />
+   </children>
+</AnchorPane>

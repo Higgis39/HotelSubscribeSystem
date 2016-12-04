@@ -1,7 +1,6 @@
 package presentation.view;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 /**
@@ -13,10 +12,6 @@ import javafx.scene.control.TextArea;
 public class AssessOrderFrameController {
 	@FXML
 	private TextArea judge;
-	@FXML
-	private Button confirm;
-	@FXML
-	private Button cancel;
 	
 	private AssessOrderFrame assessorderframe;
 	
@@ -45,6 +40,7 @@ public class AssessOrderFrameController {
 	 */
 	private void cancelAction(){
 		//返回之前的界面
+		assessorderframe.getPrimaryStage().close();
 	}
 
 	@FXML

@@ -3,7 +3,6 @@ package presentation.view;
 import java.time.LocalDate;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -18,10 +17,6 @@ import presentation.controller.ViewController;
  *UserMainFrame的监听
  */
 public class UserMainFrameController {
-	@FXML
-	private Button order;
-	@FXML
-	private Button personal;
 	@FXML
 	private Label username;
 	@FXML
@@ -43,21 +38,11 @@ public class UserMainFrameController {
 	@FXML
 	private ComboBox<String> entergrade;
 	@FXML
-	private Button search;
-	@FXML
 	private DatePicker enterindate;
 	@FXML
 	private DatePicker enteroutdate;
 	@FXML
 	private CheckBox checkbox;
-	@FXML
-	private Button numplus;
-	@FXML
-	private Button numminus;
-	@FXML
-	private Button starplus;
-	@FXML
-	private Button starminus;
 	@FXML
 	private Label indateword;
 	@FXML

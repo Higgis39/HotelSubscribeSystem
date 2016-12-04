@@ -8,7 +8,10 @@ import presentation.view.UserPersonalFrame;
 import presentation.view.ViewCreditChangeFrame;
 import presentation.view.ChangeBirOrComFrame;
 import presentation.view.ChangePersonalMessageFrame;
+import presentation.view.CheckInFrame;
+import presentation.view.CheckOutFrame;
 import presentation.view.DoCancelPopup;
+import presentation.view.EnterUserfulRoomFrame;
 import presentation.view.FailLoginPopup;
 import presentation.view.HistoricalOrderFrame;
 import presentation.view.LoginFrame;
@@ -81,6 +84,27 @@ public class ViewController{
 	 */
 	public void openRegisterVIPFrame(){
 		new RegisterVIPFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开录入可用客房界面
+	 */
+	public void openEnterUserfulRoomFrame(){
+		new EnterUserfulRoomFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开更新入住信息的界面
+	 */
+	public void openCheckInFrame(){
+		new CheckInFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开更新退房信息的界面
+	 */
+	public void openCheckOutFrame(){
+		new CheckOutFrame().start(new Stage());
 	}
 	
 	/**

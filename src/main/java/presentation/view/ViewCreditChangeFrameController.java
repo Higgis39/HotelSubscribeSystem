@@ -1,12 +1,15 @@
 package presentation.view;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 
+
+/**
+ * 
+ * @author 费慧通
+ *
+ *ViewCreditChange的界面
+ */
 public class ViewCreditChangeFrameController {
-	@FXML
-	private Button confirm;
-	
 	private ViewCreditChangeFrame viewcreditchangeframe;
 	
 	@FXML
