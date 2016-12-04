@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import JDBC.DBUtil;
+import dataService.HotelDataService;
 import po.HotelPO;
 
 /**
@@ -13,7 +14,7 @@ import po.HotelPO;
  * @author hly
  * @see
  */
-public class HotelData {
+public class HotelData implements HotelDataService {
 
 	/**
 	 * 增加hotel对象
@@ -134,5 +135,29 @@ public class HotelData {
 			e.printStackTrace();
 		}
 		return h;
+	}
+
+	@Override
+	public HotelPO find(String hotelid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insert(HotelPO hotelpo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(HotelPO hotelpo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String distributeid() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

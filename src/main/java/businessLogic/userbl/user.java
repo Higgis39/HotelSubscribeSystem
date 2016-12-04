@@ -203,8 +203,8 @@ public class User{
 			HotelPO hotelpo = hoteldataservice.find(hotelid);
 			ArrayList<String> worker = hotelpo.getWorker();
 			worker.add(workername);
-			hoteldataservice.update(new HotelPO(hotelpo.getid(),hotelpo.getpassword(),hotelpo.getName(),hotelpo.getphonenumber(),
-					hotelpo.getAddress(),hotelpo.getbusinessArea(),hotelpo.getIntroduction(),hotelpo.getFacilities(),hotelpo.getStar(),hotelpo.getGrade(),worker));
+			hoteldataservice.update(new HotelPO(hotelpo.getId(),hotelpo.getPassword(),hotelpo.getName(),hotelpo.getPhonenumber(),
+					hotelpo.getAddress(),hotelpo.getBusinessArea(),hotelpo.getIntroduction(),hotelpo.getFacilities(),hotelpo.getStar(),hotelpo.getGrade(),worker));
 			return true;
 		}
 	}

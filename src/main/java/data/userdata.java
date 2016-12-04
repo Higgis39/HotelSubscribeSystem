@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import JDBC.DBUtil;
+import dataService.UserDataService;
 import po.UserPO;
 
 /**
@@ -13,7 +14,7 @@ import po.UserPO;
  * @author hly
  * @see
  */
-public class UserData {
+public class UserData implements UserDataService{
 	
 	/**
 	 * 增加user对象
@@ -133,5 +134,29 @@ public class UserData {
 			e.printStackTrace();
 		}
 		return u;
+	}
+
+	@Override
+	public UserPO find(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insert(UserPO userpo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(UserPO userpo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String distributeid() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
