@@ -28,8 +28,8 @@ public class WebPromotionData implements WebPromotionDataService{
 	public boolean insert(WebPromotionPO wp){
 		Connection conn = DBUtil.getConnection();
 		String sql = "insert into webpromotion "
-				+ "( name, introduction, begintime, endtime, specificbusinessarea ) "
-				+ " values(?,?,?,?,?)";
+				+ "( name, introduction, begintime, endtime, specificbusinessarea, discount ) "
+				+ " values(?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, wp.getName());
@@ -37,6 +37,7 @@ public class WebPromotionData implements WebPromotionDataService{
 			ptmt.setString(3, wp.getBegintime());
 			ptmt.setString(4, wp.getEndtime());
 			ptmt.setString(5, wp.getSpecificbusinessarea());
+			ptmt.setDouble(6, wp.getDiscount());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,7 +57,7 @@ public class WebPromotionData implements WebPromotionDataService{
 		Connection conn = DBUtil.getConnection();
 		//是否可以根据名字来改名字？
 		String sql = "update webpromotion "
-				+ " name=?, introduction=?, begintime=?, endtime=?, specificbusinessarea=? "
+				+ " name=?, introduction=?, begintime=?, endtime=?, specificbusinessarea=? discount=? "
 				+ " where name=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
@@ -65,6 +66,7 @@ public class WebPromotionData implements WebPromotionDataService{
 			ptmt.setString(3, wp.getBegintime());
 			ptmt.setString(4, wp.getEndtime());
 			ptmt.setString(5, wp.getSpecificbusinessarea());
+			ptmt.setDouble(6, wp.getDiscount());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -121,6 +123,7 @@ public class WebPromotionData implements WebPromotionDataService{
 			wp.setBegintime(rs.getString("begintime"));
 			wp.setEndtime(rs.getString("endtime"));
 			wp.setSpecificbusinessarea(rs.getString("specificbusinessarea"));
+			wp.setDiscount(rs.getDouble("discount"));
 			
 			result.add(wp);
 		}

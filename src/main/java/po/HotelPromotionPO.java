@@ -1,20 +1,21 @@
 package po;
 
 /**
- * promotionPO的职责是保存持久对象，用来在业务逻辑层与数据层之间传递数据
+ * HotelPromotionPO的职责是保存酒店促销策略持久对象，用来在业务逻辑层与数据层之间传递数据
  * @author hly
  * @version 1.0
  * @see
  */
 public class HotelPromotionPO {
 
-	String name;
-	String introduction;
-	boolean isbirthday;
-	int numberofroom;
-	boolean ispartner;
-	String begintime;
-	String endtime;
+	private String name;
+	private String introduction;
+	private boolean isbirthday;
+	private int numberofroom;
+	private boolean ispartner;
+	private String begintime;
+	private String endtime;
+	private double discount;
 	
 	public HotelPromotionPO(String name, String introduction, boolean isbirthday, int numberofroom, boolean ispartner,
 			String begintime, String endtime) {
@@ -86,6 +87,14 @@ public class HotelPromotionPO {
 
 	public void setEndtime(String endtime) {
 		this.endtime = endtime;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+	
+	public void setDiscount(double discount) {
+		this.discount = discount;
 	}
 	
 }

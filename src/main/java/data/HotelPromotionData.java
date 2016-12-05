@@ -28,8 +28,8 @@ public class HotelPromotionData implements HotelPromotionDataService{
 	public boolean insert(HotelPromotionPO hp){
 		Connection conn = DBUtil.getConnection();
 		String sql = "insert into hotelpromotion "
-				+ "( name, introduction, isbirthday, numberofroom, ispartner, begintime, endtime ) "
-				+ " values(?,?,?,?,?,?,?)";
+				+ "( name, introduction, isbirthday, numberofroom, ispartner, begintime, endtime, didcount ) "
+				+ " values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, hp.getName());
@@ -39,6 +39,7 @@ public class HotelPromotionData implements HotelPromotionDataService{
 			ptmt.setBoolean(5, hp.isIspartner());
 			ptmt.setString(6, hp.getBegintime());
 			ptmt.setString(7, hp.getEndtime());
+			ptmt.setDouble(8, hp.getDiscount());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -58,7 +59,7 @@ public class HotelPromotionData implements HotelPromotionDataService{
 		Connection conn = DBUtil.getConnection();
 		//是否可以根据名字来改名字？
 		String sql = "update hotelpromotion "
-				+ " name=?, introduction=?, isbirthday=?, numberofroom=?, ispartner=?, begintime=?, endtime=? "
+				+ " name=?, introduction=?, isbirthday=?, numberofroom=?, ispartner=?, begintime=?, endtime=? discount=? "
 				+ " where name=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
@@ -69,7 +70,8 @@ public class HotelPromotionData implements HotelPromotionDataService{
 			ptmt.setBoolean(5, hp.isIspartner());
 			ptmt.setString(6, hp.getBegintime());
 			ptmt.setString(7, hp.getEndtime());
-			ptmt.setString(8, hp.getName());
+			ptmt.setDouble(8, hp.getDiscount());
+			ptmt.setString(9, hp.getName());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -128,6 +130,7 @@ public class HotelPromotionData implements HotelPromotionDataService{
 			hp.setIspartner(rs.getBoolean("ispartner"));
 			hp.setBegintime(rs.getString("begintime"));
 			hp.setEndtime(rs.getString("endtime"));
+			hp.setDiscount(rs.getDouble("discount"));
 			
 			result.add(hp);
 		}

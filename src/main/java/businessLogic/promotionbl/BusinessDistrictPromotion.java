@@ -11,17 +11,8 @@ public class BusinessDistrictPromotion implements WebPromotionType{
 	double discount = 0;
 		
 	//计算会员等级折扣
-//	VIPGradePromotion v = new VIPGradePromotion();
-//	double VIPDiscount = v.calculateDiscount();
-		
-	/**
-	 * 计算折扣=不同商圈折扣*不同等级折扣
-	 * @return 会员特定商圈专属折扣值
-	 */
-	public double calculateDiscount() {
-//		discount = location(hotelAddress)*VIPDiscount;
-		return discount;
-	}
+	VIPGradePromotion v = new VIPGradePromotion();
+	double VIPDiscount = v.calculateDiscount();
 		
 	/**
 	 * 设定不同商圈折扣
@@ -37,6 +28,15 @@ public class BusinessDistrictPromotion implements WebPromotionType{
 			discount = 0.8;
 			break;
 		}
+		return discount;
+	}
+	
+	/**
+	 * 计算折扣=不同商圈折扣*不同等级折扣
+	 * @return 会员特定商圈专属折扣值
+	 */
+	public double calculateDiscount() {
+		discount = location(hotelAddress)*VIPDiscount;
 		return discount;
 	}
 }

@@ -1,12 +1,19 @@
 package po;
 
+/**
+ * WebPromotionPO的职责是保存网站促销策略持久对象，用来在业务逻辑层与数据层之间传递数据
+ * @author hly
+ * @version 1.0
+ * @see
+ */
 public class WebPromotionPO {
 
-	String name;
-	String introduction;
-	String begintime;
-	String endtime;
-	String specificbusinessarea;
+	private String name;
+	private String introduction;
+	private String begintime;
+	private String endtime;
+	private String specificbusinessarea;
+	private double discount;
 	
 	public WebPromotionPO(String name, String introduction, String begintime, String endtime,
 			String specificbusinessarea) {
@@ -60,6 +67,14 @@ public class WebPromotionPO {
 
 	public void setSpecificbusinessarea(String specificbusinessarea) {
 		this.specificbusinessarea = specificbusinessarea;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(double discount) {
+		this.discount = discount;
 	}
 	
 	
