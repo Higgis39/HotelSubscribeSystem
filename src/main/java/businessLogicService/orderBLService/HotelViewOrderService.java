@@ -8,5 +8,5 @@ import vo.OrderVO;
 public interface HotelViewOrderService {
     public List<OrderVO> FindSpecificOrders(String OrderID);
 	
-	public boolean ShowOrderMessage();
+	public OrderVO ShowOrderMessage(OrderVO vo);
 }

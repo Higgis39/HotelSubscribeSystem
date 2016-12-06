@@ -1,11 +1,12 @@
 package businessLogicService.orderBLService;
 
+import java.util.*;
+
 import vo.OrderVO;
 
+
 public interface ExcuteOrderService {
-    public boolean addMember(String ID,String password);
-	
-	public boolean Excute(String OrderID);
+    public List<OrderVO> FindOrderByHotelID(String ID);
 	
 	public boolean CheckIn(OrderVO vo);
 }

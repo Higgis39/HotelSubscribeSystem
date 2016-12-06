@@ -1,26 +1,21 @@
 package businessLogic.orderbl;
 
+import java.util.List;
+
 import businessLogicService.orderBLService.ExcuteOrderService;
+import dataService.OrderDataService;
 import vo.OrderVO;
 
 public class ExcuteOrderController implements ExcuteOrderService{
 
 	@Override
-	public boolean addMember(String ID, String password) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean Excute(String OrderID) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean CheckIn(OrderVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+		return new Order(vo).CheckIn();
+	}
+
+	@Override
+	public List<OrderVO> FindOrderByHotelID(String ID) {
+		return new Order().getOrderByHotelID(ID);
 	}
 
 }

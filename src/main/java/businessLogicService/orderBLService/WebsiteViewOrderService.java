@@ -2,12 +2,11 @@ package businessLogicService.orderBLService;
 
 import java.util.List;
 
-import po.OrderPO;
+import vo.OrderVO;
 
 public interface WebsiteViewOrderService {
-    public boolean addDate(String Date);
 	
-	public List<OrderPO> ViewException();
+	public List<OrderVO> ViewException(String Date);
 	
-	public boolean RecoverCredit();
+	public boolean RecoverCredit(String OrderID);
 }

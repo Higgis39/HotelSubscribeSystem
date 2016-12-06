@@ -11,16 +11,13 @@ import vo.OrderVO;
 public class HotelViewOrderController implements HotelViewOrderService{
 
 	@Override
-	public List<OrderVO> FindSpecificOrders(String OrderID) {
-		List<OrderVO> orderList = new ArrayList<OrderVO>();
-		OrderDataService service = new OrderData();
-		return null;
+	public List<OrderVO> FindSpecificOrders(String HotelID) {
+		return new Order().getOrderByHotelID(HotelID);
 	}
 
 	@Override
-	public boolean ShowOrderMessage() {
-		// TODO Auto-generated method stub
-		return false;
+	public OrderVO ShowOrderMessage(OrderVO vo) {
+		return new Order(vo).gerOrderByOrderID();
 	}
 
 }

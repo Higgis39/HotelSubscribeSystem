@@ -2,10 +2,10 @@ package businessLogicService.orderBLService;
 
 import java.util.List;
 
-import po.OrderPO;
+import vo.OrderVO;
 
 public interface CustomerViewOrderService {
-    public List<OrderPO> FindSpecificOrderlist(String State);
+    public List<OrderVO> FindSpecificOrderlist(String userID);
 	
-	public OrderPO ShowOrderMessage(String OrderID);
+	public OrderVO ShowOrderMessage(OrderVO vo);
 }

@@ -1,5 +1,9 @@
 package businessLogicService.orderBLService;
 
+import java.util.*;
+
+import vo.OrderVO;
+
 public interface CommentOrderService {
-	public boolean addComment(String OrderID);
+	public boolean addComment(OrderVO vo);
 }

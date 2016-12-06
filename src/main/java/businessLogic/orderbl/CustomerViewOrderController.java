@@ -3,14 +3,14 @@ package businessLogic.orderbl;
 import java.util.List;
 
 import businessLogicService.orderBLService.CustomerViewOrderService;
-import po.OrderPO;
+import vo.OrderVO;
 
 public class CustomerViewOrderController implements CustomerViewOrderService{
-	public List<OrderPO> FindSpecificOrderlist(String State) {
-		return null;
+	public List<OrderVO> FindSpecificOrderlist(String userID) {
+		return new Order().getOrderByUserID(userID);
 	}
 
-	public OrderPO ShowOrderMessage(String OrderID) {
-		return null;
+	public OrderVO ShowOrderMessage(OrderVO vo) {
+		return new Order(vo).gerOrderByOrderID();
 	}
 }

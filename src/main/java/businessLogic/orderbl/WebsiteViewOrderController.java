@@ -1,27 +1,23 @@
 package businessLogic.orderbl;
 
-import java.util.List;
+import java.util.*;
 
 import businessLogicService.orderBLService.WebsiteViewOrderService;
-import po.OrderPO;
+import vo.OrderVO;
 
 public class WebsiteViewOrderController implements WebsiteViewOrderService{
 
 	@Override
-	public boolean addDate(String Date) {
-		// TODO Auto-generated method stub
-		return false;
+	public List<OrderVO> ViewException(String Date) {
+		Order order=new Order();
+		List<OrderVO> list = order.getOrderByDate(Date);
+		list = order.filterOrderByStatus(list, "异常");
+		return list;
 	}
 
 	@Override
-	public List<OrderPO> ViewException() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean RecoverCredit() {
-		// TODO Auto-generated method stub
+	public boolean RecoverCredit(String OrderID) {
+		CreditManager manager=CreditManager.getInstance();
 		return false;
 	}
 
