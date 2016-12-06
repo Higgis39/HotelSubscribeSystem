@@ -1,101 +1,122 @@
 package po;
 
 public class OrderPO {
-    private String orderId;
-	private String hotelId;
-	private String userId;
-	private int status;
-	private String entryTime;
-	private String lastTime;
-	private String orderInfo;
-	private double price;
-	
-	public OrderPO(String orderId, String hotelId, String userId, int status,
-			String entryTime, String lastTime,String orderInfo,double price) {
-		this.orderId = orderId;
-		this.hotelId = hotelId;
-		this.userId = userId;
-		this.status = status;
-		this.entryTime = entryTime;
-		this.lastTime = lastTime;
-		this.orderInfo = orderInfo;
-		this.price = price;
-	}
-	
-	public OrderPO(){
+	/**
+	 * id			订单编号
+	 * hotelId		酒店编号
+	 * userId		用户编号
+	 * status		订单状态（0：未执行订单；1：已执行订单；2：异常订单）
+	 * entryTime	用户入住时间
+	 * lastTime		订单最晚执行时间
+	 * orderInfo	订单详情
+	 * price		订单价值
+	 */
 		
-	}
-	
-	public String getorderId() {
-		return orderId;
-	}
+		private String id;
+		
+		private String hotelId;
+		
+		private String userId;
+		
+		private String status;
+		
+		private String entryTime;
+		
+		private String lastTime;
+		
+		private String orderInfo;
+		
+		private int price;
+		
+		private String comment;
+		
+		public OrderPO(){
+			super();
+		}
 
-	public String getHotelId() {
-		return hotelId;
-	}
-	
-	public String getUserId() {
-		return userId;
-	}
+		public OrderPO(String id, String hotelId, String userId, String status,
+				String entryTime, String lastTime,String orderInfo,int price,String comment) {
+			super();
+			this.id = id;
+			this.hotelId = hotelId;
+			this.userId = userId;
+			this.status = status;
+			this.entryTime = entryTime;
+			this.lastTime = lastTime;
+			this.orderInfo = orderInfo;
+			this.price = price;
+			this.comment = comment;
+		}
 
-	public int getStatus() {
-		return status;
-	}
+		public String getId() {
+			return id;
+		}
 
-	public String getEntryTime() {
-		return entryTime;
-	}
+		public void setId(String id) {
+			this.id = id;
+		}
 
-	public String getLastTime() {
-		return lastTime;
-	}
-	
-	public String getOrderInfo() {
-		return orderInfo;
-	}
+		public String getHotelId() {
+			return hotelId;
+		}
 
-	public double getPrice() {
-		return price;
-	}
+		public void setHotelId(String hotelId) {
+			this.hotelId = hotelId;
+		}
 
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
-	}
+		public String getUserId() {
+			return userId;
+		}
 
-	public void setHotelId(String hotelId) {
-		this.hotelId = hotelId;
-	}
+		public void setUserId(String userId) {
+			this.userId = userId;
+		}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+		public String getStatus() {
+			return status;
+		}
 
-	public void setStatus(int status) {
-		this.status = status;
-	}
+		public void setStatus(String status) {
+			this.status = status;
+		}
 
-	public void setEntryTime(String entryTime) {
-		this.entryTime = entryTime;
-	}
+		public String getEntryTime() {
+			return entryTime;
+		}
 
-	public void setLastTime(String lastTime) {
-		this.lastTime = lastTime;
-	}
+		public void setEntryTime(String entryTime) {
+			this.entryTime = entryTime;
+		}
 
-	public void setOrderInfo(String orderInfo) {
-		this.orderInfo = orderInfo;
-	}
+		public String getLastTime() {
+			return lastTime;
+		}
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
+		public void setLastTime(String lastTime) {
+			this.lastTime = lastTime;
+		}
+		
+		public String getOrderInfo() {
+			return orderInfo;
+		}
 
-	@Override
-	public String toString() {
-		return "OrderPO [orderId=" + orderId + ", hotelId=" + hotelId + ", userId=" + userId + ", status=" + status
-				+ ", entryTime=" + entryTime + ", lastTime=" + lastTime + ", orderInfo=" + orderInfo + ", price="
-				+ price + "]";
-	}
+		public void setOrderInfo(String orderInfo) {
+			this.orderInfo = orderInfo;
+		}
 
-	
+		public int getPrice() {
+			return price;
+		}
+
+		public void setPrice(int price) {
+			this.price = price;
+		}
+
+		public String getComment(){
+			return comment;
+		}
+		
+		public void setComment(String Comment){
+			this.comment=Comment;
+		}
 }
