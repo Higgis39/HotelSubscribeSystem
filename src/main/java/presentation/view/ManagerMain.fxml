@@ -55,5 +55,6 @@
             <TableColumn fx:id="begindate" prefWidth="100.0" text="开始工作日期" />
         </columns>
       </TableView>
+      <Hyperlink layoutX="672.0" layoutY="40.0" onAction="#logoutAction" text="退出登录" />
    </children>
 </AnchorPane>

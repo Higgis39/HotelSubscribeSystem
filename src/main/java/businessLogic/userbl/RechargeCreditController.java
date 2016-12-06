@@ -1,13 +1,13 @@
 package businessLogic.userbl;
 
-import businessLogicService.UserRechargeCreditBLService;
+import businessLogicService.userBLService.RechargeCreditBLService;
 
 /**
  * 
  * @author 费慧通
  *
  */
-public class RechargeCreditController implements UserRechargeCreditBLService{
+public class RechargeCreditController implements RechargeCreditBLService{
 	User user = new User();
 	
 	/**

@@ -14,8 +14,8 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="id" layoutX="560.0" layoutY="31.0" text="id" />
-      <Label fx:id="hotelname" layoutX="615.0" layoutY="31.0" text="酒店名" />
+      <Label fx:id="id" layoutX="550.0" layoutY="24.0" prefHeight="15.0" prefWidth="45.0" text="id" />
+      <Label fx:id="hotelname" layoutX="615.0" layoutY="24.0" text="酒店名" />
       <Button layoutX="441.0" layoutY="27.0" mnemonicParsing="false" onAction="#hotelmessageAction" text="酒店信息" />
       <Button layoutX="377.0" layoutY="27.0" mnemonicParsing="false" onAction="#promotionAction" text="促销策略" />
       <Button layoutX="313.0" layoutY="27.0" mnemonicParsing="false" onAction="#dealorderAction" text="处理订单" />
@@ -36,5 +36,6 @@
       <Separator layoutY="335.0" prefHeight="15.0" prefWidth="750.0" />
       <Hyperlink layoutX="276.0" layoutY="371.0" onAction="#checkinAction" text="有客人入住？去更新入住信息" />
       <Hyperlink layoutX="276.0" layoutY="409.0" onAction="#checkoutAction" text="有客人退房？去更新退房信息" />
+      <Hyperlink layoutX="633.0" layoutY="40.0" onAction="#logoutAction" text="退出登录" />
    </children>
 </AnchorPane>

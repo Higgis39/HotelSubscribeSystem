@@ -1,13 +1,13 @@
 package businessLogic.userbl;
 
-import businessLogicService.UserLoginBLService;
+import businessLogicService.userBLService.LoginBLService;
 
 /**
  * 
  * @author 费慧通
  *
  */
-public class LoginController implements UserLoginBLService{
+public class LoginController implements LoginBLService{
 	User user = new User();
 	
 	/**

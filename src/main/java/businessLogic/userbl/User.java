@@ -19,6 +19,7 @@ import vo.UserVO;
 public class User{
 	UserDataService userdataservice = new UserData();
 	HotelDataService hoteldataservice = new HotelData();
+	CreditValueChange creditvaluechange = new CreditValueChange();
 	
 	/**
 	 * 登录
@@ -101,13 +102,15 @@ public class User{
 			//更改信用值
 			int creditvalue = userpo.getcreditvalue();
 			creditvalue = creditvalue+creditRecharge;
+			//更新会员等级
+			int VIPgrade = creditvaluechange.setVIPgradeByCredit(creditvalue,userpo.getVIPtype());
 			//更新信用变化
 			ArrayList<String> creditchange = userpo.getcreditchange();
 			String change = "客户充值"+Integer.toString(creditRecharge);
 			creditchange.add(change);
 			
 			userdataservice.update(new UserPO(userpo.getname(),userpo.getid(),userpo.getpassword(),userpo.getusertype(),creditvalue,
-				   userpo.getVIPtype(),userpo.getVIPgrade(),userpo.getphonenumber(),userpo.getbirthday(),userpo.getcompany(),creditchange));
+				   userpo.getVIPtype(),VIPgrade,userpo.getphonenumber(),userpo.getbirthday(),userpo.getcompany(),creditchange));
 			return true;
 		}
 	}
@@ -140,7 +143,6 @@ public class User{
 	public UserVO ViewClientMessage(String id){
 		UserPO userpo = userdataservice.find(id);
 		return new UserVO(userpo.getname(),userpo.getid(),userpo.getusertype(),userpo.getphonenumber(),userpo.getcreditvalue(),userpo.getVIPtype(),userpo.getVIPgrade(),userpo.getbirthday(),userpo.getcompany());
-//		return new UserVO("zhang","1200","wangzhan","1325678",142,"huiyuan",2,"2014-14-12",null);
 		
 	}
 	

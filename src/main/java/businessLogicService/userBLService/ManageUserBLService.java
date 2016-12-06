@@ -1,4 +1,4 @@
-package businessLogicService;
+package businessLogicService.userBLService;
 
 import java.sql.SQLException;
 
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 import vo.UserVO;
 
-public interface UserManageUserBLService {
+public interface ManageUserBLService {
 	public UserVO ViewClientMessage(String id);
 	
 	public boolean ChangeClientMessaage(boolean IsManager,String id,String newname,String newphonenumber);

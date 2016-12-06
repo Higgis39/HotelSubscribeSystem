@@ -4,7 +4,6 @@ import javafx.stage.Stage;
 import presentation.view.RegisterClientFrame;
 import presentation.view.RegisterVIPFrame;
 import presentation.view.UserMainFrame;
-import presentation.view.UserMainFrameController;
 import presentation.view.UserPersonalFrame;
 import presentation.view.ViewCreditChangeFrame;
 import presentation.view.AddHotelFrame;

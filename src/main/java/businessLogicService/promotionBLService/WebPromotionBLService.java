@@ -1,4 +1,4 @@
-package businessLogicService;
+package businessLogicService.promotionBLService;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,7 +11,7 @@ import vo.WebPromotionVO;
  * @author Thpffcj
  *
  */
-public interface PromotionWebPromotionBLService {
+public interface WebPromotionBLService {
 	
 	public boolean webPromotionCreate(WebPromotionVO wpv);
 	

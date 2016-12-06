@@ -1,7 +1,7 @@
 package presentation.view;
 
 import businessLogic.userbl.LoginController;
-import businessLogicService.UserLoginBLService;
+import businessLogicService.userBLService.LoginBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -63,7 +63,7 @@ public class LoginFrameController {
 		if(!password.equals("")){
 			passwordword.setText(null);
 		}
-		UserLoginBLService login = new LoginController();
+		LoginBLService login = new LoginController();
 		boolean result = login.Login(id, password, usertype);
 		if(result==false){
 			//打开“登录失败”弹框

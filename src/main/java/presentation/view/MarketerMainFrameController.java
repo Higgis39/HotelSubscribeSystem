@@ -54,6 +54,15 @@ public class MarketerMainFrameController {
 	
 	@FXML
 	/**
+	 * 退出登录的监听
+	 */
+	private void logoutAction(){
+		viewcontrol.openLoginFrame();
+		marketermainframe.getPrimaryStage().close();
+	}
+	
+	@FXML
+	/**
 	 * 初始化
 	 */
 	private void initialize(){

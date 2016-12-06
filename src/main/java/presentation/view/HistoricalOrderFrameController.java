@@ -51,6 +51,15 @@ public class HistoricalOrderFrameController {
 	
 	@FXML
 	/**
+	 * 退出登录的监听
+	 */
+	private void logoutAction(){
+		viewcontrol.openLoginFrame();
+		historicalorderframe.getPrimaryStage().close();
+	}
+	
+	@FXML
+	/**
 	 * 初始化
 	 */
 	private void initialize(){

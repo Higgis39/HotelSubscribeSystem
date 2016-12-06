@@ -2,7 +2,7 @@ package businessLogic.userbl;
 
 import java.sql.SQLException;
 
-import businessLogicService.UserManageUserBLService;
+import businessLogicService.userBLService.ManageUserBLService;
 import vo.UserVO;
 
 /**
@@ -10,7 +10,7 @@ import vo.UserVO;
  * @author 费慧通
  *
  */
-public class ManageUserController implements UserManageUserBLService {
+public class ManageUserController implements ManageUserBLService {
 	User user = new User();
 	
 	/**

@@ -186,6 +186,15 @@ public class UserMainFrameController {
 	
 	@FXML
 	/**
+	 * 退出登录的监听
+	 */
+	private void logoutAction(){
+		viewcontrol.openLoginFrame();
+		usermainframe.getPrimaryStage().close();
+	}
+	
+	@FXML
+	/**
 	 * 初始化
 	 */
 	private void initialize(){

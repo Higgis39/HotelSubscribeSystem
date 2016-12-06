@@ -3,7 +3,7 @@ package presentation.view;
 import java.sql.SQLException;
 
 import businessLogic.userbl.RegisterClientController;
-import businessLogicService.UserRegisterClientBLService;
+import businessLogicService.userBLService.RegisterClientBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -63,7 +63,7 @@ public class RegisterClientFrameController {
 			password2word.setText(null);
 		}
 		if(!username.equals("")&&!password1.equals("")&&!password2.equals("")){
-			UserRegisterClientBLService registerclient = new RegisterClientController();
+			RegisterClientBLService registerclient = new RegisterClientController();
 			String result = registerclient.RegisterClient(username, password1, password2);
 			if(!password1.equals("")&&result.equals("The two passwords is different.")){
 				password2word.setText("两个密码不同");
