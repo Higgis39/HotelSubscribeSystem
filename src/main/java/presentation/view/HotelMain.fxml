@@ -25,7 +25,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <TableView fx:id="tableview" layoutX="157.0" layoutY="114.0" prefHeight="196.0" prefWidth="377.0">
+      <TableView fx:id="tableview" layoutX="157.0" layoutY="114.0" prefHeight="198.0" prefWidth="377.0">
         <columns>
             <TableColumn fx:id="roomtype" prefWidth="125.0" text="房间类型" />
             <TableColumn fx:id="roomnum" minWidth="0.0" prefWidth="125.0" text="房间数量" />

@@ -1,5 +1,6 @@
 package dataService;
 
+import java.sql.SQLException;
 import java.util.*;
 
 import po.OrderPO;
@@ -15,5 +16,5 @@ public interface OrderDataService {
 	
 	public OrderPO findByDate(String Date);
 	
-	public List<OrderPO> findByHotelID(String ID);
+	public List<OrderPO> findByHotelID(String ID)throws SQLException;
 }

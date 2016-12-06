@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="260.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.OrderAppealFrameController">
+   <children>
+      <Label layoutX="102.0" layoutY="57.0" text="订单号：" />
+      <Label layoutX="84.0" layoutY="121.0" text="恢复信用值数：" />
+      <TextField fx:id="orderid" layoutX="184.0" layoutY="51.0" prefHeight="25.0" prefWidth="120.0" />
+      <ComboBox fx:id="reveal" layoutX="184.0" layoutY="115.0" prefHeight="25.0" prefWidth="120.0" />
+      <Button layoutX="106.0" layoutY="186.0" mnemonicParsing="false" onAction="#confirmAction" text="确定" />
+      <Button layoutX="244.0" layoutY="186.0" mnemonicParsing="false" onAction="#cancelAction" text="取消" />
+   </children>
+</AnchorPane>

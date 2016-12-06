@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.MarketerMainFrameController">
+   <children>
+      <Button layoutX="327.0" layoutY="25.0" mnemonicParsing="false" text="订单浏览" textFill="RED" />
+      <Button layoutX="391.0" layoutY="25.0" mnemonicParsing="false" onAction="#promotionAction" text="促销策略" />
+      <Separator layoutX="2.0" layoutY="51.0" prefHeight="8.0" prefWidth="750.0" />
+      <Label fx:id="name" layoutX="599.0" layoutY="29.0" text="用户名" />
+      <Label fx:id="id" layoutX="533.0" layoutY="29.0" text="id" />
+      <Label layoutX="57.0" layoutY="27.0" text="欢迎来到互联网酒店预订系统！">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="320.0" layoutY="409.0" onAction="#rechargecreditAction" text="给客户充值信用" />
+      <Label layoutX="64.0" layoutY="87.0" text="今天未执行的订单：" />
+      <Hyperlink layoutX="327.0" layoutY="360.0" onAction="#orderappealAction" text="处理订单申诉" />
+   </children>
 </AnchorPane>
-

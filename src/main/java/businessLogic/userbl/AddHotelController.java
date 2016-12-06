@@ -1,5 +1,7 @@
 package businessLogic.userbl;
 
+import java.sql.SQLException;
+
 import businessLogicService.UserAddHotelBLService;
 
 /**
@@ -17,9 +19,10 @@ public class AddHotelController implements UserAddHotelBLService{
 	 * @param address String
 	 * @param phonenumber String
 	 * @return 成功返回一个分配到的账号
+	 * @throws SQLException 
 	 */
-	public String AddHotel(boolean IsManager,String hotelname,String phonenumber,String address,String businessarea,String introduction,String facilities,int star,String password1,String password2){
-		return user.AddHotel(IsManager,hotelname,phonenumber,address,businessarea,introduction,facilities,star,password1,password2);
+	public String AddHotel(boolean IsManager,String hotelname,String phonenumber,String address,String businessarea,String introduction,String facilities,int star,String password1,String password2)throws SQLException{
+		return user.AddHotel(IsManager, hotelname, phonenumber, address, businessarea, introduction, facilities, star, password1, password2);
 	}
 	
 	/**

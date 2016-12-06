@@ -1,5 +1,6 @@
 package businessLogic.userbl;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.HotelData;
@@ -39,8 +40,9 @@ public class User{
 	 * @param password1 String
 	 * @param password2 String
 	 * @return 创建成功则返回分配的id
+	 * @throws SQLException 
 	 */
-	public String RegisterClient(String name,String password1,String password2){
+	public String RegisterClient(String name,String password1,String password2) throws SQLException{
 		if(!password1.equals(password2)){
 			return "The two passwords is different.";
 		}else{
@@ -79,7 +81,7 @@ public class User{
 	 * @param id String
 	 * @return 返回个人信用变化
 	 */
-	public CreditChange GetCreditChange(String id){
+	public ArrayList<String> GetCreditChange(String id){
 		UserPO userpo = userdataservice.find(id);
 		return userpo.getcreditchange();
 	}
@@ -99,9 +101,9 @@ public class User{
 			int creditvalue = userpo.getcreditvalue();
 			creditvalue = creditvalue+creditRecharge;
 			//更新信用变化
-			CreditChange creditchange = userpo.getcreditchange();
+			ArrayList<String> creditchange = userpo.getcreditchange();
 			String change = "客户充值"+Integer.toString(creditRecharge);
-			creditchange.addcreditchange(change);
+			creditchange.add(change);
 			
 			userdataservice.update(new UserPO(userpo.getname(),userpo.getid(),userpo.getpassword(),userpo.getusertype(),creditvalue,
 				   userpo.getVIPtype(),userpo.getVIPgrade(),userpo.getphonenumber(),userpo.getbirthday(),userpo.getcompany(),creditchange));
@@ -175,8 +177,9 @@ public class User{
 	 * @param password2 String
 	 * @param star int
 	 * @return 成功返回一个分配到的账号
+	 * @throws SQLException 
 	 */
-	public String AddHotel(boolean IsManager,String hotelname,String phonenumber,String address,String businessarea,String introduction,String facilities,int star,String password1,String password2){
+	public String AddHotel(boolean IsManager,String hotelname,String phonenumber,String address,String businessarea,String introduction,String facilities,int star,String password1,String password2) throws SQLException{
 		if(IsManager==false){
 			return null;
 		}else if(!password1.equals(password2)){
@@ -196,11 +199,11 @@ public class User{
 	 * @param hotelid String
 	 * @return 成功返回true,失败返回false
 	 */
-	public boolean AddHotelWorker(boolean IsManager,String workername,String hotelid){
+	public boolean AddHotelWorker(boolean IsManager,String workername,String hotelname){
 		if(IsManager==false){
 			return false;
 		}else{
-			HotelPO hotelpo = hoteldataservice.find(hotelid);
+			HotelPO hotelpo = hoteldataservice.findByName(hotelname);
 			ArrayList<String> worker = hotelpo.getWorker();
 			worker.add(workername);
 			hoteldataservice.update(new HotelPO(hotelpo.getId(),hotelpo.getPassword(),hotelpo.getName(),hotelpo.getPhonenumber(),

@@ -1,10 +1,7 @@
 package businessLogic.promotionbl;
 
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import businessLogicService.PromotionWebPromotionBLService;
 import data.WebPromotionData;
@@ -54,7 +51,6 @@ public class WebPromotionController implements PromotionWebPromotionBLService {
 
 	@Override
 	public void webPromotionexecute(WebPromotionVO wpv) {
-		// TODO Auto-generated method stub
 		
 	}
 }

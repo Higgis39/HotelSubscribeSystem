@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="340.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.ChangeUserMessageFrameController">
+   <children>
+      <Label layoutX="118.0" layoutY="25.0" text="名称：" />
+      <Label layoutX="112.0" layoutY="74.0" text="联系方式：" />
+      <Label layoutX="112.0" layoutY="125.0" text="信用值：" />
+      <Label fx:id="birthdaylabel" layoutX="118.0" layoutY="179.0" text="生日：" />
+      <TextField fx:id="entername" layoutX="206.0" layoutY="21.0" />
+      <TextField fx:id="enterphonenumber" layoutX="206.0" layoutY="70.0" />
+      <TextField fx:id="entercreditvalue" layoutX="206.0" layoutY="121.0" />
+      <DatePicker fx:id="enterbirthday" layoutX="206.0" layoutY="175.0" prefHeight="23.0" prefWidth="161.0" />
+      <Label fx:id="companylabel" disable="true" layoutX="118.0" layoutY="229.0" text="企业：" />
+      <TextField fx:id="entercompany" disable="true" layoutX="206.0" layoutY="225.0" />
+      <Button layoutX="142.0" layoutY="284.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="60.0" text="确定" />
+      <Button layoutX="301.0" layoutY="284.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="60.0" text="取消" />
+   </children>
+</AnchorPane>

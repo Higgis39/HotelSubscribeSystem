@@ -6,6 +6,8 @@ import javafx.scene.control.TextField;
 
 public class ChangeHotelMessageFrameController {
 	@FXML
+	private TextField enterphonenumber;
+	@FXML
 	private TextField enteraddress;
 	@FXML
 	private TextField entercity;

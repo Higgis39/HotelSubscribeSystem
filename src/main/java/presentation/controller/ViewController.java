@@ -6,9 +6,13 @@ import presentation.view.RegisterVIPFrame;
 import presentation.view.UserMainFrame;
 import presentation.view.UserPersonalFrame;
 import presentation.view.ViewCreditChangeFrame;
+import presentation.view.AddHotelFrame;
+import presentation.view.AddHotelWorkerFrame;
+import presentation.view.AddMarketerFrame;
 import presentation.view.ChangeBirOrComFrame;
 import presentation.view.ChangeHotelMessageFrame;
 import presentation.view.ChangePersonalMessageFrame;
+import presentation.view.ChangeUserMessageFrame;
 import presentation.view.CheckInFrame;
 import presentation.view.CheckOutFrame;
 import presentation.view.DealOrderFrame;
@@ -21,6 +25,12 @@ import presentation.view.HotelMessageFrame;
 import presentation.view.HotelPromotionFrame;
 import presentation.view.LoginFrame;
 import presentation.view.MakeHotelPromotionFrame;
+import presentation.view.MakeMarketerPromotionFrame;
+import presentation.view.ManagerMainFrame;
+import presentation.view.MarketerMainFrame;
+import presentation.view.MarketerPromotionFrame;
+import presentation.view.OrderAppealFrame;
+import presentation.view.RechargeCreditFrame;
 
 /**
  * 
@@ -153,6 +163,76 @@ public class ViewController{
 	 */
 	public void openChangeHotelMessageFrame(){
 		new ChangeHotelMessageFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开网站营销人员主界面
+	 */
+	public void openMarketerMainFrame(){
+		new MarketerMainFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开网站营销人员促销策略界面
+	 */
+	public void openMarketerPromotionFrame(){
+		new MarketerPromotionFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开充值信用界面
+	 */
+	public void openRechargeCreditFrame(){
+		new RechargeCreditFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开订单申述界面
+	 */
+	public void openOrderAppealFrame(){
+		new OrderAppealFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开制定网站营销策略界面
+	 */
+	public void openMakeMarketerPromotionFrame(){
+		new MakeMarketerPromotionFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开管理人员主界面
+	 */
+	public void openManagerMainFrame(){
+		new ManagerMainFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开管理人员修改用户信息界面
+	 */
+	public void openChangeUserMessageFrame(){
+		new ChangeUserMessageFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开管理人员添加网站营销人员界面
+	 */
+	public void openAddMarketerFrame(){
+		new AddMarketerFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开管理人员添加酒店界面
+	 */
+	public void openAddHotelFrame(){
+		new AddHotelFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开管理人员添加酒店工作人员界面
+	 */
+	public void openAddHotelWorkerFrame(){
+		new AddHotelWorkerFrame().start(new Stage());
 	}
 	
 	/**

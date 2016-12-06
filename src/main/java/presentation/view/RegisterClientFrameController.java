@@ -1,5 +1,7 @@
 package presentation.view;
 
+import java.sql.SQLException;
+
 import businessLogic.userbl.RegisterClientController;
 import businessLogicService.UserRegisterClientBLService;
 import javafx.fxml.FXML;
@@ -36,7 +38,7 @@ public class RegisterClientFrameController {
 	/**
 	 * 注册按钮的监听
 	 */
-	private void confirmAction(){
+	private void confirmAction() throws SQLException{
 		String username = enterusername.getText();
 		String password1 = enterpassword1.getText();
 		String password2 = enterpassword2.getText();

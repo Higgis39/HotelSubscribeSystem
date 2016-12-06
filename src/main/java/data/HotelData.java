@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import JDBC.DBUtil;
+import dataService.HotelDataService;
 import po.HotelPO;
-import po.OrderPO;
 
 /**
  * HotelData的职责是实现对数据库中hotel对象的增删改查
  * @author hly
  * @see
  */
-public class HotelData {
+public class HotelData implements HotelDataService{
 
 	/**
 	 * 增加hotel对象

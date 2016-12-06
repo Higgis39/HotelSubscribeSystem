@@ -25,6 +25,8 @@ public class MakeHotelPromotionFrameController {
 	@FXML
 	private TextField enterroomnum;
 	@FXML
+	private TextField enterdiscount;
+	@FXML
 	private ComboBox<String> enterpromotiontype;
 	@FXML
 	private ComboBox<String> enterbirthday;

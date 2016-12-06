@@ -1,6 +1,6 @@
 package po;
 
-import businessLogic.userbl.CreditChange;
+import java.util.ArrayList;
 
 /**
  * 
@@ -18,10 +18,10 @@ public class UserPO {
 	String phonenumber;
 	String birthday;
 	String company;
-	CreditChange creditchange;
+	ArrayList<String> creditchange;
 	
 	//构造函数
-	public UserPO(String name,String id,String password,String usertype,int creditvalue,String VIPtype,int VIPgrade,String phonenumber,String birthday,String company,CreditChange creditchange){
+	public UserPO(String name,String id,String password,String usertype,int creditvalue,String VIPtype,int VIPgrade,String phonenumber,String birthday,String company,ArrayList<String> creditchange){
 		this.name = name;
 		this.id = id;
 		this.password = password;
@@ -90,7 +90,7 @@ public class UserPO {
 	}
 	
 	//得到信用变化
-	public CreditChange getcreditchange(){
+	public ArrayList<String> getcreditchange(){
 		return creditchange;
 	}
 	
@@ -134,7 +134,7 @@ public class UserPO {
 		this.company = company;
 	}
 
-	public void setCreditchange(CreditChange creditchange) {
+	public void setCreditchange(ArrayList<String> creditchange) {
 		this.creditchange = creditchange;
 	}
 }

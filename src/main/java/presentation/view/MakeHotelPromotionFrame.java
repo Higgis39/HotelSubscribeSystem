@@ -18,7 +18,7 @@ public class MakeHotelPromotionFrame extends Application{
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-	    this.primaryStage.setTitle("互联网酒店预定系统");
+	    this.primaryStage.setTitle("互联网酒店预订系统");
 
 	    try{
 	    	FXMLLoader loader = new FXMLLoader();

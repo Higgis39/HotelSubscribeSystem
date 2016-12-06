@@ -5,21 +5,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="340.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.ChangeHotelMessageFrameController">
+<AnchorPane prefHeight="368.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.ChangeHotelMessageFrameController">
    <children>
-      <Label layoutX="112.0" layoutY="232.0" text="星级：" />
-      <Label layoutX="100.0" layoutY="189.0" text="设施服务：" />
-      <Label layoutX="112.0" layoutY="128.0" text="简介：" />
-      <Label layoutX="112.0" layoutY="87.0" text="商圈：" />
-      <Label layoutX="112.0" layoutY="45.0" text="地址：" />
-      <TextField fx:id="enteraddress" layoutX="191.0" layoutY="41.0" prefHeight="23.0" prefWidth="177.0" />
-      <TextField fx:id="entercity" layoutX="191.0" layoutY="83.0" prefHeight="23.0" prefWidth="177.0" />
-      <TextField fx:id="enterservice" layoutX="191.0" layoutY="185.0" prefHeight="23.0" prefWidth="177.0" />
-      <TextArea fx:id="enterintroduction" layoutX="191.0" layoutY="123.0" prefHeight="41.0" prefWidth="177.0" />
-      <TextField fx:id="enterstar" alignment="CENTER" layoutX="212.0" layoutY="228.0" prefHeight="23.0" prefWidth="36.0" text="3" />
-      <Button layoutX="191.0" layoutY="228.0" mnemonicParsing="false" onAction="#minusAction" prefHeight="23.0" prefWidth="27.0" text="-" />
-      <Button layoutX="241.0" layoutY="228.0" mnemonicParsing="false" onAction="#plusAction" text="+" />
-      <Button layoutX="133.0" layoutY="283.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="60.0" text="确定" />
-      <Button layoutX="316.0" layoutY="283.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="60.0" text="取消" />
+      <Label layoutX="124.0" layoutY="261.0" text="星级：" />
+      <Label layoutX="112.0" layoutY="218.0" text="设施服务：" />
+      <Label layoutX="124.0" layoutY="157.0" text="简介：" />
+      <Label layoutX="124.0" layoutY="116.0" text="商圈：" />
+      <Label layoutX="124.0" layoutY="74.0" text="地址：" />
+      <TextField fx:id="enteraddress" layoutX="203.0" layoutY="70.0" prefHeight="23.0" prefWidth="177.0" />
+      <TextField fx:id="entercity" layoutX="203.0" layoutY="112.0" prefHeight="23.0" prefWidth="177.0" />
+      <TextField fx:id="enterservice" layoutX="203.0" layoutY="214.0" prefHeight="23.0" prefWidth="177.0" />
+      <TextArea fx:id="enterintroduction" layoutX="203.0" layoutY="152.0" prefHeight="41.0" prefWidth="177.0" />
+      <TextField fx:id="enterstar" alignment="CENTER" layoutX="223.0" layoutY="257.0" prefHeight="23.0" prefWidth="36.0" text="3" />
+      <Button layoutX="203.0" layoutY="257.0" mnemonicParsing="false" onAction="#minusAction" prefHeight="23.0" prefWidth="27.0" text="-" />
+      <Button layoutX="253.0" layoutY="257.0" mnemonicParsing="false" onAction="#plusAction" text="+" />
+      <Button layoutX="130.0" layoutY="306.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="60.0" text="确定" />
+      <Button layoutX="314.0" layoutY="306.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="60.0" text="取消" />
+      <Label layoutX="112.0" layoutY="28.0" text="联系方式：" />
+      <TextField fx:id="enterphonenumber" layoutX="203.0" layoutY="24.0" prefHeight="23.0" prefWidth="177.0" />
    </children>
 </AnchorPane>

@@ -17,6 +17,8 @@ public class HotelMessageFrameController {
 	@FXML
 	private Label hotelname;
 	@FXML
+	private Label phonenumber;
+	@FXML
 	private Label address;
 	@FXML
 	private Label city;

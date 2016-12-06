@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.MakeMarketerPromotionFrameController">
+   <children>
+      <Label fx:id="promotiontype" layoutX="84.0" layoutY="88.0" text="促销策略类型：" />
+      <CheckBox fx:id="checkbox" layoutX="97.0" layoutY="23.0" mnemonicParsing="false" onAction="#checkboxAction" text="新建策略类型" />
+      <ComboBox fx:id="enterpromotiontype" layoutX="198.0" layoutY="84.0" prefWidth="150.0" />
+      <Label layoutX="102.0" layoutY="129.0" text="促销时间：" />
+      <Label layoutX="90.0" layoutY="168.0" text="会员等级要求：" />
+      <Label layoutX="96.0" layoutY="208.0" text="商圈限制：" />
+      <Label layoutX="108.0" layoutY="247.0" text="折扣：" />
+      <ComboBox fx:id="enterVIPgrade" layoutX="198.0" layoutY="164.0" prefWidth="150.0" />
+      <DatePicker fx:id="begindate" layoutX="198.0" layoutY="125.0" onAction="#begindateAction" prefHeight="23.0" prefWidth="106.0" />
+      <DatePicker fx:id="enddate" layoutX="329.0" layoutY="125.0" onAction="#enddateAction" prefHeight="23.0" prefWidth="106.0" />
+      <Label layoutX="304.0" layoutY="129.0" text="——" />
+      <TextField fx:id="entercity" layoutX="198.0" layoutY="204.0" />
+      <TextField fx:id="enterdiscount" alignment="CENTER" layoutX="198.0" layoutY="243.0" prefHeight="23.0" prefWidth="36.0" />
+      <Label layoutX="234.0" layoutY="247.0" text="\%" />
+      <Label fx:id="name" disable="true" layoutX="84.0" layoutY="52.0" text="策略类型名称：" />
+      <TextField fx:id="entername" disable="true" layoutX="198.0" layoutY="48.0" />
+      <Button layoutX="116.0" layoutY="288.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="60.0" text="确定" />
+      <Button layoutX="318.0" layoutY="288.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="60.0" text="取消" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.ManagerMainFrameController">
+   <children>
+      <Label layoutX="45.0" layoutY="31.0" text="欢迎来到互联网酒店预订系统！">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="id" layoutX="519.0" layoutY="33.0" text="id" />
+      <Label fx:id="name" layoutX="567.0" layoutY="33.0" text="用户名" />
+      <Label layoutX="57.0" layoutY="81.0" text="查询用户信息">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Separator layoutY="62.0" prefHeight="4.0" prefWidth="750.0" />
+      <TableView fx:id="user" layoutX="113.0" layoutY="155.0" prefHeight="50.0" prefWidth="525.0" visible="false">
+        <columns>
+          <TableColumn fx:id="username" prefWidth="75.0" text="用户名" />
+          <TableColumn fx:id="usertype" prefWidth="75.0" text="用户类型" />
+            <TableColumn fx:id="address" prefWidth="75.0" text="联系方式" />
+            <TableColumn fx:id="creditvalue" prefWidth="75.0" text="信用值" />
+            <TableColumn fx:id="VIPtype" prefWidth="75.0" text="会员类型" />
+            <TableColumn fx:id="VIPgrade" prefWidth="75.0" text="会员等级" />
+            <TableColumn fx:id="birthdayorcompany" prefWidth="75.0" text="生日" />
+        </columns>
+      </TableView>
+      <Label layoutX="175.0" layoutY="118.0" text="输入账号：" />
+      <Button layoutX="449.0" layoutY="114.0" mnemonicParsing="false" onAction="#lookuserAction" prefHeight="22.0" prefWidth="70.0" text="查询" />
+      <TextField fx:id="enterid" layoutX="241.0" layoutY="114.0" />
+      <Hyperlink fx:id="link" layoutX="664.0" layoutY="180.0" onAction="#linkAction" text="修改" visible="false" />
+      <Hyperlink layoutX="612.0" layoutY="334.0" onAction="#addmarketerAction" text="添加网站营销人员" />
+      <Hyperlink layoutX="636.0" layoutY="375.0" onAction="#addhotelAction" text="添加酒店" />
+      <Hyperlink layoutX="612.0" layoutY="412.0" onAction="#addhotelworkerAction" text="添加酒店工作人员" />
+      <Label layoutX="57.0" layoutY="239.0" text="查询酒店工作人员信息">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="enterhotelid" layoutX="247.0" layoutY="282.0" />
+      <Button layoutX="449.0" layoutY="282.0" mnemonicParsing="false" onAction="#lookworkerAction" prefHeight="22.0" prefWidth="70.0" text="查询" />
+      <Label layoutX="153.0" layoutY="286.0" text="输入酒店账号：" />
+      <TableView fx:id="worker" layoutX="185.0" layoutY="328.0" prefHeight="136.0" prefWidth="400.0" visible="false">
+        <columns>
+          <TableColumn fx:id="workername" prefWidth="100.0" text="姓名" />
+          <TableColumn fx:id="age" prefWidth="100.0" text="年龄" />
+            <TableColumn fx:id="sex" prefWidth="100.0" text="性别" />
+            <TableColumn fx:id="begindate" prefWidth="100.0" text="开始工作日期" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

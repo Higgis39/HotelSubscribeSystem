@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import presentation.controller.ViewController;
-import vo.PromotionVO;
+import vo.HotelPromotionVO;
 
 /**
  * 
@@ -21,19 +21,19 @@ public class HotelPromotionFrameController {
 	@FXML
 	private Label hotelname;
 	@FXML
-	private TableView<PromotionVO> tableview;
+	private TableView<HotelPromotionVO> tableview;
 	@FXML
-	private TableColumn<PromotionVO,String> promotiontype;
+	private TableColumn<HotelPromotionVO,String> promotiontype;
 	@FXML
-	private TableColumn<PromotionVO,String> birthday;
+	private TableColumn<HotelPromotionVO,String> birthday;
 	@FXML
-	private TableColumn<PromotionVO,Number> roomnum;
+	private TableColumn<HotelPromotionVO,Number> roomnum;
 	@FXML
-	private TableColumn<PromotionVO,LocalDate> date;
+	private TableColumn<HotelPromotionVO,LocalDate> date;
 	@FXML
-	private TableColumn<PromotionVO,String> companyVIP;
+	private TableColumn<HotelPromotionVO,String> companyVIP;
 	@FXML
-	private TableColumn<PromotionVO,Number> commonVIP;
+	private TableColumn<HotelPromotionVO,Number> discount;
 	
 	private HotelPromotionFrame hotelpromptionframe;
 	

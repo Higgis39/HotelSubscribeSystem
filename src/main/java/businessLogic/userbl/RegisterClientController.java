@@ -1,5 +1,7 @@
 package businessLogic.userbl;
 
+import java.sql.SQLException;
+
 import businessLogicService.UserRegisterClientBLService;
 
 /**
@@ -16,8 +18,9 @@ public class RegisterClientController implements UserRegisterClientBLService{
 	 * @param password1 String
 	 * @param password2 String
 	 * @return 创建成功则返回分配的id
+	 * @throws SQLException 
 	 */
-	public String RegisterClient(String name,String password1,String password2){
+	public String RegisterClient(String name,String password1,String password2) throws SQLException{
 		return user.RegisterClient(name,password1,password2);
 	}
 }

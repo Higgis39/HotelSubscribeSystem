@@ -20,13 +20,14 @@
       <Button layoutX="317.0" layoutY="25.0" mnemonicParsing="false" onAction="#dealorderAction" text="处理订单" />
       <Button layoutX="253.0" layoutY="25.0" mnemonicParsing="false" onAction="#roomAction" text="管理房间" />
       <Separator layoutX="3.0" layoutY="54.0" prefHeight="15.0" prefWidth="750.0" />
-      <TableView fx:id="tableview" layoutX="127.0" layoutY="126.0" prefHeight="200.0" prefWidth="500.0">
+      <TableView fx:id="tableview" layoutX="77.0" layoutY="128.0" prefHeight="200.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="promotiontype" prefWidth="100.0" text="促销策略类型" />
           <TableColumn fx:id="birthday" prefWidth="100.0" text="生日优惠" />
             <TableColumn fx:id="roomnum" prefWidth="100.0" text="房间数量要求" />
             <TableColumn fx:id="date" prefWidth="100.0" text="活动日期" />
             <TableColumn fx:id="companyVIP" prefWidth="100.0" text="企业会员" />
+            <TableColumn fx:id="discount" prefWidth="100.0" text="折扣" />
         </columns>
       </TableView>
       <Hyperlink layoutX="320.0" layoutY="359.0" onAction="#linkAction" text="去制定酒店促销策略" />
