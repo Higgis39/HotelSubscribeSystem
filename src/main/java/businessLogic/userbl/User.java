@@ -9,6 +9,7 @@ import dataService.HotelDataService;
 import dataService.UserDataService;
 import po.HotelPO;
 import po.UserPO;
+import vo.UserVO;
 
 /**
  * 
@@ -46,7 +47,7 @@ public class User{
 		if(!password1.equals(password2)){
 			return "The two passwords is different.";
 		}else{
-			String newid = userdataservice.distributeid();
+			String newid = Integer.toString(Integer.valueOf(userdataservice.distributeid())+1);
 			userdataservice.insert(new UserPO(name,newid,password1,"普通客户",0,null,0,null,null,null,null));
 			return "Register successfully! Your id is "+newid;
 		}
@@ -136,13 +137,11 @@ public class User{
 	 * @param id String
 	 * @return 返回其它用户信息
 	 */
-	public PersonalMessage ViewClientMessage(boolean IsManager,String id){
-		if(IsManager==false){
-			return null;
-		}else{
-			UserPO userpo = userdataservice.find(id);
-			return new PersonalMessage(userpo.getname(),userpo.getphonenumber(),userpo.getcreditvalue());
-		}
+	public UserVO ViewClientMessage(String id){
+		UserPO userpo = userdataservice.find(id);
+		return new UserVO(userpo.getname(),userpo.getid(),userpo.getusertype(),userpo.getphonenumber(),userpo.getcreditvalue(),userpo.getVIPtype(),userpo.getVIPgrade(),userpo.getbirthday(),userpo.getcompany());
+//		return new UserVO("zhang","1200","wangzhan","1325678",142,"huiyuan",2,"2014-14-12",null);
+		
 	}
 	
 	/**
@@ -161,6 +160,16 @@ public class User{
 			userdataservice.update(new UserPO(newname,userpo.getid(),userpo.getpassword(),userpo.getusertype(),userpo.getcreditvalue(),
 				   userpo.getVIPtype(),userpo.getVIPgrade(),newphonenumber,userpo.getbirthday(),userpo.getcompany(),userpo.getcreditchange()));
 			return true;
+		}
+	}
+	
+	public String AddMarketer(boolean IsManager,String name,String password1,String password2) throws NumberFormatException, SQLException{
+		if(!password1.equals(password2)){
+			return "The two passwords are different.";
+		}else{
+			String newid = Integer.toString(Integer.valueOf(userdataservice.distributeid())+1);
+			userdataservice.insert(new UserPO(name,newid,password1,"网站营销人员",0,null,0,null,null,null,null));
+			return newid;
 		}
 	}
 	
@@ -183,12 +192,12 @@ public class User{
 		if(IsManager==false){
 			return null;
 		}else if(!password1.equals(password2)){
-			return "The two passwords is different.";
+			return "The two passwords are different.";
 		}else{
 			String newid = hoteldataservice.distributeid();
 			ArrayList<String> worker = new ArrayList<String>();
 			hoteldataservice.insert(new HotelPO(newid,password1,hotelname,phonenumber,address,businessarea,introduction,facilities,star,0.0,worker));
-			return "Register successfully! The id of hotel is "+newid;
+			return newid;
 		}
 	}
 	

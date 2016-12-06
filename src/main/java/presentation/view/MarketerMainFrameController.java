@@ -1,5 +1,6 @@
 package presentation.view;
 
+import businessLogic.userbl.ManageUserController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import presentation.controller.ViewController;
@@ -20,6 +21,8 @@ public class MarketerMainFrameController {
 	private MarketerMainFrame marketermainframe;
 	
 	ViewController viewcontrol = new ViewController();
+	
+	ManageUserController manageruser = new ManageUserController();
 	
 	@FXML
 	/**
@@ -54,7 +57,8 @@ public class MarketerMainFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		
+//		String getname = manageruser.ViewClientMessage("1234").getname();
+//		name.setText(getname);
 	}
 	
 	public void setMarketerMainFrame(MarketerMainFrame marketermainframe){

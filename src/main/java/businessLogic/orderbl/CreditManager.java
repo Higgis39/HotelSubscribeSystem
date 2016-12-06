@@ -28,7 +28,7 @@ public  class CreditManager {
 	 */
 	public int subCredit(OrderPO po){
 		UserPO user=UserService.getUserByID(po.getUserId());
-		int credit=user.getcreditvalue()-po.getPrice();
+		int credit=(int) (user.getcreditvalue()-po.getPrice());
 		user.setCreditvalue(credit);
 		return 0; 
 	}
