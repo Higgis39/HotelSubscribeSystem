@@ -1,5 +1,5 @@
 package businessLogic.hotelbl;
 
-public interface OrderInHotel {
+public interface OrderInfoForHotel {
 	public boolean Update(String OrderID, String CheckOutTime);
 }

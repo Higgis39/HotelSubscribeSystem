@@ -13,7 +13,7 @@ import po.HotelPO;
 
 public class Hotel{
 	HotelDataService hoteldataservice = new HotelData();
-	OrderInHotel orderdataservice = new Order();
+	OrderInfoForHotel orderdataservice = new OrderInfoForHotel_stub();
 	/**
 	 * 搜索酒店
 	 * @param Address String
