@@ -9,12 +9,12 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.HistoricalOrderFrameController">
    <children>
-      <Label fx:id="id" alignment="CENTER" layoutX="616.0" layoutY="26.0" prefHeight="15.0" prefWidth="48.0" text="id" />
+      <Label fx:id="id" alignment="CENTER" layoutX="597.0" layoutY="14.0" prefHeight="15.0" prefWidth="48.0" text="id" />
       <Button layoutX="472.0" layoutY="20.0" mnemonicParsing="false" onAction="#personalAction" prefHeight="25.0" prefWidth="85.0" text="个人中心" />
       <Button layoutX="387.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="历史订单" textFill="RED" />
       <Button layoutX="304.0" layoutY="20.0" mnemonicParsing="false" onAction="#searchhotelAction" prefHeight="25.0" prefWidth="85.0" text="酒店查询" />
-      <Separator layoutX="6.0" layoutY="52.0" prefHeight="7.0" prefWidth="750.0" />
-      <Label fx:id="username" layoutX="684.0" layoutY="26.0" text="用户名" />
+      <Separator layoutX="2.0" layoutY="53.0" prefHeight="7.0" prefWidth="750.0" />
+      <Label fx:id="username" layoutX="662.0" layoutY="14.0" prefHeight="0.0" prefWidth="36.0" text="用户名" />
       <Label layoutX="52.0" layoutY="21.0" prefHeight="25.0" prefWidth="201.0" text="欢迎来到互联网酒店预订系统！">
          <font>
             <Font size="14.0" />
@@ -23,5 +23,6 @@
       <Label layoutX="52.0" layoutY="80.0" prefHeight="15.0" prefWidth="134.0" text="请选择一种订单类型：" />
       <ComboBox fx:id="enterordertype" layoutX="197.0" layoutY="76.0" prefWidth="150.0" />
       <Button layoutX="454.0" layoutY="76.0" mnemonicParsing="false" onAction="#viewAction" prefHeight="23.0" prefWidth="74.0" text="查看" />
+      <Hyperlink layoutX="662.0" layoutY="35.0" onAction="#logoutAction" text="退出登录" />
    </children>
 </AnchorPane>

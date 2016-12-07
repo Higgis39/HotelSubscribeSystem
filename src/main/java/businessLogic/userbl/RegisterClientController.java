@@ -2,14 +2,14 @@ package businessLogic.userbl;
 
 import java.sql.SQLException;
 
-import businessLogicService.UserRegisterClientBLService;
+import businessLogicService.userBLService.RegisterClientBLService;
 
 /**
  * 
  * @author 费慧通
  *
  */
-public class RegisterClientController implements UserRegisterClientBLService{
+public class RegisterClientController implements RegisterClientBLService{
 	User user = new User();
 	
 	/**

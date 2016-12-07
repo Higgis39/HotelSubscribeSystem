@@ -1,13 +1,13 @@
 package businessLogic.userbl;
 
-import businessLogicService.UserRegisterVIPBLService;
+import businessLogicService.userBLService.RegisterVIPBLService;
 
 /**
  * 
  * @author 费慧通
  *
  */
-public class RegisterVIPController implements UserRegisterVIPBLService{
+public class RegisterVIPController implements RegisterVIPBLService{
 	User user = new User();
 	
 	/**

@@ -9,6 +9,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import presentation.controller.ViewController;
+import vo.IdVO;
 
 /**
  * 
@@ -185,9 +186,19 @@ public class UserMainFrameController {
 	
 	@FXML
 	/**
+	 * 退出登录的监听
+	 */
+	private void logoutAction(){
+		viewcontrol.openLoginFrame();
+		usermainframe.getPrimaryStage().close();
+	}
+	
+	@FXML
+	/**
 	 * 初始化
 	 */
 	private void initialize(){
+		id.setText(IdVO.getid());
 		enterroomtype.getItems().addAll("单人间","双人间","三人间");
 		enterprice.getItems().addAll("150以下","150~300","300~500","500~700","700~1000","1000以上");
 		entergrade.getItems().addAll("1分以下","1~2分","2~3分","3~4分","4~5分");

@@ -18,7 +18,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="username" layoutX="679.0" layoutY="21.0" text="用户名" />
+      <Label fx:id="username" layoutX="661.0" layoutY="14.0" text="用户名" />
       <Label layoutX="319.0" layoutY="62.0" text="提示：加*号为必填项" textFill="#e80909">
          <font>
             <Font name="Goudy Old Style" size="12.0" />
@@ -85,6 +85,7 @@
       <Button layoutX="299.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="酒店查询" textFill="#e80909" />
       <Button layoutX="382.0" layoutY="15.0" mnemonicParsing="false" onAction="#orderAction" prefHeight="25.0" prefWidth="85.0" text="历史订单" />
       <Button layoutX="467.0" layoutY="15.0" mnemonicParsing="false" onAction="#personalAction" prefHeight="25.0" prefWidth="85.0" text="个人中心" />
-      <Label fx:id="id" alignment="CENTER" layoutX="611.0" layoutY="21.0" prefHeight="15.0" prefWidth="48.0" text="id" />
+      <Label fx:id="id" alignment="CENTER" layoutX="595.0" layoutY="14.0" prefHeight="15.0" prefWidth="48.0" text="id" />
+      <Hyperlink layoutX="661.0" layoutY="31.0" onAction="#logoutAction" text="退出登录" />
    </children>
 </AnchorPane>

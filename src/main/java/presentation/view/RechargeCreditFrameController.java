@@ -1,7 +1,7 @@
 package presentation.view;
 
 import businessLogic.userbl.RechargeCreditController;
-import businessLogicService.UserRechargeCreditBLService;
+import businessLogicService.userBLService.RechargeCreditBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -19,7 +19,7 @@ public class RechargeCreditFrameController {
 	
 	private RechargeCreditFrame rechargecreditframe;
 	
-	UserRechargeCreditBLService controller = new RechargeCreditController();
+	RechargeCreditBLService controller = new RechargeCreditController();
 	
 	@FXML
 	/**

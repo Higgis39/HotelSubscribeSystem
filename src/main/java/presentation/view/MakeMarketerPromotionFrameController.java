@@ -99,7 +99,7 @@ public class MakeMarketerPromotionFrameController {
 	 */
 	private void initialize(){
 		enterpromotiontype.getItems().addAll("双11活动折扣","VIP特定商圈专属折扣","会员特定等级专属折扣");
-		enterVIPgrade.getItems().addAll("0","1","2","3","4","5","6","7","8","9","10");
+		enterVIPgrade.getItems().addAll("不要求","1","2","3","4","5");
 	}
 	
 	public void setMakeMarketerPromotionFrame(MakeMarketerPromotionFrame makemarketerpromotionframe){

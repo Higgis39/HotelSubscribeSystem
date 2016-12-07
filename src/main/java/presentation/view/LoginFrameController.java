@@ -1,13 +1,14 @@
 package presentation.view;
 
 import businessLogic.userbl.LoginController;
-import businessLogicService.UserLoginBLService;
+import businessLogicService.userBLService.LoginBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import presentation.controller.ViewController;
+import vo.IdVO;
 
 /**
  * 
@@ -62,21 +63,22 @@ public class LoginFrameController {
 		if(!password.equals("")){
 			passwordword.setText(null);
 		}
-		UserLoginBLService login = new LoginController();
+		LoginBLService login = new LoginController();
 		boolean result = login.Login(id, password, usertype);
 		if(result==false){
 			//打开“登录失败”弹框
 			viewcontrol.openFailLoginPopup();
 		}else{
 			//打开相应的用户类型的主界面
+			IdVO.setid(enterid.getText());
 			if(usertype.equals("普通客户")){
-				
+				viewcontrol.openUserMainFrame();
 			}else if(usertype.equals("酒店工作人员")){
-				
+				viewcontrol.openHotelMainFrame();
 			}else if(usertype.equals("网站营销人员")){
-				
+				viewcontrol.openMarketerMainFrame();
 			}else{
-				
+				viewcontrol.openManagerMainFrame();
 			}
 		}
 	}

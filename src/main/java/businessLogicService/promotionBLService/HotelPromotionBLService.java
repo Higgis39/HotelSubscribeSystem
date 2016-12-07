@@ -1,4 +1,4 @@
-package businessLogicService;
+package businessLogicService.promotionBLService;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -12,7 +12,7 @@ import vo.HotelPromotionVO;
  * @author hly
  * @version 1.0
  */
-public interface PromotionHotelPromotionBLService {
+public interface HotelPromotionBLService {
 
 	public boolean hotelPromotionCreate(HotelPromotionVO hpv);
 	

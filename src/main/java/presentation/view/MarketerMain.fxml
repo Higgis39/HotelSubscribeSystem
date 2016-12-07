@@ -21,5 +21,6 @@
       <Hyperlink layoutX="320.0" layoutY="409.0" onAction="#rechargecreditAction" text="给客户充值信用" />
       <Label layoutX="64.0" layoutY="87.0" text="今天未执行的订单：" />
       <Hyperlink layoutX="327.0" layoutY="360.0" onAction="#orderappealAction" text="处理订单申诉" />
+      <Hyperlink layoutX="688.0" layoutY="34.0" onAction="#logoutAction" text="退出登录" />
    </children>
 </AnchorPane>

@@ -12,7 +12,7 @@
       <Button layoutX="381.0" layoutY="14.0" mnemonicParsing="false" onAction="#orderAction" prefHeight="25.0" prefWidth="85.0" text="历史订单" />
       <Button layoutX="298.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchhotelAction" prefHeight="25.0" prefWidth="85.0" text="酒店查询" textFill="#0a0a0a" />
       <Separator layoutY="46.0" prefHeight="7.0" prefWidth="750.0" />
-      <Label fx:id="username" layoutX="678.0" layoutY="20.0" text="用户名" />
+      <Label fx:id="username" layoutX="660.0" layoutY="13.0" text="用户名" />
       <Label layoutX="46.0" layoutY="15.0" prefHeight="25.0" prefWidth="201.0" text="欢迎来到互联网酒店预订系统！">
          <font>
             <Font size="14.0" />
@@ -25,7 +25,7 @@
       </Label>
       <Separator layoutX="26.0" layoutY="118.0" prefHeight="7.0" prefWidth="698.0" />
       <Label layoutX="55.0" layoutY="142.0" text="名称：" />
-      <Label fx:id="id" alignment="CENTER" layoutX="613.0" layoutY="20.0" prefHeight="15.0" prefWidth="48.0" text="id" />
+      <Label fx:id="id" alignment="CENTER" layoutX="584.0" layoutY="13.0" prefHeight="15.0" prefWidth="48.0" text="id" />
       <Label layoutX="56.0" layoutY="188.0" text="联系方式：" />
       <Label layoutX="56.0" layoutY="235.0" text="信用值：" />
       <Label fx:id="name" layoutX="100.0" layoutY="142.0" prefHeight="15.0" prefWidth="141.0" />
@@ -47,5 +47,6 @@
       <Label fx:id="birthdaycompany" layoutX="110.0" layoutY="412.0" prefHeight="15.0" prefWidth="141.0" />
       <Hyperlink layoutX="274.0" layoutY="409.0" onAction="#changebirthAction" text="修改" />
       <Hyperlink fx:id="registerVIP" layoutX="171.0" layoutY="285.0" onAction="#registerVIPAction" text="注册会员" visible="false" />
+      <Hyperlink layoutX="660.0" layoutY="29.0" onAction="#logoutAction" text="退出登录" />
    </children>
 </AnchorPane>

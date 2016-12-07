@@ -13,8 +13,8 @@
       <Button layoutX="318.0" layoutY="25.0" mnemonicParsing="false" onAction="#dealorderAction" text="处理订单" />
       <Button layoutX="382.0" layoutY="25.0" mnemonicParsing="false" onAction="#promotionAction" text="促销策略" />
       <Button layoutX="446.0" layoutY="25.0" mnemonicParsing="false" text="酒店信息" textFill="RED" />
-      <Label fx:id="hotelname" layoutX="620.0" layoutY="29.0" text="酒店名" />
-      <Label fx:id="id" layoutX="565.0" layoutY="29.0" text="id" />
+      <Label fx:id="hotelname" layoutX="621.0" layoutY="22.0" text="酒店名" />
+      <Label fx:id="id" layoutX="555.0" layoutY="22.0" prefHeight="15.0" prefWidth="48.0" text="id" />
       <Label layoutX="53.0" layoutY="27.0" text="欢迎来到互联网酒店系统！">
          <font>
             <Font size="14.0" />
@@ -33,5 +33,6 @@
       <Label fx:id="service" layoutX="278.0" layoutY="312.0" prefHeight="15.0" prefWidth="413.0" />
       <Label layoutX="191.0" layoutY="140.0" text="联系方式：" />
       <Label fx:id="phonenumber" layoutX="318.0" layoutY="140.0" prefHeight="15.0" prefWidth="205.0" />
+      <Hyperlink layoutX="621.0" layoutY="38.0" onAction="#logoutAction" text="退出登录" />
    </children>
 </AnchorPane>

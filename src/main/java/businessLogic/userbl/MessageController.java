@@ -2,14 +2,14 @@ package businessLogic.userbl;
 
 import java.util.ArrayList;
 
-import businessLogicService.UserMessageBLService;
+import businessLogicService.userBLService.MessageBLService;
 
 /**
  * 
  * @author 费慧通
  *
  */
-public class MessageController implements UserMessageBLService {
+public class MessageController implements MessageBLService {
 	User user = new User();
 	
 	/**

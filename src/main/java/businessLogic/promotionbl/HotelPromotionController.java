@@ -3,7 +3,7 @@ package businessLogic.promotionbl;
 import java.sql.SQLException;
 import java.util.List;
 
-import businessLogicService.PromotionHotelPromotionBLService;
+import businessLogicService.promotionBLService.HotelPromotionBLService;
 import data.HotelPromotionData;
 import dataService.HotelPromotionDataService;
 import po.HotelPromotionPO;
@@ -15,7 +15,7 @@ import vo.HotelPromotionVO;
  * @author Thpffcj
  *
  */
-public class HotelPromotionController implements PromotionHotelPromotionBLService{
+public class HotelPromotionController implements HotelPromotionBLService{
 
 	HotelPromotionData hpd = new HotelPromotionData();
 	

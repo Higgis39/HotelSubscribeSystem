@@ -35,7 +35,7 @@ public class HotelPromotionFrameController {
 	@FXML
 	private TableColumn<HotelPromotionVO,Number> discount;
 	
-	private HotelPromotionFrame hotelpromptionframe;
+	private HotelPromotionFrame hotelpromotionframe;
 	
 	ViewController viewcontrol = new ViewController();
 	
@@ -46,7 +46,7 @@ public class HotelPromotionFrameController {
 	private void roomAction(){
 		//打开酒店主界面
 		viewcontrol.openHotelMainFrame();
-		hotelpromptionframe.getPrimaryStage().close();
+		hotelpromotionframe.getPrimaryStage().close();
 	}
 	
 	@FXML
@@ -56,7 +56,7 @@ public class HotelPromotionFrameController {
 	private void dealorderAction(){
 		//打开处理订单界面
 		viewcontrol.openDealOrderFrame();
-		hotelpromptionframe.getPrimaryStage().close();
+		hotelpromotionframe.getPrimaryStage().close();
 	}
 	
 	@FXML
@@ -66,7 +66,7 @@ public class HotelPromotionFrameController {
 	private void hotelmessageAction(){
 		//打开酒店信息界面
 		viewcontrol.openHotelMessageFrame();
-		hotelpromptionframe.getPrimaryStage().close();
+		hotelpromotionframe.getPrimaryStage().close();
 	}
 	
 	@FXML
@@ -80,14 +80,23 @@ public class HotelPromotionFrameController {
 	
 	@FXML
 	/**
+	 * 退出登录的监听
+	 */
+	private void logoutAction(){
+		viewcontrol.openLoginFrame();
+		hotelpromotionframe.getPrimaryStage().close();
+	}
+	
+	@FXML
+	/**
 	 * 初始化
 	 */
 	private void initialize(){
 		
 	}
 
-	public void setHotelPromotionFrame(HotelPromotionFrame hotelpromptionframe) {
-		this.hotelpromptionframe = hotelpromptionframe;
+	public void setHotelPromotionFrame(HotelPromotionFrame hotelpromotionframe) {
+		this.hotelpromotionframe = hotelpromotionframe;
 	}
 
 }

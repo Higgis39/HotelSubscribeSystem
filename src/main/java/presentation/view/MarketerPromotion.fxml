@@ -33,5 +33,6 @@
       <Separator layoutX="-1.0" layoutY="56.0" prefHeight="8.0" prefWidth="750.0" />
       <Button layoutX="388.0" layoutY="30.0" mnemonicParsing="false" text="促销策略" textFill="RED" />
       <Button layoutX="324.0" layoutY="30.0" mnemonicParsing="false" onAction="#orderviewAction" text="订单浏览" />
+      <Hyperlink layoutX="678.0" layoutY="38.0" onAction="#logoutAction" prefHeight="23.0" prefWidth="64.0" text="退出登录" />
    </children>
 </AnchorPane>

@@ -2,14 +2,14 @@ package businessLogic.userbl;
 
 import java.sql.SQLException;
 
-import businessLogicService.UserAddHotelBLService;
+import businessLogicService.userBLService.AddHotelBLService;
 
 /**
  * 
  * @author 费慧通
  *
  */
-public class AddHotelController implements UserAddHotelBLService{
+public class AddHotelController implements AddHotelBLService{
 	User user = new User();
 	
 	/**

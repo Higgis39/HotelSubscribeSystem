@@ -13,8 +13,8 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="id" layoutX="564.0" layoutY="29.0" text="id" />
-      <Label fx:id="hotelname" layoutX="619.0" layoutY="29.0" text="酒店名" />
+      <Label fx:id="id" layoutX="555.0" layoutY="20.0" prefHeight="15.0" prefWidth="47.0" text="id" />
+      <Label fx:id="hotelname" layoutX="620.0" layoutY="20.0" text="酒店名" />
       <Button layoutX="445.0" layoutY="25.0" mnemonicParsing="false" onAction="#hotelmessageAction" text="酒店信息" />
       <Button layoutX="381.0" layoutY="25.0" mnemonicParsing="false" text="促销策略" textFill="RED" />
       <Button layoutX="317.0" layoutY="25.0" mnemonicParsing="false" onAction="#dealorderAction" text="处理订单" />
@@ -31,5 +31,6 @@
         </columns>
       </TableView>
       <Hyperlink layoutX="320.0" layoutY="359.0" onAction="#linkAction" text="去制定酒店促销策略" />
+      <Hyperlink layoutX="624.0" layoutY="38.0" onAction="#logoutAction" text="退出登录" />
    </children>
 </AnchorPane>
