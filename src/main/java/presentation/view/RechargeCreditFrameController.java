@@ -19,7 +19,7 @@ public class RechargeCreditFrameController {
 	
 	private RechargeCreditFrame rechargecreditframe;
 	
-	RechargeCreditBLService controller = new RechargeCreditController();
+	RechargeCreditBLService service = new RechargeCreditController();
 	
 	@FXML
 	/**
@@ -28,7 +28,7 @@ public class RechargeCreditFrameController {
 	private void confirmAction(){
 		String id = enterid.getText();
 		int creditrecharge = Integer.valueOf(enterrecharge.getText());
-		controller.RechargeCredit("网站营销人员",id,creditrecharge);
+		service.RechargeCredit("网站营销人员",id,creditrecharge);
 	}
 	
 	@FXML

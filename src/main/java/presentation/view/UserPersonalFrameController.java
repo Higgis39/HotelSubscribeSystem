@@ -1,9 +1,13 @@
 package presentation.view;
 
+import businessLogic.userbl.MessageController;
+import businessLogicService.userBLService.MessageBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import presentation.controller.ViewController;
+import vo.IdVO;
+import vo.UserVO;
 
 /**
  * 
@@ -15,6 +19,8 @@ public class UserPersonalFrameController {
 	@FXML
 	private Hyperlink registerVIP;
 	@FXML
+	private Hyperlink change;
+	@FXML
 	private Label username;
 	@FXML
 	private Label id;
@@ -25,7 +31,11 @@ public class UserPersonalFrameController {
 	@FXML
 	private Label creditvalue;
 	@FXML
+	private Label VIPtypelabel;
+	@FXML
 	private Label VIPtype;
+	@FXML
+	private Label VIPgradelabel;
 	@FXML
 	private Label VIPgrade;
 	@FXML
@@ -107,7 +117,30 @@ public class UserPersonalFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		
+		String getid = IdVO.getid();
+		MessageBLService user = new MessageController();
+		UserVO uservo = user.GetMessage(getid);
+		id.setText(uservo.getid());
+		username.setText(uservo.getname());
+		name.setText(uservo.getname());
+		phonenumber.setText(uservo.getphonenumber());
+		creditvalue.setText(Integer.toString(uservo.getcreditvalue()));
+		if(uservo.getusertype()==null){
+			registerVIP.setVisible(true);
+			VIPtypelabel.setVisible(false);
+			VIPgradelabel.setVisible(false);
+			bircom.setVisible(false);
+			change.setVisible(false);
+		}else{
+			VIPtype.setText(uservo.getVIPtype());
+			VIPgrade.setText(Integer.toString(uservo.getVIPgrade()));
+			if(uservo.getbirthday()==null){
+				bircom.setText("企业");
+				birthdaycompany.setText(uservo.getcompany());
+			}else{
+				birthdaycompany.setText(uservo.getbirthday());
+			}
+		}
 	}
 
 	public void setUserPersonalFrame(UserPersonalFrame userpersonalframe) {

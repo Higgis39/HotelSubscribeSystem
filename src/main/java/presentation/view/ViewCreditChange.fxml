@@ -9,5 +9,6 @@
    <children>
       <Button layoutX="352.0" layoutY="307.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="21.0" prefWidth="69.0" text="确定" />
       <Label layoutX="40.0" layoutY="28.0" prefHeight="23.0" prefWidth="158.0" text="您的信用变化如下：" />
+      <ListView fx:id="list" layoutX="96.0" layoutY="70.0" prefHeight="199.0" prefWidth="288.0" />
    </children>
 </AnchorPane>

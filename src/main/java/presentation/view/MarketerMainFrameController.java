@@ -1,9 +1,13 @@
 package presentation.view;
 
 import businessLogic.userbl.ManageUserController;
+import businessLogic.userbl.MessageController;
+import businessLogicService.userBLService.MessageBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import presentation.controller.ViewController;
+import vo.IdVO;
+import vo.UserVO;
 
 
 /**
@@ -66,8 +70,10 @@ public class MarketerMainFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-//		String getname = manageruser.ViewClientMessage("1234").getname();
-//		name.setText(getname);
+		MessageBLService service = new MessageController();
+		UserVO uservo = service.GetMessage(IdVO.getid());
+		id.setId(uservo.getid());
+		name.setText(uservo.getname());
 	}
 	
 	public void setMarketerMainFrame(MarketerMainFrame marketermainframe){

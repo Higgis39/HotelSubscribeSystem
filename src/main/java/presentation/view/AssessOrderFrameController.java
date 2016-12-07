@@ -16,17 +16,6 @@ public class AssessOrderFrameController {
 	private AssessOrderFrame assessorderframe;
 	
 	@FXML
-	private void judgeAction(){
-		//用户点击时默认文字消失
-//		String text = judge.getText();
-//		System.out.println(text);
-//		if(text.equals("请在此填写入住期间的感受，欢迎再次光临！")){
-//			System.out.println("abcd");
-//			judge.setText("");
-//		}
-	}
-	
-	@FXML
 	/**
 	 * 确认按钮的监听
 	 */

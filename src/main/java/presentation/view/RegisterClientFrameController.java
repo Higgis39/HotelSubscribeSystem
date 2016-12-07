@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import presentation.controller.ViewController;
+import vo.IdVO;
 
 /**
  * 
@@ -46,29 +47,30 @@ public class RegisterClientFrameController {
 		//处理用户没有输入用户名和密码便点击注册的情况
 		if(username.equals("")){
 			usernameword.setText("请输入用户名");
+		}else{
+			usernameword.setText(null);
 		}
 		if(password1.equals("")){
 			password1word.setText("请输入密码");
+		}else{
+			password1word.setText(null);
 		}
 		if(password2.equals("")){
 			password2word.setText("请输入密码");
-		}
-		if(!username.equals("")){
-			usernameword.setText(null);
-		}
-		if(!password1.equals("")){
-			password1word.setText(null);
-		}
-		if(!password2.equals("")){
+		}else{
 			password2word.setText(null);
 		}
+		
 		if(!username.equals("")&&!password1.equals("")&&!password2.equals("")){
 			RegisterClientBLService registerclient = new RegisterClientController();
 			String result = registerclient.RegisterClient(username, password1, password2);
-			if(!password1.equals("")&&result.equals("The two passwords is different.")){
+			if(result.equals("The two passwords is different.")){
 				password2word.setText("两个密码不同");
 			}else{
 				//跳转到注册成功界面
+				IdVO.setid(result);
+				viewcontrol.openSuccessRegisterFrame();
+				registerclientframe.getPrimaryStage().close();
 			}
 		}
 		

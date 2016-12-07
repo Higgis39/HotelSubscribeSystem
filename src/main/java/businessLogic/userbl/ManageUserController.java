@@ -31,8 +31,8 @@ public class ManageUserController implements ManageUserBLService {
 	 * @param newphonenumber String
 	 * @return 成功返回true,失败返回false
 	 */
-	public boolean ChangeClientMessaage(boolean IsManager,String id,String newname,String newphonenumber){
-		return user.ChangeClientMessaage(IsManager,id,newname,newphonenumber);
+	public boolean ChangeClientMessaage(boolean IsManager,String id,String newname,String newphonenumber,int creditvalue,String birthday,String company){
+		return user.ChangeClientMessaage(IsManager,id,newname,newphonenumber,creditvalue,birthday,company);
 	}
 
 	public String AddMarketer(boolean IsManager,String name,String password1,String password2) throws NumberFormatException, SQLException {

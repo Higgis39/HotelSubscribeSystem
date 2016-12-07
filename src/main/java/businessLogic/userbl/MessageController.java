@@ -3,6 +3,7 @@ package businessLogic.userbl;
 import java.util.ArrayList;
 
 import businessLogicService.userBLService.MessageBLService;
+import vo.UserVO;
 
 /**
  * 
@@ -17,7 +18,7 @@ public class MessageController implements MessageBLService {
 	 * @param id String
 	 * @return 返回用户的基本信息
 	 */
-	public PersonalMessage GetMessage(String id){
+	public UserVO GetMessage(String id){
 		return user.GetMessage(id);
 	}
 	
@@ -30,6 +31,16 @@ public class MessageController implements MessageBLService {
 	 */
 	public boolean ChangeMessage(String id,String newname,String newphonenumber){
 		return user.ChangeMessage(id,newname,newphonenumber);
+	}
+	
+	/**
+	 * 修改生日/企业
+	 * @param id
+	 * @param birorcom
+	 * @return
+	 */
+	public boolean ChangeBirOrComFrame(String id,String birorcom){
+		return user.ChangeBirOrComFrame(id, birorcom);
 	}
 	
 	/**

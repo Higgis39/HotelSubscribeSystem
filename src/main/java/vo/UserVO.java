@@ -64,12 +64,28 @@ public class UserVO {
 		return phonenumber;
 	}
 	
+	public int getcreditvalue(){
+		return creditvalue.get();
+	}
+	
+	public IntegerProperty getcreditvalueProperty(){
+		return creditvalue;
+	}
+	
 	public String getVIPtype(){
 		return VIPtype.get();
 	}
 	
 	public StringProperty getVIPtypeProperty(){
 		return VIPtype;
+	}
+	
+	public int getVIPgrade(){
+		return VIPgrade.get();
+	}
+	
+	public IntegerProperty getVIPgradeProperty(){
+		return VIPgrade;
 	}
 	
 	public String getbirthday(){

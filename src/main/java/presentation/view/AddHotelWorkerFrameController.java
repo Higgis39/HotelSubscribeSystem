@@ -2,9 +2,12 @@ package presentation.view;
 
 import java.time.LocalDate;
 
+import businessLogic.userbl.AddHotelController;
+import businessLogicService.userBLService.AddHotelBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import presentation.controller.ViewController;
 
 /**
  * 
@@ -26,6 +29,8 @@ public class AddHotelWorkerFrameController {
 
 	private AddHotelWorkerFrame addhotelworkerframe;
 	
+	ViewController viewcontrol = new ViewController();
+	
 	@FXML
 	/**
 	 * 获得当前日期的监听
@@ -40,7 +45,17 @@ public class AddHotelWorkerFrameController {
 	 * 确定按钮的监听
 	 */
 	private void confirmAction(){
-		
+		String hotelname = enterhotelname.getText();
+		String workername = enterworkername.getText();
+		int age = Integer.valueOf(enterage.getText());
+		String sex = entersex.getSelectionModel().getSelectedItem();
+		LocalDate begindate = LocalDate.parse(enterdate.getText());
+		AddHotelBLService addhotelblservice = new AddHotelController();
+		boolean result = addhotelblservice.AddHotelWorker(true, workername, hotelname, age, sex, begindate);
+		if(result==true){
+			addhotelworkerframe.getPrimaryStage().close();
+			viewcontrol.openSuccessAdd2Frame();
+		}
 	}
 	
 	@FXML

@@ -13,7 +13,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextArea fx:id="judge" layoutX="44.0" layoutY="91.0" onDragDetected="#judgeAction" prefHeight="178.0" prefWidth="418.0" />
+      <TextArea fx:id="judge" layoutX="44.0" layoutY="91.0" prefHeight="178.0" prefWidth="418.0" />
       <Button layoutX="278.0" layoutY="293.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="25.0" prefWidth="61.0" text="提交" />
       <Button layoutX="383.0" layoutY="293.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="61.0" text="取消" />
       <Label layoutX="53.0" layoutY="65.0" text="请填写入住期间的感受，欢迎再次光临！" />

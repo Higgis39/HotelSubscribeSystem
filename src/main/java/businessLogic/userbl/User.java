@@ -1,7 +1,10 @@
 package businessLogic.userbl;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 
 import data.HotelData;
 import data.UserData;
@@ -9,6 +12,7 @@ import dataService.HotelDataService;
 import dataService.UserDataService;
 import po.HotelPO;
 import po.UserPO;
+import po.WorkerPO;
 import vo.UserVO;
 
 /**
@@ -50,7 +54,7 @@ public class User{
 		}else{
 			String newid = Integer.toString(Integer.valueOf(userdataservice.distributeid())+1);
 			userdataservice.insert(new UserPO(name,newid,password1,"普通客户",0,null,0,null,null,null,null));
-			return "Register successfully! Your id is "+newid;
+			return newid;
 		}
 	}
 	
@@ -59,9 +63,9 @@ public class User{
 	 * @param id String
 	 * @return 返回用户的基本信息
 	 */
-	public PersonalMessage GetMessage(String id){
+	public UserVO GetMessage(String id){
 		UserPO userpo = userdataservice.find(id);
-		return new PersonalMessage(userpo.getname(),userpo.getphonenumber(),userpo.getcreditvalue());
+		return new UserVO(userpo.getname(),userpo.getid(),userpo.getusertype(),userpo.getphonenumber(),userpo.getcreditvalue(),userpo.getVIPtype(),userpo.getVIPgrade(),userpo.getbirthday(),userpo.getcompany());
 	}
 	
 	/**
@@ -75,6 +79,24 @@ public class User{
 		UserPO userpo = userdataservice.find(id);
 		userdataservice.update(new UserPO(newname,userpo.getid(),userpo.getpassword(),userpo.getusertype(),userpo.getcreditvalue(),
 				userpo.getVIPtype(),userpo.getVIPgrade(),newphonenumber,userpo.getbirthday(),userpo.getcompany(),userpo.getcreditchange()));
+		return true;
+	}
+	
+	/**
+	 * 修改生日/企业
+	 * @param id
+	 * @param birorcom
+	 * @return
+	 */
+	public boolean ChangeBirOrComFrame(String id,String birorcom){
+		UserPO userpo = userdataservice.find(id);
+		if(userpo.getbirthday()==null){
+			userdataservice.update(new UserPO(userpo.getname(),userpo.getid(),userpo.getpassword(),userpo.getusertype(),userpo.getcreditvalue(),
+					userpo.getVIPtype(),userpo.getVIPgrade(),userpo.getphonenumber(),userpo.getbirthday(),birorcom,userpo.getcreditchange()));
+		}else{
+			userdataservice.update(new UserPO(userpo.getname(),userpo.getid(),userpo.getpassword(),userpo.getusertype(),userpo.getcreditvalue(),
+					userpo.getVIPtype(),userpo.getVIPgrade(),userpo.getphonenumber(),birorcom,userpo.getcompany(),userpo.getcreditchange()));
+		}
 		return true;
 	}
 	
@@ -154,13 +176,13 @@ public class User{
 	 * @param newphonenumber String
 	 * @return 成功返回true,失败返回false
 	 */
-	public boolean ChangeClientMessaage(boolean IsManager,String id,String newname,String newphonenumber){
+	public boolean ChangeClientMessaage(boolean IsManager,String id,String newname,String newphonenumber,int creditvalue,String birthday,String company){
 		if(IsManager==false){
 			return false;
 		}else{
 			UserPO userpo = userdataservice.find(id);
-			userdataservice.update(new UserPO(newname,userpo.getid(),userpo.getpassword(),userpo.getusertype(),userpo.getcreditvalue(),
-				   userpo.getVIPtype(),userpo.getVIPgrade(),newphonenumber,userpo.getbirthday(),userpo.getcompany(),userpo.getcreditchange()));
+			userdataservice.update(new UserPO(newname,userpo.getid(),userpo.getpassword(),userpo.getusertype(),creditvalue,
+				   userpo.getVIPtype(),userpo.getVIPgrade(),newphonenumber,birthday,company,userpo.getcreditchange()));
 			return true;
 		}
 	}
@@ -210,15 +232,17 @@ public class User{
 	 * @param hotelid String
 	 * @return 成功返回true,失败返回false
 	 */
-	public boolean AddHotelWorker(boolean IsManager,String workername,String hotelname){
+	public boolean AddHotelWorker(boolean IsManager,String workername,String hotelname,int age,String sex,LocalDate begindate){
 		if(IsManager==false){
 			return false;
 		}else{
 			HotelPO hotelpo = hoteldataservice.findByName(hotelname);
 			ArrayList<String> worker = hotelpo.getWorker();
 			worker.add(workername);
+			Date date = Date.from(begindate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 			hoteldataservice.update(new HotelPO(hotelpo.getId(),hotelpo.getPassword(),hotelpo.getName(),hotelpo.getPhonenumber(),
 					hotelpo.getAddress(),hotelpo.getBusinessArea(),hotelpo.getIntroduction(),hotelpo.getFacilities(),hotelpo.getStar(),hotelpo.getGrade(),worker));
+//			hoteldataservice.insert(new WorkerPO(hotelname,workername,age,sex,date));
 			return true;
 		}
 	}

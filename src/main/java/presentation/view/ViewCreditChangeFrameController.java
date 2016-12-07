@@ -1,6 +1,14 @@
 package presentation.view;
 
+import java.util.ArrayList;
+
+import businessLogic.userbl.MessageController;
+import businessLogicService.userBLService.MessageBLService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
+import vo.IdVO;
 
 
 /**
@@ -10,6 +18,9 @@ import javafx.fxml.FXML;
  *ViewCreditChange的界面
  */
 public class ViewCreditChangeFrameController {
+	@FXML
+	private ListView<String> list;
+	
 	private ViewCreditChangeFrame viewcreditchangeframe;
 	
 	@FXML
@@ -22,7 +33,10 @@ public class ViewCreditChangeFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		
+		MessageBLService service = new MessageController();
+		ArrayList<String> a = service.GetCreditChange(IdVO.getid());
+		ObservableList<String> items = FXCollections.observableArrayList (a);
+		list.setItems(items);
 	}
 
 	public void setUserPersonalFrame(ViewCreditChangeFrame viewcreditchangeframe) {

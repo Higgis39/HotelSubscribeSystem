@@ -1,6 +1,7 @@
 package businessLogic.userbl;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import businessLogicService.userBLService.AddHotelBLService;
 
@@ -32,7 +33,7 @@ public class AddHotelController implements AddHotelBLService{
 	 * @param hotelname String
 	 * @return 成功返回true,失败返回false
 	 */
-	public boolean AddHotelWorker(boolean IsManager,String workername,String hotelname){
-		return user.AddHotelWorker(IsManager,workername,hotelname);
+	public boolean AddHotelWorker(boolean IsManager,String workername,String hotelname,int age,String sex,LocalDate begindate){
+		return user.AddHotelWorker(IsManager,workername,hotelname,age,sex,begindate);
 	}
 }

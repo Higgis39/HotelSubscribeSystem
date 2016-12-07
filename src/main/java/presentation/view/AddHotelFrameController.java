@@ -1,9 +1,16 @@
 package presentation.view;
 
+import java.sql.SQLException;
+
+import businessLogic.userbl.AddHotelController;
+import businessLogicService.userBLService.AddHotelBLService;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import presentation.controller.ViewController;
+import vo.OtherIdVO;
 
 /**
  * 
@@ -13,13 +20,15 @@ import javafx.scene.control.TextField;
  */
 public class AddHotelFrameController {
 	@FXML
+	private Label samepassword;
+	@FXML
 	private TextField entername;
 	@FXML
 	private TextField enterphonenumber;
 	@FXML
 	private TextField enteraddress;
 	@FXML
-	private TextField enterbussinessarea;
+	private TextField enterbusinessarea;
 	@FXML
 	private TextField enterstar;
 	@FXML
@@ -32,6 +41,8 @@ public class AddHotelFrameController {
 	private PasswordField enterpassword2;
 	
 	private AddHotelFrame addhotelframe;
+	
+	ViewController viewcontrol = new ViewController();
 	
 	@FXML
 	/**
@@ -61,8 +72,26 @@ public class AddHotelFrameController {
 	/**
 	 * 确定按钮的监听
 	 */
-	private void coinfirmAction(){
-		
+	private void coinfirmAction() throws SQLException{
+		String hotelname = entername.getText();
+		String phonenumber = enteraddress.getText();
+		String address = enteraddress.getText();
+		String businessarea = enterbusinessarea.getText();
+		int star = Integer.valueOf(enterstar.getText());
+		String introduction = enterintroduction.getText();
+		String service = enterservice.getText();
+		String password1 = enterpassword1.getText();
+		String password2 = enterpassword2.getText();
+		AddHotelBLService addhotelblservice = new AddHotelController();
+		String result = addhotelblservice.AddHotel(true, hotelname, phonenumber, address, businessarea, introduction, service, star, password1, password2);
+		if(result.equals("The two passwords are different.")){
+			samepassword.setText("两次密码不同");
+		}else{
+			samepassword.setText(null);
+			OtherIdVO.setid(result);
+			viewcontrol.openSuccessAddFrame();
+			addhotelframe.getPrimaryStage().close();
+		}
 	}
 	
 	@FXML

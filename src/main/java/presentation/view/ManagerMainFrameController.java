@@ -2,6 +2,8 @@ package presentation.view;
 
 import java.time.LocalDate;
 
+import businessLogic.userbl.MessageController;
+import businessLogicService.userBLService.MessageBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -10,6 +12,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import presentation.controller.ViewController;
 import vo.WorkerVO;
+import vo.IdVO;
+import vo.OtherIdVO;
 import vo.UserVO;
 
 /**
@@ -93,6 +97,7 @@ public class ManagerMainFrameController {
 	 */
 	private void linkAction(){
 		//打开修改用户信息的界面
+		OtherIdVO.setid(enterid.getText());
 		viewcontrol.openChangeUserMessageFrame();
 	}
 	
@@ -137,7 +142,10 @@ public class ManagerMainFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		
+		MessageBLService service = new MessageController();
+		UserVO uservo = service.GetMessage(IdVO.getid());
+		id.setId(uservo.getid());
+		name.setText(uservo.getname());
 	}
 	
 	public void setManagerMainFrame(ManagerMainFrame managermainframe){

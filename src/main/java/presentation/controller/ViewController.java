@@ -3,6 +3,9 @@ package presentation.controller;
 import javafx.stage.Stage;
 import presentation.view.RegisterClientFrame;
 import presentation.view.RegisterVIPFrame;
+import presentation.view.SuccessAdd2Frame;
+import presentation.view.SuccessAddFrame;
+import presentation.view.SuccessRegisterFrame;
 import presentation.view.UserMainFrame;
 import presentation.view.UserPersonalFrame;
 import presentation.view.ViewCreditChangeFrame;
@@ -51,6 +54,27 @@ public class ViewController{
 	 */
 	public void openRegisterClientFrame(){
 		new RegisterClientFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开成功注册界面
+	 */
+	public void openSuccessRegisterFrame(){
+		new SuccessRegisterFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开添加成功界面
+	 */
+	public void openSuccessAddFrame(){
+		new SuccessAddFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开添加成功(酒店工作人员)界面
+	 */
+	public void openSuccessAdd2Frame(){
+		new SuccessAdd2Frame().start(new Stage());
 	}
 	
 	/**

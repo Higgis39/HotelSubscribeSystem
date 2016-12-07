@@ -2,11 +2,15 @@ package presentation.view;
 
 import java.time.LocalDate;
 
+import businessLogic.userbl.MessageController;
+import businessLogicService.userBLService.MessageBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import presentation.controller.ViewController;
+import vo.IdVO;
+import vo.UserVO;
 import vo.WebPromotionVO;
 
 /**
@@ -70,7 +74,10 @@ public class MarketerPromotionFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		
+		MessageBLService service = new MessageController();
+		UserVO uservo = service.GetMessage(IdVO.getid());
+		id.setId(uservo.getid());
+		name.setText(uservo.getname());
 	}
 	
 	public void setMarketerPromotionFrame(MarketerPromotionFrame marketerpromotionframe){

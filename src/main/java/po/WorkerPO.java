@@ -11,7 +11,7 @@ public class WorkerPO {
 	private Date beginTime;
 	
 	public WorkerPO() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public WorkerPO(String hotelName, String name, int age, String sex, Date beginTime) {

@@ -2,7 +2,7 @@ package businessLogicService.userBLService;
 
 import java.util.ArrayList;
 
-import businessLogic.userbl.PersonalMessage;
+import vo.UserVO;
 
 /**
  * 
@@ -10,9 +10,11 @@ import businessLogic.userbl.PersonalMessage;
  *
  */
 public interface MessageBLService {
-	public PersonalMessage GetMessage(String id);
+	public UserVO GetMessage(String id);
 	
 	public boolean ChangeMessage(String id,String newname,String newphonenumber);
+	
+	public boolean ChangeBirOrComFrame(String id,String birorcom);
 	
 	public ArrayList<String> GetCreditChange(String id);
 }

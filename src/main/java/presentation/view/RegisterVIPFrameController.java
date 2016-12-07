@@ -1,10 +1,14 @@
 package presentation.view;
 
+import businessLogic.userbl.RegisterVIPController;
+import businessLogicService.userBLService.RegisterVIPBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import presentation.controller.ViewController;
+import vo.IdVO;
 
 
 /**
@@ -26,6 +30,8 @@ public class RegisterVIPFrameController {
 	private TextField entercompany;
 	
 	private RegisterVIPFrame registerVIPframe;
+	
+	ViewController viewcontrol = new ViewController();
 	
 	@FXML
 	/**
@@ -68,9 +74,16 @@ public class RegisterVIPFrameController {
 	 * 确定按钮的监听
 	 */
 	private void confirmAction(){
+		RegisterVIPBLService service = new RegisterVIPController();
 		if(commonVIP.isSelected()){
-			
+			String birthday = enterbirthday.getValue().toString();
+			service.RegisterVIP(IdVO.getid(),"普通会员",birthday);
+		}else{
+			String company = entercompany.getText();
+			service.RegisterVIP(IdVO.getid(),"企业会员",company);
 		}
+		viewcontrol.openSuccessAdd2Frame();
+		registerVIPframe.getPrimaryStage().close();
 	}
 	
 	@FXML
