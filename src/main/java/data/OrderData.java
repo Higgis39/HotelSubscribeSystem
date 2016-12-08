@@ -49,12 +49,6 @@ public class OrderData implements OrderDataService{
 		return true;
 	}
 
-	@Override
-	public List<OrderPO> findByStatus(String ID, String Status) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	/**
 	 * 更新Order对象
 	 * 
@@ -129,39 +123,39 @@ public class OrderData implements OrderDataService{
 	 * 增加预计入住时间查找订单
 	 * 
 	 * @param Date String类型,每份订单的预计入住时间
+	 * @throws SQLException 
 	 * @see
 	 * try/catch块捕获数据库连接失败异常
 	 */
 	@Override
-	public OrderPO findByDate(String Date) {
-		OrderPO o = null;
+	public List<OrderPO> findByDate(String Date) throws SQLException {
+		List<OrderPO> result = new ArrayList<>();
+		
 		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append(" select * from order");
+		sb.append(" where entryTime=?");
 		
-		String sql = " select * from order "
-				   + " where entryTime=? ";
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
+		ptmt.setString(1, Date);
 		
-		try {
-			PreparedStatement ptmt = conn.prepareStatement(sql);
+		ResultSet rs = ptmt.executeQuery();
+		
+		OrderPO o = null;
+		while(rs.next()){
+			o = new OrderPO();
+			o.setOrderId(rs.getString("orderId"));
+			o.setHotelId(rs.getString("hotelId"));
+			o.setUserId(rs.getString("userId"));
+			o.setStatus(rs.getInt("status"));
+			o.setEntryTime(rs.getString("entryTime"));
+			o.setLastTime(rs.getString("lastTime"));
+			o.setOrderInfo(rs.getString("orderInfo"));
+			o.setPrice(rs.getDouble("price"));
 			
-			ptmt.setString(1, Date);
-			ResultSet rs = ptmt.executeQuery();
-			
-			while(rs.next()){
-				o = new OrderPO();
-				o.setOrderId(rs.getString("orderId"));
-				o.setHotelId(rs.getString("hotelId"));
-				o.setUserId(rs.getString("userId"));
-				o.setStatus(rs.getInt("status"));
-				o.setEntryTime(rs.getString("entryTime"));
-				o.setLastTime(rs.getString("lastTime"));
-				o.setOrderInfo(rs.getString("orderInfo"));
-				o.setPrice(rs.getDouble("price"));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
+			result.add(o);
 		}
-		return o;
+		return result;
 	}
 
 	/**
@@ -169,7 +163,7 @@ public class OrderData implements OrderDataService{
 	 * 
 	 * @param ID String类型，不同酒店的唯一标示
 	 * @see
-	 * @throws SQLException
+	 * @throws SQLException 抛出数据库连接失败异常
 	 */
 	@Override
 	public List<OrderPO> findByHotelID(String ID) throws SQLException {
@@ -182,6 +176,81 @@ public class OrderData implements OrderDataService{
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
 		ptmt.setString(1, ID);
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		OrderPO o = null;
+		while(rs.next()){
+			o = new OrderPO();
+			o.setOrderId(rs.getString("orderId"));
+			o.setHotelId(rs.getString("hotelId"));
+			o.setUserId(rs.getString("userId"));
+			o.setStatus(rs.getInt("status"));
+			o.setEntryTime(rs.getString("entryTime"));
+			o.setLastTime(rs.getString("lastTime"));
+			o.setOrderInfo(rs.getString("orderInfo"));
+			o.setPrice(rs.getDouble("price"));
+			
+			result.add(o);
+		}
+		return result;
+	}
+
+	/**
+	 * 根据不同客户ID寻找订单
+	 * 
+	 * @param ID String类型，不同客户的唯一标识
+	 * @see
+	 * @throws SQLException 抛出数据库连接失败异常
+	 */
+	public List<OrderPO> findByClient(String ID) throws SQLException {
+		List<OrderPO> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append(" select * from order");
+		sb.append(" where userId=?");
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
+		ptmt.setString(1, ID);
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		OrderPO o = null;
+		while(rs.next()){
+			o = new OrderPO();
+			o.setOrderId(rs.getString("orderId"));
+			o.setHotelId(rs.getString("hotelId"));
+			o.setUserId(rs.getString("userId"));
+			o.setStatus(rs.getInt("status"));
+			o.setEntryTime(rs.getString("entryTime"));
+			o.setLastTime(rs.getString("lastTime"));
+			o.setOrderInfo(rs.getString("orderInfo"));
+			o.setPrice(rs.getDouble("price"));
+			
+			result.add(o);
+		}
+		return result;
+	}
+
+	/**
+	 * 根据订单的状态查找订单
+	 * 
+	 * @param Status String类型,表示订单的状态
+	 * @throws SQLException 抛出数据库连接失败异常
+	 * @see
+	 */
+	@Override
+	public List<OrderPO> findByStatus(String Status) throws SQLException {
+		List<OrderPO> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append(" select * from order");
+		sb.append(" where status=?");
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
+		ptmt.setString(1, Status);
 		
 		ResultSet rs = ptmt.executeQuery();
 		

@@ -3,12 +3,12 @@ package businessLogic.promotionbl;
 import java.sql.SQLException;
 import java.util.List;
 
-import businessLogicService.promotionBLService.WebPromotionBLService;
+import businessLogicService.PromotionWebPromotionBLService;
 import data.WebPromotionData;
 import po.WebPromotionPO;
 import vo.WebPromotionVO;
 
-public class WebPromotionController implements WebPromotionBLService {
+public class WebPromotionController implements PromotionWebPromotionBLService {
 
 	WebPromotionData wpd = new WebPromotionData();
 	

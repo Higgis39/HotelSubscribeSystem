@@ -6,10 +6,11 @@ package businessLogic.promotionbl;
  *
  */
 public class BirthdayPromotion implements HotelPromotionType{
-
-	public double calculateDiscount() {
-		double discount = 0.8;
-		if(isBirthday()){
+	
+	double discount = 0.8;
+	
+	public double calculateDiscount(String userId, String hotelId, String entryTimeId) {
+		if(isBirthday(userId)){
 			return discount;
 		}
 		return 1;
@@ -19,7 +20,8 @@ public class BirthdayPromotion implements HotelPromotionType{
 	 * 判断当前是否是用户生日
 	 * @return
 	 */
-	public boolean isBirthday(){
+	public boolean isBirthday(String userId){
+		
 		return true;
 	}
 }

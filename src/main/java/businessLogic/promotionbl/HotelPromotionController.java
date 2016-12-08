@@ -3,7 +3,7 @@ package businessLogic.promotionbl;
 import java.sql.SQLException;
 import java.util.List;
 
-import businessLogicService.promotionBLService.HotelPromotionBLService;
+import businessLogicService.PromotionHotelPromotionBLService;
 import data.HotelPromotionData;
 import dataService.HotelPromotionDataService;
 import po.HotelPromotionPO;
@@ -15,15 +15,15 @@ import vo.HotelPromotionVO;
  * @author Thpffcj
  *
  */
-public class HotelPromotionController implements HotelPromotionBLService{
+public class HotelPromotionController implements PromotionHotelPromotionBLService{
 
 	HotelPromotionData hpd = new HotelPromotionData();
 	
 	@Override
 	public boolean hotelPromotionCreate(HotelPromotionVO hpv) {
 		HotelPromotionPO hpp = new HotelPromotionPO();
+		hpp.setHotelname(hpv.getHotelname());
 		hpp.setName(hpv.getName());
-		hpp.setIntroduction(hpv.getIntroduction());
 		hpp.setIsbirthday(hpv.isIsbirthday());
 		hpp.setNumberofroom(hpv.getNumberofroom());
 		hpp.setIspartner(hpv.isIspartner());
@@ -36,8 +36,8 @@ public class HotelPromotionController implements HotelPromotionBLService{
 	@Override
 	public boolean hotelPromotionUpdate(HotelPromotionVO hpv) {
 		HotelPromotionPO hpp = new HotelPromotionPO();
+		hpp.setHotelname(hpv.getHotelname());
 		hpp.setName(hpv.getName());
-		hpp.setIntroduction(hpv.getIntroduction());
 		hpp.setIsbirthday(hpv.isIsbirthday());
 		hpp.setNumberofroom(hpv.getNumberofroom());
 		hpp.setIspartner(hpv.isIspartner());
@@ -55,8 +55,8 @@ public class HotelPromotionController implements HotelPromotionBLService{
 
 	@Override
 	public List<HotelPromotionPO> hotelPromotionFind(HotelPromotionVO hpv) throws SQLException {
-		String name = hpv.getName();
-		List<HotelPromotionPO> hotelPromotion = hpd.find(name);
+		String hotelname = hpv.getHotelname();
+		List<HotelPromotionPO> hotelPromotion = hpd.findByHotelname(hotelname);
 		return hotelPromotion;
 	}
 

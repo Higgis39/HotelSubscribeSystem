@@ -2,8 +2,8 @@ package vo;
 
 public class HotelPromotionVO {
 
+	private String hotelname;
 	private String name;
-	private String introduction;
 	private boolean isbirthday;
 	private int numberofroom;
 	private boolean ispartner;
@@ -11,24 +11,26 @@ public class HotelPromotionVO {
 	private String endtime;
 	private double discount;
 	
-	public HotelPromotionVO(String name, String introduction, boolean isbirthday, int numberofroom, boolean ispartner,
-			String begintime, String endtime) {
+	public HotelPromotionVO(String hotelname, String name, boolean isbirthday, int numberofroom, boolean ispartner,
+			String begintime, String endtime, double discount) {
 		super();
+		this.hotelname = hotelname;
 		this.name = name;
-		this.introduction = introduction;
 		this.isbirthday = isbirthday;
 		this.numberofroom = numberofroom;
 		this.ispartner = ispartner;
 		this.begintime = begintime;
 		this.endtime = endtime;
+		this.discount = discount;
 	}
+
+	public String getHotelname() {
+		return hotelname;
+	}
+
 
 	public String getName() {
 		return name;
-	}
-
-	public String getIntroduction() {
-		return introduction;
 	}
 
 	public boolean isIsbirthday() {

@@ -5,10 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import JDBC.DBUtil;
-import dataService.HotelDataService;
 import po.HotelPO;
 
 /**
@@ -16,7 +15,7 @@ import po.HotelPO;
  * @author hly
  * @see
  */
-public class HotelData implements HotelDataService{
+public class HotelData{
 
 	/**
 	 * 增加hotel对象
@@ -99,63 +98,26 @@ public class HotelData implements HotelDataService{
 //		}
 //	}
 	
-	/**
-	 * 根据酒店名称获得hotel对象
-	 * 
-	 * @param hotelname String类型,酒店的名称
-	 * @see
-	 * try/catch块捕获数据库连接失败异常
-	 */
-	public HotelPO findByName(String hotelname){
-		HotelPO h = null;
-		Connection conn = DBUtil.getConnection();
-		
-		String sql = " select * from hotel "
-				   + " where hotelname=? ";
-		
-		try {
-			PreparedStatement ptmt = conn.prepareStatement(sql);
-			
-			ptmt.setString(1, hotelname);
-			ResultSet rs = ptmt.executeQuery();
-			
-			while(rs.next()){
-				h = new HotelPO();
-				h.setHotelid(rs.getString("hotelid"));
-				h.setPassword(rs.getString("password"));
-				h.setHotelname(rs.getString("hotelname"));
-				h.setPhonenumber(rs.getString("phonenumber"));
-				h.setAddress(rs.getString("address"));
-				h.setBusinessarea(rs.getString("businessarea"));
-				h.setIntroduction(rs.getString("introduction"));
-				h.setFacilities(rs.getString("facilities"));
-				h.setStar(rs.getInt("star"));
-				h.setGrade(rs.getDouble("grade"));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return h;
-	}
 	
 	/**
-	 * 根据酒店所在地区获得hotel对象
+	 * 根据城市和所属商圈获得hotel对象
 	 * 
-	 * @param hotelname String类型,酒店的名称
+	 * @param address String类型,酒店所在的城市
+	 * @param businessarea String类型,酒店所属的商圈
+	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
-	 * try/catch块捕获数据库连接失败异常
 	 */
-	public List<HotelPO> findByAddress(String address) throws SQLException{
-		List<HotelPO> result = new ArrayList<>();
+	public ArrayList<HotelPO> findByAddressAndBusinessarea(String address, String businessarea) throws SQLException{
+		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
-		sb.append(" select * from hotel");
-		sb.append(" where address=?");
+		sb.append("select * from hotel");
+		sb.append(" where address=? and businessarea=? ");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
 		ptmt.setString(1, address);
+		ptmt.setString(2, businessarea);
 		
 		ResultSet rs = ptmt.executeQuery();
 		
@@ -179,22 +141,26 @@ public class HotelData implements HotelDataService{
 	}
 	
 	/**
-	 * 根据商圈获得hotel对象
+	 * 根据城市和所属商圈和酒店星级获得hotel对象
 	 * 
-	 * @param hotelname String类型,酒店的名称
+	 * @param address String类型,酒店所在的城市
+	 * @param businessarea String类型,酒店所属的商圈
+	 * @param star int,酒店星级
+	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
-	 * try/catch块捕获数据库连接失败异常
 	 */
-	public List<HotelPO> findByBusinessarea(String businessarea) throws SQLException{
-		List<HotelPO> result = new ArrayList<>();
+	public ArrayList<HotelPO> findByAddressAndBusinessareaAndStar(String address, String businessarea, int star) throws SQLException{
+		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
-		sb.append(" select * from hotel");
-		sb.append(" where businessarea=?");
+		sb.append("select * from hotel");
+		sb.append(" where address=? and businessarea=? and star=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-		ptmt.setString(1, businessarea);
+		ptmt.setString(1, address);
+		ptmt.setString(2, businessarea);
+		ptmt.setInt(3, star);
 		
 		ResultSet rs = ptmt.executeQuery();
 		
@@ -218,22 +184,26 @@ public class HotelData implements HotelDataService{
 	}
 	
 	/**
-	 * 根据酒店星级获得hotel对象
+	 * 根据城市和所属商圈和酒店评分获得hotel对象
 	 * 
-	 * @param hotelname String类型,酒店的名称
+	 * @param address String类型,酒店所在的城市
+	 * @param businessarea String类型,酒店所属的商圈
+	 * @param grade int类型,酒店评分
+	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
-	 * try/catch块捕获数据库连接失败异常
 	 */
-	public List<HotelPO> findByStar(int star) throws SQLException{
-		List<HotelPO> result = new ArrayList<>();
+	public ArrayList<HotelPO> findByAddressAndBusinessareaAndGrade(String address, String businessarea, int grade) throws SQLException{
+		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
-		sb.append(" select * from hotel");
-		sb.append(" where star=?");
+		sb.append("select * from hotel");
+		sb.append(" where address=? and businessarea=? and grade=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-		ptmt.setInt(1, star);
+		ptmt.setString(1, address);
+		ptmt.setString(2, businessarea);
+		ptmt.setInt(3, grade);
 		
 		ResultSet rs = ptmt.executeQuery();
 		
@@ -257,22 +227,107 @@ public class HotelData implements HotelDataService{
 	}
 	
 	/**
-	 * 根据评分获得hotel对象
+	 * 根据城市和所属商圈和星级和评分获得hotel对象
 	 * 
-	 * @param hotelname String类型,酒店的名称
+	 * @param address String类型,酒店所在的城市
+	 * @param businessarea String类型,酒店所属的商圈
+	 * @param star int类型，酒店星级
+	 * @param grade int类型，酒店评分
+	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
-	 * try/catch块捕获数据库连接失败异常
 	 */
-	public List<HotelPO> findByGrade(int grade) throws SQLException{
-		List<HotelPO> result = new ArrayList<>();
+	public ArrayList<HotelPO> findByAll(String address, String businessarea, int star, int grade) throws SQLException{
+		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
-		sb.append(" select * from hotel");
-		sb.append(" where grade=?");
+		sb.append("select * from hotel");
+		sb.append(" where address=? and businessarea=? and star=? and grade=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-		ptmt.setInt(1, grade);
+		ptmt.setString(1, address);
+		ptmt.setString(2, businessarea);
+		ptmt.setInt(3, star);
+		ptmt.setInt(4, grade);
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		HotelPO h = null;
+		while(rs.next()){
+			h = new HotelPO();
+			h.setHotelid(rs.getString("hotelid"));
+			h.setPassword(rs.getString("password"));
+			h.setHotelname(rs.getString("hotelname"));
+			h.setPhonenumber(rs.getString("phonenumber"));
+			h.setAddress(rs.getString("address"));
+			h.setBusinessarea(rs.getString("businessarea"));
+			h.setIntroduction(rs.getString("introduction"));
+			h.setFacilities(rs.getString("facilities"));
+			h.setStar(rs.getInt("star"));
+			h.setGrade(rs.getDouble("grade"));
+			
+			result.add(h);
+		}
+		return result;
+	}
+	
+	public ArrayList<HotelPO> findBy(String address, int roomID) throws SQLException{
+		ArrayList<HotelPO> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append("select * from hotel INNER JOIN room on hotel.hotelname=room.hotelName");
+		sb.append(" where room.roomID=?");
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
+//		ptmt.setString(1, address);
+		ptmt.setInt(1, roomID);
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		HotelPO h = null;
+		while(rs.next()){
+			h = new HotelPO();
+			h.setHotelid(rs.getString("hotelid"));
+			h.setPassword(rs.getString("password"));
+			h.setHotelname(rs.getString("hotelname"));
+			h.setPhonenumber(rs.getString("phonenumber"));
+			h.setAddress(rs.getString("address"));
+			h.setBusinessarea(rs.getString("businessarea"));
+			h.setIntroduction(rs.getString("introduction"));
+			h.setFacilities(rs.getString("facilities"));
+			h.setStar(rs.getInt("star"));
+			h.setGrade(rs.getDouble("grade"));
+			
+			result.add(h);
+		}
+		return result;
+	}
+	
+	/**
+	 * 根据输入的不同条件获得hotel对象
+	 * 
+	 * @param params ArrayList<Map<String, Object>>类型,不同的筛选条件
+	 * @throws SQLException 抛出数据库连接失败异常
+	 * @see
+	 */
+//	sb.append("select * from hotel INNER JOIN room on hotel.hotelname=room.hotelName");
+//	sb.append(" where room.roomID=?");
+	public ArrayList<HotelPO> find(ArrayList<Map<String, Object>> params) throws SQLException{
+		ArrayList<HotelPO> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append("select * from hotel INNER JOIN room on hotel.hotelname=room.hotelName where 1=1");
+		
+		if(params!=null && params.size()>0){
+			for(int i=0; i<params.size(); i++){
+				Map<String, Object> map = params.get(i);
+				sb.append(" and "+map.get("name")+" "+ map.get("rela") +" "+map.get("value"));
+			}
+		}
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
 		
 		ResultSet rs = ptmt.executeQuery();
 		
@@ -313,38 +368,4 @@ public class HotelData implements HotelDataService{
 					
 		return rs.getString("id");
 	}
-	
-//	/**
-//	 * 将Arraylist中传来的worker对象转化为string并存储
-//	 * @param workers
-//	 * @return
-//	 */
-//	public static String workersToSql(ArrayList<String> workers){
-//		String worker = "";
-//		for(int i=0; i<workers.size(); i++){
-//			worker = worker +"#"+ workers.get(i);
-//		}
-//		worker = worker + "#";
-//		return worker;
-//	}
-//	
-//	/**
-//	 * 将数据库读出的worker转换为ArrayList类型
-//	 * @param worker
-//	 * @return
-//	 */
-//	public static ArrayList<String> workersToList(String worker){
-//		ArrayList<String> workers = new ArrayList<>();
-//		String tempworker="";
-//		for(int i=1; i<worker.length(); i++){
-//			if(worker.charAt(i) == '#'){
-//				workers.add(tempworker);
-//				tempworker = "";
-//			}
-//			else{
-//				tempworker = tempworker + worker.charAt(i);
-//			}
-//		}
-//		return workers;
-//	}
 }

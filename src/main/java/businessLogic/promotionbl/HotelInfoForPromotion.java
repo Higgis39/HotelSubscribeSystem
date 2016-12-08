@@ -2,5 +2,5 @@ package businessLogic.promotionbl;
 
 public interface HotelInfoForPromotion {
 
-	public String getHotelBusinessDistrict();
+	public String getHotelBusinessDistrict(String hotelId);
 }

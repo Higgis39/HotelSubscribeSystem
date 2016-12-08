@@ -144,13 +144,18 @@ public class UserData implements UserDataService{
 	 * @param cc ArrayList<String>类型
 	 * @return
 	 */
-	public static String creditchangeToSql(ArrayList<String> cc){
-		String creditchange = "";
-		for(int i=0; i<cc.size(); i++){
-			creditchange = creditchange +"#"+ cc.get(i);
+	public String creditchangeToSql(ArrayList<String> cc){
+		if(cc.size()>0){
+			String creditchange = "";
+			for(int i=0; i<cc.size(); i++){
+				creditchange = creditchange +"#"+ cc.get(i);
+			}
+			creditchange = creditchange + "#";
+			return creditchange;
 		}
-		creditchange = creditchange + "#";
-		return creditchange;
+		else{
+			return null;
+		}
 	}
 	
 	/**
@@ -158,18 +163,23 @@ public class UserData implements UserDataService{
 	 * @param creditchange String类型
 	 * @return
 	 */
-	public static ArrayList<String> creditchangeToList(String creditchange){
-		ArrayList<String> cc = new ArrayList<>();
-		String tempcreditchange = "";
-		for(int i=1; i<creditchange.length(); i++){
-			if(creditchange.charAt(i) == '#'){
-				cc.add(tempcreditchange);
-				tempcreditchange = "";
+	public ArrayList<String> creditchangeToList(String creditchange){
+		if(!creditchange.isEmpty()){
+			ArrayList<String> cc = new ArrayList<>();
+			String tempcreditchange = "";
+			for(int i=1; i<creditchange.length(); i++){
+				if(creditchange.charAt(i) == '#'){
+					cc.add(tempcreditchange);
+					tempcreditchange = "";
+				}
+				else{
+					tempcreditchange = tempcreditchange + creditchange.charAt(i);
+				}
 			}
-			else{
-				tempcreditchange = tempcreditchange + creditchange.charAt(i);
-			}
+			return cc;
 		}
-		return cc;
+		else{
+			return null;
+		}
 	}
 }

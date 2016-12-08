@@ -10,5 +10,5 @@ public interface HotelPromotionDataService {
 	public boolean insert(HotelPromotionPO hp);
 	public boolean update(HotelPromotionPO hp);
 	public void delete(String name);
-	public List<HotelPromotionPO> find(String name) throws SQLException;
+	public List<HotelPromotionPO> findByHotelname(String hotelname) throws SQLException;
 }

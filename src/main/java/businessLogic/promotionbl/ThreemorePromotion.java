@@ -7,7 +7,7 @@ package businessLogic.promotionbl;
  */
 public class ThreemorePromotion implements HotelPromotionType{
 
-	public double calculateDiscount() {
+	public double calculateDiscount(String userId, String hotelId, String entryTimeId) {
 		double discount = 0.8;
 		if(isThreemore()){
 			return discount;

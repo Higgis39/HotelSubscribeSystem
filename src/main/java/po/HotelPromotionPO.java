@@ -8,8 +8,8 @@ package po;
  */
 public class HotelPromotionPO {
 
+	private String hotelname;
 	private String name;
-	private String introduction;
 	private boolean isbirthday;
 	private int numberofroom;
 	private boolean ispartner;
@@ -17,20 +17,31 @@ public class HotelPromotionPO {
 	private String endtime;
 	private double discount;
 	
-	public HotelPromotionPO(String name, String introduction, boolean isbirthday, int numberofroom, boolean ispartner,
-			String begintime, String endtime) {
+	public HotelPromotionPO(String hotelname, String name, String introduction, boolean isbirthday, int numberofroom, boolean ispartner,
+			String begintime, String endtime, double discount) {
 		super();
+		this.hotelname = hotelname;
 		this.name = name;
-		this.introduction = introduction;
 		this.isbirthday = isbirthday;
 		this.numberofroom = numberofroom;
 		this.ispartner = ispartner;
 		this.begintime = begintime;
 		this.endtime = endtime;
+		this.discount = discount;
 	}
 
 	public HotelPromotionPO(){
 		
+	}
+
+	
+	
+	public String getHotelname() {
+		return hotelname;
+	}
+
+	public void setHotelname(String hotelname) {
+		this.hotelname = hotelname;
 	}
 
 	public String getName() {
@@ -39,14 +50,6 @@ public class HotelPromotionPO {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getIntroduction() {
-		return introduction;
-	}
-
-	public void setIntroduction(String introduction) {
-		this.introduction = introduction;
 	}
 
 	public boolean isIsbirthday() {

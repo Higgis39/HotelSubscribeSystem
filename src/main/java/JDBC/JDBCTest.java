@@ -1,16 +1,26 @@
 package JDBC;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import data.HotelData;
+import data.UserData;
 import po.HotelPO;
+import po.UserPO;
 
 
 public class JDBCTest {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 //		UserData ud = new UserData();
-		
+//		
+//		UserPO u = new UserPO();
+//		u = ud.find("11111");
+//		
+//		System.out.println(u.getcompany());
+//		
 //		UserPO u = new UserPO();
 //		u.setName("小wang");
 //		u.setPassword("12345");
@@ -26,7 +36,7 @@ public class JDBCTest {
 //		
 //		ud.updateUser(u);
 		
-		HotelData hd = new HotelData();
+//		HotelData hd = new HotelData();
 		
 //		HotelPO h = new HotelPO();
 //		h.setHotelid("1");
@@ -43,11 +53,20 @@ public class JDBCTest {
 //		worker.add("asd");
 //		worker.add("ad");
 //		h.setWorker(worker);
+		HotelData hd = new HotelData();
 		
-		HotelPO po = hd.findByName("1");
-		ArrayList<String> result = po.getWorker();
-		for(int i=0; i<result.size(); i++){
-			System.out.print(result.get(i)+" ");
+		ArrayList<Map<String, Object>> params = new ArrayList<Map<String, Object>>();
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("name", "roomID");
+		param.put("rela", "=");
+		param.put("value", "2");
+		params.add(param);
+		
+		ArrayList<HotelPO> po = hd.find(params);
+		
+		for(int i=0; i<po.size(); i++){
+			System.out.print(po.get(i).toString()+" ");
 		}
+		
 	}
 }

@@ -13,10 +13,9 @@ public class HotelPO {
 	String facilities;
 	int star;
 	double grade;
-	ArrayList<String> worker = new ArrayList<String>();
 	
 	//构造函数
-	public HotelPO(String hotelid,String password,String hotelname,String phonenumber,String address,String businessarea,String introduction,String facilities,int star,double grade,ArrayList<String> worker){
+	public HotelPO(String hotelid,String password,String hotelname,String phonenumber,String address,String businessarea,String introduction,String facilities,int star,double grade){
 		this.hotelid = hotelid;
 		this.password = password;
 		this.hotelname = hotelname;
@@ -27,7 +26,6 @@ public class HotelPO {
 		this.facilities = facilities;
 		this.star = star;
 		this.grade = grade;
-		this.worker = worker;
 	}
 	
 	public HotelPO(){
@@ -84,11 +82,6 @@ public class HotelPO {
 		return grade;
 	}
 	
-	//得到酒店工作人员
-	public ArrayList<String> getWorker(){
-		return worker;
-	}
-	
 	public void setHotelid(String hotelid) {
 		this.hotelid = hotelid;
 	}
@@ -129,7 +122,15 @@ public class HotelPO {
 		this.grade = grade;
 	}
 
-	public void setWorker(ArrayList<String> worker) {
-		this.worker = worker;
+	@Override
+	public String toString() {
+		return "HotelPO [hotelid=" + hotelid + ", password=" + password + ", hotelname=" + hotelname + ", phonenumber="
+				+ phonenumber + ", address=" + address + ", businessarea=" + businessarea + ", introduction="
+				+ introduction + ", facilities=" + facilities + ", star=" + star + ", grade=" + grade + "]";
 	}
+
+
+	
+	
+	
 }

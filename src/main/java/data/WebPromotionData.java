@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import JDBC.DBUtil;
 import dataService.WebPromotionDataService;
@@ -28,12 +27,11 @@ public class WebPromotionData implements WebPromotionDataService{
 	public boolean insert(WebPromotionPO wp){
 		Connection conn = DBUtil.getConnection();
 		String sql = "insert into webpromotion "
-				+ "( name, introduction, begintime, endtime, specificbusinessarea, discount ) "
+				+ "( name, begintime, endtime, specificbusinessarea, discount ) "
 				+ " values(?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, wp.getName());
-			ptmt.setString(2, wp.getIntroduction());
 			ptmt.setString(3, wp.getBegintime());
 			ptmt.setString(4, wp.getEndtime());
 			ptmt.setString(5, wp.getSpecificbusinessarea());
@@ -57,16 +55,15 @@ public class WebPromotionData implements WebPromotionDataService{
 		Connection conn = DBUtil.getConnection();
 		//是否可以根据名字来改名字？
 		String sql = "update webpromotion "
-				+ " name=?, introduction=?, begintime=?, endtime=?, specificbusinessarea=? discount=? "
+				+ " name=?, begintime=?, endtime=?, specificbusinessarea=? discount=? "
 				+ " where name=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, wp.getName());
-			ptmt.setString(2, wp.getIntroduction());
-			ptmt.setString(3, wp.getBegintime());
-			ptmt.setString(4, wp.getEndtime());
-			ptmt.setString(5, wp.getSpecificbusinessarea());
-			ptmt.setDouble(6, wp.getDiscount());
+			ptmt.setString(2, wp.getBegintime());
+			ptmt.setString(3, wp.getEndtime());
+			ptmt.setString(4, wp.getSpecificbusinessarea());
+			ptmt.setDouble(5, wp.getDiscount());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -96,14 +93,14 @@ public class WebPromotionData implements WebPromotionDataService{
 	}
 	
 	/**
-	 * 增加hotelPromotion对象
+	 * hotelPromotion对象
 	 * 
 	 * @param name String类型，不同的酒店销售策略名称
 	 * @see
 	 * @throws SQLException 数据库连接失败异常
 	 */
-	public List<WebPromotionPO> find(String name) throws SQLException{
-		List<WebPromotionPO> result = new ArrayList<>();
+	public ArrayList<WebPromotionPO> find(String name) throws SQLException{
+		ArrayList<WebPromotionPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
@@ -119,7 +116,33 @@ public class WebPromotionData implements WebPromotionDataService{
 		while(rs.next()){
 			wp = new WebPromotionPO();
 			wp.setName(rs.getString("name"));
-			wp.setIntroduction(rs.getString("introduction"));
+			wp.setBegintime(rs.getString("begintime"));
+			wp.setEndtime(rs.getString("endtime"));
+			wp.setSpecificbusinessarea(rs.getString("specificbusinessarea"));
+			wp.setDiscount(rs.getDouble("discount"));
+			
+			result.add(wp);
+		}
+		return result;
+	}
+	
+	public ArrayList<WebPromotionPO> findByDiscount(double discount) throws SQLException{
+		ArrayList<WebPromotionPO> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append(" select * from webpromotion");
+		sb.append(" where discount=?");
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
+		ptmt.setDouble(1, discount);
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		WebPromotionPO wp = null;
+		while(rs.next()){
+			wp = new WebPromotionPO();
+			wp.setName(rs.getString("name"));
 			wp.setBegintime(rs.getString("begintime"));
 			wp.setEndtime(rs.getString("endtime"));
 			wp.setSpecificbusinessarea(rs.getString("specificbusinessarea"));
