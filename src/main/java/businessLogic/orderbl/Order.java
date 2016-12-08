@@ -1,7 +1,9 @@
 package businessLogic.orderbl;
 
+import vo.HotelPromotionVO;
 import vo.OrderVO;
 import vo.PromotionVO;
+import vo.WebPromotionVO;
 
 import java.util.*;
 
@@ -35,7 +37,8 @@ public class Order{
 	public int getTotal(){
 		PromotionInfoForOrder promotionService=new PromotionInfoForOrder_stub();
 		HotelInfoForOrder hotelService=new HotelInfoForOrder_stub();
-		PromotionVO promotionList=promotionService.getAppropriatePromotion(vo); 
+		WebPromotionVO WebPromotion=promotionService.getAppropriateWebPromotion(vo);
+		HotelPromotionVO HotelPromotion=promotionService.getApproriateHotelPromotion(vo);
 		return 0;
 	}
 	
