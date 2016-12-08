@@ -1,8 +1,9 @@
 package businessLogic.hotelbl;
 
+import businessLogicService.hotelBLService.ViewService;
 import vo.HotelVO;
 
-public class ViewController {
+public class ViewController implements ViewService{
 	
 	Hotel hotel = new Hotel();
 	

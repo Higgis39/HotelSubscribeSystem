@@ -2,7 +2,9 @@ package businessLogic.hotelbl;
 
 import java.util.ArrayList;
 
-public class MaintainController {
+import businessLogicService.hotelBLService.MaintainService;
+
+public class MaintainController implements MaintainService{
 	
 	Hotel hotel = new Hotel();
 	
@@ -12,7 +14,7 @@ public class MaintainController {
 	 * @param phoneNumber String
 	 * @param Introduction String
 	 * @param Facilities String
-	 * @param Star int
+	 * @param Star Integer
 	 * @param Grade double
 	 * @param Worker ArrayList<String>
 	 * @return 返回修改后的酒店详细信息

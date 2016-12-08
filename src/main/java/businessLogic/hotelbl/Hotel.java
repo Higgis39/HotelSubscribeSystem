@@ -3,6 +3,7 @@ package businessLogic.hotelbl;
 
 import java.util.ArrayList;
 
+import businessLogic.orderbl.OrderToolForHotel;
 import data.HotelData;
 import data.OrderData;
 import po.OrderPO;
@@ -13,16 +14,22 @@ import po.HotelPO;
 
 public class Hotel{
 	HotelDataService hoteldataservice = new HotelData();
-	OrderInfoForHotel orderdataservice = new OrderInfoForHotel_stub();
+	OrderInfoForHotel orderdataservice = new OrderToolForHotel();
 	/**
 	 * 搜索酒店
 	 * @param Address String
 	 * @param BusinessArea String
+	 * @param RoomType String
+	 * @param minPrice double
+	 * @param maxPrice double
+	 * @param checkinTime String
+	 * @param checkoutTime String
 	 * @param Star String
-	 * @param Grade String
+	 * @param minGrade double
+	 * @param maxGrade double
 	 * @return 返回符合搜索条件的酒店列表
 	 */
-	public ArrayList<HotelPO> Search(String Address,String BusinessArea,int Star,double Grade){
+	public ArrayList<HotelPO> Search(String Address, String BusinessArea, String RoomType, double minPrice, double maxPrice, String checkinTime, String checkoutTime, int Star, double minGrade, double maxGrade){
 		ArrayList<HotelPO> HotelList1 = new ArrayList<HotelPO>();
 		HotelList1 = hoteldataservice.findByAddress(Address);
 		
@@ -66,23 +73,23 @@ public class Hotel{
 	
 	/**
 	 * 录入可用客房
-	 * @param roomNumber Integer
+	 * @param roomID String
 	 * @param hotelname String
-	 * @return roomList ArrayList<Integer>
+	 * @return roomList ArrayList<String>
 	 */
-	public ArrayList<Integer> UpdateRoom(int roomNumber,String hotelName){
-		boolean roomstate = RoomDataService.findstate(roomNumber);
-		ArrayList<Integer> spareRoom = new ArrayList<Integer>();
+	public boolean UpdateRoom(String roomID,String hotelName){
+		boolean roomstate = RoomDataService.findstate(roomID);
+		ArrayList<String> spareRoom = new ArrayList<String>();
 		spareRoom = RoomDataService.findList(hotelName);
 		
 		if(roomstate){
-			spareRoom.add(roomNumber);
+			spareRoom.add(roomID);
 		}
 		else{
 			System.out.println("The room is not spare!");
 		}
 		
-		return spareRoom;
+		return true;
 	}
 	
 	/**
@@ -92,7 +99,10 @@ public class Hotel{
 	 * @return UpdateState boolean
 	 */
 	public boolean CheckOut(String orderID, String checkoutTime){
+		
+		orderdataservice.Update(orderID,checkoutTime);
 		boolean IsSuccess = orderdataservice.Update(orderID,checkoutTime);
+		
 		return IsSuccess;
 	}
 }

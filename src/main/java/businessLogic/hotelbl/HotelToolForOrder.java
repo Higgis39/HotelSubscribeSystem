@@ -1,5 +1,7 @@
 package businessLogic.hotelbl;
 
+import businessLogic.orderbl.HotelInfoForOrder;
+
 public class HotelToolForOrder implements HotelInfoForOrder{
 	@Override
 	public int CheckEnoughRoom(String HotelID, String RoomType) {

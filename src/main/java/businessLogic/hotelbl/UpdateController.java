@@ -1,6 +1,8 @@
 package businessLogic.hotelbl;
 
-public class UpdateController {
+import businessLogicService.hotelBLService.UpdateService;
+
+public class UpdateController implements UpdateService{
 	
 	Hotel hotel = new Hotel();
 	

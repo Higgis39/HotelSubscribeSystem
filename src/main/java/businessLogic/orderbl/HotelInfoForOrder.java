@@ -1,4 +1,4 @@
-package businessLogic.hotelbl;
+package businessLogic.orderbl;
 
 public interface HotelInfoForOrder {
 	public int CheckEnoughRoom(String HotelID,String RoomType);

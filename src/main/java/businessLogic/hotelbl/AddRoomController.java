@@ -2,17 +2,18 @@ package businessLogic.hotelbl;
 
 import java.util.ArrayList;
 
-public class AddRoomController {
-	
+import businessLogicService.hotelBLService.AddRoomService;
+
+public class AddRoomController implements AddRoomService{
 	Hotel hotel = new Hotel();
 	
 	/**
 	 * 录入可用客房
-	 * @param roomNumber int
+	 * @param roomID String
 	 * @param hotelname String
-	 * @return roomList ArrayList<Integer>
+	 * @return roomList ArrayList<String>
 	 */
-	public ArrayList<Integer> AddRoom(int roomNumber,String hotelName){
-		return hotel.UpdateRoom(roomNumber, hotelName);
+	public boolean AddRoom(String roomID,String hotelName){
+		return hotel.UpdateRoom(roomID, hotelName);
 	}
 }
