@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import JDBC.DBUtil;
+import dataService.HotelDataService;
 import po.HotelPO;
 
 /**
@@ -15,7 +16,7 @@ import po.HotelPO;
  * @author hly
  * @see
  */
-public class HotelData{
+public class HotelData implements HotelDataService{
 
 	/**
 	 * 增加hotel对象

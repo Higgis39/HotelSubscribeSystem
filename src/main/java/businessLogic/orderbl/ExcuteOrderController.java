@@ -1,5 +1,6 @@
 package businessLogic.orderbl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import businessLogicService.orderBLService.ExcuteOrderService;
@@ -14,7 +15,7 @@ public class ExcuteOrderController implements ExcuteOrderService{
 	}
 
 	@Override
-	public List<OrderVO> FindOrderByHotelID(String ID) {
+	public List<OrderVO> FindOrderByHotelID(String ID) throws SQLException {
 		return new Order().getOrderByHotelID(ID);
 	}
 

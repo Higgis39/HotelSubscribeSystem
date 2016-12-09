@@ -2,9 +2,9 @@ package businessLogic.orderbl;
 
 import vo.HotelPromotionVO;
 import vo.OrderVO;
-import vo.PromotionVO;
 import vo.WebPromotionVO;
 
+import java.sql.SQLException;
 import java.util.*;
 
 import businessLogic.orderbl.stub.HotelInfoForOrder;
@@ -14,7 +14,6 @@ import businessLogic.orderbl.stub.PromotionInfoForOrder_stub;
 import data.OrderData;
 import dataService.OrderDataService;
 import po.OrderPO;
-import po.PromotionPO;
 import po.UserPO;
 
 public class Order{
@@ -118,8 +117,9 @@ public class Order{
 	 * 获得酒店的所有订单
 	 * @param ID
 	 * @return 酒店的所有订单
+	 * @throws SQLException 
 	 */
-	public List<OrderVO> getOrderByHotelID(String hotelID){
+	public List<OrderVO> getOrderByHotelID(String hotelID) throws SQLException{
 		List<OrderPO> orderListPO=service.findByHotelID(hotelID);
 		return this.turnPOtoVO(orderListPO);
 	}
@@ -128,8 +128,9 @@ public class Order{
 	 * 获得用户的所有订单
 	 * @param UserID
 	 * @return
+	 * @throws SQLException 
 	 */
-	public List<OrderVO> getOrderByUserID(String UserID){
+	public List<OrderVO> getOrderByUserID(String UserID) throws SQLException{
 		List<OrderPO> orderListPO=service.findByClient(UserID);
 		return this.turnPOtoVO(orderListPO);
 	}
@@ -138,8 +139,9 @@ public class Order{
 	 * 获得某一天的所有订单
 	 * @param Date
 	 * @return
+	 * @throws SQLException 
 	 */
-	public List<OrderVO> getOrderByDate(String Date){
+	public List<OrderVO> getOrderByDate(String Date) throws SQLException{
 		List<OrderPO> orderListPO=service.findByDate(Date);
 		return this.turnPOtoVO(orderListPO);
 	}
