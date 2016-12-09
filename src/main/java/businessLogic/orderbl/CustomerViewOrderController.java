@@ -14,4 +14,14 @@ public class CustomerViewOrderController implements CustomerViewOrderService{
 	public OrderVO ShowOrderMessage(OrderVO vo) {
 		return new Order(vo).gerOrderByOrderID();
 	}
+
+	@Override
+	public List<OrderVO> getAllUserOrders(String userID) throws SQLException {
+		return new Order().getOrderByUserID(userID);
+	}
+
+	@Override
+	public List<OrderVO> getSpecificOrders(String userID, String Status) throws SQLException {
+		return new Order().filterOrderByStatus(new Order().getOrderByUserID(userID), Status);
+	}
 }

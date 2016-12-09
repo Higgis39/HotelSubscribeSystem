@@ -12,16 +12,16 @@ public class CreateOrderController implements CreateOrderService{
 	public boolean CheckEnoughCredit(String ID) {
 		return CreditManager.getInstance().checkCredit(ID);
 	}
-
-	/**
-	 * 查询某种房间类型的数量
-	 * @param hotelID
-	 * @param roomType
-	 * @return 返回该房间类型的数量
-	 */
-	public int CheckRoom(String hotelID,String roomType){
-		return new HotelInfoForOrder_stub().CheckEnoughRoom(hotelID, roomType);
-	}
+//
+//	/**
+//	 * 查询某种房间类型的数量
+//	 * @param hotelID
+//	 * @param roomType
+//	 * @return 返回该房间类型的数量
+//	 */
+//	public int CheckRoom(String hotelID,String roomType){
+//		return new HotelInfoForOrder_stub().CheckEnoughRoom(hotelID, roomType);
+//	}
 	 
 	/**
 	 * 计算订单总价

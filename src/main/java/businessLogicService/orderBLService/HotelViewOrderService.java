@@ -7,7 +7,9 @@ import po.OrderPO;
 import vo.OrderVO;
 
 public interface HotelViewOrderService {
-    public List<OrderVO> FindSpecificOrders(String OrderID)throws SQLException;
+	public List<OrderVO> getAllHotelOrders(String HotelID)throws SQLException;
+	
+    public List<OrderVO> GetSpecificOrders(String HotelID,String Status)throws SQLException;
 	
 	public OrderVO ShowOrderMessage(OrderVO vo);
 }

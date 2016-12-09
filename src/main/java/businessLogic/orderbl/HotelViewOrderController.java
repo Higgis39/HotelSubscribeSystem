@@ -12,13 +12,18 @@ import vo.OrderVO;
 public class HotelViewOrderController implements HotelViewOrderService{
 
 	@Override
-	public List<OrderVO> FindSpecificOrders(String HotelID) throws SQLException {
+	public OrderVO ShowOrderMessage(OrderVO vo) {
+		return new Order(vo).gerOrderByOrderID();
+	}
+
+	@Override
+	public List<OrderVO> getAllHotelOrders(String HotelID) throws SQLException {
 		return new Order().getOrderByHotelID(HotelID);
 	}
 
 	@Override
-	public OrderVO ShowOrderMessage(OrderVO vo) {
-		return new Order(vo).gerOrderByOrderID();
+	public List<OrderVO> GetSpecificOrders(String HotelID, String Status) throws SQLException {
+		return new Order().filterOrderByStatus(new Order().getOrderByHotelID(HotelID), Status);
 	}
 
 }
