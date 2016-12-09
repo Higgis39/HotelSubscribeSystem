@@ -7,7 +7,7 @@ package businessLogic.promotionbl;
  */
 public class HotelSpecificTimePromotion implements HotelPromotionType{
 
-	public double calculateDiscount() {
+	public double calculateDiscount(String userId, String hotelId, String entryTime) {
 		String beginTime = null;
 		String endTime = null;
 		double discount = 0.8;

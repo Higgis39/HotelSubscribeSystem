@@ -3,22 +3,26 @@ package vo;
 import java.util.Date;
 
 public class WorkerVO {
-
+	private String hotelname;
 	private String name;
 	private int age;
 	private String sex;
 	private Date beginTime;
-	
-	public WorkerVO() {
-		// TODO Auto-generated constructor stub
-	}
 
-	public WorkerVO(String name, int age, String sex, Date beginTime) {
+	public WorkerVO(String hotelname,String name, int age, String sex, Date beginTime) {
 		super();
 		this.name = name;
 		this.age = age;
 		this.sex = sex;
 		this.beginTime = beginTime;
+	}
+	
+	public String getHotelname(){
+		return hotelname;
+	}
+	
+	public void setHotelname(String hotelname){
+		this.hotelname = hotelname;
 	}
 
 	public String getName() {

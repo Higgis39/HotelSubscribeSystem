@@ -7,7 +7,7 @@ package businessLogic.promotionbl;
  */
 public class PartnerPromotion implements HotelPromotionType{
 
-	public double calculateDiscount() {
+	public double calculateDiscount(String userId, String hotelId, String entryTime) {
 		double discount = 0.8;
 		if(isPartner()){
 			return discount;

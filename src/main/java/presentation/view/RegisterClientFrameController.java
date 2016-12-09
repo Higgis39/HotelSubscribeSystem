@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import presentation.controller.ViewController;
 import vo.IdVO;
+import vo.UserVO;
 
 /**
  * 
@@ -63,11 +64,11 @@ public class RegisterClientFrameController {
 		
 		if(!username.equals("")&&!password1.equals("")&&!password2.equals("")){
 			RegisterClientBLService registerclient = new RegisterClientController();
-			String result = registerclient.RegisterClient(username, password1, password2);
-			if(result.equals("The two passwords is different.")){
+			if(!password1.equals(password2)){
 				password2word.setText("两个密码不同");
 			}else{
 				//跳转到注册成功界面
+				String result = registerclient.RegisterClient(new UserVO(username,null,password1,null,null,0,null,0,null,null));
 				IdVO.setid(result);
 				viewcontrol.openSuccessRegisterFrame();
 				registerclientframe.getPrimaryStage().close();

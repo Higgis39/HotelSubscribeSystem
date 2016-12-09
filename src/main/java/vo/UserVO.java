@@ -6,23 +6,21 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class UserVO {
-	private final StringProperty name;
-	private final StringProperty id;
-	private final StringProperty usertype;
-	private final StringProperty phonenumber;
-	private final IntegerProperty creditvalue;
-	private final StringProperty VIPtype;
-	private final IntegerProperty VIPgrade;
-	private final StringProperty birthday;
-	private final StringProperty company;
-
-	public UserVO(){
-		this(null,null,null,null,0,null,0,null,null);
-	}
+	private StringProperty name;
+	private StringProperty id;
+	private StringProperty password;
+	private StringProperty usertype;
+	private StringProperty phonenumber;
+	private IntegerProperty creditvalue;
+	private StringProperty VIPtype;
+	private IntegerProperty VIPgrade;
+	private StringProperty birthday;
+	private StringProperty company;
 	
-	public UserVO(String name,String id,String usertype,String phonenumber,int creditvalue,String VIPtype,int VIPgrade,String birthday,String company){
+	public UserVO(String name,String id,String password,String usertype,String phonenumber,int creditvalue,String VIPtype,int VIPgrade,String birthday,String company){
 		this.name = new SimpleStringProperty(name);
 		this.id = new SimpleStringProperty(id);
+		this.password = new SimpleStringProperty(password);
 		this.usertype = new SimpleStringProperty(usertype);
 		this.phonenumber = new SimpleStringProperty(phonenumber);
 		this.creditvalue = new SimpleIntegerProperty(creditvalue);
@@ -46,6 +44,14 @@ public class UserVO {
 	
 	public StringProperty getidProperty(){
 		return id;
+	}
+	
+	public String getpassword(){
+		return password.get();
+	}
+	
+	public StringProperty getpasswordProperty(){
+		return password;
 	}
 	
 	public String getusertype(){

@@ -1,13 +1,19 @@
 package presentation.view;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 
+import businessLogic.userbl.MessageController;
+import businessLogicService.userBLService.MessageBLService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import presentation.controller.ViewController;
 import vo.HotelPromotionVO;
+import vo.IdVO;
+import vo.UserVO;
 
 /**
  * 
@@ -29,7 +35,9 @@ public class HotelPromotionFrameController {
 	@FXML
 	private TableColumn<HotelPromotionVO,Number> roomnum;
 	@FXML
-	private TableColumn<HotelPromotionVO,LocalDate> date;
+	private TableColumn<HotelPromotionVO,String> begindate;
+	@FXML
+	private TableColumn<HotelPromotionVO,String> enddate;
 	@FXML
 	private TableColumn<HotelPromotionVO,String> companyVIP;
 	@FXML
@@ -92,7 +100,23 @@ public class HotelPromotionFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
+		MessageBLService service = new MessageController();
+		UserVO uservo = service.GetMessage(IdVO.getid());
+		id.setId(uservo.getid());
+		hotelname.setText(uservo.getname());
 		
+		ArrayList<HotelPromotionVO> promotion = new ArrayList<HotelPromotionVO>();
+		promotion.add(new HotelPromotionVO("","生日优惠",true,0,false,"","",0.8));
+		promotion.add(new HotelPromotionVO("","三间及以上优惠",false,3,false,"10-01","10-07",0.90));
+		ObservableList<HotelPromotionVO> data = FXCollections.observableArrayList(promotion);
+		tableview.setItems(data);
+		promotiontype.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
+		birthday.setCellValueFactory(cellData->cellData.getValue().getisbirthdayProperty());
+		roomnum.setCellValueFactory(cellData->cellData.getValue().getNumberofroomProperty());
+		begindate.setCellValueFactory(cellData->cellData.getValue().getBegintimeProperty());
+		enddate.setCellValueFactory(cellData->cellData.getValue().getEndtimeProperty());
+		companyVIP.setCellValueFactory(cellData->cellData.getValue().getisIspartnerProperty());
+		discount.setCellValueFactory(cellData->cellData.getValue().getDiscountProperty());
 	}
 
 	public void setHotelPromotionFrame(HotelPromotionFrame hotelpromotionframe) {

@@ -1,19 +1,13 @@
 package businessLogic.userbl;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
-
-import data.HotelData;
 import data.UserData;
-import dataService.HotelDataService;
 import dataService.UserDataService;
-import po.HotelPO;
 import po.UserPO;
-import po.WorkerPO;
+import vo.HotelVO;
 import vo.UserVO;
+import vo.WorkerVO;
 
 /**
  * 
@@ -22,8 +16,7 @@ import vo.UserVO;
  */
 public class User{
 	UserDataService userdataservice = new UserData();
-	HotelDataService hoteldataservice = new HotelData();
-	CreditValueChange creditvaluechange = new CreditValueChange();
+	CreditGrade creditvaluechange = new CreditGrade();
 	
 	/**
 	 * 登录
@@ -42,20 +35,14 @@ public class User{
 	
 	/**
 	 * 注册用户
-	 * @param name String
-	 * @param password1 String
-	 * @param password2 String
+	 * @param uservo UserVO
 	 * @return 创建成功则返回分配的id
 	 * @throws SQLException 
 	 */
-	public String RegisterClient(String name,String password1,String password2) throws SQLException{
-		if(!password1.equals(password2)){
-			return "The two passwords is different.";
-		}else{
-			String newid = Integer.toString(Integer.valueOf(userdataservice.distributeid())+1);
-			userdataservice.insert(new UserPO(name,newid,password1,"普通客户",0,null,0,null,null,null,null));
-			return newid;
-		}
+	public String RegisterClient(UserVO uservo) throws SQLException{
+		String newid = Integer.toString(Integer.valueOf(userdataservice.distributeid())+1);
+		userdataservice.insert(new UserPO(uservo.getname(),newid,uservo.getpassword(),"普通客户",0,null,0,null,null,null,null));
+		return newid;
 	}
 	
 	/**
@@ -65,20 +52,21 @@ public class User{
 	 */
 	public UserVO GetMessage(String id){
 		UserPO userpo = userdataservice.find(id);
-		return new UserVO(userpo.getname(),userpo.getid(),userpo.getusertype(),userpo.getphonenumber(),userpo.getcreditvalue(),userpo.getVIPtype(),userpo.getVIPgrade(),userpo.getbirthday(),userpo.getcompany());
+		return new UserVO(userpo.getname(),userpo.getid(),userpo.getpassword(),userpo.getusertype(),userpo.getphonenumber(),userpo.getcreditvalue(),userpo.getVIPtype(),userpo.getVIPgrade(),userpo.getbirthday(),userpo.getcompany());
 	}
 	
 	/**
 	 * 修改个人信息
-	 * @param id String
-	 * @param newname String
-	 * @param newphonenumber String
-	 * @return 成功返回true,失败返回false
+	 * @param id
+	 * @param name
+	 * @param phonenumber
+	 * @return
 	 */
-	public boolean ChangeMessage(String id,String newname,String newphonenumber){
+	public boolean ChangeMessage(String id,String name,String phonenumber){
 		UserPO userpo = userdataservice.find(id);
-		userdataservice.update(new UserPO(newname,userpo.getid(),userpo.getpassword(),userpo.getusertype(),userpo.getcreditvalue(),
-				userpo.getVIPtype(),userpo.getVIPgrade(),newphonenumber,userpo.getbirthday(),userpo.getcompany(),userpo.getcreditchange()));
+		userpo.setName(name);
+		userpo.setPhonenumber(phonenumber);
+		userdataservice.update(userpo);
 		return true;
 	}
 	
@@ -91,12 +79,11 @@ public class User{
 	public boolean ChangeBirOrComFrame(String id,String birorcom){
 		UserPO userpo = userdataservice.find(id);
 		if(userpo.getbirthday()==null){
-			userdataservice.update(new UserPO(userpo.getname(),userpo.getid(),userpo.getpassword(),userpo.getusertype(),userpo.getcreditvalue(),
-					userpo.getVIPtype(),userpo.getVIPgrade(),userpo.getphonenumber(),userpo.getbirthday(),birorcom,userpo.getcreditchange()));
+			userpo.setCompany(birorcom);
 		}else{
-			userdataservice.update(new UserPO(userpo.getname(),userpo.getid(),userpo.getpassword(),userpo.getusertype(),userpo.getcreditvalue(),
-					userpo.getVIPtype(),userpo.getVIPgrade(),userpo.getphonenumber(),birorcom,userpo.getcompany(),userpo.getcreditchange()));
+			userpo.setBirthday(birorcom);
 		}
+		userdataservice.update(userpo);
 		return true;
 	}
 	
@@ -130,9 +117,10 @@ public class User{
 			ArrayList<String> creditchange = userpo.getcreditchange();
 			String change = "客户充值"+Integer.toString(creditRecharge);
 			creditchange.add(change);
-			
-			userdataservice.update(new UserPO(userpo.getname(),userpo.getid(),userpo.getpassword(),userpo.getusertype(),creditvalue,
-				   userpo.getVIPtype(),VIPgrade,userpo.getphonenumber(),userpo.getbirthday(),userpo.getcompany(),creditchange));
+			userpo.setCreditvalue(creditvalue);
+			userpo.setVIPgrade(VIPgrade);
+			userpo.setCreditchange(creditchange);
+			userdataservice.update(userpo);
 			return true;
 		}
 	}
@@ -146,13 +134,13 @@ public class User{
 	 */
 	public boolean RegisterVIP(String id,String VIPtype,String CompanyOrBirthday){
 		UserPO userpo = userdataservice.find(id);
+		userpo.setVIPtype(VIPtype);
 		if(VIPtype.equals("普通会员")){
-			userdataservice.update(new UserPO(userpo.getname(),userpo.getid(),userpo.getpassword(),userpo.getusertype(),userpo.getcreditvalue(),
-					   VIPtype,1,userpo.getphonenumber(),CompanyOrBirthday,null,userpo.getcreditchange()));
+			userpo.setBirthday(CompanyOrBirthday);
 		}else{
-			userdataservice.update(new UserPO(userpo.getname(),userpo.getid(),userpo.getpassword(),userpo.getusertype(),userpo.getcreditvalue(),
-					   VIPtype,1,userpo.getphonenumber(),null,CompanyOrBirthday,userpo.getcreditchange()));
+			userpo.setCompany(CompanyOrBirthday);
 		}
+		userdataservice.update(userpo);
 		return true;
 	}
 	
@@ -164,86 +152,66 @@ public class User{
 	 */
 	public UserVO ViewClientMessage(String id){
 		UserPO userpo = userdataservice.find(id);
-		return new UserVO(userpo.getname(),userpo.getid(),userpo.getusertype(),userpo.getphonenumber(),userpo.getcreditvalue(),userpo.getVIPtype(),userpo.getVIPgrade(),userpo.getbirthday(),userpo.getcompany());
+		return new UserVO(userpo.getname(),userpo.getid(),userpo.getpassword(),userpo.getusertype(),userpo.getphonenumber(),userpo.getcreditvalue(),userpo.getVIPtype(),userpo.getVIPgrade(),userpo.getbirthday(),userpo.getcompany());
 		
 	}
 	
 	/**
 	 * 管理人员修改其它用户信息
-	 * @param IsManager boolean
-	 * @param id String
-	 * @param newname String
-	 * @param newphonenumber String
-	 * @return 成功返回true,失败返回false
+	 * @param IsManager
+	 * @param id
+	 * @param newname
+	 * @param newphonenumber
+	 * @param creditvalue
+	 * @param birthday
+	 * @param company
+	 * @return
 	 */
-	public boolean ChangeClientMessaage(boolean IsManager,String id,String newname,String newphonenumber,int creditvalue,String birthday,String company){
-		if(IsManager==false){
-			return false;
-		}else{
-			UserPO userpo = userdataservice.find(id);
-			userdataservice.update(new UserPO(newname,userpo.getid(),userpo.getpassword(),userpo.getusertype(),creditvalue,
-				   userpo.getVIPtype(),userpo.getVIPgrade(),newphonenumber,birthday,company,userpo.getcreditchange()));
-			return true;
-		}
-	}
-	
-	public String AddMarketer(boolean IsManager,String name,String password1,String password2) throws NumberFormatException, SQLException{
-		if(!password1.equals(password2)){
-			return "The two passwords are different.";
-		}else{
-			String newid = Integer.toString(Integer.valueOf(userdataservice.distributeid())+1);
-			userdataservice.insert(new UserPO(name,newid,password1,"网站营销人员",0,null,0,null,null,null,null));
-			return newid;
-		}
+	public boolean ChangeClientMessaage(String id,String newname,String newphonenumber,int creditvalue,String birthday,String company){
+		UserPO userpo = userdataservice.find(id);
+		userpo.setName(newname);
+		userpo.setPhonenumber(newphonenumber);
+		userpo.setCreditvalue(creditvalue);
+		userpo.setBirthday(birthday);
+		userpo.setCompany(company);
+		userdataservice.update(userpo);
+		return true;
 	}
 	
 	/**
-	 * 管理人员添加酒店
-	 * @param IsManager boolean
-	 * @param hotelname String
-	 * @param phonenumber String
-	 * @param address String
-	 * @param businessarea String
-	 * @param introduction String
-	 * @param facilities String
-	 * @param password1 String
-	 * @param password2 String
-	 * @param star int
-	 * @return 成功返回一个分配到的账号
-	 * @throws SQLException 
+	 * 添加网站营销人员
+	 * @param uservo
+	 * @return
+	 * @throws NumberFormatException
+	 * @throws SQLException
 	 */
-	public String AddHotel(boolean IsManager,String hotelname,String phonenumber,String address,String businessarea,String introduction,String facilities,int star,String password1,String password2) throws SQLException{
-		if(IsManager==false){
-			return null;
-		}else if(!password1.equals(password2)){
-			return "The two passwords are different.";
-		}else{
-			String newid = hoteldataservice.distributeid();
-			ArrayList<String> worker = new ArrayList<String>();
-			hoteldataservice.insert(new HotelPO(newid,password1,hotelname,phonenumber,address,businessarea,introduction,facilities,star,0.0,worker));
-			return newid;
-		}
+	public String AddMarketer(UserVO uservo) throws NumberFormatException, SQLException{
+		String newid = Integer.toString(Integer.valueOf(userdataservice.distributeid())+1);
+		userdataservice.insert(new UserPO(uservo.getname(),newid,uservo.getpassword(),"网站营销人员",0,null,0,null,null,null,null));
+		return newid;
+	}
+	
+	/**
+	 * 添加酒店
+	 * @param hotelvo
+	 * @return
+	 * @throws SQLException
+	 */
+	public String AddHotel(HotelVO hotelvo) throws SQLException{
+		String newid = Integer.toString(Integer.valueOf(userdataservice.distributeid())+1);
+		userdataservice.insert(new UserPO(hotelvo.getName(),newid,hotelvo.getPassword(),"酒店工作人员",0,null,0,null,null,null,null));
+//		添加HotelPO
+		return newid;
+		
 	}
 	
 	/**
 	 * 管理人员添加酒店工作人员
-	 * @param IsManager boolean
-	 * @param workername String
-	 * @param hotelid String
-	 * @return 成功返回true,失败返回false
+	 * @param workervo
+	 * @return
 	 */
-	public boolean AddHotelWorker(boolean IsManager,String workername,String hotelname,int age,String sex,LocalDate begindate){
-		if(IsManager==false){
-			return false;
-		}else{
-			HotelPO hotelpo = hoteldataservice.findByName(hotelname);
-			ArrayList<String> worker = hotelpo.getWorker();
-			worker.add(workername);
-			Date date = Date.from(begindate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-			hoteldataservice.update(new HotelPO(hotelpo.getId(),hotelpo.getPassword(),hotelpo.getName(),hotelpo.getPhonenumber(),
-					hotelpo.getAddress(),hotelpo.getBusinessArea(),hotelpo.getIntroduction(),hotelpo.getFacilities(),hotelpo.getStar(),hotelpo.getGrade(),worker));
-//			hoteldataservice.insert(new WorkerPO(hotelname,workername,age,sex,date));
-			return true;
-		}
+	public boolean AddHotelWorker(WorkerVO workervo){
+		//添加WorkerPO
+		return true;
 	}
 }

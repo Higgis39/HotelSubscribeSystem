@@ -21,18 +21,19 @@
          </font>
       </Label>
       <Hyperlink layoutX="218.0" layoutY="78.0" onAction="#linkAction" text="去制定促销策略" />
-      <TreeTableView fx:id="treetableview" editable="true" layoutX="125.0" layoutY="108.0" prefHeight="340.0" prefWidth="500.0">
-        <columns>
-          <TreeTableColumn fx:id="promotiontype" prefWidth="100.0" text="促销策略类型" />
-          <TreeTableColumn fx:id="promotiontime" prefWidth="100.0" text="促销时间" />
-            <TreeTableColumn fx:id="city" prefWidth="100.0" text="商圈限制" />
-            <TreeTableColumn fx:id="VIPgrade" prefWidth="100.0" text="会员等级" />
-            <TreeTableColumn fx:id="discount" prefWidth="100.0" text="折扣" />
-        </columns>
-      </TreeTableView>
       <Separator layoutX="-1.0" layoutY="56.0" prefHeight="8.0" prefWidth="750.0" />
       <Button layoutX="388.0" layoutY="30.0" mnemonicParsing="false" text="促销策略" textFill="RED" />
       <Button layoutX="324.0" layoutY="30.0" mnemonicParsing="false" onAction="#orderviewAction" text="订单浏览" />
       <Hyperlink layoutX="678.0" layoutY="38.0" onAction="#logoutAction" prefHeight="23.0" prefWidth="64.0" text="退出登录" />
+      <TableView fx:id="tableview" layoutX="54.0" layoutY="150.0" prefHeight="200.0" prefWidth="640.0">
+        <columns>
+          <TableColumn fx:id="promotiontype" prefWidth="140.0" text="促销策略类型" />
+          <TableColumn fx:id="begintime" prefWidth="100.0" text="开始时间" />
+            <TableColumn fx:id="endtime" prefWidth="100.0" text="结束时间" />
+            <TableColumn fx:id="businessarea" prefWidth="100.0" text="商圈限制" />
+            <TableColumn fx:id="VIPgrade" prefWidth="100.0" text="会员等级要求" />
+            <TableColumn fx:id="discount" prefWidth="100.0" text="折扣" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

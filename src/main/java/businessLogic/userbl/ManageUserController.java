@@ -25,17 +25,19 @@ public class ManageUserController implements ManageUserBLService {
 	
 	/**
 	 * 管理人员修改其它用户信息(controller)
-	 * @param IsManager boolean
-	 * @param id String
-	 * @param newname String
-	 * @param newphonenumber String
-	 * @return 成功返回true,失败返回false
+	 * @param id
+	 * @param newname
+	 * @param newphonenumber
+	 * @param creditvalue
+	 * @param birthday
+	 * @param company
+	 * @return
 	 */
-	public boolean ChangeClientMessaage(boolean IsManager,String id,String newname,String newphonenumber,int creditvalue,String birthday,String company){
-		return user.ChangeClientMessaage(IsManager,id,newname,newphonenumber,creditvalue,birthday,company);
+	public boolean ChangeClientMessaage(String id,String newname,String newphonenumber,int creditvalue,String birthday,String company){
+		return user.ChangeClientMessaage(id,newname,newphonenumber,creditvalue,birthday,company);
 	}
 
-	public String AddMarketer(boolean IsManager,String name,String password1,String password2) throws NumberFormatException, SQLException {
-		return user.AddMarketer(IsManager, name, password1, password2);
+	public String AddMarketer(UserVO uservo) throws NumberFormatException, SQLException {
+		return user.AddMarketer(uservo);
 	}
 }

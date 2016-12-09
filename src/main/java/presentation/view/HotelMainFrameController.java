@@ -106,9 +106,9 @@ public class HotelMainFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		roomdata.add(new RoomVO("单人间",10,100));
-		roomdata.add(new RoomVO("双人间",10,180));
-		roomdata.add(new RoomVO("三人间",10,250));
+//		roomdata.add(new RoomVO("单人间",10,100));
+//		roomdata.add(new RoomVO("双人间",10,180));
+//		roomdata.add(new RoomVO("三人间",10,250));
 		tableview.setItems(roomdata);
 		roomtype.setCellValueFactory(cellData->cellData.getValue().roomtypeProperty());
 		roomnum.setCellValueFactory(cellData->cellData.getValue().roomnumProperty());

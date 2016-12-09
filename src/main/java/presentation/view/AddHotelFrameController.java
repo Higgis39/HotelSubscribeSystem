@@ -10,7 +10,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import presentation.controller.ViewController;
+import vo.HotelVO;
 import vo.OtherIdVO;
+import vo.UserVO;
 
 /**
  * 
@@ -83,11 +85,12 @@ public class AddHotelFrameController {
 		String password1 = enterpassword1.getText();
 		String password2 = enterpassword2.getText();
 		AddHotelBLService addhotelblservice = new AddHotelController();
-		String result = addhotelblservice.AddHotel(true, hotelname, phonenumber, address, businessarea, introduction, service, star, password1, password2);
-		if(result.equals("The two passwords are different.")){
+		if(!password1.equals(password2)){
 			samepassword.setText("两次密码不同");
 		}else{
 			samepassword.setText(null);
+			HotelVO hotelvo = new HotelVO(null,password1,hotelname,phonenumber,address,businessarea,introduction,service,star,0.0);
+			String result = addhotelblservice.AddHotel(hotelvo);
 			OtherIdVO.setid(result);
 			viewcontrol.openSuccessAddFrame();
 			addhotelframe.getPrimaryStage().close();

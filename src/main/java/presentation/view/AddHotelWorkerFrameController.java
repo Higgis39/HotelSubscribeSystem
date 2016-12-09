@@ -1,6 +1,8 @@
 package presentation.view;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 import businessLogic.userbl.AddHotelController;
 import businessLogicService.userBLService.AddHotelBLService;
@@ -8,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import presentation.controller.ViewController;
+import vo.WorkerVO;
 
 /**
  * 
@@ -51,7 +54,8 @@ public class AddHotelWorkerFrameController {
 		String sex = entersex.getSelectionModel().getSelectedItem();
 		LocalDate begindate = LocalDate.parse(enterdate.getText());
 		AddHotelBLService addhotelblservice = new AddHotelController();
-		boolean result = addhotelblservice.AddHotelWorker(true, workername, hotelname, age, sex, begindate);
+		Date date = Date.from(begindate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+		boolean result = addhotelblservice.AddHotelWorker(new WorkerVO(hotelname,workername,age,sex,date));
 		if(result==true){
 			addhotelworkerframe.getPrimaryStage().close();
 			viewcontrol.openSuccessAdd2Frame();

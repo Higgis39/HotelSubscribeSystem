@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 import businessLogicService.userBLService.AddHotelBLService;
+import vo.HotelVO;
+import vo.WorkerVO;
 
 /**
  * 
@@ -14,26 +16,21 @@ public class AddHotelController implements AddHotelBLService{
 	User user = new User();
 	
 	/**
-	 * 管理人员添加酒店（controller）
-	 * @param IsManager boolean
-	 * @param hotelname String
-	 * @param address String
-	 * @param phonenumber String
-	 * @return 成功返回一个分配到的账号
-	 * @throws SQLException 
+	 * 添加酒店
+	 * @param hotelvo
+	 * @return
+	 * @throws SQLException
 	 */
-	public String AddHotel(boolean IsManager,String hotelname,String phonenumber,String address,String businessarea,String introduction,String facilities,int star,String password1,String password2)throws SQLException{
-		return user.AddHotel(IsManager, hotelname, phonenumber, address, businessarea, introduction, facilities, star, password1, password2);
+	public String AddHotel(HotelVO hotelvo) throws SQLException{
+		return user.AddHotel(hotelvo);
 	}
 	
 	/**
-	 * 管理人员添加酒店工作人员(controller)
-	 * @param IsManager boolean
-	 * @param workername String
-	 * @param hotelname String
-	 * @return 成功返回true,失败返回false
+	 * 管理人员添加酒店工作人员
+	 * @param workervo
+	 * @return
 	 */
-	public boolean AddHotelWorker(boolean IsManager,String workername,String hotelname,int age,String sex,LocalDate begindate){
-		return user.AddHotelWorker(IsManager,workername,hotelname,age,sex,begindate);
+	public boolean AddHotelWorker(WorkerVO workervo){
+		return user.AddHotelWorker(workervo);
 	}
 }

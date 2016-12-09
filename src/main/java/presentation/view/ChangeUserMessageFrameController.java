@@ -48,10 +48,10 @@ public class ChangeUserMessageFrameController {
 		int creditvalue = Integer.valueOf(entercreditvalue.getText());
 		if(!enterbirthday.isDisable()){
 			String birthday = enterbirthday.getValue().toString();
-			service.ChangeClientMessaage(true, OtherIdVO.getid(), name, phonenumber, creditvalue, birthday, null);
+			service.ChangeClientMessaage(OtherIdVO.getid(), name, phonenumber, creditvalue, birthday, null);
 		}else{
 			String company = entercompany.getText();
-			service.ChangeClientMessaage(true, OtherIdVO.getid(), name, phonenumber, creditvalue, null, company);
+			service.ChangeClientMessaage(OtherIdVO.getid(), name, phonenumber, creditvalue, null, company);
 		}
 		changeusermessageframe.getPrimaryStage().close();
 	}

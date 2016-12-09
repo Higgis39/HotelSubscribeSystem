@@ -1,13 +1,15 @@
 package presentation.view;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 
 import businessLogic.userbl.MessageController;
 import businessLogicService.userBLService.MessageBLService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import presentation.controller.ViewController;
 import vo.IdVO;
 import vo.UserVO;
@@ -25,17 +27,19 @@ public class MarketerPromotionFrameController {
 	@FXML
 	private Label name;
 	@FXML
-	private TreeTableView<WebPromotionVO> treetableview;
+	private TableView<WebPromotionVO> tableview;
 	@FXML
-	private TreeTableColumn<WebPromotionVO,String> promotiontype;
+	private TableColumn<WebPromotionVO,String> promotiontype;
 	@FXML
-	private TreeTableColumn<WebPromotionVO,LocalDate> promotiontime;
+	private TableColumn<WebPromotionVO,String> begintime;
 	@FXML
-	private TreeTableColumn<WebPromotionVO,String> city;
+	private TableColumn<WebPromotionVO,String> endtime;
 	@FXML
-	private TreeTableColumn<WebPromotionVO,Number> VIPgrade;
+	private TableColumn<WebPromotionVO,String> businessarea;
 	@FXML
-	private TreeTableColumn<WebPromotionVO,Number> discount;
+	private TableColumn<WebPromotionVO,Number> VIPgrade;
+	@FXML
+	private TableColumn<WebPromotionVO,Number> discount;
 	
 	private MarketerPromotionFrame marketerpromotionframe;
 	
@@ -74,10 +78,22 @@ public class MarketerPromotionFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		MessageBLService service = new MessageController();
-		UserVO uservo = service.GetMessage(IdVO.getid());
-		id.setId(uservo.getid());
-		name.setText(uservo.getname());
+//		MessageBLService service = new MessageController();
+//		UserVO uservo = service.GetMessage(IdVO.getid());
+//		id.setId(uservo.getid());
+//		name.setText(uservo.getname());
+		
+		ArrayList<WebPromotionVO> promotion = new ArrayList<WebPromotionVO>();
+		promotion.add(new WebPromotionVO("VIP特定商圈专属折扣","12-01","12-09","栖霞",3,0.8));
+		promotion.add(new WebPromotionVO("会员特定等级专属折扣","","","无限制",1,0.9));
+		ObservableList<WebPromotionVO> data = FXCollections.observableArrayList(promotion);
+		tableview.setItems(data);
+		promotiontype.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
+		begintime.setCellValueFactory(cellData->cellData.getValue().getBegintimeProperty());
+		endtime.setCellValueFactory(cellData->cellData.getValue().getEndtimeProperty());
+		businessarea.setCellValueFactory(cellData->cellData.getValue().getSpecificbusinessareaProperty());
+		VIPgrade.setCellValueFactory(cellData->cellData.getValue().getVIPgradeProperty());
+		discount.setCellValueFactory(cellData->cellData.getValue().getDiscountProperty());
 	}
 	
 	public void setMarketerPromotionFrame(MarketerPromotionFrame marketerpromotionframe){
