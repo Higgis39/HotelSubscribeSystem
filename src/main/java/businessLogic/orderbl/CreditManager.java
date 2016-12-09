@@ -26,27 +26,27 @@ public  class CreditManager {
 	 * @param orderID
 	 * @return
 	 */
-	public int subCredit(OrderPO po){
-		UserPO user=UserService.getUserByID(po.getUserId());
-		int credit=(int) (user.getcreditvalue()-po.getPrice());
-		user.setCreditvalue(credit);
-		return 0; 
+	public void subCredit(OrderPO po){
+		int CreditChange = po.getPrice();
+		UserService.ChangeCredit(po.getUserId(), 0-CreditChange);
 	}
 	/**
 	 * 根据已执行的订单价值计算用户应增加的信用值
 	 * @param orderID
 	 * @return
 	 */
-	public int addCredit(OrderPO po){
-		return 0;
+	public void addCredit(OrderPO po){
+		int CreditChange = po.getPrice();
+		UserService.ChangeCredit(po.getUserId(), CreditChange);
 	}
 	/**
 	 * 根据已撤销的订单计算用户应恢复的信用值
 	 * @param orderID
 	 * @return
 	 */
-	public int recoverCredit(OrderPO po){
-		return 0;
+	public void recoverCredit(OrderPO po){
+		int CreditChange = po.getPrice()/2;
+		UserService.ChangeCredit(po.getUserId(), CreditChange);
 	}
 	/**
 	 * 检查用户的信用值是否达到下订单的最低标准
@@ -54,6 +54,9 @@ public  class CreditManager {
 	 * @return 达到返回true，否则返回false
 	 */
 	public boolean checkCredit(String userID){
-		return false;
+		if(UserService.getCredit(userID)>=0)
+			return true;
+		else
+		    return false;
 	}
 }

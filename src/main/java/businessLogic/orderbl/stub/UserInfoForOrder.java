@@ -4,9 +4,7 @@ import po.UserPO;
 
 public interface UserInfoForOrder {
 
-	public int getCredit();
-
-	public UserPO getUserByID(String ID);
+	public int getCredit(String UserID);
 	
-	
+	public boolean ChangeCredit(String UserID,int CreditChange);
 }

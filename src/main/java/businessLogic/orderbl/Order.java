@@ -1,10 +1,9 @@
 package businessLogic.orderbl;
 
-import vo.HotelPromotionVO;
 import vo.OrderVO;
+import vo.HotelPromotionVO;
 import vo.WebPromotionVO;
 
-import java.sql.SQLException;
 import java.util.*;
 
 import businessLogic.orderbl.stub.HotelInfoForOrder;
@@ -36,8 +35,6 @@ public class Order{
 	public int getTotal(){
 		PromotionInfoForOrder promotionService=new PromotionInfoForOrder_stub();
 		HotelInfoForOrder hotelService=new HotelInfoForOrder_stub();
-		WebPromotionVO WebPromotion=promotionService.getAppropriateWebPromotion(vo);
-		HotelPromotionVO HotelPromotion=promotionService.getApproriateHotelPromotion(vo);
 		return 0;
 	}
 	
@@ -63,7 +60,7 @@ public class Order{
 		po.setEntryTime(vo.getEntryTime());
 		po.setLastTime(vo.getLastTime());
 		manager.addCredit(po);
-		service.insert(po);
+		service.update(po);
 		return true;
 	}
 	/**
@@ -74,7 +71,7 @@ public class Order{
 		OrderPO po=service.findByOrderID(vo.getorderId());
 		po.setStatus("已撤销");
 		manager.subCredit(po);
-		service.insert(po);
+		service.update(po);
 		return true;
 	}
 	
@@ -88,7 +85,7 @@ public class Order{
 		po.setEntryTime(vo.getEntryTime());
 		po.setLastTime(vo.getLastTime());
 		manager.recoverCredit(po);
-		service.insert(po);
+		service.update(po);
 		return true;
 	}
 	
@@ -99,7 +96,7 @@ public class Order{
 	public boolean Comment(){
 		OrderPO po = service.findByOrderID(vo.getorderId());
 		po.setComment(vo.getComment());
-		service.insert(po);
+		service.update(po);
 		return true;
 	}
 	
@@ -117,9 +114,8 @@ public class Order{
 	 * 获得酒店的所有订单
 	 * @param ID
 	 * @return 酒店的所有订单
-	 * @throws SQLException 
 	 */
-	public List<OrderVO> getOrderByHotelID(String hotelID) throws SQLException{
+	public List<OrderVO> getOrderByHotelID(String hotelID){
 		List<OrderPO> orderListPO=service.findByHotelID(hotelID);
 		return this.turnPOtoVO(orderListPO);
 	}
@@ -128,9 +124,8 @@ public class Order{
 	 * 获得用户的所有订单
 	 * @param UserID
 	 * @return
-	 * @throws SQLException 
 	 */
-	public List<OrderVO> getOrderByUserID(String UserID) throws SQLException{
+	public List<OrderVO> getOrderByUserID(String UserID){
 		List<OrderPO> orderListPO=service.findByClient(UserID);
 		return this.turnPOtoVO(orderListPO);
 	}
@@ -139,9 +134,8 @@ public class Order{
 	 * 获得某一天的所有订单
 	 * @param Date
 	 * @return
-	 * @throws SQLException 
 	 */
-	public List<OrderVO> getOrderByDate(String Date) throws SQLException{
+	public List<OrderVO> getOrderByDate(String Date){
 		List<OrderPO> orderListPO=service.findByDate(Date);
 		return this.turnPOtoVO(orderListPO);
 	}
@@ -171,7 +165,7 @@ public class Order{
 		for(OrderPO po:poList){
 			OrderVO vo= new OrderVO(po);
 			voList.add(vo);
-		}
+		} 
 		return voList;
 	}
 }
