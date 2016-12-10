@@ -36,7 +36,11 @@ public class Order{
 	public int getTotal(){
 		PromotionInfoForOrder promotionService=new PromotionInfoForOrder_stub();
 		HotelInfoForOrder hotelService=new HotelInfoForOrder_stub();
-		return 0;
+		double HotelDiscount=promotionService.getApproriateHotelPromotion( vo.getorderId(), vo.getUserId(),vo.getHotelId());
+		double WebDiscount=promotionService.getAppropriateWebPromotion(vo.getorderId(), vo.getUserId());
+		int roomPrice = hotelService.getHotelRoomPrice(vo.getHotelId(), vo.getRoomType());
+		int totalPrice=(int) (roomPrice*vo.getRoomNum()*HotelDiscount*WebDiscount);
+		return totalPrice;
 	}
 	
 	/**
@@ -45,18 +49,19 @@ public class Order{
 	 * @return 添加成功返回true，否则false
 	 */
 	public boolean addNewOrder(){
-		OrderPO po=new OrderPO(vo.getorderId(),vo.getHotelId(),vo.getUserId(),vo.getStatus(),
-				vo.getEntryTime(),vo.getLastTime(),vo.getPrice(),vo.getComment(),vo.getRoomType(),vo.getRoomNum());
+		OrderPO po=new OrderPO(vo);
 		service.insert(po);
 		return true;
 	}
-	
 	/**
 	 * 记录入住信息
 	 * @return
 	 */
 	public boolean CheckIn(){
 		OrderPO po=service.findByOrderID(vo.getorderId());
+		if(!po.getStatus().equals("未执行"))
+			return false;
+		
 		po.setStatus("已执行");
 		po.setEntryTime(vo.getEntryTime());
 		po.setLastTime(vo.getLastTime());
@@ -70,6 +75,9 @@ public class Order{
 	 */
 	public boolean Cancel(){
 		OrderPO po=service.findByOrderID(vo.getorderId());
+	if(!po.getStatus().equals("未执行"))
+		return false;
+	
 		po.setStatus("已撤销");
 		manager.subCredit(po);
 		service.update(po);
@@ -82,6 +90,8 @@ public class Order{
 	 */
 	public boolean Recover(){
 		OrderPO po=service.findByOrderID(vo.getorderId());
+		if(po.getStatus().equals("异常"))
+			return false;
 		po.setStatus("已执行");
 		po.setEntryTime(vo.getEntryTime());
 		po.setLastTime(vo.getLastTime());
@@ -96,7 +106,10 @@ public class Order{
 	 */
 	public boolean Comment(){
 		OrderPO po = service.findByOrderID(vo.getorderId());
+		if(!po.getStatus().equals("已执行"))
+			return false;
 		po.setComment(vo.getComment());
+		po.setStatus("已评价");
 		service.update(po);
 		return true;
 	}
@@ -105,8 +118,8 @@ public class Order{
 	 * 根据订单号查询订单
 	 * @return
 	 */
-	public OrderVO gerOrderByOrderID(){
-		OrderPO po=service.findByOrderID(this.vo.getorderId());
+	public OrderVO gerOrderByOrderID(String OrderID){
+		OrderPO po=service.findByOrderID(OrderID);
 		OrderVO order=new OrderVO(po);
 		return order;
 	}

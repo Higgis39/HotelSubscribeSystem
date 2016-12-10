@@ -11,8 +11,8 @@ public class CustomerViewOrderController implements CustomerViewOrderService{
 		return new Order().getOrderByUserID(userID);
 	}
 
-	public OrderVO ShowOrderMessage(OrderVO vo) {
-		return new Order(vo).gerOrderByOrderID();
+	public OrderVO ShowOrderMessage(String OrderID) {
+		return new Order().gerOrderByOrderID(OrderID);
 	}
 
 	@Override

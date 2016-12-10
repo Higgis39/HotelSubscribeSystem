@@ -22,6 +22,10 @@ public class CreateOrderController implements CreateOrderService{
 	public int CheckRoom(String hotelID,String roomType){
 		return new HotelInfoForOrder_stub().CheckEnoughRoom(hotelID, roomType);
 	}
+	
+	public int CheckMax(String hotelID,String roomType){
+		return new HotelInfoForOrder_stub().CheckEnoughRoom(hotelID, roomType);
+	}
 	 
 	/**
 	 * 计算订单总价

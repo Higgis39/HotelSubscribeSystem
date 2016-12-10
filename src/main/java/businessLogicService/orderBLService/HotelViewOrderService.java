@@ -11,5 +11,5 @@ public interface HotelViewOrderService {
 	
     public List<OrderVO> GetSpecificOrders(String HotelID,String Status)throws SQLException;
 	
-	public OrderVO ShowOrderMessage(OrderVO vo);
+	public OrderVO ShowOrderMessage(String OrderID);
 }

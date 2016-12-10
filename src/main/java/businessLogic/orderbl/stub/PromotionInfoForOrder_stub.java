@@ -9,17 +9,16 @@ import vo.WebPromotionVO;
 
 public class PromotionInfoForOrder_stub implements PromotionInfoForOrder{
 
-
 	@Override
-	public WebPromotionVO getAppropriateWebPromotion(OrderVO vo) {
+	public double getAppropriateWebPromotion(String OrderID, String UserID) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override
-	public HotelPromotionVO getApproriateHotelPromotion(OrderVO vo) {
+	public double getApproriateHotelPromotion(String OrderID, String UserID, String HotelID) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
   
 }

@@ -26,5 +26,11 @@ public class HotelInfoForOrder_stub implements HotelInfoForOrder{
 		return false;
 	}
 
+	@Override
+	public boolean updatePoint(String HotelID, int point) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 }

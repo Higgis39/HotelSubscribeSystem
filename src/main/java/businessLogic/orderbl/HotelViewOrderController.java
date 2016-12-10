@@ -12,8 +12,8 @@ import vo.OrderVO;
 public class HotelViewOrderController implements HotelViewOrderService{
 
 	@Override
-	public OrderVO ShowOrderMessage(OrderVO vo) {
-		return new Order(vo).gerOrderByOrderID();
+	public OrderVO ShowOrderMessage(String OrderID) {
+		return new Order().gerOrderByOrderID(OrderID);
 	}
 
 	@Override

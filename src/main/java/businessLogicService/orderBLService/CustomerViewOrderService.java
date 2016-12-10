@@ -10,5 +10,5 @@ public interface CustomerViewOrderService {
     
     public List<OrderVO> getSpecificOrders(String userID,String Status)throws SQLException;
 	
-	public OrderVO ShowOrderMessage(OrderVO vo);
+	public OrderVO ShowOrderMessage(String OrderID);
 }

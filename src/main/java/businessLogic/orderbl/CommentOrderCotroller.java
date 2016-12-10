@@ -1,7 +1,7 @@
 package businessLogic.orderbl;
 
-import java.util.List;
-
+import businessLogic.orderbl.stub.HotelInfoForOrder;
+import businessLogic.orderbl.stub.HotelInfoForOrder_stub;
 import businessLogicService.orderBLService.CommentOrderService;
 import vo.OrderVO;
 
@@ -12,7 +12,9 @@ public class CommentOrderCotroller implements CommentOrderService{
 	 */
 	@Override
 	public boolean addComment(OrderVO vo,int point) {
-		return new Order(vo).Comment();
+		HotelInfoForOrder service = new HotelInfoForOrder_stub();
+		return new Order(vo).Comment()&&service.updatePoint(vo.getHotelId(),point);
+		
 	}
 
 	

@@ -17,9 +17,8 @@ public class WebsiteViewOrderController implements WebsiteViewOrderService{
 	}
 
 	@Override
-	public boolean RecoverCredit(String OrderID) {
-		CreditManager manager=CreditManager.getInstance();
-		return false;
+	public boolean RecoverCredit(OrderVO vo) {
+		return new Order(vo).Recover();
 	}
 
 }
