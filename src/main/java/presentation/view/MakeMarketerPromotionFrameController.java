@@ -8,6 +8,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import presentation.controller.ViewController;
+import vo.StageVO;
 
 /**
  * 
@@ -38,6 +40,8 @@ public class MakeMarketerPromotionFrameController {
 	private DatePicker enddate;
 
 	private MakeMarketerPromotionFrame makemarketerpromotionframe;
+	
+	ViewController viewcontrol = new ViewController();
 	
 	@FXML
 	/**
@@ -83,7 +87,12 @@ public class MakeMarketerPromotionFrameController {
 	 * 确定按钮的监听
 	 */
 	private void confirmAction(){
+		//保存新制定的策略
 		
+		makemarketerpromotionframe.getPrimaryStage().close();
+		StageVO.getSatge().close();
+		viewcontrol.openMarketerPromotionFrame();
+		viewcontrol.openSuccessSaveFrame();
 	}
 	@FXML
 	/**

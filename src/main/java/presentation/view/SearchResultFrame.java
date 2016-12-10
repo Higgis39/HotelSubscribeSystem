@@ -15,10 +15,10 @@ public class SearchResultFrame extends Application{
 	    this.primaryStage.setTitle("互联网酒店预订系统");
 
 	    try{
-	    	 FXMLLoader loader = new FXMLLoader();
-		     loader.setLocation(getClass().getResource("AddHotel.fxml"));
+	    	FXMLLoader loader = new FXMLLoader();
+		     loader.setLocation(getClass().getResource("SearchResult.fxml"));
 		     AnchorPane frame = (AnchorPane) loader.load();
-		        
+		     
 		     Scene scene = new Scene(frame);
 		     primaryStage.setScene(scene);
 		     primaryStage.show();

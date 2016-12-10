@@ -80,6 +80,7 @@ public class LoginFrameController {
 			}else{
 				viewcontrol.openManagerMainFrame();
 			}
+			loginframe.getPrimaryStage().close();
 		}
 	}
 	

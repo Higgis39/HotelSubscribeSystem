@@ -3,6 +3,7 @@ package presentation.controller;
 import javafx.stage.Stage;
 import presentation.view.RegisterClientFrame;
 import presentation.view.RegisterVIPFrame;
+import presentation.view.SearchResultFrame;
 import presentation.view.SuccessAdd2Frame;
 import presentation.view.SuccessAddFrame;
 import presentation.view.SuccessRegisterFrame;
@@ -23,6 +24,7 @@ import presentation.view.DealOrderFrame;
 import presentation.view.DoCancelFrame;
 import presentation.view.EnterUserfulRoomFrame;
 import presentation.view.FailLoginFrame;
+import presentation.view.FillOrderFrame;
 import presentation.view.HistoricalOrderFrame;
 import presentation.view.HotelMainFrame;
 import presentation.view.HotelMessageFrame;
@@ -86,6 +88,13 @@ public class ViewController{
 	}
 	
 	/**
+	 * 打开搜索结果界面
+	 */
+	public void openSearchResultFrame(){
+		new SearchResultFrame().start(new Stage());
+	}
+	
+	/**
 	 * 打开个人信息界面
 	 */
 	public void openUserPersonalFrame(){
@@ -125,6 +134,13 @@ public class ViewController{
 	 */
 	public void openRegisterVIPFrame(){
 		new RegisterVIPFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开填写订单界面
+	 */
+	public void openFillOrderFrame(){
+		new FillOrderFrame().start(new Stage());
 	}
 	
 	/**

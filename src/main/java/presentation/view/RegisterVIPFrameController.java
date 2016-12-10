@@ -9,6 +9,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import presentation.controller.ViewController;
 import vo.IdVO;
+import vo.StageVO;
 
 
 /**
@@ -83,6 +84,8 @@ public class RegisterVIPFrameController {
 			service.RegisterVIP(IdVO.getid(),"企业会员",company);
 		}
 		viewcontrol.openSuccessAdd2Frame();
+		StageVO.getSatge().close();
+		viewcontrol.openUserPersonalFrame();
 		registerVIPframe.getPrimaryStage().close();
 	}
 	

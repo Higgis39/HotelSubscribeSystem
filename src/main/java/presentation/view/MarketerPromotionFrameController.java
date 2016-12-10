@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import presentation.controller.ViewController;
 import vo.IdVO;
+import vo.StageVO;
 import vo.UserVO;
 import vo.WebPromotionVO;
 
@@ -61,6 +62,7 @@ public class MarketerPromotionFrameController {
 	 */
 	private void linkAction(){
 		//打开制定营销策略的监听
+		StageVO.setStage(marketerpromotionframe.getPrimaryStage());
 		viewcontrol.openMakeMarketerPromotionFrame();
 	}
 	
@@ -78,10 +80,10 @@ public class MarketerPromotionFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-//		MessageBLService service = new MessageController();
-//		UserVO uservo = service.GetMessage(IdVO.getid());
-//		id.setId(uservo.getid());
-//		name.setText(uservo.getname());
+		MessageBLService service = new MessageController();
+		UserVO uservo = service.GetMessage(IdVO.getid());
+		id.setId(uservo.getid());
+		name.setText(uservo.getname());
 		
 		ArrayList<WebPromotionVO> promotion = new ArrayList<WebPromotionVO>();
 		promotion.add(new WebPromotionVO("VIP特定商圈专属折扣","12-01","12-09","栖霞",3,0.8));

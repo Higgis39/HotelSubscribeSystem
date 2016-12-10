@@ -29,6 +29,7 @@ public class RechargeCreditFrameController {
 		String id = enterid.getText();
 		int creditrecharge = Integer.valueOf(enterrecharge.getText());
 		service.RechargeCredit("网站营销人员",id,creditrecharge);
+		rechargecreditframe.getPrimaryStage().close();
 	}
 	
 	@FXML

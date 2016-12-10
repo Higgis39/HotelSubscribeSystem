@@ -85,7 +85,6 @@ public class RegisterClientFrameController {
 	private void cancelAction(){
 		viewcontrol.openDoCancelPopup();
 		StageVO.setStage(registerclientframe.getPrimaryStage());
-//		registerclientframe.getPrimaryStage().close();
 	}
 	
 	

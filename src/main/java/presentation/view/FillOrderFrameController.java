@@ -7,6 +7,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import vo.HotelNameVO;
+import vo.StageVO;
 
 /**
  * 
@@ -145,6 +147,15 @@ public class FillOrderFrameController {
 	private void cancelAction(){
 		fillorderframe.getPrimaryStage().close();
 		//返回之前的界面
+		StageVO.getSatge2().show();
+	}
+	
+	@FXML
+	/**
+	 * 得到总价的监听
+	 */
+	private void getTotalAction(){
+		
 	}
 	
 	@FXML
@@ -152,7 +163,8 @@ public class FillOrderFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		enterroomtype.getItems().addAll("单人间","双人间","三人间");
+		hotelname.setText(HotelNameVO.getHotelname());
+		enterroomtype.getItems().addAll("单人间","标准间","家庭套房");
 		enterindate.setValue(LocalDate.now());
 		enteroutdate.setValue(LocalDate.now().plusDays(1));
 		enterhaschild.getItems().addAll("有","没有");

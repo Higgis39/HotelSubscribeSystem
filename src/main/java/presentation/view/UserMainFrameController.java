@@ -1,7 +1,6 @@
 package presentation.view;
 
 import java.time.LocalDate;
-import java.util.jar.Attributes.Name;
 
 import businessLogic.userbl.MessageController;
 import businessLogicService.userBLService.MessageBLService;
@@ -13,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import presentation.controller.ViewController;
 import vo.IdVO;
+import vo.StageVO;
 import vo.UserVO;
 
 /**
@@ -187,6 +187,10 @@ public class UserMainFrameController {
 		Boolean only = checkbox.isSelected();
 		//调用hotel模块的搜索酒店方法
 		
+		
+		StageVO.setStage(usermainframe.getPrimaryStage());
+		usermainframe.getPrimaryStage().hide();
+		viewcontrol.openSearchResultFrame();
 	}
 	
 	@FXML
@@ -207,7 +211,8 @@ public class UserMainFrameController {
 		UserVO uservo = service.GetMessage(IdVO.getid());
 		id.setText(uservo.getid());
 		username.setText(uservo.getname());
-		enterroomtype.getItems().addAll("单人间","双人间","三人间");
+		
+		enterroomtype.getItems().addAll("单人间","标准间","家庭套房");
 		enterprice.getItems().addAll("150以下","150~300","300~500","500~700","700~1000","1000以上");
 		entergrade.getItems().addAll("1分以下","1~2分","2~3分","3~4分","4~5分");
 	}
