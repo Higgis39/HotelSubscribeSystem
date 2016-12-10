@@ -46,7 +46,7 @@ public class Order{
 	 */
 	public boolean addNewOrder(){
 		OrderPO po=new OrderPO(vo.getorderId(),vo.getHotelId(),vo.getUserId(),vo.getStatus(),
-				vo.getEntryTime(),vo.getLastTime(),vo.getOrderInfo(),vo.getPrice(),vo.getComment());
+				vo.getEntryTime(),vo.getLastTime(),vo.getPrice(),vo.getComment());
 		service.insert(po);
 		return true;
 	}
