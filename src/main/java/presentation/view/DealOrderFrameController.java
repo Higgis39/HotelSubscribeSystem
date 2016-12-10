@@ -86,7 +86,6 @@ public class DealOrderFrameController {
 		String ordertype = enterordertype.getSelectionModel().getSelectedItem();
 //		HotelViewOrderService service = new HotelViewOrderController();
 		List<OrderVO> list = new ArrayList<OrderVO>();
-		list.add(new OrderVO("1","1","1","1","1","1",1,""));
 		ObservableList<OrderVO> data = FXCollections.observableList(list);
 		tableview.setItems(data);
 		orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
