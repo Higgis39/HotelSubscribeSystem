@@ -99,6 +99,41 @@ public class HotelData implements HotelDataService{
 //		}
 //	}
 	
+	/**
+	 * 根据酒店名称获得hotel对象
+	 * @param hotelname String类型,酒店的名称
+	 * @see
+	 * try/catch块捕获数据库连接失败异常
+	 */
+	public HotelPO findByName(String hotelname){
+		HotelPO h = null;
+		Connection conn = DBUtil.getConnection();
+		String sql = " select * from hotel "
+				   + " where hotelname=? ";
+		try {
+			PreparedStatement ptmt = conn.prepareStatement(sql);
+			
+			ptmt.setString(1, hotelname);
+			ResultSet rs = ptmt.executeQuery();
+			
+			while(rs.next()){
+				h = new HotelPO();
+				h.setHotelid(rs.getString("hotelid"));
+				h.setPassword(rs.getString("password"));
+				h.setHotelname(rs.getString("hotelname"));
+				h.setPhonenumber(rs.getString("phonenumber"));
+				h.setAddress(rs.getString("address"));
+				h.setBusinessarea(rs.getString("businessarea"));
+				h.setIntroduction(rs.getString("introduction"));
+				h.setFacilities(rs.getString("facilities"));
+				h.setStar(rs.getInt("star"));
+				h.setGrade(rs.getDouble("grade"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return h;
+	}
 	
 	/**
 	 * 根据城市和所属商圈获得hotel对象

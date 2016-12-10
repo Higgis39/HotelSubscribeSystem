@@ -12,4 +12,6 @@ public interface RoomDataService {
 	public void update(RoomPO r);
 	
 	public ArrayList<RoomPO> findByHotelname(String hotelName) throws SQLException;
+	
+	public RoomPO findByIDAndHotelname(String roomID,String hotelName) throws SQLException;
 }

@@ -1,20 +1,21 @@
 package businessLogic.hotelbl;
 
-
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import po.RoomPO;
 import businessLogic.orderbl.OrderToolForHotel;
 import data.HotelData;
-import data.OrderData;
-import po.OrderPO;
+import data.RoomData;
 import vo.HotelVO;
 import dataService.HotelDataService;
-import dataService.OrderDataService;
+import dataService.RoomDataService;
 import po.HotelPO;
 
 public class Hotel{
 	HotelDataService hoteldataservice = new HotelData();
 	OrderInfoForHotel orderdataservice = new OrderToolForHotel();
+	RoomDataService roomdataservice = new RoomData();
 	/**
 	 * 搜索酒店
 	 * @param Address String
@@ -28,13 +29,25 @@ public class Hotel{
 	 * @param minGrade double
 	 * @param maxGrade double
 	 * @return 返回符合搜索条件的酒店列表
+	 * @throws SQLException 
 	 */
-	public ArrayList<HotelPO> Search(String Address, String BusinessArea, String RoomType, double minPrice, double maxPrice, String checkinTime, String checkoutTime, int Star, double minGrade, double maxGrade){
-		ArrayList<HotelPO> HotelList1 = new ArrayList<HotelPO>();
-		HotelList1 = hoteldataservice.findByAddress(Address);
+	public ArrayList<HotelPO> Search(String Address, String BusinessArea, String RoomType, double minPrice, double maxPrice, String checkinTime, String checkoutTime, int Star, double minGrade, double maxGrade) throws SQLException{
+		ArrayList<HotelPO> HotelList = new ArrayList<HotelPO>();
 		
+		if(Star==-1 && minGrade==-1 && maxGrade==-1){
+			HotelList=hoteldataservice.findByAddressAndBusinessarea(Address, BusinessArea);
+		}else if(minGrade ==-1 && maxGrade==-1){
+			HotelList=hoteldataservice.findByAddressAndBusinessareaAndStar(Address, BusinessArea, Star);
+		}else{
+			if(minGrade==-1){
+				HotelList=hoteldataservice.findByAddressAndBusinessareaAndGrade(Address, BusinessArea, Star);
+			}
+			else{
+				HotelList=hoteldataservice.findByAddressAndBusinessareaAndGrade(Address, BusinessArea, Star);
+			}
+		}
 		
-		return HotelList1;
+		return HotelList;
 	}
 	
 	/**
@@ -62,10 +75,10 @@ public class Hotel{
 	 * @param Worker ArrayList<String>
 	 * @return 成功返回true，失败返回false
 	 */
-	public boolean UpdateHotelMessage(String hotelName, String phoneNumber, String Introduction, String Facilities, int Star, double Grade, ArrayList<String> Worker){
+	public boolean UpdateHotelMessage(String hotelName, String phoneNumber, String Introduction, String Facilities, int Star, double Grade){
 		
 		HotelPO hotelpo = hoteldataservice.findByName(hotelName);
-		hotelpo = new HotelPO(hotelpo.getId(),hotelpo.getPassword(),hotelName,phoneNumber,hotelpo.getAddress(),hotelpo.getBusinessArea(),Introduction,Facilities,Star,Grade,Worker);
+		hotelpo = new HotelPO(hotelpo.getId(),hotelpo.getPassword(),hotelName,phoneNumber,hotelpo.getAddress(),hotelpo.getBusinessArea(),Introduction,Facilities,Star,Grade);
 		hoteldataservice.update(hotelpo);
 		
 		return true;
@@ -77,13 +90,15 @@ public class Hotel{
 	 * @param hotelname String
 	 * @return roomList ArrayList<String>
 	 */
-	public boolean UpdateRoom(String roomID,String hotelName){
-		boolean roomstate = RoomDataService.findstate(roomID);
-		ArrayList<String> spareRoom = new ArrayList<String>();
-		spareRoom = RoomDataService.findList(hotelName);
+	public boolean UpdateRoom(String roomID,String hotelName)throws SQLException{
+		RoomPO roompo = roomdataservice.findByIDAndHotelname(roomID,hotelName);
+		boolean roomstate = roompo.getIsEmpty();
+		
+		ArrayList<RoomPO> spareRoom = new ArrayList<RoomPO>();
+		spareRoom = roomdataservice.findByHotelname(hotelName);
 		
 		if(roomstate){
-			spareRoom.add(roomID);
+			spareRoom.add(roompo);
 		}
 		else{
 			System.out.println("The room is not spare!");

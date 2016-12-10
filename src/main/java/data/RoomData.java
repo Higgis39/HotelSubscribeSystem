@@ -102,5 +102,12 @@ public class RoomData implements RoomDataService{
 		}
 		return result;
 	}
+	
+	
+	public RoomPO findByIDAndHotelname(String roomID,String hotelName) throws SQLException{
+		RoomPO result=new RoomPO();
+		
+		return result;
+	};
 
 }
