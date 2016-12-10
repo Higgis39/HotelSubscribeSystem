@@ -3,6 +3,8 @@ package presentation.view;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import presentation.controller.ViewController;
+import vo.StageVO;
 
 public class ChangeHotelMessageFrameController {
 	@FXML
@@ -19,6 +21,8 @@ public class ChangeHotelMessageFrameController {
 	private TextField enterstar;
 	
 	private ChangeHotelMessageFrame changehotelmessageframe;
+	
+	ViewController viewcontrol = new ViewController();
 	
 	@FXML
 	/**
@@ -50,6 +54,10 @@ public class ChangeHotelMessageFrameController {
 	 */
 	private void confirmAction(){
 		
+		changehotelmessageframe.getPrimaryStage().close();
+		StageVO.getSatge().close();
+		viewcontrol.openHotelMessageFrame();
+		viewcontrol.openSuccessSaveFrame();
 	}
 	
 	@FXML

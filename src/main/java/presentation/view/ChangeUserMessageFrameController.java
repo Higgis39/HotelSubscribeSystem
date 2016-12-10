@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import presentation.controller.ViewController;
 import vo.OtherIdVO;
 import vo.UserVO;
 
@@ -37,6 +38,8 @@ public class ChangeUserMessageFrameController {
 
 	private ChangeUserMessageFrame changeusermessageframe;
 	
+	ViewController viewcontrol = new ViewController();
+	
 	@FXML
 	/**
 	 * 确定按钮的监听
@@ -54,6 +57,7 @@ public class ChangeUserMessageFrameController {
 			service.ChangeClientMessaage(OtherIdVO.getid(), name, phonenumber, creditvalue, null, company);
 		}
 		changeusermessageframe.getPrimaryStage().close();
+		viewcontrol.openSuccessSaveFrame();
 	}
 	
 	@FXML

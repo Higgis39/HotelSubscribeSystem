@@ -1,9 +1,21 @@
 package presentation.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import businessLogic.userbl.MessageController;
+import businessLogicService.userBLService.MessageBLService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import presentation.controller.ViewController;
+import vo.IdVO;
+import vo.OrderVO;
+import vo.UserVO;
 
 /**
  * 
@@ -18,6 +30,18 @@ public class HistoricalOrderFrameController {
 	private Label id;
 	@FXML
 	private ComboBox<String> enterordertype;
+	@FXML
+	private TableView<OrderVO> tableview;
+	@FXML
+	private TableColumn<OrderVO,String> orderid;
+	@FXML
+	private TableColumn<OrderVO,String> hotelname;
+	@FXML
+	private TableColumn<OrderVO,String> intime;
+	@FXML
+	private TableColumn<OrderVO,String> outtime;
+	@FXML
+	private TableColumn<OrderVO,Number> price;
 	
 	private HistoricalOrderFrame historicalorderframe;
 	
@@ -47,6 +71,14 @@ public class HistoricalOrderFrameController {
 	private void viewAction(){
 		String ordertype = enterordertype.getSelectionModel().getSelectedItem();
 		//根据得到的订单类型进行搜索
+		List<OrderVO> list = new ArrayList<OrderVO>();
+		ObservableList<OrderVO> data = FXCollections.observableList(list);
+		tableview.setItems(data);
+		orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
+		hotelname.setCellValueFactory(cellData->cellData.getValue().getHotelIdProperty());
+		intime.setCellValueFactory(cellData->cellData.getValue().getEntryTimeProperty());
+		outtime.setCellValueFactory(cellData->cellData.getValue().getLastTimeProperty());
+		price.setCellValueFactory(cellData->cellData.getValue().getPriceProperty());
 	}
 	
 	@FXML
@@ -64,6 +96,10 @@ public class HistoricalOrderFrameController {
 	 */
 	private void initialize(){
 		enterordertype.getItems().addAll("未执行的正常订单","已执行的正常订单","异常订单","已撤销订单");
+		MessageBLService service = new MessageController();
+		UserVO uservo = service.GetMessage(IdVO.getid());
+		id.setText(uservo.getid());
+		username.setText(uservo.getname());
 	}
 	
 	public void setHistoricalOrderFrame(HistoricalOrderFrame historicalorderframe){

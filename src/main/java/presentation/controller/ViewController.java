@@ -6,6 +6,7 @@ import presentation.view.RegisterVIPFrame;
 import presentation.view.SuccessAdd2Frame;
 import presentation.view.SuccessAddFrame;
 import presentation.view.SuccessRegisterFrame;
+import presentation.view.SuccessSaveFrame;
 import presentation.view.UserMainFrame;
 import presentation.view.UserPersonalFrame;
 import presentation.view.ViewCreditChangeFrame;
@@ -19,9 +20,9 @@ import presentation.view.ChangeUserMessageFrame;
 import presentation.view.CheckInFrame;
 import presentation.view.CheckOutFrame;
 import presentation.view.DealOrderFrame;
-import presentation.view.DoCancelPopup;
+import presentation.view.DoCancelFrame;
 import presentation.view.EnterUserfulRoomFrame;
-import presentation.view.FailLoginPopup;
+import presentation.view.FailLoginFrame;
 import presentation.view.HistoricalOrderFrame;
 import presentation.view.HotelMainFrame;
 import presentation.view.HotelMessageFrame;
@@ -263,14 +264,20 @@ public class ViewController{
 	 * 打开“登录失败”弹框
 	 */
 	public void openFailLoginPopup(){
-		new FailLoginPopup().start(new Stage());
+		new FailLoginFrame().start(new Stage());
 	}
 	
 	/**
 	 * 打开“是否取消注册账号”弹框
 	 */
 	public void openDoCancelPopup(){
-		new DoCancelPopup().start(new Stage());
+		new DoCancelFrame().start(new Stage());
 	}
 	
+	/**
+	 * 打开保存成功界面
+	 */
+	public void openSuccessSaveFrame(){
+		new SuccessSaveFrame().start(new Stage());
+	}
 }

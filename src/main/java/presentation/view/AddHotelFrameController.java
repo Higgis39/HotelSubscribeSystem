@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import presentation.controller.ViewController;
 import vo.HotelVO;
 import vo.OtherIdVO;
-import vo.UserVO;
 
 /**
  * 

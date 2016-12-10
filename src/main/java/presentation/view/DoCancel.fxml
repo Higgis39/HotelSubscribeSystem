@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="200.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.DoCancelPopupController">
+<AnchorPane prefHeight="200.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.DoCancelFrameController">
    <children>
       <Button layoutX="116.0" layoutY="113.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="19.0" prefWidth="42.0" text="是" />
       <Label alignment="CENTER" layoutX="108.0" layoutY="60.0" prefHeight="26.0" prefWidth="134.0" text="是否取消注册账号？">

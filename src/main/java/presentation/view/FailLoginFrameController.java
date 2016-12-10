@@ -8,8 +8,8 @@ import javafx.fxml.FXML;
  *
  *usertypenullpopup的控制器
  */
-public class FailLoginPopupController {
-	private FailLoginPopup popup;
+public class FailLoginFrameController {
+	private FailLoginFrame popup;
 	
 	@FXML
 	/**
@@ -24,7 +24,7 @@ public class FailLoginPopupController {
 		
 	}
 	
-	public void setusertypenullpopup(FailLoginPopup popup){
+	public void setusertypenullpopup(FailLoginFrame popup){
 		this.popup = popup;
 	}
 }

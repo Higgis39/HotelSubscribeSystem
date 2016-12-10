@@ -5,7 +5,9 @@ import businessLogicService.userBLService.MessageBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import presentation.controller.ViewController;
 import vo.IdVO;
+import vo.StageVO;
 import vo.UserVO;
 
 /**
@@ -24,12 +26,17 @@ public class ChangeBirOrComFrameController {
 	
 	MessageBLService service = new MessageController();
 	
+	ViewController viewcontrol = new ViewController();
+	
 	@FXML
 	private void confirmAction(){
 		String birorcom = enterbircom.getText();
 		//保存新输入的生日/公司信息
 		service.ChangeBirOrComFrame(IdVO.getid(), birorcom);
 		changebirorcomframe.getPrimaryStage().close();
+		StageVO.getSatge().close();
+		viewcontrol.openUserPersonalFrame();
+		viewcontrol.openSuccessSaveFrame();
 	}
 	
 	@FXML

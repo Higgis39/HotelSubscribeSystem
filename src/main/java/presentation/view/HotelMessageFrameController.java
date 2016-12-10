@@ -3,6 +3,7 @@ package presentation.view;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import presentation.controller.ViewController;
+import vo.StageVO;
 
 
 /**
@@ -69,6 +70,7 @@ public class HotelMessageFrameController {
 	 */
 	private void linkAction(){
 		//打开修改酒店基本信息界面
+		StageVO.setStage(hotelmessageframe.getPrimaryStage());
 		viewcontrol.openChangeHotelMessageFrame();
 	}
 	

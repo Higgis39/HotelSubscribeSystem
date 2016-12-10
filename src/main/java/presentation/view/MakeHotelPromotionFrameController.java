@@ -6,6 +6,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import presentation.controller.ViewController;
+import vo.StageVO;
 
 /**
  * 
@@ -38,6 +40,8 @@ public class MakeHotelPromotionFrameController {
 	private DatePicker enddate;
 	
 	private MakeHotelPromotionFrame makehotelpromotionframe;
+	
+	ViewController viewcontrol = new ViewController();
 	
 	@FXML
 	/**
@@ -103,6 +107,10 @@ public class MakeHotelPromotionFrameController {
 	 */
 	private void confirmAction(){
 		
+		makehotelpromotionframe.getPrimaryStage().close();
+		StageVO.getSatge().close();
+		viewcontrol.openHotelPromotionFrame();
+		viewcontrol.openSuccessSaveFrame();
 	}
 	
 	@FXML

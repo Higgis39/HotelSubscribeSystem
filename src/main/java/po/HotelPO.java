@@ -8,6 +8,7 @@ public class HotelPO {
 	String hotelname;
 	String phonenumber;
 	String address;
+	String city;
 	String businessarea;
 	String introduction;
 	String facilities;

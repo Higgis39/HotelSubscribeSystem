@@ -38,12 +38,20 @@ public class UserVO {
 		return name;
 	}
 	
+	public void setName(String name){
+		this.name = new SimpleStringProperty(name);
+	}
+	
 	public String getid(){
 		return id.get();
 	}
 	
 	public StringProperty getidProperty(){
 		return id;
+	}
+	
+	public void setid(String id){
+		this.id = new SimpleStringProperty(id);
 	}
 	
 	public String getpassword(){
@@ -54,12 +62,20 @@ public class UserVO {
 		return password;
 	}
 	
+	public void setpassword(String password){
+		this.password = new SimpleStringProperty(password);
+	}
+	
 	public String getusertype(){
 		return usertype.get();
 	}
 	
 	public StringProperty getusertypeProperty(){
 		return usertype;
+	}
+	
+	public void setusertype(String usertype){
+		this.usertype = new SimpleStringProperty(usertype);
 	}
 	
 	public String getphonenumber(){
@@ -70,12 +86,20 @@ public class UserVO {
 		return phonenumber;
 	}
 	
+	public void setphonenumber(String phonenumber){
+		this.phonenumber = new SimpleStringProperty(phonenumber);
+	}
+	
 	public int getcreditvalue(){
 		return creditvalue.get();
 	}
 	
 	public IntegerProperty getcreditvalueProperty(){
 		return creditvalue;
+	}
+	
+	public void setcreditvalue(int creditvalue){
+		this.creditvalue = new SimpleIntegerProperty(creditvalue);
 	}
 	
 	public String getVIPtype(){
@@ -86,12 +110,20 @@ public class UserVO {
 		return VIPtype;
 	}
 	
+	public void setVIPtype(String VIPtype){
+		this.VIPtype = new SimpleStringProperty(VIPtype);
+	}
+	
 	public int getVIPgrade(){
 		return VIPgrade.get();
 	}
 	
 	public IntegerProperty getVIPgradeProperty(){
 		return VIPgrade;
+	}
+	
+	public void setVIPgrade(int VIPgrade){
+		this.VIPgrade = new SimpleIntegerProperty(VIPgrade);
 	}
 	
 	public String getbirthday(){
@@ -102,11 +134,19 @@ public class UserVO {
 		return birthday;
 	}
 	
+	public void setbirthday(String birthday){
+		this.birthday = new SimpleStringProperty(birthday);
+	}
+	
 	public String getcompany(){
 		return company.get();
 	}
 	
 	public StringProperty getcompanyProperty(){
 		return company;
+	}
+	
+	public void setcompany(String company){
+		this.company = new SimpleStringProperty(company);
 	}
 }

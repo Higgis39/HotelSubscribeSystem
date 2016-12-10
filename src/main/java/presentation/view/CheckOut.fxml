@@ -10,17 +10,14 @@
    <children>
       <CheckBox fx:id="checkbox" layoutX="172.0" layoutY="44.0" mnemonicParsing="false" onAction="#checkboxAction" selected="true" text="通过线上预定" />
       <Label fx:id="id" layoutX="142.0" layoutY="90.0" text="客户账号：" />
-      <Label layoutX="142.0" layoutY="130.0" text="房间类型：" />
-      <Label layoutX="142.0" layoutY="166.0" text="房间数量：" />
       <Label layoutX="142.0" layoutY="206.0" text="退房时间：" />
       <TextField fx:id="enterid" layoutX="219.0" layoutY="86.0" prefHeight="23.0" prefWidth="133.0" />
-      <ComboBox fx:id="enterroomtype" layoutX="219.0" layoutY="126.0" prefHeight="23.0" prefWidth="133.0" />
       <TextField fx:id="entercheckouttime" layoutX="219.0" layoutY="202.0" prefHeight="23.0" prefWidth="133.0" />
       <Button layoutX="363.0" layoutY="202.0" mnemonicParsing="false" onAction="#getnowAction" text="获取当前时间" />
       <Button layoutX="164.0" layoutY="271.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="60.0" text="确定" />
       <Button layoutX="303.0" layoutY="271.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="60.0" text="取消" />
-      <TextField fx:id="enterroomnum" alignment="CENTER" layoutX="240.0" layoutY="162.0" prefHeight="23.0" prefWidth="42.0" text="1" />
-      <Button layoutX="276.0" layoutY="162.0" mnemonicParsing="false" onAction="#plusAction" text="+" />
-      <Button layoutX="224.0" layoutY="162.0" mnemonicParsing="false" onAction="#minusAction" text="-" />
+      <Label layoutX="149.0" layoutY="146.0" text="房间号：" />
+      <TextField fx:id="enterroomid" layoutX="219.0" layoutY="142.0" prefHeight="23.0" prefWidth="133.0" />
+      <Label layoutX="363.0" layoutY="146.0" text="多个房间号中间用“,”间隔" textFill="RED" />
    </children>
 </AnchorPane>

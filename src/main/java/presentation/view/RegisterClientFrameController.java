@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import presentation.controller.ViewController;
 import vo.IdVO;
+import vo.StageVO;
 import vo.UserVO;
 
 /**
@@ -83,6 +84,7 @@ public class RegisterClientFrameController {
 	 */
 	private void cancelAction(){
 		viewcontrol.openDoCancelPopup();
+		StageVO.setStage(registerclientframe.getPrimaryStage());
 //		registerclientframe.getPrimaryStage().close();
 	}
 	

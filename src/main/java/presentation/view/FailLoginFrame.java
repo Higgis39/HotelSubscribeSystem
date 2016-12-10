@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  *
  *用户没有选择用户类型变点击登录，提示用户选择用户类型
  */
-public class FailLoginPopup extends Application{
+public class FailLoginFrame extends Application{
 	private Stage primaryStage;
 
 	@Override
@@ -27,7 +27,7 @@ public class FailLoginPopup extends Application{
 		     Scene scene = new Scene(frame);
 		     primaryStage.setScene(scene);
 		     primaryStage.show();
-		     FailLoginPopupController controller = loader.getController();
+		     FailLoginFrameController controller = loader.getController();
 		     controller.setusertypenullpopup(this);
 	    }catch(Exception e){
 	       	e.printStackTrace();

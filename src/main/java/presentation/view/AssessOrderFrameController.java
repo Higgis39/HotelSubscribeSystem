@@ -1,6 +1,7 @@
 package presentation.view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 
 /**
@@ -12,6 +13,8 @@ import javafx.scene.control.TextArea;
 public class AssessOrderFrameController {
 	@FXML
 	private TextArea judge;
+	@FXML
+	private ComboBox<Integer> combobox;
 	
 	private AssessOrderFrame assessorderframe;
 	
@@ -21,6 +24,7 @@ public class AssessOrderFrameController {
 	 */
 	private void confirmAction(){
 		String judgement = judge.getText();
+		int grade = combobox.getSelectionModel().getSelectedIndex();
 	}
 	
 	@FXML
@@ -37,7 +41,7 @@ public class AssessOrderFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		
+		combobox.getItems().addAll(1,2,3,4,5);
 	}
 	
 	public void setAssessOrderFrame(AssessOrderFrame assessorderframe) {

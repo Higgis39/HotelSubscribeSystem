@@ -23,7 +23,15 @@
       <Label layoutX="50.0" layoutY="83.0" text="订单类型：" />
       <ComboBox fx:id="enterordertype" layoutX="134.0" layoutY="79.0" prefHeight="23.0" prefWidth="185.0" />
       <Button layoutX="489.0" layoutY="79.0" mnemonicParsing="false" onAction="#viewAction" prefHeight="23.0" prefWidth="64.0" text="查看" />
-      <AnchorPane layoutY="108.0" prefHeight="387.0" prefWidth="751.0" />
       <Hyperlink layoutX="620.0" layoutY="36.0" onAction="#logoutAction" text="退出登录" />
+      <TableView fx:id="tableview" layoutX="129.0" layoutY="134.0" prefHeight="300.0" prefWidth="500.0">
+        <columns>
+          <TableColumn fx:id="orderid" prefWidth="100.0" text="订单号" />
+          <TableColumn fx:id="userid" prefWidth="100.0" text="用户账号" />
+            <TableColumn fx:id="intime" prefWidth="100.0" text="入住时间" />
+            <TableColumn fx:id="outtime" prefWidth="100.0" text="离开时间" />
+            <TableColumn fx:id="price" prefWidth="100.0" text="价格" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

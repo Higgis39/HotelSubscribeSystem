@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="340.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.CheckInFrameController">
    <children>
-      <CheckBox fx:id="checkbox" layoutX="149.0" layoutY="48.0" mnemonicParsing="false" onAction="#checkboxAction" selected="true" text="通过线上预定" />
+      <CheckBox fx:id="checkbox" layoutX="151.0" layoutY="51.0" mnemonicParsing="false" onAction="#checkboxAction" selected="true" text="通过线上预定" />
       <Label fx:id="id" layoutX="137.0" layoutY="90.0" text="客户账号：" />
       <TextField fx:id="enterid" layoutX="223.0" layoutY="86.0" prefHeight="22.0" prefWidth="118.0" />
       <Label layoutX="143.0" layoutY="136.0" text="房间号：" />
@@ -22,5 +22,6 @@
       <DatePicker fx:id="entercheckoutdate" layoutX="223.0" layoutY="223.0" prefHeight="23.0" prefWidth="118.0" />
       <TextField fx:id="entercheckoutminute" layoutX="391.0" layoutY="223.0" prefHeight="23.0" prefWidth="30.0" text="00" />
       <Label layoutX="379.0" layoutY="227.0" text="：" />
+      <Label layoutX="349.0" layoutY="136.0" text="多个房间号中间用“,”号间隔" textFill="RED" />
    </children>
 </AnchorPane>

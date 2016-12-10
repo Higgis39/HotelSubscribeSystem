@@ -1,9 +1,21 @@
 package presentation.view;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import businessLogic.orderbl.HotelViewOrderController;
+import businessLogicService.orderBLService.HotelViewOrderService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import presentation.controller.ViewController;
+import vo.IdVO;
+import vo.OrderVO;
 
 
 /**
@@ -19,6 +31,18 @@ public class DealOrderFrameController {
 	private Label id;
 	@FXML
 	private Label hotelname;
+	@FXML
+	private TableView<OrderVO> tableview;
+	@FXML
+	private TableColumn<OrderVO,String> orderid;
+	@FXML
+	private TableColumn<OrderVO,String> userid;
+	@FXML
+	private TableColumn<OrderVO,String> intime;
+	@FXML
+	private TableColumn<OrderVO,String> outtime;
+	@FXML
+	private TableColumn<OrderVO,Number> price;
 
 	private DealOrderFrame dealorderframe;
 	
@@ -58,8 +82,18 @@ public class DealOrderFrameController {
 	/**
 	 * 查看按钮的监听
 	 */
-	private void viewAction(){
+	private void viewAction() throws SQLException{
 		String ordertype = enterordertype.getSelectionModel().getSelectedItem();
+//		HotelViewOrderService service = new HotelViewOrderController();
+		List<OrderVO> list = new ArrayList<OrderVO>();
+		list.add(new OrderVO("1","1","1","1","1","1",1,""));
+		ObservableList<OrderVO> data = FXCollections.observableList(list);
+		tableview.setItems(data);
+		orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
+		userid.setCellValueFactory(cellData->cellData.getValue().getUserIdProperty());
+		intime.setCellValueFactory(cellData->cellData.getValue().getEntryTimeProperty());
+		outtime.setCellValueFactory(cellData->cellData.getValue().getLastTimeProperty());
+		price.setCellValueFactory(cellData->cellData.getValue().getPriceProperty());
 	}
 	
 	@FXML
@@ -76,7 +110,7 @@ public class DealOrderFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		enterordertype.getItems().addAll("未执行的房间预订的订单","已执行的订单","异常订单","已撤销订单");
+		enterordertype.getItems().addAll("未执行","已执行","异常","已撤销");
 	}
 	
 	public void setDealOrderFrame(DealOrderFrame dealorderframe){

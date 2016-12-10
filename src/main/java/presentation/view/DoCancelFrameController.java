@@ -2,6 +2,7 @@ package presentation.view;
 
 import javafx.fxml.FXML;
 import presentation.controller.ViewController;
+import vo.StageVO;
 
 /**
  * 
@@ -9,8 +10,8 @@ import presentation.controller.ViewController;
  *
  *DoCancelPopup的控制器
  */
-public class DoCancelPopupController {	
-	private DoCancelPopup docancelpopup;
+public class DoCancelFrameController {	
+	private DoCancelFrame docancelpopup;
 	
 	ViewController viewcontrol = new ViewController();
 	
@@ -20,12 +21,7 @@ public class DoCancelPopupController {
 	 */
 	private void confirmAction(){
 		docancelpopup.getPrimaryStage().close();
-//		try{
-//			RegisterClientFrameController a = new RegisterClientFrameController();
-//			a.registerclientframe.getPrimaryStage().close();
-//		}catch(Exception e){
-//			e.printStackTrace();
-//		}
+		StageVO.getSatge().close();
 		viewcontrol.openLoginFrame();
 	}
 	@FXML
@@ -36,7 +32,7 @@ public class DoCancelPopupController {
 		docancelpopup.getPrimaryStage().close();
 	}
 	
-	public void setDoCancelPopup(DoCancelPopup docancelpopup){
+	public void setDoCancelPopup(DoCancelFrame docancelpopup){
 		this.docancelpopup = docancelpopup;
 	}
 }

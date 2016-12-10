@@ -40,7 +40,7 @@ public class Hotel{
 		HotelPO hotelpo = hoteldataservice.findByName(hotelName);
 		HotelVO hotelvo = new HotelVO(hotelpo.getId(), hotelpo.getPassword(), hotelName, hotelpo.getPhonenumber(), 
 				                      hotelpo.getAddress(),hotelpo.getBusinessArea(), hotelpo.getIntroduction(),
-				                      hotelpo.getFacilities(),hotelpo.getStar(), hotelpo.getGrade(), hotelpo.getWorker());
+				                      hotelpo.getFacilities(),hotelpo.getStar(), hotelpo.getGrade());
 		return hotelvo;
 	}
 	

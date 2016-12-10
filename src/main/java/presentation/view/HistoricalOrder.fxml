@@ -24,5 +24,14 @@
       <ComboBox fx:id="enterordertype" layoutX="197.0" layoutY="76.0" prefWidth="150.0" />
       <Button layoutX="454.0" layoutY="76.0" mnemonicParsing="false" onAction="#viewAction" prefHeight="23.0" prefWidth="74.0" text="查看" />
       <Hyperlink layoutX="662.0" layoutY="35.0" onAction="#logoutAction" text="退出登录" />
+      <TableView layoutX="139.0" layoutY="140.0" prefHeight="220.0" prefWidth="500.0">
+        <columns>
+          <TableColumn prefWidth="100.0" text="订单号" />
+          <TableColumn prefWidth="100.0" text="酒店名称" />
+            <TableColumn prefWidth="100.0" text="入住时间" />
+            <TableColumn prefWidth="100.0" text="离开时间" />
+            <TableColumn prefWidth="100.0" text="价格" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

@@ -7,6 +7,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import presentation.controller.ViewController;
 import vo.IdVO;
+import vo.StageVO;
 import vo.UserVO;
 
 /**
@@ -73,6 +74,7 @@ public class UserPersonalFrameController {
 	 */
 	private void changepersonalmessageAction(){
 		//打开修改个人信息页面
+		StageVO.setStage(userpersonalframe.getPrimaryStage());
 		viewcontrol.openChangePersonalMessageFrame();
 	}
 	
@@ -91,6 +93,7 @@ public class UserPersonalFrameController {
 	 */
 	private void registerVIPAction(){
 		//打开注册会员页面
+		StageVO.setStage(userpersonalframe.getPrimaryStage());
 		viewcontrol.openRegisterVIPFrame();
 	}
 	
@@ -100,6 +103,7 @@ public class UserPersonalFrameController {
 	 */
 	private void changebirthAction(){
 		//打开修改生日/企业的界面
+		StageVO.setStage(userpersonalframe.getPrimaryStage());
 		viewcontrol.openChangeBirOrComFrame();
 	}
 	
