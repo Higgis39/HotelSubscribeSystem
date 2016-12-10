@@ -3,18 +3,25 @@ package businessLogic.orderbl.stub;
 public class HotelInfoForOrder_stub implements HotelInfoForOrder{
 
 	@Override
-	public int CheckEnoughRoom(String HotelID, String RoomType) {
+	public int getHotelRoomPrice(String HotelID, String RoomType) {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public String[] getHotelRoomPrice(String Hotel) {
+	public int CheckEnoughRoom(String HotelID, String RoomType) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override
-	public boolean updateRoom(String HotelID, String RoomType) {
+	public int CheckMaxInRoom(String HotelID, String RoomType) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean updateRoom(String HotelID, String RoomType, int RoomNum) {
 		// TODO Auto-generated method stub
 		return false;
 	}

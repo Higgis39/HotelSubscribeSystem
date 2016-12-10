@@ -5,11 +5,11 @@ public class OrderPO {
 	 * id			订单编号
 	 * hotelId		酒店编号
 	 * userId		用户编号
-	 * status		订单状态（0：未执行订单；1：已执行订单；2：异常订单）
-	 * entryTime	用户入住时间
-	 * lastTime		订单最晚执行时间
-	 * orderInfo	订单详情
+	 * status		订单状态(已执行；未执行；已撤销；异常；已评价)
+	 * entryTime	用户入住时间/用户预计入住时间
+	 * lastTime		用户退房时间/用户预计退房时间
 	 * price		订单价值
+	 * comment      订单评价
 	 */
 		
 		private String id;
@@ -24,18 +24,20 @@ public class OrderPO {
 		
 		private String lastTime;
 		
-		private String orderInfo;
-		
 		private int price;
 		
 		private String comment;
+		
+		private String RoomType;
+		
+		private int RoomNum;
 		
 		public OrderPO(){
 			super();
 		}
 
 		public OrderPO(String id, String hotelId, String userId, String status,
-				String entryTime, String lastTime,String orderInfo,int price,String comment) {
+				String entryTime, String lastTime,int price,String comment,String RoomType,int RoomNum) {
 			super();
 			this.id = id;
 			this.hotelId = hotelId;
@@ -43,9 +45,10 @@ public class OrderPO {
 			this.status = status;
 			this.entryTime = entryTime;
 			this.lastTime = lastTime;
-			this.orderInfo = orderInfo;
 			this.price = price;
 			this.comment = comment;
+			this.RoomType = RoomType;
+			this.RoomNum = RoomNum;
 		}
 
 		public String getId() {
@@ -95,14 +98,6 @@ public class OrderPO {
 		public void setLastTime(String lastTime) {
 			this.lastTime = lastTime;
 		}
-		
-		public String getOrderInfo() {
-			return orderInfo;
-		}
-
-		public void setOrderInfo(String orderInfo) {
-			this.orderInfo = orderInfo;
-		}
 
 		public int getPrice() {
 			return price;
@@ -118,5 +113,21 @@ public class OrderPO {
 		
 		public void setComment(String Comment){
 			this.comment=Comment;
+		}
+
+		public String getRoomType() {
+			return RoomType;
+		}
+
+		public void setRoomType(String roomType) {
+			RoomType = roomType;
+		}
+
+		public int getRoomNum() {
+			return RoomNum;
+		}
+
+		public void setRoomNum(int roomNum) {
+			RoomNum = roomNum;
 		}
 }
