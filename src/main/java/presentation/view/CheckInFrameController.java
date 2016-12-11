@@ -1,5 +1,6 @@
 package presentation.view;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -80,7 +81,7 @@ public class CheckInFrameController {
 	/**
 	 * 确定按钮的监听
 	 */
-	private void confirmAction(){
+	private void confirmAction() throws NumberFormatException, SQLException{
 		String roomnum = enterroomnum.getText();
 		String intime = entercheckintime.getText();
 		String outtime = entercheckoutdate.getValue().toString()+" "+entercheckouthour.getText()+entercheckoutminute.getText();
