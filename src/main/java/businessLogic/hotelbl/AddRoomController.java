@@ -13,16 +13,20 @@ public class AddRoomController implements AddRoomService{
 	 * 得到酒店的空闲客房
 	 * @param HotelName
 	 * @return
+	 * @throws SQLException 
 	 */
-	public ArrayList<RoomVO> getRoom(String HotelName){
+	public ArrayList<RoomVO> getRoom(String HotelName) throws SQLException{
 		return hotel.getRoom(HotelName);
 	}
 	
 	/**
 	 * 录入可用客房
-	 * @param roomID String
 	 * @param hotelname String
-	 * @return roomList ArrayList<String>
+	 * @param roomtype String
+	 * @param peoplenum Integer
+	 * @param roomnum Integer
+	 * @param price Integer
+	 * @return 
 	 */
 	public boolean UpdateRoom(String hotelName,String roomtype,int peoplenum,int roomnum,int price)throws SQLException{
 		return hotel.UpdateRoom(hotelName, roomtype, peoplenum, roomnum, price);

@@ -2,9 +2,9 @@ package po;
 
 public class RoomPO {
 	String hotelName;
-	int roomID;
+	int roomNum;
 	String roomType;
-	double roomPrice;
+	int roomPrice;
 	int peopleNumber;
 	boolean IsEmpty;
 	
@@ -12,10 +12,10 @@ public class RoomPO {
 		
 	}
 	
-	public RoomPO(String HotelName, int RoomID,int PeopleNumber,double RoomPrice,String RoomType){
+	public RoomPO(String HotelName, int RoomNum,int PeopleNumber,int RoomPrice,String RoomType){
 		
 		hotelName=HotelName;
-		roomID=RoomID;
+		roomNum=RoomNum;
 		roomType=RoomType;
 		roomPrice=RoomPrice;
 		peopleNumber=PeopleNumber;
@@ -26,15 +26,15 @@ public class RoomPO {
 		return hotelName;
 	}
 	
-	public int getRoomID(){
-		return roomID;
+	public int getRoomNum(){
+		return roomNum;
 	}
 	
 	public String getRoomType(){
 		return roomType;
 	}
 	
-	public double getRoomPrice(){
+	public int getRoomPrice(){
 		return roomPrice;
 	}
 	
@@ -55,15 +55,15 @@ public class RoomPO {
 		this.hotelName = hotelName;
 	}
 
-	public void setRoomID(int roomID) {
-		this.roomID = roomID;
+	public void setRoomNum(int roomNum) {
+		this.roomNum = roomNum;
 	}
 
 	public void setRoomType(String roomType) {
 		this.roomType = roomType;
 	}
 
-	public void setRoomPrice(double roomPrice) {
+	public void setRoomPrice(int roomPrice) {
 		this.roomPrice = roomPrice;
 	}
 

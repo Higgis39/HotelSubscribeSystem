@@ -29,26 +29,37 @@ public class Hotel{
 	 * @param Star String
 	 * @param minGrade double
 	 * @param maxGrade double
+	 * @param hasfixed boolean
 	 * @return 返回符合搜索条件的酒店列表
 	 * @throws SQLException 
 	 */
 	public ArrayList<HotelVO> Search(String Address, String BusinessArea, String RoomType, double minPrice, double maxPrice, String checkinTime, String checkoutTime, int Star, double minGrade, double maxGrade,boolean hasfixed) throws SQLException{
-		ArrayList<HotelPO> HotelList = new ArrayList<HotelPO>();
+		ArrayList<HotelPO> HotelPOList = new ArrayList<HotelPO>();
+		ArrayList<HotelVO> HotelVOList = new ArrayList<HotelVO>();
 		
 		if(Star==-1 && minGrade==-1 && maxGrade==-1){
-			HotelList=hoteldataservice.findByAddressAndBusinessarea(Address, BusinessArea);
+			HotelPOList=hoteldataservice.findByAddressAndBusinessarea(Address, BusinessArea);
 		}else if(minGrade ==-1 && maxGrade==-1){
-			HotelList=hoteldataservice.findByAddressAndBusinessareaAndStar(Address, BusinessArea, Star);
+			HotelPOList=hoteldataservice.findByAddressAndBusinessareaAndStar(Address, BusinessArea, Star);
 		}else{
 			if(minGrade==-1){
-				HotelList=hoteldataservice.findByAddressAndBusinessareaAndGrade(Address, BusinessArea, Star);
+				HotelPOList=hoteldataservice.findByAddressAndBusinessareaAndGrade(Address, BusinessArea, Star);
 			}
 			else{
-				HotelList=hoteldataservice.findByAddressAndBusinessareaAndGrade(Address, BusinessArea, Star);
+				HotelPOList=hoteldataservice.findByAddressAndBusinessareaAndGrade(Address, BusinessArea, Star);
 			}
 		}
 		
-		return HotelList;
+
+		int length=HotelPOList.size();
+		for(int i=0;i<length;i++){
+			HotelVO hotelvo = new HotelVO(HotelPOList.get(i).getId(), HotelPOList.get(i).getPassword(), HotelPOList.get(i).getName(), 
+					                      HotelPOList.get(i).getPhonenumber(), HotelPOList.get(i).getAddress(), HotelPOList.get(i).getBusinessArea(),
+					                      HotelPOList.get(i).getIntroduction(), HotelPOList.get(i).getFacilities(), HotelPOList.get(i).getStar(), HotelPOList.get(i).getGrade());
+			
+			HotelVOList.add(hotelvo);
+		}
+		return HotelVOList;
 	}
 	
 	/**
@@ -73,6 +84,7 @@ public class Hotel{
 	public HotelVO ViewByid(String id){
 		
 		HotelPO hotelpo = hoteldataservice.findById(id);
+		
 		HotelVO hotelvo = new HotelVO(id, hotelpo.getPassword(), hotelpo.getName(), hotelpo.getPhonenumber(), 
 				                      hotelpo.getAddress(),hotelpo.getBusinessArea(), hotelpo.getIntroduction(),
 				                      hotelpo.getFacilities(),hotelpo.getStar(), hotelpo.getGrade());
@@ -103,31 +115,46 @@ public class Hotel{
 	 * 得到酒店的空闲客房
 	 * @param HotelName
 	 * @return
+	 * @throws SQLException 
 	 */
-	public ArrayList<RoomVO> getRoom(String HotelName){
-		return null;
+	public ArrayList<RoomVO> getRoom(String HotelName) throws SQLException{
+		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
+		RoomPOList = roomdataservice.findByHotelname(HotelName);
+		
+		ArrayList<RoomVO> RoomVOList = new ArrayList<RoomVO>();
+		int length=RoomPOList.size();
+		for(int i=0;i<length;i++){
+			if(RoomPOList.get(i).getIsEmpty()==true){
+				RoomPO roompo = RoomPOList.get(i);
+				RoomVO roomvo = new RoomVO(HotelName,roompo.getRoomType(), roompo.getPeopleNumber(), roompo.getRoomNum(), roompo.getRoomPrice());
+				RoomVOList.add(roomvo);
+			}
+		}
+		
+		return RoomVOList;
 	}
 	
 	/**
 	 * 录入可用客房
-	 * @param roomID String
 	 * @param hotelname String
-	 * @return roomList ArrayList<String>
+	 * @param roomtype String
+	 * @param peoplenum Integer
+	 * @param roomnum Integer
+	 * @param price Integer
+	 * @return 
 	 */
 	public boolean UpdateRoom(String hotelName,String roomtype,int peoplenum,int roomnum,int price)throws SQLException{
-//		RoomPO roompo = roomdataservice.findByIDAndHotelname(roomID,hotelName);
-//		boolean roomstate = roompo.getIsEmpty();
-//		
-//		ArrayList<RoomPO> spareRoom = new ArrayList<RoomPO>();
-//		spareRoom = roomdataservice.findByHotelname(hotelName);
-//		
-//		if(roomstate){
-//			spareRoom.add(roompo);
-//		}
-//		else{
-//			System.out.println("The room is not spare!");
-//		}
-//		
+		ArrayList<RoomPO> RoomPOList = roomdataservice.findByHotelname(hotelName);
+		
+		int length=RoomPOList.size();
+		for(int i=0;i<length;i++){
+			if(RoomPOList.get(i).getRoomType()==roomtype){
+				RoomPOList.get(i).setRoomNum(RoomPOList.get(i).getRoomNum()+roomnum);
+				RoomPOList.get(i).setPeopleNumber(peoplenum);
+				RoomPOList.get(i).setRoomPrice(price);
+			}
+		}
+	
 		return true;
 	}
 	
@@ -147,18 +174,44 @@ public class Hotel{
 	
 	/**
 	 * 更新退房信息(线下)
+	 * @param HotelName String
+	 * @param roomType String
 	 * @param num
 	 * @return
+	 * @throws SQLException 
 	 */
-	public boolean CheckOut(int num){
+	public boolean CheckOut(String HotelName,String roomType,int num) throws SQLException{
+		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
+		RoomPOList = roomdataservice.findByHotelname(HotelName);
+		
+		int length=RoomPOList.size();
+		for(int i=0;i<length;i++){
+			if(RoomPOList.get(i).getRoomType()==roomType){
+				RoomPOList.get(i).setRoomNum(RoomPOList.get(i).getRoomNum()+num);
+			}
+		}
+		
 		return true;
 	}
 	
 	/**
 	 * 登记入住信息(线下)
-	 * @param num int
+	 * @param HotelName String
+	 * @param roomType String
+	 * @param num
+	 * @return
+	 * @throws SQLException 
 	 */
-	public boolean CheckIn(int num){
+	public boolean CheckIn(String HotelName,String roomType,int num) throws SQLException{
+		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
+		RoomPOList = roomdataservice.findByHotelname(HotelName);
+		
+		int length=RoomPOList.size();
+		for(int i=0;i<length;i++){
+			if(RoomPOList.get(i).getRoomType()==roomType){
+				RoomPOList.get(i).setRoomNum(RoomPOList.get(i).getRoomNum()-num);
+			}
+		}
 		
 		return true;
 	}

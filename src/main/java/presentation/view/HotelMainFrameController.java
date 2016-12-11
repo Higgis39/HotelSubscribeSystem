@@ -1,5 +1,6 @@
 package presentation.view;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import businessLogic.hotelbl.AddRoomController;
@@ -117,7 +118,7 @@ public class HotelMainFrameController {
 	/**
 	 * 初始化
 	 */
-	private void initialize(){
+	private void initialize() throws SQLException{
 		ViewService s = new ViewController();
 		HotelVO hotelvo = s.ViewByid(IdVO.getid());
 		id.setText(hotelvo.getId());

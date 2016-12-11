@@ -1,5 +1,7 @@
 package businessLogic.hotelbl;
 
+import java.sql.SQLException;
+
 import businessLogicService.hotelBLService.UpdateService;
 
 public class UpdateController implements UpdateService{
@@ -20,18 +22,25 @@ public class UpdateController implements UpdateService{
 	
 	/**
 	 * 登记入住信息(线下)
-	 * @param num int
+	 * @param HotelName String
+	 * @param roomType String
+	 * @param num
+	 * @return
+	 * @throws SQLException 
 	 */
-	public boolean CheckIn(int num){
-		return hotel.CheckIn(num);
+	public boolean CheckIn(String HotelName,String roomType,int num) throws SQLException{
+		return hotel.CheckIn(HotelName,roomType,num);
 	}
 	
 	/**
 	 * 更新退房信息(线下)
+	 * @param HotelName String
+	 * @param roomType String
 	 * @param num
 	 * @return
+	 * @throws SQLException 
 	 */
-	public boolean CheckOut(int num){
-		return hotel.CheckOut(num);
+	public boolean CheckOut(String HotelName,String roomType,int num) throws SQLException{
+		return hotel.CheckOut(HotelName,roomType,num);
 	}
 }
