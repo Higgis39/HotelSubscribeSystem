@@ -2,7 +2,9 @@ package presentation.view;
 
 import java.util.ArrayList;
 
+import businessLogic.promotionbl.HotelPromotionController;
 import businessLogic.userbl.MessageController;
+import businessLogicService.promotionBLService.HotelPromotionBLService;
 import businessLogicService.userBLService.MessageBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.HotelPromotionVO;
 import vo.IdVO;
 import vo.StageVO;
@@ -46,7 +48,7 @@ public class HotelPromotionFrameController {
 	
 	private HotelPromotionFrame hotelpromotionframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -107,9 +109,8 @@ public class HotelPromotionFrameController {
 		id.setId(uservo.getid());
 		hotelname.setText(uservo.getname());
 		
-		ArrayList<HotelPromotionVO> promotion = new ArrayList<HotelPromotionVO>();
-		promotion.add(new HotelPromotionVO("","生日优惠",true,0,false,"","",0.8));
-		promotion.add(new HotelPromotionVO("","三间及以上优惠",false,3,false,"10-01","10-07",0.90));
+		HotelPromotionBLService s = new HotelPromotionController();
+		ArrayList<HotelPromotionVO> promotion = s.hotelPromotionFind(hotelname.getText());
 		ObservableList<HotelPromotionVO> data = FXCollections.observableArrayList(promotion);
 		tableview.setItems(data);
 		promotiontype.setCellValueFactory(cellData->cellData.getValue().getNameProperty());

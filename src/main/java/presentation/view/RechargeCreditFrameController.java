@@ -4,6 +4,7 @@ import businessLogic.userbl.RechargeCreditController;
 import businessLogicService.userBLService.RechargeCreditBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import presentation.controller.FrameController;
 
 /**
  * 
@@ -21,6 +22,8 @@ public class RechargeCreditFrameController {
 	
 	RechargeCreditBLService service = new RechargeCreditController();
 	
+	FrameController viewcontrol = new FrameController();
+	
 	@FXML
 	/**
 	 * 确定按钮的监听
@@ -30,6 +33,7 @@ public class RechargeCreditFrameController {
 		int creditrecharge = Integer.valueOf(enterrecharge.getText());
 		service.RechargeCredit("网站营销人员",id,creditrecharge);
 		rechargecreditframe.getPrimaryStage().close();
+		viewcontrol.openSuccessSaveFrame();
 	}
 	
 	@FXML

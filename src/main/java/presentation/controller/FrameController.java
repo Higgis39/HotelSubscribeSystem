@@ -6,6 +6,7 @@ import presentation.view.RegisterVIPFrame;
 import presentation.view.SearchResultFrame;
 import presentation.view.SuccessAdd2Frame;
 import presentation.view.SuccessAddFrame;
+import presentation.view.SuccessOrderFrame;
 import presentation.view.SuccessRegisterFrame;
 import presentation.view.SuccessSaveFrame;
 import presentation.view.UserMainFrame;
@@ -14,6 +15,7 @@ import presentation.view.ViewCreditChangeFrame;
 import presentation.view.AddHotelFrame;
 import presentation.view.AddHotelWorkerFrame;
 import presentation.view.AddMarketerFrame;
+import presentation.view.AssessOrderFrame;
 import presentation.view.ChangeBirOrComFrame;
 import presentation.view.ChangeHotelMessageFrame;
 import presentation.view.ChangePersonalMessageFrame;
@@ -35,6 +37,7 @@ import presentation.view.MakeMarketerPromotionFrame;
 import presentation.view.ManagerMainFrame;
 import presentation.view.MarketerMainFrame;
 import presentation.view.MarketerPromotionFrame;
+import presentation.view.NoEnoughCreditFrame;
 import presentation.view.OrderAppealFrame;
 import presentation.view.RechargeCreditFrame;
 
@@ -44,7 +47,7 @@ import presentation.view.RechargeCreditFrame;
  *
  *控制界面之间的跳转
  */
-public class ViewController{
+public class FrameController{
 	/**
 	 * 打开用户登录界面
 	 */
@@ -295,5 +298,26 @@ public class ViewController{
 	 */
 	public void openSuccessSaveFrame(){
 		new SuccessSaveFrame().start(new Stage());
+	}
+
+	/**
+	 * 打开评价订单界面
+	 */
+	public void openAssessOrderFrame() {
+		new AssessOrderFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开信用值不足界面
+	 */
+	public void openNoEnoughCreditFrame(){
+		new NoEnoughCreditFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开成功下单界面
+	 */
+	public void openSuccessOrderFrame(){
+		new SuccessOrderFrame().start(new Stage());
 	}
 }

@@ -1,13 +1,23 @@
 package presentation.view;
 
+import java.util.ArrayList;
+
+import businessLogic.hotelbl.AddRoomController;
+import businessLogic.hotelbl.ViewController;
+import businessLogicService.hotelBLService.AddRoomService;
+import businessLogicService.hotelBLService.ViewService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
+import vo.HotelNameVO;
+import vo.HotelVO;
+import vo.IdVO;
 import vo.RoomVO;
+import vo.StageVO;
 
 /**
  * 
@@ -25,15 +35,15 @@ public class HotelMainFrameController {
 	@FXML
 	private TableColumn<RoomVO,String> roomtype;
 	@FXML
+	private TableColumn<RoomVO,Number> peoplenum;
+	@FXML
 	private TableColumn<RoomVO,Number> roomnum;
 	@FXML
 	private TableColumn<RoomVO,Number> roomprice;
 	
 	private HotelMainFrame hotelmainframe;
 	
-	private ObservableList<RoomVO> roomdata = FXCollections.observableArrayList();
-	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -71,6 +81,8 @@ public class HotelMainFrameController {
 	 */
 	private void enteruserfulroomAction(){
 		//打开录入可用客房的界面
+		StageVO.setStage(hotelmainframe.getPrimaryStage());
+		HotelNameVO.sethotelname(hotelname.getText());
 		viewcontrol.openEnterUserfulRoomFrame();
 	}
 	
@@ -106,11 +118,17 @@ public class HotelMainFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-//		roomdata.add(new RoomVO("单人间",10,100));
-//		roomdata.add(new RoomVO("双人间",10,180));
-//		roomdata.add(new RoomVO("三人间",10,250));
+		ViewService s = new ViewController();
+		HotelVO hotelvo = s.ViewByid(IdVO.getid());
+		id.setText(hotelvo.getId());
+		hotelname.setText(hotelvo.getName());
+		
+		AddRoomService service = new AddRoomController();
+		ArrayList<RoomVO> roomlist = service.getRoom(hotelname.getText());
+		ObservableList<RoomVO> roomdata = FXCollections.observableArrayList(roomlist);
 		tableview.setItems(roomdata);
 		roomtype.setCellValueFactory(cellData->cellData.getValue().roomtypeProperty());
+		peoplenum.setCellValueFactory(cellData->cellData.getValue().peoplenumProperty());
 		roomnum.setCellValueFactory(cellData->cellData.getValue().roomnumProperty());
 		roomprice.setCellValueFactory(cellData->cellData.getValue().roompriceProperty());
 	}

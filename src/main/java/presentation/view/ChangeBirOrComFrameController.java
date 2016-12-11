@@ -5,7 +5,7 @@ import businessLogicService.userBLService.MessageBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.IdVO;
 import vo.StageVO;
 import vo.UserVO;
@@ -26,7 +26,7 @@ public class ChangeBirOrComFrameController {
 	
 	MessageBLService service = new MessageController();
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	private void confirmAction(){

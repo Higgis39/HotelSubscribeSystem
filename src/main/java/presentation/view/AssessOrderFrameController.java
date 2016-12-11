@@ -1,8 +1,15 @@
 package presentation.view;
 
+import businessLogic.orderbl.CommentOrderController;
+import businessLogic.orderbl.CustomerViewOrderController;
+import businessLogicService.orderBLService.CommentOrderService;
+import businessLogicService.orderBLService.CustomerViewOrderService;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
+import presentation.controller.FrameController;
+import vo.OrderIdVO;
+import vo.OrderVO;
 
 /**
  * 
@@ -18,13 +25,28 @@ public class AssessOrderFrameController {
 	
 	private AssessOrderFrame assessorderframe;
 	
+	CustomerViewOrderService service = new CustomerViewOrderController();
+	
+	FrameController viewcontrol = new FrameController();
+	
 	@FXML
 	/**
 	 * 确认按钮的监听
 	 */
 	private void confirmAction(){
-		String judgement = judge.getText();
-		int grade = combobox.getSelectionModel().getSelectedIndex();
+		if(judge.isEditable()){
+			String judgement = judge.getText();
+			int grade = combobox.getSelectionModel().getSelectedIndex();
+			OrderVO vo = service.ShowOrderMessage(OrderIdVO.getorderid());
+			vo.setcomment(judgement);
+			CommentOrderService s = new CommentOrderController();
+			s.addComment(vo,grade);
+			assessorderframe.getPrimaryStage().close();
+			viewcontrol.openSuccessSaveFrame();
+		}else{
+			assessorderframe.getPrimaryStage().close();
+		}
+		
 	}
 	
 	@FXML
@@ -32,7 +54,6 @@ public class AssessOrderFrameController {
 	 * 取消按钮的监听
 	 */
 	private void cancelAction(){
-		//返回之前的界面
 		assessorderframe.getPrimaryStage().close();
 	}
 
@@ -42,6 +63,12 @@ public class AssessOrderFrameController {
 	 */
 	private void initialize(){
 		combobox.getItems().addAll(1,2,3,4,5);
+		OrderVO ordervo = service.ShowOrderMessage(OrderIdVO.getorderid());
+		if(ordervo.getComment()!=null){
+			judge.setText(ordervo.getComment());
+			judge.setEditable(false);
+			combobox.setDisable(true);
+		}
 	}
 	
 	public void setAssessOrderFrame(AssessOrderFrame assessorderframe) {

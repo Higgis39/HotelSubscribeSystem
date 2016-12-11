@@ -26,7 +26,7 @@ public class OrderPO {
 		
 		private String lastTime;
 		
-		private int price;
+		private double price;
 		
 		private String comment;
 		
@@ -114,7 +114,7 @@ public class OrderPO {
 			this.lastTime = lastTime;
 		}
 
-		public int getPrice() {
+		public double getPrice() {
 			return price;
 		}
 

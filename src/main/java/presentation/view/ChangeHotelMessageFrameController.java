@@ -1,9 +1,15 @@
 package presentation.view;
 
+import businessLogic.hotelbl.MaintainController;
+import businessLogic.hotelbl.ViewController;
+import businessLogicService.hotelBLService.MaintainService;
+import businessLogicService.hotelBLService.ViewService;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
+import vo.HotelNameVO;
+import vo.HotelVO;
 import vo.StageVO;
 
 public class ChangeHotelMessageFrameController {
@@ -11,8 +17,6 @@ public class ChangeHotelMessageFrameController {
 	private TextField enterphonenumber;
 	@FXML
 	private TextField enteraddress;
-	@FXML
-	private TextField entercity;
 	@FXML
 	private TextArea enterintroduction;
 	@FXML
@@ -22,7 +26,7 @@ public class ChangeHotelMessageFrameController {
 	
 	private ChangeHotelMessageFrame changehotelmessageframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -53,6 +57,13 @@ public class ChangeHotelMessageFrameController {
 	 * 确定按钮的监听
 	 */
 	private void confirmAction(){
+		String phonenumber = enterphonenumber.getText();
+		String address = enteraddress.getText();
+		String introduction = enterintroduction.getText();
+		String service = enterservice.getText();
+		int star = Integer.valueOf(enterstar.getText());
+		MaintainService s = new MaintainController();
+		s.Maintain(HotelNameVO.getHotelname(), address, phonenumber, introduction,service, star);
 		
 		changehotelmessageframe.getPrimaryStage().close();
 		StageVO.getSatge().close();
@@ -73,7 +84,13 @@ public class ChangeHotelMessageFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		
+		ViewService s = new ViewController();
+		HotelVO hotelvo = s.View(HotelNameVO.getHotelname());
+		enterphonenumber.setText(hotelvo.getPhonenumber());
+		enteraddress.setText(hotelvo.getAddress());
+		enterintroduction.setText(hotelvo.getIntroduction());
+		enterservice.setText(hotelvo.getFacilities());
+		enterstar.setText(Integer.toString(hotelvo.getStar()));
 	}
 
 	public void setChangeHotelMessageFrame(ChangeHotelMessageFrame changehotelmessageframe) {

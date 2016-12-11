@@ -1,7 +1,7 @@
 package presentation.view;
 
 import javafx.fxml.FXML;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.StageVO;
 
 /**
@@ -13,7 +13,7 @@ import vo.StageVO;
 public class DoCancelFrameController {	
 	private DoCancelFrame docancelpopup;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**

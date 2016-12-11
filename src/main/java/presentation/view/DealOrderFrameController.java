@@ -13,7 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.IdVO;
 import vo.OrderVO;
 
@@ -46,7 +46,7 @@ public class DealOrderFrameController {
 
 	private DealOrderFrame dealorderframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -84,8 +84,8 @@ public class DealOrderFrameController {
 	 */
 	private void viewAction() throws SQLException{
 		String ordertype = enterordertype.getSelectionModel().getSelectedItem();
-//		HotelViewOrderService service = new HotelViewOrderController();
-		List<OrderVO> list = new ArrayList<OrderVO>();
+		HotelViewOrderService service = new HotelViewOrderController();
+		List<OrderVO> list = service.GetSpecificOrders(IdVO.getid(), ordertype);
 		ObservableList<OrderVO> data = FXCollections.observableList(list);
 		tableview.setItems(data);
 		orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());

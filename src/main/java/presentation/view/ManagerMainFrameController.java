@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.WorkerVO;
 import vo.IdVO;
 import vo.OtherIdVO;
@@ -62,7 +62,7 @@ public class ManagerMainFrameController {
 
 	private ManagerMainFrame managermainframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**

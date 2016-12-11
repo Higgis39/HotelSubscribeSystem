@@ -2,7 +2,9 @@ package presentation.view;
 
 import java.util.ArrayList;
 
+import businessLogic.promotionbl.WebPromotionController;
 import businessLogic.userbl.MessageController;
+import businessLogicService.promotionBLService.WebPromotionBLService;
 import businessLogicService.userBLService.MessageBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.IdVO;
 import vo.StageVO;
 import vo.UserVO;
@@ -44,7 +46,7 @@ public class MarketerPromotionFrameController {
 	
 	private MarketerPromotionFrame marketerpromotionframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -85,9 +87,8 @@ public class MarketerPromotionFrameController {
 		id.setId(uservo.getid());
 		name.setText(uservo.getname());
 		
-		ArrayList<WebPromotionVO> promotion = new ArrayList<WebPromotionVO>();
-		promotion.add(new WebPromotionVO("VIP特定商圈专属折扣","12-01","12-09","栖霞",3,0.8));
-		promotion.add(new WebPromotionVO("会员特定等级专属折扣","","","无限制",1,0.9));
+		WebPromotionBLService s = new WebPromotionController();
+		ArrayList<WebPromotionVO> promotion = s.webPromotionFind();
 		ObservableList<WebPromotionVO> data = FXCollections.observableArrayList(promotion);
 		tableview.setItems(data);
 		promotiontype.setCellValueFactory(cellData->cellData.getValue().getNameProperty());

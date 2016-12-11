@@ -2,12 +2,17 @@ package presentation.view;
 
 import java.time.LocalDate;
 
+import businessLogic.orderbl.CreateOrderController;
+import businessLogicService.orderBLService.CreateOrderService;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import presentation.controller.FrameController;
 import vo.HotelNameVO;
+import vo.IdVO;
+import vo.OrderVO;
 import vo.StageVO;
 
 /**
@@ -44,6 +49,10 @@ public class FillOrderFrameController {
 	
 	private FillOrderFrame fillorderframe;
 	
+	CreateOrderService service = new CreateOrderController();
+	
+	FrameController viewcontrol = new FrameController();
+	
 	@FXML
 	/**
 	 * 入住日期的监听
@@ -78,8 +87,15 @@ public class FillOrderFrameController {
 	 * 房间数量右侧+号按钮的监听
 	 */
 	private void roomnumplusAction(){
+		String roomtype = enterroomtype.getSelectionModel().getSelectedItem();
+		int max = 1000;
+		if(roomtype!=null){
+			max = service.CheckRoom(hotelname.getText(), roomtype);
+		}
 		int num = Integer.valueOf(enterroomnum.getText());
-		num++;
+		if(num<max){
+			num++;
+		}
 		enterroomnum.setText(Integer.toString(num));
 	}
 	
@@ -100,8 +116,16 @@ public class FillOrderFrameController {
 	 * 入住人数右侧+号按钮的监听
 	 */
 	private void peoplenumplusAction(){
+		String roomtype = enterroomtype.getSelectionModel().getSelectedItem();
+		int roomnum = Integer.valueOf(enterroomnum.getText());
+		int max = 5;
+		if(roomtype!=null&&enterroomnum.getText()!=null){
+			max = service.CheckMax(hotelname.getText(), roomtype);
+		}
 		int num = Integer.valueOf(enterpeoplenum.getText());
-		num++;
+		if(num<max*roomnum){
+			num++;
+		}
 		enterpeoplenum.setText(Integer.toString(num));
 	}
 	
@@ -123,10 +147,10 @@ public class FillOrderFrameController {
 	 */
 	private void confirmAction(){
 		String roomtype = enterroomtype.getSelectionModel().getSelectedItem();
-		LocalDate indate = enterindate.getValue();
-		LocalDate outdate = enteroutdate.getValue();
+		String indate = enterindate.getValue().toString()+" 18:00";
+		String outdate = enteroutdate.getValue().toString();
 		int roomnum = Integer.valueOf(enterroomnum.getText());
-		int peoplenum = Integer.valueOf(enterpeoplenum.getText());
+//		int peoplenum = Integer.valueOf(enterpeoplenum.getText());
 		String haschild = enterhaschild.getSelectionModel().getSelectedItem();
 		if(roomtype==null){
 			roomtypeword.setText("您必须选择房间类型");
@@ -138,6 +162,13 @@ public class FillOrderFrameController {
 		}else{
 			haschildword.setText(null);
 		}
+		
+		OrderVO ordervo = new OrderVO(null,hotelname.getText(),IdVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum);
+		double p = service.getTotal(ordervo);
+		ordervo.setprice(p);
+		service.addNewOrder(ordervo);
+		fillorderframe.getPrimaryStage().close();
+		viewcontrol.openSuccessOrderFrame();
 	}
 	
 	@FXML
@@ -155,7 +186,13 @@ public class FillOrderFrameController {
 	 * 得到总价的监听
 	 */
 	private void getTotalAction(){
-		
+		String roomtype = enterroomtype.getSelectionModel().getSelectedItem();
+		String indate = enterindate.getValue().toString();
+		String outdate = enteroutdate.getValue().toString();
+		int roomnum = Integer.valueOf(enterroomnum.getText());
+		OrderVO ordervo = new OrderVO(null,hotelname.getText(),IdVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum);
+		double p = service.getTotal(ordervo);
+		price.setText(Double.toString(p));
 	}
 	
 	@FXML

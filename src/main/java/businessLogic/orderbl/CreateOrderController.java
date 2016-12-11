@@ -19,12 +19,12 @@ public class CreateOrderController implements CreateOrderService{
 	 * @param roomType
 	 * @return 返回该房间类型的数量
 	 */
-	public int CheckRoom(String hotelID,String roomType){
-		return new HotelInfoForOrder_stub().CheckEnoughRoom(hotelID, roomType);
+	public int CheckRoom(String hotelName,String roomType){
+		return new HotelInfoForOrder_stub().CheckEnoughRoom(hotelName, roomType);
 	}
 	
-	public int CheckMax(String hotelID,String roomType){
-		return new HotelInfoForOrder_stub().CheckEnoughRoom(hotelID, roomType);
+	public int CheckMax(String hotelName,String roomType){
+		return new HotelInfoForOrder_stub().CheckEnoughRoom(hotelName, roomType);
 	}
 	 
 	/**

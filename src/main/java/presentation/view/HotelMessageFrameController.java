@@ -1,8 +1,13 @@
 package presentation.view;
 
+import businessLogic.hotelbl.ViewController;
+import businessLogicService.hotelBLService.ViewService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
+import vo.HotelNameVO;
+import vo.HotelVO;
+import vo.IdVO;
 import vo.StageVO;
 
 
@@ -32,7 +37,7 @@ public class HotelMessageFrameController {
 	
 	private HotelMessageFrame hotelmessageframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -71,6 +76,7 @@ public class HotelMessageFrameController {
 	private void linkAction(){
 		//打开修改酒店基本信息界面
 		StageVO.setStage(hotelmessageframe.getPrimaryStage());
+		HotelNameVO.sethotelname(hotelname.getText());
 		viewcontrol.openChangeHotelMessageFrame();
 	}
 	
@@ -88,7 +94,16 @@ public class HotelMessageFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		
+		ViewService s = new ViewController();
+		HotelVO hotelvo = s.ViewByid(IdVO.getid());
+		id.setText(IdVO.getid());
+		hotelname.setText(hotelvo.getName());
+		phonenumber.setText(hotelvo.getPhonenumber());
+		address.setText(hotelvo.getBusinessArea());
+		city.setText(hotelvo.getBusinessArea());
+		introduction.setText(hotelvo.getIntroduction());
+		service.setText(hotelvo.getFacilities());
+		star.setText(Integer.toString(hotelvo.getStar()));
 	}
 	
 	public void setHotelMessageFrame(HotelMessageFrame hotelmessageframe){

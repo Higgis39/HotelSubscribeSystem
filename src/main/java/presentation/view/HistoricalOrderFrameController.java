@@ -1,18 +1,26 @@
 package presentation.view;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import businessLogic.orderbl.CustomerViewOrderController;
 import businessLogic.userbl.MessageController;
+import businessLogicService.orderBLService.CustomerViewOrderService;
 import businessLogicService.userBLService.MessageBLService;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import presentation.controller.ViewController;
+import javafx.util.Callback;
+import presentation.controller.FrameController;
+import vo.HotelVO;
 import vo.IdVO;
 import vo.OrderVO;
 import vo.UserVO;
@@ -42,10 +50,12 @@ public class HistoricalOrderFrameController {
 	private TableColumn<OrderVO,String> outtime;
 	@FXML
 	private TableColumn<OrderVO,Number> price;
+	@FXML
+	private TableColumn<OrderVO,Boolean> link;
 	
 	private HistoricalOrderFrame historicalorderframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -68,10 +78,17 @@ public class HistoricalOrderFrameController {
 	}
 	
 	@FXML
-	private void viewAction(){
+	/**
+	 * 查看的监听
+	 * @throws SQLException
+	 */
+	private void viewAction() throws SQLException{
 		String ordertype = enterordertype.getSelectionModel().getSelectedItem();
 		//根据得到的订单类型进行搜索
-		List<OrderVO> list = new ArrayList<OrderVO>();
+		
+		CustomerViewOrderService service = new CustomerViewOrderController();
+		
+		List<OrderVO> list = service.getSpecificOrders(id.getText(),ordertype);
 		ObservableList<OrderVO> data = FXCollections.observableList(list);
 		tableview.setItems(data);
 		orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
@@ -79,6 +96,20 @@ public class HistoricalOrderFrameController {
 		intime.setCellValueFactory(cellData->cellData.getValue().getEntryTimeProperty());
 		outtime.setCellValueFactory(cellData->cellData.getValue().getLastTimeProperty());
 		price.setCellValueFactory(cellData->cellData.getValue().getPriceProperty());
+		
+		link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<OrderVO, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue()!=null);
+            }
+        });
+
+        link.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
+            @Override
+            public TableCell<OrderVO, Boolean> call(TableColumn<OrderVO, Boolean> p) {
+                return new ButtonCell2();
+            }
+        });
 	}
 	
 	@FXML

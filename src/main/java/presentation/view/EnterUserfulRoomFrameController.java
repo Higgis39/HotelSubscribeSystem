@@ -1,9 +1,15 @@
 package presentation.view;
 
+import java.sql.SQLException;
+
+import businessLogic.hotelbl.AddRoomController;
+import businessLogicService.hotelBLService.AddRoomService;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
+import vo.HotelNameVO;
+import vo.StageVO;
 
 /**
  * 
@@ -15,13 +21,15 @@ public class EnterUserfulRoomFrameController {
 	@FXML
 	private TextField enterroomnum;
 	@FXML
+	private TextField enterpeoplenum;
+	@FXML
 	private TextField enterroomprice;
 	@FXML
 	private ComboBox<String> enterroomtype;
 	
 	private EnterUserfulRoomFrame enteruserfulroomframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -49,7 +57,7 @@ public class EnterUserfulRoomFrameController {
 	/**
 	 * 继续添加按钮的监听
 	 */
-	private void continueAction(){
+	private void continueAction() throws SQLException{
 		confirmAction();
 		enteruserfulroomframe.getPrimaryStage().close();
 		viewcontrol.openEnterUserfulRoomFrame();
@@ -59,11 +67,19 @@ public class EnterUserfulRoomFrameController {
 	/**
 	 * 确定按钮的监听
 	 */
-	private void confirmAction(){
+	private void confirmAction() throws SQLException{
 		String roomtype = enterroomtype.getSelectionModel().getSelectedItem();
+		int peoplenum = Integer.valueOf(enterpeoplenum.getText());
 		int roomnum = Integer.valueOf(enterroomnum.getText());
 		int roomprice = Integer.valueOf(enterroomprice.getText());
 		//保存客房信息
+		AddRoomService service = new AddRoomController();
+		service.UpdateRoom(HotelNameVO.getHotelname(), roomtype, peoplenum, roomnum, roomprice);
+		
+		enteruserfulroomframe.getPrimaryStage().close();
+		StageVO.getSatge().close();
+		viewcontrol.openHotelMainFrame();
+		viewcontrol.openSuccessSaveFrame();
 	}
 	
 	@FXML
@@ -79,7 +95,7 @@ public class EnterUserfulRoomFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		enterroomtype.getItems().addAll("单人间","双人间","三人间");
+		enterroomtype.getItems().addAll("单人间","标准间","家庭套间");
 	}
 
 	public void setEnterUserfulRoomFrame(EnterUserfulRoomFrame enteruserfulroomframe) {

@@ -1,17 +1,21 @@
 package presentation.view;
 
+import businessLogic.userbl.MessageController;
+import businessLogicService.userBLService.MessageBLService;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.HotelNameVO;
 import vo.HotelVO;
+import vo.IdVO;
 import vo.StageVO;
+import vo.UserVO;
 
 public class ButtonCell extends TableCell<HotelVO,Boolean> {
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	final Button cellButton = new Button("去下订单");
 	
@@ -19,10 +23,17 @@ public class ButtonCell extends TableCell<HotelVO,Boolean> {
 		cellButton.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
             public void handle(ActionEvent t) {
-				HotelVO hotelvo = getTableView().getItems().get( getIndex() );
-				HotelNameVO.sethotelname(hotelvo.getName());
-				StageVO.getSatge2().hide();
-                viewcontrol.openFillOrderFrame();
+				MessageBLService service = new MessageController();
+				UserVO uservo = service.GetMessage(IdVO.getid());
+				if(uservo.getcreditvalue()<0){
+					viewcontrol.openNoEnoughCreditFrame();
+				}else{
+					HotelVO hotelvo = getTableView().getItems().get( getIndex() );
+					HotelNameVO.sethotelname(hotelvo.getName());
+					StageVO.getSatge2().hide();
+					viewcontrol.openFillOrderFrame();
+				}
+				
             }
         });
     }

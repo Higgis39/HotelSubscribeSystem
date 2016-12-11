@@ -1,5 +1,6 @@
 package businessLogic.userbl;
 
+import businessLogic.orderbl.stub.UserInfoForOrder;
 import data.UserData;
 import dataService.UserDataService;
 import po.UserPO;
@@ -10,7 +11,7 @@ import po.UserPO;
  *
  *实现UserInfoForOrder接口
  */
-public class UserInfotoOrder {
+public class UserInfotoOrder implements UserInfoForOrder{
 	/**
 	 * 得到用户的信用值
 	 * @param UserID
@@ -20,17 +21,6 @@ public class UserInfotoOrder {
 		UserDataService service = new UserData();
 		UserPO userpo = service.find(UserID);
 		return userpo.getcreditvalue();
-	}
-
-	/**
-	 * 得到用户
-	 * @param ID
-	 * @return
-	 */
-	public UserPO getUserByID(String ID){
-		UserDataService service = new UserData();
-		UserPO userpo = service.find(ID);
-		return userpo;
 	}
 	
 	/**

@@ -27,7 +27,7 @@ public  class CreditManager {
 	 * @return
 	 */
 	public void subCredit(OrderPO po){
-		int CreditChange = po.getPrice();
+		int CreditChange = (int)po.getPrice();
 		UserService.ChangeCredit(po.getUserId(), 0-CreditChange);
 	}
 	/**
@@ -36,7 +36,7 @@ public  class CreditManager {
 	 * @return
 	 */
 	public void addCredit(OrderPO po){
-		int CreditChange = po.getPrice();
+		int CreditChange = (int)po.getPrice();
 		UserService.ChangeCredit(po.getUserId(), CreditChange);
 	}
 	/**
@@ -45,7 +45,7 @@ public  class CreditManager {
 	 * @return
 	 */
 	public void recoverCredit(OrderPO po){
-		int CreditChange = po.getPrice()/2;
+		int CreditChange = (int)po.getPrice()/2;
 		UserService.ChangeCredit(po.getUserId(), CreditChange);
 	}
 	/**

@@ -1,14 +1,14 @@
 package presentation.view;
 
 import javafx.fxml.FXML;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.OtherIdVO;
 
 public class SuccessAdd2FrameController {
 
 	private SuccessAdd2Frame successadd2frame;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**

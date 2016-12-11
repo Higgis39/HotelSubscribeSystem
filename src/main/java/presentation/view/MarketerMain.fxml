@@ -22,5 +22,13 @@
       <Label layoutX="64.0" layoutY="87.0" text="今天未执行的订单：" />
       <Hyperlink layoutX="327.0" layoutY="360.0" onAction="#orderappealAction" text="处理订单申诉" />
       <Hyperlink layoutX="688.0" layoutY="34.0" onAction="#logoutAction" text="退出登录" />
+      <TableView fx:id="tableview" layoutX="177.0" layoutY="124.0" prefHeight="206.0" prefWidth="400.0">
+        <columns>
+          <TableColumn fx:id="orderid" prefWidth="100.0" text="订单号" />
+          <TableColumn fx:id="hotelname" prefWidth="100.0" text="酒店名称" />
+            <TableColumn fx:id="userid" prefWidth="100.0" text="客户账号" />
+            <TableColumn fx:id="time" prefWidth="100.0" text="最晚执行时间" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

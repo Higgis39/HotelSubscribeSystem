@@ -1,5 +1,7 @@
 package vo;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -18,7 +20,7 @@ public class OrderVO {
 	
 	private StringProperty lastTime;
 	
-	private IntegerProperty price;
+	private DoubleProperty price;
 	
 	private StringProperty comment;
 	
@@ -27,7 +29,7 @@ public class OrderVO {
 	private IntegerProperty roomnum;
 	
 	
-	public OrderVO(String orderId, String hotelId, String userId, String status,String entryTime, String lastTime,int price,String comment,String roomtype,int roomnum) {
+	public OrderVO(String orderId, String hotelId, String userId, String status,String entryTime, String lastTime,double price,String comment,String roomtype,int roomnum) {
 		super();
 		this.orderId = new SimpleStringProperty(orderId);
 		this.hotelId = new SimpleStringProperty(hotelId);
@@ -35,7 +37,7 @@ public class OrderVO {
 		this.status = new SimpleStringProperty(status);
 		this.entryTime = new SimpleStringProperty(entryTime);
 		this.lastTime = new SimpleStringProperty(lastTime);
-		this.price = new SimpleIntegerProperty(price);
+		this.price = new SimpleDoubleProperty(price);
 		this.comment = new SimpleStringProperty(comment);
 		this.roomtype = new SimpleStringProperty(roomtype);
 		this.roomnum = new SimpleIntegerProperty(roomnum);
@@ -117,16 +119,16 @@ public class OrderVO {
 		this.lastTime = new SimpleStringProperty(lastTime);
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price.get();
 	}
 	
-	public IntegerProperty getPriceProperty(){
+	public DoubleProperty getPriceProperty(){
 		return price;
 	}
 	
-	public void setprice(int price){
-		this.price = new SimpleIntegerProperty(price);
+	public void setprice(double price){
+		this.price = new SimpleDoubleProperty(price);
 	}
 
 	public String getComment(){

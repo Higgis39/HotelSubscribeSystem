@@ -1,12 +1,23 @@
 package presentation.view;
 
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
+
+import businessLogic.orderbl.WebsiteViewOrderController;
 import businessLogic.userbl.ManageUserController;
 import businessLogic.userbl.MessageController;
+import businessLogicService.orderBLService.WebsiteViewOrderService;
 import businessLogicService.userBLService.MessageBLService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import presentation.controller.ViewController;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import presentation.controller.FrameController;
 import vo.IdVO;
+import vo.OrderVO;
 import vo.UserVO;
 
 
@@ -21,10 +32,20 @@ public class MarketerMainFrameController {
 	private Label id;
 	@FXML
 	private Label name;
+	@FXML
+	private TableView<OrderVO> tableview;
+	@FXML
+	private TableColumn<OrderVO,String> orderid;
+	@FXML
+	private TableColumn<OrderVO,String> hotelname;
+	@FXML
+	private TableColumn<OrderVO,String> userid;
+	@FXML
+	private TableColumn<OrderVO,String> time;
 
 	private MarketerMainFrame marketermainframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	ManageUserController manageruser = new ManageUserController();
 	
@@ -69,11 +90,20 @@ public class MarketerMainFrameController {
 	/**
 	 * 初始化
 	 */
-	private void initialize(){
+	private void initialize() throws SQLException{
 		MessageBLService service = new MessageController();
 		UserVO uservo = service.GetMessage(IdVO.getid());
 		id.setId(uservo.getid());
 		name.setText(uservo.getname());
+		
+		WebsiteViewOrderService s = new WebsiteViewOrderController();
+		List<OrderVO> list = s.ViewException(LocalDate.now().toString());
+		ObservableList<OrderVO> data = FXCollections.observableList(list);
+		tableview.setItems(data);
+		orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
+		hotelname.setCellValueFactory(cellData->cellData.getValue().getHotelIdProperty());
+		userid.setCellValueFactory(cellData->cellData.getValue().getUserIdProperty());
+		time.setCellValueFactory(cellData->cellData.getValue().getEntryTimeProperty());
 	}
 	
 	public void setMarketerMainFrame(MarketerMainFrame marketermainframe){

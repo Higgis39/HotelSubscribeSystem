@@ -2,14 +2,17 @@ package presentation.view;
 
 import java.time.LocalDate;
 
+import businessLogic.promotionbl.WebPromotionController;
+import businessLogicService.promotionBLService.WebPromotionBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.StageVO;
+import vo.WebPromotionVO;
 
 /**
  * 
@@ -41,7 +44,7 @@ public class MakeMarketerPromotionFrameController {
 
 	private MakeMarketerPromotionFrame makemarketerpromotionframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -88,6 +91,22 @@ public class MakeMarketerPromotionFrameController {
 	 */
 	private void confirmAction(){
 		//保存新制定的策略
+		WebPromotionBLService service = new WebPromotionController();
+		
+		int discount = Integer.valueOf(enterdiscount.getText())/100;
+		int VIPgrade = 0;
+		if(!enterVIPgrade.getSelectionModel().getSelectedItem().equals("不要求")){
+			VIPgrade = Integer.valueOf(enterVIPgrade.getSelectionModel().getSelectedItem());
+		}
+		if(checkbox.isSelected()){
+			WebPromotionVO vo = new WebPromotionVO(entername.getText(),begindate.getValue().toString(),enddate.getValue().toString(),
+					entercity.getText(),VIPgrade,discount);
+			service.webPromotionCreate(vo);
+		}else{
+			WebPromotionVO vo = new WebPromotionVO(enterpromotiontype.getSelectionModel().getSelectedItem(),begindate.getValue().toString()
+					,enddate.getValue().toString(),entercity.getText(),VIPgrade,discount);
+			service.webPromotionCreate(vo);
+		}
 		
 		makemarketerpromotionframe.getPrimaryStage().close();
 		StageVO.getSatge().close();

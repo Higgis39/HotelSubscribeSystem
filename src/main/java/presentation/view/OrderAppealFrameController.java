@@ -1,8 +1,13 @@
 package presentation.view;
 
+import businessLogic.orderbl.CustomerViewOrderController;
+import businessLogic.orderbl.WebsiteViewOrderController;
+import businessLogicService.orderBLService.CustomerViewOrderService;
+import businessLogicService.orderBLService.WebsiteViewOrderService;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import vo.OrderVO;
 
 /**
  * 
@@ -23,7 +28,14 @@ public class OrderAppealFrameController {
 	 * 确定按钮的监听
 	 */
 	private void confirmAction(){
+		WebsiteViewOrderService service = new WebsiteViewOrderController();
+		CustomerViewOrderService s = new CustomerViewOrderController();
+		String id = orderid.getText();
+		OrderVO vo = s.ShowOrderMessage(id);
+		String p = reveal.getSelectionModel().getSelectedItem();
+		service.RecoverCredit(vo);
 		
+		orderappealframe.getPrimaryStage().close();
 	}
 	
 	@FXML

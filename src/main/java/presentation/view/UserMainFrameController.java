@@ -1,8 +1,12 @@
 package presentation.view;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
+import businessLogic.hotelbl.SearchController;
 import businessLogic.userbl.MessageController;
+import businessLogicService.hotelBLService.SearchService;
 import businessLogicService.userBLService.MessageBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -10,7 +14,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
+import vo.ArrayListVO;
+import vo.HotelVO;
 import vo.IdVO;
 import vo.StageVO;
 import vo.UserVO;
@@ -55,7 +61,7 @@ public class UserMainFrameController {
 	
 	private UserMainFrame usermainframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -167,26 +173,65 @@ public class UserMainFrameController {
 	/**
 	 * 搜索按钮的监听
 	 */
-	private void searchAction(){
+	private void searchAction() throws SQLException{
 		String city = entercity.getText();
 		String businesscircle = enterbusinesscircle.getText();
 		String hotelname = enterhotelname.getText();
 		String roomtype = enterroomtype.getSelectionModel().getSelectedItem();
 		String price = enterprice.getSelectionModel().getSelectedItem();
+		int minprice,maxprice;
+		if(price.equals("150以下")){
+			minprice = 0;
+			maxprice = 150;
+		}else if(price.equals("150~300")){
+			minprice = 150;
+			maxprice = 300;
+		}else if(price.equals("300~500")){
+			minprice = 300;
+			maxprice = 500;
+		}else if(price.equals("500~700")){
+			minprice = 500;
+			maxprice = 700;
+		}else if(price.equals("700~1000")){
+			minprice = 700;
+			maxprice = 1000;
+		}else{
+			minprice = 1000;
+			maxprice = 1000000000;
+		}
 		int roomnum = 0;
 		if(!enterroomnum.getText().equals("")){
 			roomnum = Integer.valueOf(enterroomnum.getText());
 		}
-		LocalDate indate = enterindate.getValue();
-		LocalDate outDate = enteroutdate.getValue();
+		String indate = enterindate.getValue().toString();
+		String outdate = enteroutdate.getValue().toString();
 		int star = 0;
 		if(!enterstar.getText().equals("")){
 			star = Integer.valueOf(enterstar.getText());
 		}
 		String grade = entergrade.getSelectionModel().getSelectedItem();
+		double mingrade,maxgrade;
+		if(grade.equals("1分以下")){
+			mingrade = 0;
+			maxgrade = 1;
+		}else if(grade.equals("1~2分")){
+			mingrade = 1;
+			maxgrade = 2;
+		}else if(grade.equals("2~3分")){
+			mingrade = 2;
+			maxgrade = 3;
+		}else if(grade.equals("3~4分")){
+			mingrade = 3;
+			maxgrade = 4;
+		}else{
+			mingrade = 4;
+			maxgrade = 5;
+		}
 		Boolean only = checkbox.isSelected();
 		//调用hotel模块的搜索酒店方法
-		
+		SearchService s = new SearchController();
+		ArrayList<HotelVO> list = s.Search(city, businesscircle, roomtype, minprice, maxprice, indate, outdate, star, mingrade, maxgrade, only);
+		ArrayListVO.setArrayList(list);
 		
 		StageVO.setStage(usermainframe.getPrimaryStage());
 		usermainframe.getPrimaryStage().hide();

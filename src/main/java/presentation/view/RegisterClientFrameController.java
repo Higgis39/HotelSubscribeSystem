@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.IdVO;
 import vo.StageVO;
 import vo.UserVO;
@@ -35,7 +35,7 @@ public class RegisterClientFrameController {
 	
 	private RegisterClientFrame registerclientframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**

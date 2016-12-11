@@ -2,7 +2,7 @@ package presentation.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.OtherIdVO;
 
 public class SuccessAddFrameController {
@@ -11,7 +11,7 @@ public class SuccessAddFrameController {
 
 	private SuccessAddFrame successaddframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**

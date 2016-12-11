@@ -4,8 +4,9 @@ import businessLogic.userbl.MessageController;
 import businessLogicService.userBLService.MessageBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.IdVO;
+import vo.StageVO;
 import vo.UserVO;
 
 /**
@@ -24,7 +25,7 @@ public class ChangePersonalMessageFrameController {
 	
 	MessageBLService service = new MessageController();
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -36,6 +37,8 @@ public class ChangePersonalMessageFrameController {
 		//进行保存操作
 		service.ChangeMessage(IdVO.getid(), name, phonenumber);
 		changepersonalmessageframe.getPrimaryStage().close();
+		StageVO.getSatge().close();
+		viewcontrol.openUserPersonalFrame();
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

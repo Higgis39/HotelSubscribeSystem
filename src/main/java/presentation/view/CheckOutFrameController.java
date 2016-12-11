@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import businessLogic.hotelbl.UpdateController;
+import businessLogicService.hotelBLService.UpdateService;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -24,7 +26,7 @@ public class CheckOutFrameController {
 	@FXML
 	private TextField enterid;
 	@FXML
-	private TextField enterroomid;
+	private TextField enterroomnum;
 	@FXML
 	private TextField entercheckouttime;
 	
@@ -60,7 +62,15 @@ public class CheckOutFrameController {
 	 * 确定按钮的监听
 	 */
 	private void confirmAction(){
-		
+		UpdateService service = new UpdateController();
+		if(checkbox.isSelected()){
+			String id = enterid.getText();
+			String outtime = entercheckouttime.getText();
+			service.CheckOut(id, outtime);
+		}else{
+			int num = Integer.valueOf(enterroomnum.getText());
+			service.CheckOut(num);
+		}
 	}
 	
 	@FXML

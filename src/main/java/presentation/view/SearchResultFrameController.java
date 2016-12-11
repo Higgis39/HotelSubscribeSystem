@@ -11,7 +11,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.ArrayListVO;
 import vo.HotelVO;
 import vo.StageVO;
@@ -34,7 +34,7 @@ public class SearchResultFrameController {
 
 	private SearchResultFrame searchresultframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	private void returnAction(){
@@ -47,10 +47,7 @@ public class SearchResultFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-//		ArrayList<HotelVO> hotel = ArrayListVO.getArrayList();
-		ArrayList<HotelVO> hotel = new ArrayList<HotelVO>();
-		hotel.add(new HotelVO("1", "2","汉庭连锁酒店", "df", "jk", "sdv","bjhw", "sda", 0, 1));
-		hotel.add(new HotelVO(null, null, "七天连锁酒店", null, null, null, null, "sjd", 0, 0));
+		ArrayList<HotelVO> hotel = ArrayListVO.getArrayList();
 		ObservableList<HotelVO> data = FXCollections.observableArrayList(hotel);
 		tableview.setItems(data);
 		hotelname.setCellValueFactory(cellData->cellData.getValue().getNameProperty());

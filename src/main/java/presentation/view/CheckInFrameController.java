@@ -4,11 +4,19 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import businessLogic.hotelbl.UpdateController;
+import businessLogic.orderbl.CustomerViewOrderController;
+import businessLogic.orderbl.ExcuteOrderController;
+import businessLogicService.hotelBLService.UpdateService;
+import businessLogicService.orderBLService.CustomerViewOrderService;
+import businessLogicService.orderBLService.ExcuteOrderService;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import presentation.controller.FrameController;
+import vo.OrderVO;
 
 
 /**
@@ -25,7 +33,7 @@ public class CheckInFrameController {
 	@FXML
 	private TextField enterid;
 	@FXML
-	private TextField enterroomid;
+	private TextField enterroomnum;
 	@FXML
 	private TextField entercheckintime;
 	@FXML
@@ -36,6 +44,8 @@ public class CheckInFrameController {
 	private DatePicker entercheckoutdate;
 	
 	private CheckInFrame checkinframe;
+	
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -67,7 +77,21 @@ public class CheckInFrameController {
 	 * 确定按钮的监听
 	 */
 	private void confirmAction(){
-		
+		String roomnum = enterroomnum.getText();
+		String intime = entercheckintime.getText();
+		String outtime = entercheckoutdate.getValue().toString()+" "+entercheckouthour.getText()+entercheckoutminute.getText();
+		if(checkbox.isSelected()){
+			String id = enterid.getText();
+			CustomerViewOrderService s = new CustomerViewOrderController();
+			OrderVO ordervo = s.ShowOrderMessage(id);
+			ordervo.setEntryTime(intime);
+			ordervo.setlastTime(outtime);
+			ExcuteOrderService service = new ExcuteOrderController();
+			service.CheckIn(ordervo);
+		}else{
+			UpdateService service = new UpdateController();
+			service.CheckIn(Integer.valueOf(roomnum));
+		}
 	}
 	
 	@FXML

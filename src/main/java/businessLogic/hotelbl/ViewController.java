@@ -15,4 +15,13 @@ public class ViewController implements ViewService{
 	public HotelVO View(String hotelName){
 		return hotel.View(hotelName);
 	}
+	
+	/**
+	 * 浏览酒店
+	 * @param id String
+	 * @return 返回酒店的详细信息
+	 */
+	public HotelVO ViewByid(String id){
+		return hotel.ViewByid(id);
+	}
 }

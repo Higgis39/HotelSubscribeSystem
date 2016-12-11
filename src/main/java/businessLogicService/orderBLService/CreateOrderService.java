@@ -8,4 +8,8 @@ public interface CreateOrderService {
 	public double getTotal(OrderVO vo);
 	
 	public boolean addNewOrder(OrderVO vo);
+	
+	public int CheckRoom(String hotelName,String roomType);
+	
+	public int CheckMax(String hotelName,String roomType);
 }

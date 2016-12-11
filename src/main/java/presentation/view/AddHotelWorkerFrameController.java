@@ -9,7 +9,7 @@ import businessLogicService.userBLService.AddHotelBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.WorkerVO;
 
 /**
@@ -32,7 +32,7 @@ public class AddHotelWorkerFrameController {
 
 	private AddHotelWorkerFrame addhotelworkerframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**

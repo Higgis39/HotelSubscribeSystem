@@ -5,7 +5,7 @@ import businessLogicService.userBLService.MessageBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
 import vo.IdVO;
 import vo.StageVO;
 import vo.UserVO;
@@ -46,7 +46,7 @@ public class UserPersonalFrameController {
 	
 	private UserPersonalFrame userpersonalframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**

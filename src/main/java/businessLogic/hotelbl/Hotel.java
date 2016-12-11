@@ -8,6 +8,7 @@ import businessLogic.orderbl.OrderToolForHotel;
 import data.HotelData;
 import data.RoomData;
 import vo.HotelVO;
+import vo.RoomVO;
 import dataService.HotelDataService;
 import dataService.RoomDataService;
 import po.HotelPO;
@@ -31,7 +32,7 @@ public class Hotel{
 	 * @return 返回符合搜索条件的酒店列表
 	 * @throws SQLException 
 	 */
-	public ArrayList<HotelPO> Search(String Address, String BusinessArea, String RoomType, double minPrice, double maxPrice, String checkinTime, String checkoutTime, int Star, double minGrade, double maxGrade) throws SQLException{
+	public ArrayList<HotelVO> Search(String Address, String BusinessArea, String RoomType, double minPrice, double maxPrice, String checkinTime, String checkoutTime, int Star, double minGrade, double maxGrade,boolean hasfixed) throws SQLException{
 		ArrayList<HotelPO> HotelList = new ArrayList<HotelPO>();
 		
 		if(Star==-1 && minGrade==-1 && maxGrade==-1){
@@ -65,6 +66,20 @@ public class Hotel{
 	}
 	
 	/**
+	 * 浏览酒店
+	 * @param id String
+	 * @return 返回酒店的详细信息
+	 */
+	public HotelVO ViewByid(String id){
+		
+		HotelPO hotelpo = hoteldataservice.findById(id);
+		HotelVO hotelvo = new HotelVO(id, hotelpo.getPassword(), hotelpo.getName(), hotelpo.getPhonenumber(), 
+				                      hotelpo.getAddress(),hotelpo.getBusinessArea(), hotelpo.getIntroduction(),
+				                      hotelpo.getFacilities(),hotelpo.getStar(), hotelpo.getGrade());
+		return hotelvo;
+	}
+	
+	/**
 	 * 维护酒店信息
 	 * @param hotelName String
 	 * @param phoneNumber String
@@ -75,13 +90,22 @@ public class Hotel{
 	 * @param Worker ArrayList<String>
 	 * @return 成功返回true，失败返回false
 	 */
-	public boolean UpdateHotelMessage(String hotelName, String phoneNumber, String Introduction, String Facilities, int Star, double Grade){
+	public boolean UpdateHotelMessage(String hotelName,String address, String phoneNumber, String Introduction, String Facilities, int Star){
 		
 		HotelPO hotelpo = hoteldataservice.findByName(hotelName);
-		hotelpo = new HotelPO(hotelpo.getId(),hotelpo.getPassword(),hotelName,phoneNumber,hotelpo.getAddress(),hotelpo.getBusinessArea(),Introduction,Facilities,Star,Grade);
+		hotelpo = new HotelPO(hotelpo.getId(),hotelpo.getPassword(),hotelName,phoneNumber,address,hotelpo.getBusinessArea(),Introduction,Facilities,Star,hotelpo.getGrade());
 		hoteldataservice.update(hotelpo);
 		
 		return true;
+	}
+	
+	/**
+	 * 得到酒店的空闲客房
+	 * @param HotelName
+	 * @return
+	 */
+	public ArrayList<RoomVO> getRoom(String HotelName){
+		return null;
 	}
 	
 	/**
@@ -90,25 +114,25 @@ public class Hotel{
 	 * @param hotelname String
 	 * @return roomList ArrayList<String>
 	 */
-	public boolean UpdateRoom(String roomID,String hotelName)throws SQLException{
-		RoomPO roompo = roomdataservice.findByIDAndHotelname(roomID,hotelName);
-		boolean roomstate = roompo.getIsEmpty();
-		
-		ArrayList<RoomPO> spareRoom = new ArrayList<RoomPO>();
-		spareRoom = roomdataservice.findByHotelname(hotelName);
-		
-		if(roomstate){
-			spareRoom.add(roompo);
-		}
-		else{
-			System.out.println("The room is not spare!");
-		}
-		
+	public boolean UpdateRoom(String hotelName,String roomtype,int peoplenum,int roomnum,int price)throws SQLException{
+//		RoomPO roompo = roomdataservice.findByIDAndHotelname(roomID,hotelName);
+//		boolean roomstate = roompo.getIsEmpty();
+//		
+//		ArrayList<RoomPO> spareRoom = new ArrayList<RoomPO>();
+//		spareRoom = roomdataservice.findByHotelname(hotelName);
+//		
+//		if(roomstate){
+//			spareRoom.add(roompo);
+//		}
+//		else{
+//			System.out.println("The room is not spare!");
+//		}
+//		
 		return true;
 	}
 	
 	/**
-	 * 更新退房信息
+	 * 更新退房信息(线上)
 	 * @param orderID String
 	 * @param checkoutTime String
 	 * @return UpdateState boolean
@@ -119,5 +143,23 @@ public class Hotel{
 		boolean IsSuccess = orderdataservice.Update(orderID,checkoutTime);
 		
 		return IsSuccess;
+	}
+	
+	/**
+	 * 更新退房信息(线下)
+	 * @param num
+	 * @return
+	 */
+	public boolean CheckOut(int num){
+		return true;
+	}
+	
+	/**
+	 * 登记入住信息(线下)
+	 * @param num int
+	 */
+	public boolean CheckIn(int num){
+		
+		return true;
 	}
 }

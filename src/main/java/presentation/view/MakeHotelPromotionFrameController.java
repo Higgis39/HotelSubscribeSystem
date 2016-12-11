@@ -1,12 +1,16 @@
 package presentation.view;
 
+import businessLogic.promotionbl.HotelPromotionController;
+import businessLogicService.promotionBLService.HotelPromotionBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import presentation.controller.ViewController;
+import presentation.controller.FrameController;
+import vo.HotelNameVO;
+import vo.HotelPromotionVO;
 import vo.StageVO;
 
 /**
@@ -41,7 +45,7 @@ public class MakeHotelPromotionFrameController {
 	
 	private MakeHotelPromotionFrame makehotelpromotionframe;
 	
-	ViewController viewcontrol = new ViewController();
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -106,6 +110,29 @@ public class MakeHotelPromotionFrameController {
 	 * 确定按钮的监听
 	 */
 	private void confirmAction(){
+		HotelPromotionBLService service = new HotelPromotionController();
+		
+		boolean isbirthday,iscompany;
+		if(enterbirthday.getSelectionModel().getSelectedItem().equals("有")){
+			isbirthday = true;
+		}else{
+			isbirthday = false;
+		}
+		if(company.getSelectionModel().getSelectedItem().equals("有")){
+			iscompany = true;
+		}else{
+			iscompany = false;
+		}
+		double discount = Integer.valueOf(enterdiscount.getText())/100;
+		if(checkbox.isSelected()){
+			HotelPromotionVO vo = new HotelPromotionVO(HotelNameVO.getHotelname(),enterpromotionname.getText(),isbirthday,
+					Integer.valueOf(enterroomnum.getText()),iscompany,begindate.getValue().toString(),enddate.getValue().toString(),discount);
+			service.hotelPromotionCreate(vo);
+		}else{
+			HotelPromotionVO vo = new HotelPromotionVO(HotelNameVO.getHotelname(),enterpromotiontype.getSelectionModel().getSelectedItem(),isbirthday,
+					Integer.valueOf(enterroomnum.getText()),iscompany,begindate.getValue().toString(),enddate.getValue().toString(),discount);
+			service.hotelPromotionCreate(vo);
+		}
 		
 		makehotelpromotionframe.getPrimaryStage().close();
 		StageVO.getSatge().close();

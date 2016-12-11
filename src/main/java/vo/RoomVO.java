@@ -6,16 +6,18 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class RoomVO {
-	private final StringProperty roomtype;
-	private final IntegerProperty roomnum;
-	private final IntegerProperty roomprice;
+	private StringProperty roomtype;
+	private IntegerProperty peoplenum;
+	private IntegerProperty roomnum;
+	private IntegerProperty roomprice;
 	
 	public RoomVO(){
-		this(null,0,0);
+		this(null,0,0,0);
 	}
 
-	public RoomVO(String roomtype,int roomnum,int roomprice) {
+	public RoomVO(String roomtype,int peoplenum,int roomnum,int roomprice) {
 		this.roomtype = new SimpleStringProperty(roomtype);
+		this.peoplenum = new SimpleIntegerProperty(peoplenum);
 		this.roomnum = new SimpleIntegerProperty(roomnum);
 		this.roomprice = new SimpleIntegerProperty(roomprice);
 	}
@@ -26,6 +28,14 @@ public class RoomVO {
 	
 	public StringProperty roomtypeProperty(){
 		return roomtype;
+	}
+	
+	public int getpeoplenum(){
+		return peoplenum.get();
+	}
+	
+	public IntegerProperty peoplenumProperty(){
+		return peoplenum;
 	}
 	
 	public int getroomnum(){
