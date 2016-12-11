@@ -33,7 +33,7 @@ public class RoomData implements RoomDataService{
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, r.getHotelName());
-			ptmt.setInt(2, r.getRoomID());
+			ptmt.setInt(2, r.getRoomNum());
 			ptmt.setString(3, r.getRoomType());
 			ptmt.setDouble(4, r.getRoomPrice());
 			ptmt.setInt(5, r.getPeopleNumber());
@@ -59,7 +59,7 @@ public class RoomData implements RoomDataService{
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, r.getHotelName());
-			ptmt.setInt(2, r.getRoomID());
+			ptmt.setInt(2, r.getRoomNum());
 			ptmt.setString(3, r.getRoomType());
 			ptmt.setDouble(4, r.getRoomPrice());
 			ptmt.setInt(5, r.getPeopleNumber());
@@ -93,9 +93,10 @@ public class RoomData implements RoomDataService{
 		RoomPO r = null;
 		while(rs.next()){
 			r = new RoomPO();
-			r.setRoomID(rs.getInt("roomID"));
+			r.setHotelName(rs.getString("hotelName"));
+			r.setRoomNum(rs.getInt("roomNum"));
 			r.setRoomType(rs.getString("roomType"));
-			r.setRoomPrice(rs.getDouble("roomPrice"));
+			r.setRoomPrice(rs.getInt("roomPrice"));
 			r.setPeopleNumber(rs.getInt("peopleNumber"));
 			r.setIsEmpty(rs.getBoolean("IsEmpty"));
 			
@@ -122,9 +123,9 @@ public class RoomData implements RoomDataService{
 			while(rs.next()){
 				r = new RoomPO();
 				r.setHotelName(rs.getString("HotelName"));
-				r.setRoomID(rs.getInt("RoomID"));
+				r.setRoomNum(rs.getInt("roomNum"));
 				r.setRoomType(rs.getString("RoomType"));
-				r.setRoomPrice(rs.getDouble("RoomPrice"));
+				r.setRoomPrice(rs.getInt("RoomPrice"));
 				r.setPeopleNumber(rs.getInt("PeopleNumber"));
 				r.setIsEmpty(rs.getBoolean("IsEmpty"));
 			}

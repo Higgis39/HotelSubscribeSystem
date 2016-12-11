@@ -1,6 +1,7 @@
 package po;
 
 public class RoomPO {
+	
 	String hotelName;
 	int roomNum;
 	String roomType;
