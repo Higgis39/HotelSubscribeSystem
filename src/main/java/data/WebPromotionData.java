@@ -27,13 +27,14 @@ public class WebPromotionData implements WebPromotionDataService{
 	public boolean insert(WebPromotionPO wp){
 		Connection conn = DBUtil.getConnection();
 		String sql = "insert into webpromotion "
-				+ "( name, begintime, endtime, specificbusinessarea, discount ) "
+				+ "( name, begintime, endtime, VIPgrade, specificbusinessarea, discount ) "
 				+ " values(?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, wp.getName());
-			ptmt.setString(3, wp.getBegintime());
-			ptmt.setString(4, wp.getEndtime());
+			ptmt.setString(2, wp.getBegintime());
+			ptmt.setString(3, wp.getEndtime());
+			ptmt.setInt(4, wp.getVIPgrade());
 			ptmt.setString(5, wp.getSpecificbusinessarea());
 			ptmt.setDouble(6, wp.getDiscount());
 			ptmt.execute();
@@ -55,15 +56,17 @@ public class WebPromotionData implements WebPromotionDataService{
 		Connection conn = DBUtil.getConnection();
 		//是否可以根据名字来改名字？
 		String sql = "update webpromotion "
-				+ " name=?, begintime=?, endtime=?, specificbusinessarea=? discount=? "
+				+ " name=?, begintime=?, endtime=?, VIPgrade=?, specificbusinessarea=? discount=? "
 				+ " where name=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, wp.getName());
 			ptmt.setString(2, wp.getBegintime());
 			ptmt.setString(3, wp.getEndtime());
-			ptmt.setString(4, wp.getSpecificbusinessarea());
-			ptmt.setDouble(5, wp.getDiscount());
+			ptmt.setInt(4, wp.getVIPgrade());
+			ptmt.setString(5, wp.getSpecificbusinessarea());
+			ptmt.setDouble(6, wp.getDiscount());
+			ptmt.setString(7, wp.getName());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -118,6 +121,7 @@ public class WebPromotionData implements WebPromotionDataService{
 			wp.setName(rs.getString("name"));
 			wp.setBegintime(rs.getString("begintime"));
 			wp.setEndtime(rs.getString("endtime"));
+			wp.setVIPgrade(rs.getInt("VIPgrade"));
 			wp.setSpecificbusinessarea(rs.getString("specificbusinessarea"));
 			wp.setDiscount(rs.getDouble("discount"));
 			
@@ -145,6 +149,7 @@ public class WebPromotionData implements WebPromotionDataService{
 			wp.setName(rs.getString("name"));
 			wp.setBegintime(rs.getString("begintime"));
 			wp.setEndtime(rs.getString("endtime"));
+			wp.setVIPgrade(rs.getInt("VIPgrade"));
 			wp.setSpecificbusinessarea(rs.getString("specificbusinessarea"));
 			wp.setDiscount(rs.getDouble("discount"));
 			

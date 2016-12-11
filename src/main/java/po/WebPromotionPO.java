@@ -11,15 +11,17 @@ public class WebPromotionPO {
 	private String name;
 	private String begintime;
 	private String endtime;
+	private int VIPgrade;
 	private String specificbusinessarea;
 	private double discount;
 	
-	public WebPromotionPO(String name, String introduction, String begintime, String endtime,
+	public WebPromotionPO(String name, String begintime, String endtime, int VIPgrade,
 			String specificbusinessarea, double discount) {
 		super();
 		this.name = name;
 		this.begintime = begintime;
 		this.endtime = endtime;
+		this.VIPgrade = VIPgrade;
 		this.specificbusinessarea = specificbusinessarea;
 		this.discount = discount;
 	}
@@ -50,6 +52,15 @@ public class WebPromotionPO {
 
 	public void setEndtime(String endtime) {
 		this.endtime = endtime;
+	}
+
+	
+	public int getVIPgrade() {
+		return VIPgrade;
+	}
+
+	public void setVIPgrade(int vIPgrade) {
+		VIPgrade = vIPgrade;
 	}
 
 	public String getSpecificbusinessarea() {

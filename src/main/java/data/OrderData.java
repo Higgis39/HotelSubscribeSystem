@@ -29,18 +29,19 @@ public class OrderData implements OrderDataService{
 	public boolean insert(OrderPO o) {
 		Connection conn = DBUtil.getConnection();
 		String sql = "insert into order "
-				+ "( orderId, hotelId, userId, status, entryTime, lastTime, orderInfo, price ) "
-				+ " values(?,?,?,?,?,?,?,?)";
+				+ "( id, hotelId, userId, status, entryTime, lastTime, price, comment, RoomType, RoomNum ) "
+				+ " values(?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
-			ptmt.setString(1, o.getorderId());
+			ptmt.setString(1, o.getId());
 			ptmt.setString(2, o.getHotelId());
 			ptmt.setString(3, o.getUserId());
-			ptmt.setInt(4, o.getStatus());
+			ptmt.setString(4, o.getStatus());
 			ptmt.setString(5, o.getEntryTime());
 			ptmt.setString(6, o.getLastTime());
-			ptmt.setString(7, o.getOrderInfo());
-			ptmt.setDouble(8, o.getPrice());
+			ptmt.setInt(7, o.getPrice());
+			ptmt.setString(8, o.getComment());
+			ptmt.setString(9, o.getRoomType());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -60,18 +61,20 @@ public class OrderData implements OrderDataService{
 	public boolean update(OrderPO o) {
 		Connection conn = DBUtil.getConnection();
 		String sql = "update order "
-				+ " hotelId=?, userId=?, status=?, entryTime=?, lastTime=?, orderInfo=?, price=? "
-				+ " where orderId=?";
+				+ " id, hotelId, userId, status, entryTime, lastTime, price, comment, RoomType, RoomNum "
+				+ " where id=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
-			ptmt.setString(1, o.getHotelId());
-			ptmt.setString(2, o.getUserId());
-			ptmt.setInt(3, o.getStatus());
-			ptmt.setString(4, o.getEntryTime());
-			ptmt.setString(5, o.getLastTime());
-			ptmt.setString(6, o.getOrderInfo());
-			ptmt.setDouble(7, o.getPrice());
-			ptmt.setString(8, o.getorderId());
+			ptmt.setString(1, o.getId());
+			ptmt.setString(2, o.getHotelId());
+			ptmt.setString(3, o.getUserId());
+			ptmt.setString(4, o.getStatus());
+			ptmt.setString(5, o.getEntryTime());
+			ptmt.setString(6, o.getLastTime());
+			ptmt.setInt(7, o.getPrice());
+			ptmt.setString(8, o.getComment());
+			ptmt.setString(9, o.getRoomType());
+			ptmt.setInt(10, o.getRoomNum());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -93,7 +96,7 @@ public class OrderData implements OrderDataService{
 		Connection conn = DBUtil.getConnection();
 		
 		String sql = " select * from order "
-				   + " where orderId=? ";
+				   + " where id=? ";
 		
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
@@ -103,14 +106,16 @@ public class OrderData implements OrderDataService{
 			
 			while(rs.next()){
 				o = new OrderPO();
-				o.setOrderId(rs.getString("orderId"));
+				o.setId(rs.getString("id"));
 				o.setHotelId(rs.getString("hotelId"));
 				o.setUserId(rs.getString("userId"));
-				o.setStatus(rs.getInt("status"));
+				o.setStatus(rs.getString("status"));
 				o.setEntryTime(rs.getString("entryTime"));
 				o.setLastTime(rs.getString("lastTime"));
-				o.setOrderInfo(rs.getString("orderInfo"));
-				o.setPrice(rs.getDouble("price"));
+				o.setPrice(rs.getInt("price"));
+				o.setComment(rs.getString("comment"));
+				o.setRoomType(rs.getString("RoomType"));
+				o.setRoomNum(rs.getInt("RoomNum"));
 			}
 			
 		} catch (SQLException e) {
@@ -144,14 +149,16 @@ public class OrderData implements OrderDataService{
 		OrderPO o = null;
 		while(rs.next()){
 			o = new OrderPO();
-			o.setOrderId(rs.getString("orderId"));
+			o.setId(rs.getString("id"));
 			o.setHotelId(rs.getString("hotelId"));
 			o.setUserId(rs.getString("userId"));
-			o.setStatus(rs.getInt("status"));
+			o.setStatus(rs.getString("status"));
 			o.setEntryTime(rs.getString("entryTime"));
 			o.setLastTime(rs.getString("lastTime"));
-			o.setOrderInfo(rs.getString("orderInfo"));
-			o.setPrice(rs.getDouble("price"));
+			o.setPrice(rs.getInt("price"));
+			o.setComment(rs.getString("comment"));
+			o.setRoomType(rs.getString("RoomType"));
+			o.setRoomNum(rs.getInt("RoomNum"));
 			
 			result.add(o);
 		}
@@ -182,14 +189,16 @@ public class OrderData implements OrderDataService{
 		OrderPO o = null;
 		while(rs.next()){
 			o = new OrderPO();
-			o.setOrderId(rs.getString("orderId"));
+			o.setId(rs.getString("id"));
 			o.setHotelId(rs.getString("hotelId"));
 			o.setUserId(rs.getString("userId"));
-			o.setStatus(rs.getInt("status"));
+			o.setStatus(rs.getString("status"));
 			o.setEntryTime(rs.getString("entryTime"));
 			o.setLastTime(rs.getString("lastTime"));
-			o.setOrderInfo(rs.getString("orderInfo"));
-			o.setPrice(rs.getDouble("price"));
+			o.setPrice(rs.getInt("price"));
+			o.setComment(rs.getString("comment"));
+			o.setRoomType(rs.getString("RoomType"));
+			o.setRoomNum(rs.getInt("RoomNum"));
 			
 			result.add(o);
 		}
@@ -219,14 +228,16 @@ public class OrderData implements OrderDataService{
 		OrderPO o = null;
 		while(rs.next()){
 			o = new OrderPO();
-			o.setOrderId(rs.getString("orderId"));
+			o.setId(rs.getString("id"));
 			o.setHotelId(rs.getString("hotelId"));
 			o.setUserId(rs.getString("userId"));
-			o.setStatus(rs.getInt("status"));
+			o.setStatus(rs.getString("status"));
 			o.setEntryTime(rs.getString("entryTime"));
 			o.setLastTime(rs.getString("lastTime"));
-			o.setOrderInfo(rs.getString("orderInfo"));
-			o.setPrice(rs.getDouble("price"));
+			o.setPrice(rs.getInt("price"));
+			o.setComment(rs.getString("comment"));
+			o.setRoomType(rs.getString("RoomType"));
+			o.setRoomNum(rs.getInt("RoomNum"));
 			
 			result.add(o);
 		}
@@ -257,14 +268,16 @@ public class OrderData implements OrderDataService{
 		OrderPO o = null;
 		while(rs.next()){
 			o = new OrderPO();
-			o.setOrderId(rs.getString("orderId"));
+			o.setId(rs.getString("id"));
 			o.setHotelId(rs.getString("hotelId"));
 			o.setUserId(rs.getString("userId"));
-			o.setStatus(rs.getInt("status"));
+			o.setStatus(rs.getString("status"));
 			o.setEntryTime(rs.getString("entryTime"));
 			o.setLastTime(rs.getString("lastTime"));
-			o.setOrderInfo(rs.getString("orderInfo"));
-			o.setPrice(rs.getDouble("price"));
+			o.setPrice(rs.getInt("price"));
+			o.setComment(rs.getString("comment"));
+			o.setRoomType(rs.getString("RoomType"));
+			o.setRoomNum(rs.getInt("RoomNum"));
 			
 			result.add(o);
 		}

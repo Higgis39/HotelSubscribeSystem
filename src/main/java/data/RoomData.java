@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import JDBC.DBUtil;
 import dataService.RoomDataService;
 import po.RoomPO;
+import po.UserPO;
 
 /**
  * RoomData的职责是实现对数据库中room对象的增删改查
@@ -110,4 +111,36 @@ public class RoomData implements RoomDataService{
 		return result;
 	};
 
+	@Override
+	public RoomPO findByIDAndHotelname(String roomID,String hotelName)(String hotelName, String RoomId) {
+		RoomPO r = null;
+		Connection conn = DBUtil.getConnection();
+		
+		String sql = " select * from user "
+				   + " where RoomId=? ,hotelName=? ";
+		
+		try {
+			PreparedStatement ptmt = conn.prepareStatement(sql);
+			
+			ptmt.setString(1, roomID);
+			ptmt.setString(2, hotelName);
+			ResultSet rs = ptmt.executeQuery();
+			
+			while(rs.next()){
+				r = new RoomPO();
+				r.setHotelName(rs.getString("HotelName"));
+				r.setRoomID(rs.getInt("RoomID"));
+				r.setRoomType(rs.getString("RoomType"));
+				r.setRoomPrice(rs.getDouble("RoomPrice"));
+				r.setPeopleNumber(rs.getInt("PeopleNumber"));
+				r.getIsEmpty(rs.getBoolean("IsEmpty"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return r;
+	}
+
+	
 }

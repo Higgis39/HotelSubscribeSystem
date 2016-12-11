@@ -13,6 +13,7 @@ public class RoomPO {
 	}
 	
 	public RoomPO(String HotelName, int RoomID,int PeopleNumber,double RoomPrice,String RoomType){
+		
 		hotelName=HotelName;
 		roomID=RoomID;
 		roomType=RoomType;
@@ -23,7 +24,6 @@ public class RoomPO {
 	
 	public String getHotelName(){
 		return hotelName;
-		
 	}
 	
 	public int getRoomID(){
@@ -48,6 +48,11 @@ public class RoomPO {
 	
 	public void addRoom(){
 		IsEmpty=true;
+	}
+
+	
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
 	}
 
 	public void setRoomID(int roomID) {

@@ -1,7 +1,5 @@
 package po;
 
-import java.util.ArrayList;
-
 public class HotelPO {
 	String hotelid;
 	String password;
