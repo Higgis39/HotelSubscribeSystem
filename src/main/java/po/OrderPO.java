@@ -1,5 +1,7 @@
 package po;
 
+import vo.OrderVO;
+
 public class OrderPO {
 	/**
 	 * id			订单编号
@@ -49,6 +51,19 @@ public class OrderPO {
 			this.comment = comment;
 			this.RoomType = RoomType;
 			this.RoomNum = RoomNum;
+		}
+		
+		public OrderPO(OrderVO vo){
+			this.id = vo.getorderId();
+			this.hotelId = vo.getHotelId();
+			this.userId = vo.getUserId();
+			this.status = vo.getStatus();
+			this.entryTime = vo.getEntryTime();
+			this.lastTime = vo.getLastTime();
+			this.price = vo.getPrice();
+			this.comment = vo.getComment();
+			this.RoomType = vo.getRoomType();
+			this.RoomNum = vo.getRoomNum();
 		}
 
 		public String getId() {
