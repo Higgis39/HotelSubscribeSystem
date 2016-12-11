@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import JDBC.DBUtil;
@@ -50,5 +51,29 @@ public class WorkerData implements WorkerDataService{
 			result.add(w);
 		}
 		return result;
+	}
+
+	/**
+	 * 添加酒店工作人员
+	 * 
+	 * @param p WorkerPO类型，系统存储工作人员
+	 * @see
+	 */
+	public void insert(WorkerPO p) {
+		Connection conn = DBUtil.getConnection();
+		String sql = "insert into worker "
+				+ "( hotelName, name, age, sex, beginTime ) "
+				+ " values(?,?,?,?,?)";
+		try {
+			PreparedStatement ptmt = conn.prepareStatement(sql);
+			ptmt.setString(1, p.getHotelName());
+			ptmt.setString(2, p.getName());
+			ptmt.setInt(3, p.getAge());
+			ptmt.setString(4, p.getSex());
+			ptmt.setDate(5, (java.sql.Date) new Date(p.getBeginTime().getTime()));
+			ptmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
