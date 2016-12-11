@@ -4,13 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import businessLogic.orderbl.stub.PromotionInfoForOrder;
-import data.HotelPromotionData;
-import data.WebPromotionData;
-import po.HotelPromotionPO;
-import po.WebPromotionPO;
-import vo.HotelPromotionVO;
 import vo.OrderVO;
-import vo.WebPromotionVO;
+
 
 /**
  * 为订单选择折扣最多的促销策略
@@ -22,7 +17,7 @@ public class AppropriatePromotion implements PromotionInfoForOrder{
 	/**
 	 * 选择折扣最多的酒店促销策略
 	 */
-	public HotelPromotionVO getApproriateHotelPromotion(OrderVO vo) {
+	public double getApproriateHotelPromotion(OrderVO vo) {
 		
 		String hotelID = vo.getHotelId();
 		String userID = vo.getUserId();
@@ -35,7 +30,6 @@ public class AppropriatePromotion implements PromotionInfoForOrder{
 		//计算三件以上策略折扣
 		ThreemorePromotion tp = new ThreemorePromotion();
 		double b = tp.calculateDiscount(hotelID, userID, entryTime);
-		
 		
 		//计算合作伙伴策略折扣
 		PartnerPromotion pp = new PartnerPromotion();
@@ -63,31 +57,13 @@ public class AppropriatePromotion implements PromotionInfoForOrder{
 		}
 		double minDiscount = discount.get(0);
 		
-		//从数据库找出该折扣的对应第一个策略
-		HotelPromotionData hpd = new HotelPromotionData();
-		
-		ArrayList<HotelPromotionPO> hotelPromotions = new ArrayList<>();
-		try {
-			hotelPromotions = hpd.findByDiscount(minDiscount);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		HotelPromotionPO executeHotelPromotion = hotelPromotions.get(0);
-		
-		//将策略信息传递给HotelPromotionVO
-		HotelPromotionVO viewHotelPromotion = new HotelPromotionVO
-				(executeHotelPromotion.getHotelname(), executeHotelPromotion.getName(), 
-						executeHotelPromotion.isIsbirthday(), executeHotelPromotion.getNumberofroom(), 
-						executeHotelPromotion.isIspartner(), executeHotelPromotion.getBegintime(), 
-						executeHotelPromotion.getEndtime(), executeHotelPromotion.getDiscount());
-		
-		return viewHotelPromotion;
+		return minDiscount;
 	}
 
 	/**
 	 * 选择折扣最多的酒店促销策略
 	 */
-	public WebPromotionVO getAppropriateWebPromotion(OrderVO vo) {
+	public double getAppropriateWebPromotion(OrderVO vo) {
 		
 		//网站特定时间促销策略
 		WebSpecificTimePromotion wstp = new WebSpecificTimePromotion();
@@ -113,22 +89,23 @@ public class AppropriatePromotion implements PromotionInfoForOrder{
 		}
 		double minDiscount = discount.get(0);
 		
-		//从数据库找出该折扣的对应第一个策略
-		WebPromotionData wpd = new WebPromotionData();
-		
-		ArrayList<WebPromotionPO> webPromotions = new ArrayList<>();
-		try {
-			webPromotions = wpd.findByDiscount(minDiscount);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		WebPromotionPO executeWebPromotion = webPromotions.get(0);
-		
-		//将策略信息传递给HotelPromotionVO
-		WebPromotionVO viewWebPromotion = new WebPromotionVO(executeWebPromotion.getName(), 
-				executeWebPromotion.getBegintime(), executeWebPromotion.getEndtime(), 
-				executeWebPromotion.getSpecificbusinessarea(), executeWebPromotion.getDiscount());
-		
-		return viewWebPromotion;
+		return minDiscount;
 	}
 }
+
+////从数据库找出该折扣的对应第一个策略
+//		WebPromotionData wpd = new WebPromotionData();
+//		
+//		ArrayList<WebPromotionPO> webPromotions = new ArrayList<>();
+//		try {
+//			webPromotions = wpd.findByDiscount(minDiscount);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		WebPromotionPO executeWebPromotion = webPromotions.get(0);
+//		
+//		//将策略信息传递给HotelPromotionVO
+//		WebPromotionVO viewWebPromotion = new WebPromotionVO(executeWebPromotion.getName(), 
+//				executeWebPromotion.getBegintime(), executeWebPromotion.getEndtime(), 
+//				executeWebPromotion.getSpecificbusinessarea(), executeWebPromotion.getDiscount());
+//		}

@@ -102,16 +102,14 @@ public class WebPromotionData implements WebPromotionDataService{
 	 * @see
 	 * @throws SQLException 数据库连接失败异常
 	 */
-	public ArrayList<WebPromotionPO> find(String name) throws SQLException{
+	public ArrayList<WebPromotionPO> find() throws SQLException{
 		ArrayList<WebPromotionPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
 		sb.append(" select * from webpromotion");
-		sb.append(" where name=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-		ptmt.setString(1, name);
 		
 		ResultSet rs = ptmt.executeQuery();
 		

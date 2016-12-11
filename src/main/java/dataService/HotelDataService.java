@@ -31,11 +31,12 @@ public interface HotelDataService {
 	public void update(HotelPO h);
 	
 	public HotelPO findByName(String hotelname);
+	public HotelPO findById(String id);
 	
 	public ArrayList<HotelPO> findByAddressAndBusinessarea(String address, String businessarea) throws SQLException;
 	public ArrayList<HotelPO> findByAddressAndBusinessareaAndStar(String address, String businessarea, int star) throws SQLException;
-	public ArrayList<HotelPO> findByAddressAndBusinessareaAndGrade(String address, String businessarea, int grade) throws SQLException;
-	public ArrayList<HotelPO> findByAll(String address, String businessarea, int star, int grade) throws SQLException;
+	public ArrayList<HotelPO> findByAddressAndBusinessareaAndGrade(String address, String businessarea, double grade) throws SQLException;
+	public ArrayList<HotelPO> findByAll(String address, String businessarea, int star, double grade) throws SQLException;
 	public ArrayList<HotelPO> find(ArrayList<Map<String, Object>> params) throws SQLException;
 	/**
 	 * 得到最后一个hotel对象的id

@@ -136,6 +136,42 @@ public class HotelData implements HotelDataService{
 	}
 	
 	/**
+	 * 根据酒店ID获得hotel对象
+	 * @param hotelname String类型,酒店的名称
+	 * @see
+	 * try/catch块捕获数据库连接失败异常
+	 */
+	public HotelPO findById(String hotelid){
+		HotelPO h = null;
+		Connection conn = DBUtil.getConnection();
+		String sql = " select * from hotel "
+				   + " where hotelid=? ";
+		try {
+			PreparedStatement ptmt = conn.prepareStatement(sql);
+			
+			ptmt.setString(1, hotelid);
+			ResultSet rs = ptmt.executeQuery();
+			
+			while(rs.next()){
+				h = new HotelPO();
+				h.setHotelid(rs.getString("hotelid"));
+				h.setPassword(rs.getString("password"));
+				h.setHotelname(rs.getString("hotelname"));
+				h.setPhonenumber(rs.getString("phonenumber"));
+				h.setAddress(rs.getString("address"));
+				h.setBusinessarea(rs.getString("businessarea"));
+				h.setIntroduction(rs.getString("introduction"));
+				h.setFacilities(rs.getString("facilities"));
+				h.setStar(rs.getInt("star"));
+				h.setGrade(rs.getDouble("grade"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return h;
+	}
+	
+	/**
 	 * 根据城市和所属商圈获得hotel对象
 	 * 
 	 * @param address String类型,酒店所在的城市
@@ -228,7 +264,7 @@ public class HotelData implements HotelDataService{
 	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
 	 */
-	public ArrayList<HotelPO> findByAddressAndBusinessareaAndGrade(String address, String businessarea, int grade) throws SQLException{
+	public ArrayList<HotelPO> findByAddressAndBusinessareaAndGrade(String address, String businessarea, double grade) throws SQLException{
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
@@ -239,7 +275,7 @@ public class HotelData implements HotelDataService{
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
 		ptmt.setString(1, address);
 		ptmt.setString(2, businessarea);
-		ptmt.setInt(3, grade);
+		ptmt.setDouble(3, grade);
 		
 		ResultSet rs = ptmt.executeQuery();
 		
@@ -272,7 +308,7 @@ public class HotelData implements HotelDataService{
 	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
 	 */
-	public ArrayList<HotelPO> findByAll(String address, String businessarea, int star, int grade) throws SQLException{
+	public ArrayList<HotelPO> findByAll(String address, String businessarea, int star, double grade) throws SQLException{
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
@@ -284,7 +320,7 @@ public class HotelData implements HotelDataService{
 		ptmt.setString(1, address);
 		ptmt.setString(2, businessarea);
 		ptmt.setInt(3, star);
-		ptmt.setInt(4, grade);
+		ptmt.setDouble(4, grade);
 		
 		ResultSet rs = ptmt.executeQuery();
 		
