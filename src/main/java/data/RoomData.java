@@ -103,16 +103,9 @@ public class RoomData implements RoomDataService{
 		}
 		return result;
 	}
-	
-	
-	public RoomPO findByIDAndHotelname(String roomID,String hotelName) throws SQLException{
-		RoomPO result=new RoomPO();
-		
-		return result;
-	};
 
 	@Override
-	public RoomPO findByIDAndHotelname(String roomID,String hotelName)(String hotelName, String RoomId) {
+	public RoomPO findByIDAndHotelname(String roomID,String hotelName){
 		RoomPO r = null;
 		Connection conn = DBUtil.getConnection();
 		
@@ -133,7 +126,7 @@ public class RoomData implements RoomDataService{
 				r.setRoomType(rs.getString("RoomType"));
 				r.setRoomPrice(rs.getDouble("RoomPrice"));
 				r.setPeopleNumber(rs.getInt("PeopleNumber"));
-				r.getIsEmpty(rs.getBoolean("IsEmpty"));
+				r.setIsEmpty(rs.getBoolean("IsEmpty"));
 			}
 			
 		} catch (SQLException e) {
