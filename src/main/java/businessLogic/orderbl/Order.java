@@ -10,7 +10,7 @@ import java.util.*;
 import businessLogic.orderbl.stub.HotelInfoForOrder;
 import businessLogic.orderbl.stub.HotelInfoForOrder_stub;
 import businessLogic.orderbl.stub.PromotionInfoForOrder;
-import businessLogic.orderbl.stub.PromotionInfoForOrder_stub;
+import businessLogic.promotionbl.AppropriatePromotion;
 import data.OrderData;
 import dataService.OrderDataService;
 import po.OrderPO;
@@ -34,10 +34,10 @@ public class Order{
 	 * @return 订单总价值
 	 */
 	public int getTotal(){
-		PromotionInfoForOrder promotionService=new PromotionInfoForOrder_stub();
+		PromotionInfoForOrder promotionService=new AppropriatePromotion();
 		HotelInfoForOrder hotelService=new HotelInfoForOrder_stub();
-		double HotelDiscount=promotionService.getApproriateHotelPromotion( vo.getorderId(), vo.getUserId(),vo.getHotelId());
-		double WebDiscount=promotionService.getAppropriateWebPromotion(vo.getorderId(), vo.getUserId());
+		double HotelDiscount=promotionService.getApproriateHotelPromotion(vo);
+		double WebDiscount=promotionService.getAppropriateWebPromotion(vo);
 		int roomPrice = hotelService.getHotelRoomPrice(vo.getHotelId(), vo.getRoomType());
 		int totalPrice=(int) (roomPrice*vo.getRoomNum()*HotelDiscount*WebDiscount);
 		return totalPrice;

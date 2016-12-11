@@ -10,11 +10,11 @@ public interface PromotionInfoForOrder {
      * @param vo
      * @return
      */
-	public double getAppropriateWebPromotion(String OrderID,String UserID);
+	public double getAppropriateWebPromotion(OrderVO vo);
 	/**
 	 * 获得最低折扣的酒店营销策略
 	 * @param vo
 	 * @return
 	 */
-	public double getApproriateHotelPromotion(String OrderID,String UserID,String HotelID);
+	public double getApproriateHotelPromotion(OrderVO vo);
 }
