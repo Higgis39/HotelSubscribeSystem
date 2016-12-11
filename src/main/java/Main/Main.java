@@ -6,6 +6,10 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import RMI.RemoteHelper;
+import javafx.application.Application;
+import javafx.stage.Stage;
+import presentation.controller.FrameController;
+import presentation.view.LoginFrame;
 
 public class Main {
 
@@ -13,7 +17,6 @@ private RemoteHelper remoteHelper;
 	
 	public Main() {
 		linkToServer();
-		initGUI();
 	}
 	
 	private void linkToServer() {
@@ -29,10 +32,6 @@ private RemoteHelper remoteHelper;
 		}
 	}
 	
-	private void initGUI() {
-		
-	}
-	
 	public RemoteHelper getRemoteHelper(){
 		return remoteHelper;
 	}
@@ -40,6 +39,7 @@ private RemoteHelper remoteHelper;
 	
 	public static void main(String[] args){
 		Main cr = new Main();
+		Application.launch(LoginFrame.class, args);
 	}
 
 }
