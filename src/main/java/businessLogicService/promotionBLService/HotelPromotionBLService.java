@@ -20,7 +20,7 @@ public interface HotelPromotionBLService {
 	
 	public void hotelPromotionDelete(HotelPromotionVO hpv);
 	
-	public List<HotelPromotionPO> hotelPromotionFind(HotelPromotionVO hpv) throws SQLException;
+	public List<HotelPromotionVO> hotelPromotionFind(String hotelname) throws SQLException;
 	
 	public void hotelPromotionexecute(HotelPromotionVO hpv);
 	

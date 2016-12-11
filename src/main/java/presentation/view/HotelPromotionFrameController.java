@@ -1,6 +1,7 @@
 package presentation.view;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.List;
 
 import businessLogic.promotionbl.HotelPromotionController;
 import businessLogic.userbl.MessageController;
@@ -103,15 +104,15 @@ public class HotelPromotionFrameController {
 	/**
 	 * 初始化
 	 */
-	private void initialize(){
+	private void initialize() throws SQLException{
 		MessageBLService service = new MessageController();
 		UserVO uservo = service.GetMessage(IdVO.getid());
 		id.setId(uservo.getid());
 		hotelname.setText(uservo.getname());
 		
 		HotelPromotionBLService s = new HotelPromotionController();
-		ArrayList<HotelPromotionVO> promotion = s.hotelPromotionFind(hotelname.getText());
-		ObservableList<HotelPromotionVO> data = FXCollections.observableArrayList(promotion);
+		List<HotelPromotionVO> promotion = s.hotelPromotionFind(hotelname.getText());
+		ObservableList<HotelPromotionVO> data = FXCollections.observableList(promotion);
 		tableview.setItems(data);
 		promotiontype.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
 		birthday.setCellValueFactory(cellData->cellData.getValue().getisbirthdayProperty());

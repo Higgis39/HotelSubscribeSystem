@@ -9,14 +9,16 @@
 <AnchorPane prefHeight="340.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.CheckOutFrameController">
    <children>
       <CheckBox fx:id="checkbox" layoutX="172.0" layoutY="44.0" mnemonicParsing="false" onAction="#checkboxAction" selected="true" text="通过线上预定" />
-      <Label fx:id="id" layoutX="142.0" layoutY="90.0" text="订单账号：" />
+      <Label fx:id="id" layoutX="142.0" layoutY="83.0" text="订单账号：" />
       <Label layoutX="142.0" layoutY="206.0" text="退房时间：" />
-      <TextField fx:id="enterid" layoutX="219.0" layoutY="86.0" prefHeight="23.0" prefWidth="133.0" />
+      <TextField fx:id="enterid" layoutX="219.0" layoutY="79.0" prefHeight="23.0" prefWidth="133.0" />
       <TextField fx:id="entercheckouttime" layoutX="219.0" layoutY="202.0" prefHeight="23.0" prefWidth="133.0" />
       <Button layoutX="363.0" layoutY="202.0" mnemonicParsing="false" onAction="#getnowAction" text="获取当前时间" />
       <Button layoutX="164.0" layoutY="271.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="60.0" text="确定" />
       <Button layoutX="303.0" layoutY="271.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="60.0" text="取消" />
-      <Label layoutX="142.0" layoutY="146.0" text="房间数量：" />
-      <TextField fx:id="enterroomnum" layoutX="219.0" layoutY="142.0" prefHeight="23.0" prefWidth="133.0" />
+      <Label layoutX="142.0" layoutY="163.0" text="房间数量：" />
+      <TextField fx:id="enterroomnum" layoutX="219.0" layoutY="159.0" prefHeight="23.0" prefWidth="133.0" />
+      <Label layoutX="142.0" layoutY="124.0" text="房间类型：" />
+      <ComboBox fx:id="roomtype" layoutX="219.0" layoutY="120.0" prefHeight="23.0" prefWidth="133.0" />
    </children>
 </AnchorPane>

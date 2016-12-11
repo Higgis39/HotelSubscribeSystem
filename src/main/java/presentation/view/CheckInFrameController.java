@@ -12,10 +12,12 @@ import businessLogicService.orderBLService.CustomerViewOrderService;
 import businessLogicService.orderBLService.ExcuteOrderService;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
+import vo.HotelNameVO;
 import vo.OrderVO;
 
 
@@ -28,6 +30,8 @@ import vo.OrderVO;
 public class CheckInFrameController {
 	@FXML
 	private CheckBox checkbox;
+	@FXML
+	private ComboBox<String> roomtype;
 	@FXML
 	private Label id;
 	@FXML
@@ -90,7 +94,7 @@ public class CheckInFrameController {
 			service.CheckIn(ordervo);
 		}else{
 			UpdateService service = new UpdateController();
-			service.CheckIn(Integer.valueOf(roomnum));
+			service.CheckIn(HotelNameVO.getHotelname(),roomtype.getSelectionModel().getSelectedItem(),Integer.valueOf(roomnum));
 		}
 	}
 	
@@ -107,7 +111,7 @@ public class CheckInFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		
+		roomtype.getItems().addAll("单人间","标准间","家庭套房");
 	}
 
 	public void setCheckInFrame(CheckInFrame checkinframe) {

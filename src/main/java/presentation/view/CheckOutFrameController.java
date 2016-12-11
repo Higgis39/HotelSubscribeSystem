@@ -8,8 +8,10 @@ import businessLogic.hotelbl.UpdateController;
 import businessLogicService.hotelBLService.UpdateService;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import vo.HotelNameVO;
 
 
 /**
@@ -21,6 +23,8 @@ import javafx.scene.control.TextField;
 public class CheckOutFrameController {
 	@FXML
 	private CheckBox checkbox;
+	@FXML
+	private ComboBox<String> roomtype;
 	@FXML
 	private Label id;
 	@FXML
@@ -69,7 +73,7 @@ public class CheckOutFrameController {
 			service.CheckOut(id, outtime);
 		}else{
 			int num = Integer.valueOf(enterroomnum.getText());
-			service.CheckOut(num);
+			service.CheckOut(HotelNameVO.getHotelname(),roomtype.getSelectionModel().getSelectedItem(),num);
 		}
 	}
 	

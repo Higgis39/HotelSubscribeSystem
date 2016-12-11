@@ -1,6 +1,7 @@
 package businessLogic.promotionbl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import businessLogicService.promotionBLService.HotelPromotionBLService;
@@ -54,10 +55,15 @@ public class HotelPromotionController implements HotelPromotionBLService{
 	}
 
 	@Override
-	public List<HotelPromotionPO> hotelPromotionFind(HotelPromotionVO hpv) throws SQLException {
-		String hotelname = hpv.getHotelName();
+	public List<HotelPromotionVO> hotelPromotionFind(String hotelname) throws SQLException {
 		List<HotelPromotionPO> hotelPromotion = hpd.findByHotelname(hotelname);
-		return hotelPromotion;
+		List<HotelPromotionVO> list = new ArrayList<HotelPromotionVO>();
+		for(int i=0;i<hotelPromotion.size();i++){
+			HotelPromotionPO po = hotelPromotion.get(i);
+			HotelPromotionVO vo = new HotelPromotionVO(po.getHotelname(),po.getName(),po.isIsbirthday(),po.getNumberofroom(),po.isIspartner(),po.getBegintime(),po.getEndtime(),po.getDiscount());
+			list.add(vo);
+		}
+		return list;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package presentation.view;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.List;
 
 import businessLogic.promotionbl.WebPromotionController;
 import businessLogic.userbl.MessageController;
@@ -81,15 +82,15 @@ public class MarketerPromotionFrameController {
 	/**
 	 * 初始化
 	 */
-	private void initialize(){
+	private void initialize() throws SQLException{
 		MessageBLService service = new MessageController();
 		UserVO uservo = service.GetMessage(IdVO.getid());
 		id.setId(uservo.getid());
 		name.setText(uservo.getname());
 		
 		WebPromotionBLService s = new WebPromotionController();
-		ArrayList<WebPromotionVO> promotion = s.webPromotionFind();
-		ObservableList<WebPromotionVO> data = FXCollections.observableArrayList(promotion);
+		List<WebPromotionVO> promotion = s.webPromotionFind();
+		ObservableList<WebPromotionVO> data = FXCollections.observableList(promotion);
 		tableview.setItems(data);
 		promotiontype.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
 		begintime.setCellValueFactory(cellData->cellData.getValue().getBegintimeProperty());

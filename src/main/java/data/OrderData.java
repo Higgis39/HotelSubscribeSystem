@@ -39,7 +39,7 @@ public class OrderData implements OrderDataService{
 			ptmt.setString(4, o.getStatus());
 			ptmt.setString(5, o.getEntryTime());
 			ptmt.setString(6, o.getLastTime());
-			ptmt.setInt(7, o.getPrice());
+			ptmt.setDouble(7, o.getPrice());
 			ptmt.setString(8, o.getComment());
 			ptmt.setString(9, o.getRoomType());
 			ptmt.execute();
@@ -71,7 +71,7 @@ public class OrderData implements OrderDataService{
 			ptmt.setString(4, o.getStatus());
 			ptmt.setString(5, o.getEntryTime());
 			ptmt.setString(6, o.getLastTime());
-			ptmt.setInt(7, o.getPrice());
+			ptmt.setDouble(7, o.getPrice());
 			ptmt.setString(8, o.getComment());
 			ptmt.setString(9, o.getRoomType());
 			ptmt.setInt(10, o.getRoomNum());
