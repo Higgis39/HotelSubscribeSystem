@@ -10,6 +10,7 @@ import java.util.List;
 import JDBC.DBUtil;
 import dataService.OrderDataService;
 import po.OrderPO;
+import po.UserPO;
 
 /**
  * OrderData的职责是实现对数据库中user对象的增删改查
@@ -29,19 +30,20 @@ public class OrderData implements OrderDataService{
 	public boolean insert(OrderPO o) {
 		Connection conn = DBUtil.getConnection();
 		String sql = "insert into order "
-				+ "( id, hotelId, userId, status, entryTime, lastTime, price, comment, RoomType, RoomNum ) "
-				+ " values(?,?,?,?,?,?,?,?,?,?)";
+				+ "( hotelId, userId, status, entryTime, lastTime, price, comment, RoomType, RoomNum ) "
+				+ " values(?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
-			ptmt.setString(1, o.getId());
-			ptmt.setString(2, o.getHotelId());
-			ptmt.setString(3, o.getUserId());
-			ptmt.setString(4, o.getStatus());
-			ptmt.setString(5, o.getEntryTime());
-			ptmt.setString(6, o.getLastTime());
-			ptmt.setDouble(7, o.getPrice());
-			ptmt.setString(8, o.getComment());
-			ptmt.setString(9, o.getRoomType());
+//			ptmt.setString(1, o.getId());
+			ptmt.setString(1, o.getHotelId());
+			ptmt.setString(2, o.getUserId());
+			ptmt.setString(3, o.getStatus());
+			ptmt.setString(4, o.getEntryTime());
+			ptmt.setString(5, o.getLastTime());
+			ptmt.setDouble(6, o.getPrice());
+			ptmt.setString(7, o.getComment());
+			ptmt.setString(8, o.getRoomType());
+			ptmt.setInt(9, o.getRoomNum());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -282,5 +284,29 @@ public class OrderData implements OrderDataService{
 			result.add(o);
 		}
 		return result;
+	}
+
+	/**
+	 * 得到最后一个order对象的id
+	 * 
+	 * @see
+	 * @throws SQLException 抛出数据库连接失败异常
+	 */
+	public String distributeid() throws SQLException {
+		OrderPO o = null;
+		Connection conn = DBUtil.getConnection();
+			
+		String sql = " select * from order where orderkey=(select MAX(orderkey) from user) ";
+			
+		PreparedStatement ptmt = conn.prepareStatement(sql);
+			
+		ResultSet rs = ptmt.executeQuery();
+		
+		while(rs.next()){
+			o = new OrderPO();
+			o.setId(rs.getString("id"));
+		}
+					
+		return o.getId();
 	}
 }

@@ -8,7 +8,11 @@ import businessLogicService.promotionBLService.WebPromotionBLService;
 import data.WebPromotionData;
 import po.WebPromotionPO;
 import vo.WebPromotionVO;
-
+/**
+ * 
+ * @author Thpffcj
+ *
+ */
 public class WebPromotionController implements WebPromotionBLService {
 
 	WebPromotionData wpd = new WebPromotionData();

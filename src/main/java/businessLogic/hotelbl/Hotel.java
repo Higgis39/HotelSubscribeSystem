@@ -53,7 +53,7 @@ public class Hotel{
 
 		int length=HotelPOList.size();
 		for(int i=0;i<length;i++){
-			HotelVO hotelvo = new HotelVO(HotelPOList.get(i).getId(), HotelPOList.get(i).getPassword(), HotelPOList.get(i).getName(), 
+			HotelVO hotelvo = new HotelVO(HotelPOList.get(i).getHotelId(), HotelPOList.get(i).getPassword(), HotelPOList.get(i).getName(), 
 					                      HotelPOList.get(i).getPhonenumber(), HotelPOList.get(i).getAddress(), HotelPOList.get(i).getBusinessArea(),
 					                      HotelPOList.get(i).getIntroduction(), HotelPOList.get(i).getFacilities(), HotelPOList.get(i).getStar(), HotelPOList.get(i).getGrade());
 			
@@ -70,7 +70,7 @@ public class Hotel{
 	public HotelVO View(String hotelName){
 		
 		HotelPO hotelpo = hoteldataservice.findByName(hotelName);
-		HotelVO hotelvo = new HotelVO(hotelpo.getId(), hotelpo.getPassword(), hotelName, hotelpo.getPhonenumber(), 
+		HotelVO hotelvo = new HotelVO(hotelpo.getHotelId(), hotelpo.getPassword(), hotelName, hotelpo.getPhonenumber(), 
 				                      hotelpo.getAddress(),hotelpo.getBusinessArea(), hotelpo.getIntroduction(),
 				                      hotelpo.getFacilities(),hotelpo.getStar(), hotelpo.getGrade());
 		return hotelvo;
@@ -105,7 +105,7 @@ public class Hotel{
 	public boolean UpdateHotelMessage(String hotelName,String address, String phoneNumber, String Introduction, String Facilities, int Star){
 		
 		HotelPO hotelpo = hoteldataservice.findByName(hotelName);
-		hotelpo = new HotelPO(hotelpo.getId(),hotelpo.getPassword(),hotelName,phoneNumber,address,hotelpo.getBusinessArea(),Introduction,Facilities,Star,hotelpo.getGrade());
+		hotelpo = new HotelPO(hotelpo.getHotelId(),hotelpo.getPassword(),hotelName,phoneNumber,address,hotelpo.getBusinessArea(),Introduction,Facilities,Star,hotelpo.getGrade());
 		hoteldataservice.update(hotelpo);
 		
 		return true;

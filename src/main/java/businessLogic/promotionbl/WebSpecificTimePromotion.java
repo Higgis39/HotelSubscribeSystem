@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class WebSpecificTimePromotion implements WebPromotionType{
 
-	public double calculateDiscount() {
+	public double calculateDiscount(String hotelId) {
 		String beginTime = null;
 		String endTime = null;
 		double discount = 0.8;

@@ -6,6 +6,7 @@ import data.HotelData;
 import dataService.HotelDataService;
 
 public class HotelToolForPromotion implements HotelInfoForPromotion{
+	
 	HotelDataService hoteldataservice = new HotelData();
 	
 	public String getHotelBusinessDistrict(String hotelId){

@@ -32,7 +32,7 @@ public class HotelPO {
 	}
 	
 	//得到酒店账号
-	public String getId(){
+	public String getHotelId(){
 		return hotelid;
 	}
 	

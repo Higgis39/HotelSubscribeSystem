@@ -5,5 +5,5 @@ package businessLogic.promotionbl;
  */
 public interface WebPromotionType {
 
-	public double calculateDiscount();
+	public double calculateDiscount(String hotelId);
 }

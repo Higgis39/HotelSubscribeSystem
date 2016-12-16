@@ -1,8 +1,6 @@
 package businessLogic.orderbl;
 
 import vo.OrderVO;
-import vo.HotelPromotionVO;
-import vo.WebPromotionVO;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -10,11 +8,10 @@ import java.util.*;
 import businessLogic.orderbl.stub.HotelInfoForOrder;
 import businessLogic.orderbl.stub.HotelInfoForOrder_stub;
 import businessLogic.orderbl.stub.PromotionInfoForOrder;
-import businessLogic.promotionbl.AppropriatePromotion;
+import businessLogic.promotionbl.PromotionToolForOrder;
 import data.OrderData;
 import dataService.OrderDataService;
 import po.OrderPO;
-import po.UserPO;
 
 public class Order{
 	OrderVO vo;
@@ -34,7 +31,7 @@ public class Order{
 	 * @return 订单总价值
 	 */
 	public int getTotal(){
-		PromotionInfoForOrder promotionService=new AppropriatePromotion();
+		PromotionInfoForOrder promotionService=new PromotionToolForOrder();
 		HotelInfoForOrder hotelService=new HotelInfoForOrder_stub();
 		double HotelDiscount=promotionService.getApproriateHotelPromotion(vo);
 		double WebDiscount=promotionService.getAppropriateWebPromotion(vo);

@@ -10,13 +10,13 @@ import vo.WebPromotionVO;
 public class PromotionInfoForOrder_stub implements PromotionInfoForOrder{
 
 	@Override
-	public double getAppropriateWebPromotion(String OrderID, String UserID) {
+	public double getAppropriateWebPromotion(OrderVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public double getApproriateHotelPromotion(String OrderID, String UserID, String HotelID) {
+	public double getApproriateHotelPromotion(OrderVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

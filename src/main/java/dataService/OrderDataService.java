@@ -12,6 +12,8 @@ public interface OrderDataService {
 	
 	public boolean update(OrderPO po);
 	
+	public String distributeid() throws SQLException;
+	
 	public OrderPO findByOrderID(String ID);
 	
 	public List<OrderPO> findByDate(String Date) throws SQLException;

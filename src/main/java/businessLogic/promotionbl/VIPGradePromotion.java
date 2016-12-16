@@ -8,7 +8,7 @@ package businessLogic.promotionbl;
  */
 public class VIPGradePromotion implements WebPromotionType{
 	
-	public double calculateDiscount() {
+	public double calculateDiscount(String hotelId) {
 		//获得用户的信用值
 		int credit = 0;
 		int level;

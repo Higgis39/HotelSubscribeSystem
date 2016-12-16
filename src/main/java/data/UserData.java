@@ -127,16 +127,21 @@ public class UserData implements UserDataService{
 	 * @throws SQLException 抛出数据库连接失败异常
 	 */
 	public String distributeid() throws SQLException {
+		UserPO u = null;
 		Connection conn = DBUtil.getConnection();
 			
-		String sql = " select top 1 from user "
-				   + " order by key desc ";
+		String sql = " select * from user where userkey=(select MAX(userkey) from user) ";
 			
 		PreparedStatement ptmt = conn.prepareStatement(sql);
 			
 		ResultSet rs = ptmt.executeQuery();
+		
+		while(rs.next()){
+			u = new UserPO();
+			u.setId(rs.getString("id"));
+		}
 					
-		return rs.getString("id");
+		return u.getid();
 	}
 	
 	/**
@@ -145,7 +150,7 @@ public class UserData implements UserDataService{
 	 * @return
 	 */
 	public String creditchangeToSql(ArrayList<String> cc){
-		if(cc.size()>0){
+		if(cc!=null){
 			String creditchange = "";
 			for(int i=0; i<cc.size(); i++){
 				creditchange = creditchange +"#"+ cc.get(i);
@@ -164,7 +169,7 @@ public class UserData implements UserDataService{
 	 * @return
 	 */
 	public ArrayList<String> creditchangeToList(String creditchange){
-		if(!creditchange.isEmpty()){
+		if(creditchange!=null){
 			ArrayList<String> cc = new ArrayList<>();
 			String tempcreditchange = "";
 			for(int i=1; i<creditchange.length(); i++){

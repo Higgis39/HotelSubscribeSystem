@@ -12,7 +12,7 @@ import vo.OrderVO;
  * @author Thpffcj
  *
  */
-public class AppropriatePromotion implements PromotionInfoForOrder{
+public class PromotionToolForOrder implements PromotionInfoForOrder{
 	
 	/**
 	 * 选择折扣最多的酒店促销策略
@@ -67,11 +67,11 @@ public class AppropriatePromotion implements PromotionInfoForOrder{
 		
 		//网站特定时间促销策略
 		WebSpecificTimePromotion wstp = new WebSpecificTimePromotion();
-		double a = wstp.calculateDiscount();
+		double a = wstp.calculateDiscount(null);
 		
 		//特定商圈专属折扣
 		BusinessDistrictPromotion bdp = new BusinessDistrictPromotion();
-		double b = bdp.calculateDiscount();
+		double b = bdp.calculateDiscount(null);
 		
 		ArrayList<Double> discount = new ArrayList<>();
 		discount.add(a);

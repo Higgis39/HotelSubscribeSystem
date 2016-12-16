@@ -32,7 +32,7 @@ public class HotelData implements HotelDataService{
 				+ " values(?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
-			ptmt.setString(1, h.getId());
+			ptmt.setString(1, h.getHotelId());
 			ptmt.setString(2, h.getPassword());
 			ptmt.setString(3, h.getName());
 			ptmt.setString(4, h.getPhonenumber());
@@ -62,7 +62,7 @@ public class HotelData implements HotelDataService{
 				+ " where hotelname=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
-			ptmt.setString(1, h.getId());
+			ptmt.setString(1, h.getHotelId());
 			ptmt.setString(2, h.getPassword());
 			ptmt.setString(3, h.getName());
 			ptmt.setString(4, h.getPhonenumber());
@@ -429,15 +429,20 @@ public class HotelData implements HotelDataService{
 	 * @throws SQLException 抛出数据库连接失败异常
 	 */
 	public String distributeid() throws SQLException {
+		HotelPO h = null;
 		Connection conn = DBUtil.getConnection();
 			
-		String sql = " select top 1 from hotel "
-				   + " order by key desc ";
+		String sql = " select * from hotel where hotel=(select MAX(hotelkey) from hotel) ";
 			
 		PreparedStatement ptmt = conn.prepareStatement(sql);
 			
 		ResultSet rs = ptmt.executeQuery();
 					
-		return rs.getString("id");
+		while(rs.next()){
+			h = new HotelPO();
+			h.setHotelid(rs.getString("hotelid"));
+		}
+		
+		return h.getHotelId();
 	}
 }
