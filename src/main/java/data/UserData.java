@@ -17,6 +17,8 @@ import po.UserPO;
  */
 public class UserData implements UserDataService{
 	
+	Encryption encryption = new Encryption();
+	
 	/**
 	 * 增加user对象
 	 * 
@@ -31,14 +33,14 @@ public class UserData implements UserDataService{
 				+ "values(?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
-			ptmt.setString(1, u.getname());
-			ptmt.setString(2, u.getid());
-			ptmt.setString(3, u.getpassword());
+			ptmt.setString(1, encryption.encryption(u.getname()));
+			ptmt.setString(2, encryption.encryption(u.getid()));
+			ptmt.setString(3, encryption.encryption(u.getpassword()));
 			ptmt.setString(4, u.getusertype());
 			ptmt.setInt(5, u.getcreditvalue());
 			ptmt.setString(6, u.getVIPtype());
 			ptmt.setInt(7, u.getVIPgrade());
-			ptmt.setString(8, u.getphonenumber());
+			ptmt.setString(8, encryption.encryption(u.getphonenumber()));
 			ptmt.setString(9, u.getbirthday());
 			ptmt.setString(10, u.getcompany());
 			ptmt.setString(11, creditchangeToSql(u.getcreditchange()));
@@ -62,13 +64,13 @@ public class UserData implements UserDataService{
 				+ " where id=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
-			ptmt.setString(1, u.getname());
-			ptmt.setString(2, u.getpassword());
+			ptmt.setString(1, encryption.encryption(u.getname()));
+			ptmt.setString(2, encryption.encryption(u.getpassword()));
 			ptmt.setString(3, u.getusertype());
 			ptmt.setInt(4, u.getcreditvalue());
 			ptmt.setString(5, u.getVIPtype());
 			ptmt.setInt(6, u.getVIPgrade());
-			ptmt.setString(7, u.getphonenumber());
+			ptmt.setString(7, encryption.encryption(u.getphonenumber()));
 			ptmt.setString(8, u.getbirthday());
 			ptmt.setString(9, u.getcompany());
 			ptmt.setString(10, creditchangeToSql(u.getcreditchange()));
@@ -96,19 +98,19 @@ public class UserData implements UserDataService{
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			
-			ptmt.setString(1, id);
+			ptmt.setString(1, encryption.encryption(id));
 			ResultSet rs = ptmt.executeQuery();
 			
 			while(rs.next()){
 				u = new UserPO();
-				u.setName(rs.getString("name"));
-				u.setId(rs.getString("id"));
-				u.setPassword(rs.getString("password"));
+				u.setName(encryption.decryption(rs.getString("name")));
+				u.setId(encryption.decryption(rs.getString("id")));
+				u.setPassword(encryption.decryption(rs.getString("password")));
 				u.setUsertype(rs.getString("usertype"));
 				u.setCreditvalue(rs.getInt("creditvalue"));
 				u.setVIPtype(rs.getString("VIPtype"));
 				u.setVIPgrade(rs.getInt("VIPgrade"));
-				u.setPhonenumber(rs.getString("phonenumber"));
+				u.setPhonenumber(encryption.decryption(rs.getString("phonenumber")));
 				u.setBirthday(rs.getString("birthday"));
 				u.setCompany(rs.getString("company"));
 				u.setCreditchange(creditchangeToList(rs.getString("creditchange")));

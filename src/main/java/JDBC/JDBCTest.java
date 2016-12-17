@@ -55,23 +55,29 @@ public class JDBCTest {
 		
 		UserData ud = new UserData();
 		
-//		UserPO up = new UserPO();
-//		up.setName("李四");
-//		up.setId("10001");
-//		up.setPassword("143234");
+		UserPO up = new UserPO();
+//		up.setName("学神");
+//		up.setId("10002");
+//		up.setPassword("7k7k4399");
 //		up.setUsertype("普通用户");
 //		up.setCreditvalue(1000);
 //		up.setVIPtype("企业会员");
 //		up.setVIPgrade(5);
-//		up.setPhonenumber("13212324534");
-//		up.setBirthday("06-12");
+//		up.setPhonenumber("13579246868");
+//		up.setBirthday("06-19");
 //		up.setCompany("google");
 //		up.setCreditchange(null);
 //		
 //		ud.insert(up);
 		
-		String id = ud.distributeid();
-		System.out.println(id);
+		up = ud.find("10002");
+		System.out.println(up.getname());
+		System.out.println(up.getid());
+		System.out.println(up.getpassword());
+		System.out.println(up.getphonenumber());
+		
+//		String id = ud.distributeid();
+//		System.out.println(id);
 //		UserPO up = ud.find("10000");
 	}			
 }
