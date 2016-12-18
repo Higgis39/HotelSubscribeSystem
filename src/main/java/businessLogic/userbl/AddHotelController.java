@@ -1,7 +1,6 @@
 package businessLogic.userbl;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import businessLogicService.userBLService.AddHotelBLService;
 import vo.HotelVO;

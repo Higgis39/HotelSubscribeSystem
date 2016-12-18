@@ -129,7 +129,7 @@ public class UserPersonalFrameController {
 		name.setText(uservo.getname());
 		phonenumber.setText(uservo.getphonenumber());
 		creditvalue.setText(Integer.toString(uservo.getcreditvalue()));
-		if(uservo.getusertype()==null){
+		if(uservo.getVIPtype()==null){
 			registerVIP.setVisible(true);
 			VIPtypelabel.setVisible(false);
 			VIPgradelabel.setVisible(false);
@@ -139,7 +139,7 @@ public class UserPersonalFrameController {
 			VIPtype.setText(uservo.getVIPtype());
 			VIPgrade.setText(Integer.toString(uservo.getVIPgrade()));
 			if(uservo.getbirthday()==null){
-				bircom.setText("企业");
+				bircom.setText("企业:");
 				birthdaycompany.setText(uservo.getcompany());
 			}else{
 				birthdaycompany.setText(uservo.getbirthday());

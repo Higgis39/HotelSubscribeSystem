@@ -1,8 +1,6 @@
 package presentation.view;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 
 import businessLogic.userbl.AddHotelController;
 import businessLogicService.userBLService.AddHotelBLService;
@@ -52,10 +50,9 @@ public class AddHotelWorkerFrameController {
 		String workername = enterworkername.getText();
 		int age = Integer.valueOf(enterage.getText());
 		String sex = entersex.getSelectionModel().getSelectedItem();
-		LocalDate begindate = LocalDate.parse(enterdate.getText());
+		String begindate = enterdate.getText();
 		AddHotelBLService addhotelblservice = new AddHotelController();
-		Date date = Date.from(begindate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-		boolean result = addhotelblservice.AddHotelWorker(new WorkerVO(hotelname,workername,age,sex,date));
+		boolean result = addhotelblservice.AddHotelWorker(new WorkerVO(hotelname,workername,age,sex,begindate));
 		if(result==true){
 			addhotelworkerframe.getPrimaryStage().close();
 			viewcontrol.openSuccessAdd2Frame();

@@ -1,7 +1,5 @@
 package businessLogicService.orderBLService;
 
-import java.util.*;
-
 import vo.OrderVO;
 
 public interface CommentOrderService {

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import JDBC.DBUtil;
 import dataService.RoomDataService;
 import po.RoomPO;
-import po.UserPO;
 
 /**
  * RoomData的职责是实现对数据库中room对象的增删改查

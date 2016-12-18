@@ -3,7 +3,6 @@ package businessLogicService.promotionBLService;
 import java.sql.SQLException;
 import java.util.List;
 
-import po.HotelPromotionPO;
 import vo.HotelPromotionVO;
 
 /**

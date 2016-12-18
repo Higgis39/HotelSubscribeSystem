@@ -2,7 +2,6 @@ package presentation.view;
 
 import javafx.fxml.FXML;
 import presentation.controller.FrameController;
-import vo.OtherIdVO;
 
 public class SuccessAdd2FrameController {
 

@@ -1,7 +1,5 @@
 package vo;
 
-import java.util.Date;
-
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,13 +12,13 @@ public class WorkerVO {
 	private StringProperty sex;
 	private StringProperty beginTime;
 
-	public WorkerVO(String hotelname,String name, int age, String sex, Date beginTime) {
+	public WorkerVO(String hotelname,String name, int age, String sex,String beginTime) {
 		super();
 		this.hotelname = new SimpleStringProperty(hotelname);
 		this.name = new SimpleStringProperty(name);
 		this.age = new SimpleIntegerProperty(age);
 		this.sex = new SimpleStringProperty(sex);
-		this.beginTime = new SimpleStringProperty(beginTime.toString());
+		this.beginTime = new SimpleStringProperty(beginTime);
 	}
 	
 	public String getHotelname(){
@@ -79,7 +77,7 @@ public class WorkerVO {
 		return beginTime;
 	}
 
-	public void setBeginTime(Date beginTime) {
-		this.beginTime = new SimpleStringProperty(beginTime.toString());
+	public void setBeginTime(String beginTime) {
+		this.beginTime = new SimpleStringProperty(beginTime);
 	}
 }

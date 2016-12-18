@@ -1,7 +1,5 @@
 package businessLogic.hotelbl;
 
-import java.util.Date;
-
 import po.HotelPO;
 import po.WorkerPO;
 import businessLogic.userbl.HotelInfoForUser;
@@ -22,7 +20,7 @@ public class HotelToolForUser implements HotelInfoForUser{
     	return true;
     };
 	
-	public boolean addHotelWorker(String workername,String hotelname,int age,String sex,Date begindate){
+	public boolean addHotelWorker(String workername,String hotelname,int age,String sex,String begindate){
 		WorkerPO workerpo = new WorkerPO(hotelname, workername, age, sex, begindate);
 		
 		workerdataservice.insert(workerpo);

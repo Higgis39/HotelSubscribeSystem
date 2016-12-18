@@ -4,7 +4,6 @@ import businessLogic.userbl.MessageController;
 import businessLogicService.userBLService.MessageBLService;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import presentation.controller.FrameController;
