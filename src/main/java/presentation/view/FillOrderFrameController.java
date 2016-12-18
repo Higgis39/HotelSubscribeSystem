@@ -1,5 +1,6 @@
 package presentation.view;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import businessLogic.orderbl.CreateOrderController;
@@ -86,7 +87,7 @@ public class FillOrderFrameController {
 	/**
 	 * 房间数量右侧+号按钮的监听
 	 */
-	private void roomnumplusAction(){
+	private void roomnumplusAction() throws SQLException{
 		String roomtype = enterroomtype.getSelectionModel().getSelectedItem();
 		int max = 1000;
 		if(roomtype!=null){
@@ -115,7 +116,7 @@ public class FillOrderFrameController {
 	/**
 	 * 入住人数右侧+号按钮的监听
 	 */
-	private void peoplenumplusAction(){
+	private void peoplenumplusAction() throws SQLException{
 		String roomtype = enterroomtype.getSelectionModel().getSelectedItem();
 		int roomnum = Integer.valueOf(enterroomnum.getText());
 		int max = 5;
@@ -145,7 +146,7 @@ public class FillOrderFrameController {
 	/**
 	 * 下单按钮的监听
 	 */
-	private void confirmAction(){
+	private void confirmAction() throws SQLException{
 		String roomtype = enterroomtype.getSelectionModel().getSelectedItem();
 		String indate = enterindate.getValue().toString()+" 18:00";
 		String outdate = enteroutdate.getValue().toString();
@@ -185,7 +186,7 @@ public class FillOrderFrameController {
 	/**
 	 * 得到总价的监听
 	 */
-	private void getTotalAction(){
+	private void getTotalAction() throws SQLException{
 		String roomtype = enterroomtype.getSelectionModel().getSelectedItem();
 		String indate = enterindate.getValue().toString();
 		String outdate = enteroutdate.getValue().toString();

@@ -1,6 +1,6 @@
 package businessLogic.userbl;
 
-import businessLogic.orderbl.stub.UserInfoForOrder;
+import businessLogic.orderbl.UserInfoForOrder;
 import data.UserData;
 import dataService.UserDataService;
 import po.UserPO;

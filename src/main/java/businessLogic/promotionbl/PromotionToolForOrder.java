@@ -3,7 +3,7 @@ package businessLogic.promotionbl;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import businessLogic.orderbl.stub.PromotionInfoForOrder;
+import businessLogic.orderbl.PromotionInfoForOrder;
 import vo.OrderVO;
 
 

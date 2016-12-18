@@ -1,8 +1,6 @@
 package businessLogic.orderbl;
 
 import vo.OrderVO;
-import vo.HotelPromotionVO;
-import vo.WebPromotionVO;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -10,11 +8,10 @@ import java.util.*;
 import businessLogic.hotelbl.HotelToolForOrder;
 import businessLogic.orderbl.HotelInfoForOrder;
 import businessLogic.orderbl.PromotionInfoForOrder;
-import businessLogic.promotionbl.AppropriatePromotion;
+import businessLogic.promotionbl.PromotionToolForOrder;
 import data.OrderData;
 import dataService.OrderDataService;
 import po.OrderPO;
-import po.UserPO;
 
 public class Order{
 	OrderVO vo;
@@ -35,7 +32,7 @@ public class Order{
 	 * @throws SQLException 
 	 */
 	public int getTotal() throws SQLException{
-		PromotionInfoForOrder promotionService=new AppropriatePromotion();
+		PromotionInfoForOrder promotionService=new PromotionToolForOrder();
 		HotelInfoForOrder hotelService=new HotelToolForOrder();
 		double HotelDiscount=promotionService.getApproriateHotelPromotion(vo);
 		double WebDiscount=promotionService.getAppropriateWebPromotion(vo);
