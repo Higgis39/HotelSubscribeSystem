@@ -17,6 +17,7 @@ public class Hotel{
 	HotelDataService hoteldataservice = new HotelData();
 	OrderInfoForHotel orderdataservice = new OrderToolForHotel();
 	RoomDataService roomdataservice = new RoomData();
+	
 	/**
 	 * 搜索酒店
 	 * @param Address String
@@ -31,7 +32,6 @@ public class Hotel{
 	 * @return 返回符合搜索条件的酒店列表
 	 * @throws SQLException 
 	 */
-	
 	public ArrayList<HotelVO> Search(String hotelName, String city, String BusinessArea, String RoomType, String price, String checkinTime, String checkoutTime, int Star, String grade,boolean hasfixed) throws SQLException{
 //		double mingrade,maxgrade;
 //		if(grade.equals("1分以下")){

@@ -2,6 +2,8 @@ package businessLogic.userbl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import businessLogic.hotelbl.HotelToolForUser;
 import data.UserData;
 import dataService.UserDataService;
 import po.UserPO;
@@ -17,6 +19,7 @@ import vo.WorkerVO;
 public class User{
 	UserDataService userdataservice = new UserData();
 	CreditGrade creditvaluechange = new CreditGrade();
+	HotelInfoForUser hotelinfoforuser = new HotelToolForUser();
 	
 	/**
 	 * 登录
@@ -201,6 +204,7 @@ public class User{
 		String newid = Integer.toString(Integer.valueOf(userdataservice.distributeid())+1);
 		userdataservice.insert(new UserPO(hotelvo.getName(),newid,hotelvo.getPassword(),"酒店工作人员",0,null,0,null,null,null,null));
 //		添加HotelPO
+		hotelinfoforuser.addHotel(newid, hotelvo.getPassword(),hotelvo.getName(), hotelvo.getPhonenumber(), hotelvo.getAddress(), hotelvo.getBusinessArea(), hotelvo.getIntroduction(), hotelvo.getFacilities(), hotelvo.getStar());
 		return newid;
 		
 	}
@@ -212,6 +216,7 @@ public class User{
 	 */
 	public boolean AddHotelWorker(WorkerVO workervo){
 		//添加WorkerPO
+		hotelinfoforuser.addHotelWorker(workervo.getName(), workervo.getHotelname(), workervo.getAge(),workervo.getSex(),workervo.getBeginTime());
 		return true;
 	}
 }

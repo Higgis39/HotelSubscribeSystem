@@ -1,7 +1,5 @@
 package businessLogic.hotelbl;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 
 import po.HotelPO;
@@ -24,9 +22,8 @@ public class HotelToolForUser implements HotelInfoForUser{
     	return true;
     };
 	
-	public boolean addHotelWorker(String workername,String hotelname,int age,String sex,LocalDate begindate){
-		Date date = Date.from(begindate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-		WorkerPO workerpo = new WorkerPO(hotelname, workername, age, sex, date);
+	public boolean addHotelWorker(String workername,String hotelname,int age,String sex,Date begindate){
+		WorkerPO workerpo = new WorkerPO(hotelname, workername, age, sex, begindate);
 		
 		workerdataservice.insert(workerpo);
 		return true;
