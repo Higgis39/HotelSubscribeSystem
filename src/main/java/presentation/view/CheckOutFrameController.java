@@ -12,6 +12,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import presentation.controller.FrameController;
 import vo.HotelNameVO;
 
 
@@ -36,6 +37,8 @@ public class CheckOutFrameController {
 	private TextField entercheckouttime;
 	
 	private CheckOutFrame checkoutframe;
+	
+	FrameController viewcontrol = new FrameController();
 	
 	@FXML
 	/**
@@ -77,6 +80,8 @@ public class CheckOutFrameController {
 		}else{
 			service.CheckOut(HotelNameVO.getHotelname(),room,num);
 		}
+		checkoutframe.getPrimaryStage().close();
+		viewcontrol.openSuccessSaveFrame();
 	}
 	
 	@FXML

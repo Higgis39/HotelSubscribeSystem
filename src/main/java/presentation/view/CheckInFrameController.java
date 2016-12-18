@@ -110,6 +110,8 @@ public class CheckInFrameController {
 			UpdateService service = new UpdateController();
 			service.CheckIn(HotelNameVO.getHotelname(),room,Integer.valueOf(roomnum));
 		}
+		checkinframe.getPrimaryStage().close();
+		viewcontrol.openSuccessSaveFrame();
 	}
 	
 	@FXML

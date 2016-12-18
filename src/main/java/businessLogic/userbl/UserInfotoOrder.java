@@ -35,6 +35,7 @@ public class UserInfotoOrder implements UserInfoForOrder{
 		UserPO userpo = service.find(ID);
 		userpo.setCreditvalue(userpo.getcreditvalue()+creditchange);
 		userpo.setVIPgrade(grade.setVIPgradeByCredit(userpo.getcreditvalue(),userpo.getVIPtype()));
+		service.update(userpo);
 		return true;
 	}
 }
