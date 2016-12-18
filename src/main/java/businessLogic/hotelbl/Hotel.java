@@ -164,12 +164,20 @@ public class Hotel{
 		ArrayList<RoomPO> RoomPOList = roomdataservice.findByHotelname(hotelName);
 		
 		int length=RoomPOList.size();
+		boolean IsFind = false;
 		for(int i=0;i<length;i++){
 			if(RoomPOList.get(i).getRoomType()==roomtype){
+				IsFind = true;
 				RoomPOList.get(i).setRoomNum(RoomPOList.get(i).getRoomNum()+roomnum);
 				RoomPOList.get(i).setPeopleNumber(peoplenum);
 				RoomPOList.get(i).setRoomPrice(price);
+				roomdataservice.update(RoomPOList.get(i));
 			}
+		}
+		
+		if(IsFind == false){
+			RoomPO roompo = new RoomPO(hotelName,roomnum,peoplenum,price,roomtype);
+			roomdataservice.update(roompo);
 		}
 	
 		return true;
@@ -180,11 +188,20 @@ public class Hotel{
 	 * @param orderID String
 	 * @param checkoutTime String
 	 * @return UpdateState boolean
+	 * @throws SQLException 
 	 */
-	public boolean CheckOut(String orderID, String checkoutTime){
-		
-		orderdataservice.Update(orderID,checkoutTime);
+	public boolean CheckOut(String hotelname,String orderID,String room,int num, String checkoutTime) throws SQLException{
 		boolean IsSuccess = orderdataservice.Update(orderID,checkoutTime);
+		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
+		RoomPOList = roomdataservice.findByHotelname(hotelname);
+		
+		int length=RoomPOList.size();
+		for(int i=0;i<length;i++){
+			if(RoomPOList.get(i).getRoomType()==room){
+				RoomPOList.get(i).setRoomNum(RoomPOList.get(i).getRoomNum()+num);
+				roomdataservice.update(RoomPOList.get(i));
+			}
+		}
 		
 		return IsSuccess;
 	}
@@ -205,6 +222,7 @@ public class Hotel{
 		for(int i=0;i<length;i++){
 			if(RoomPOList.get(i).getRoomType()==roomType){
 				RoomPOList.get(i).setRoomNum(RoomPOList.get(i).getRoomNum()+num);
+				roomdataservice.update(RoomPOList.get(i));
 			}
 		}
 		
@@ -227,6 +245,7 @@ public class Hotel{
 		for(int i=0;i<length;i++){
 			if(RoomPOList.get(i).getRoomType()==roomType){
 				RoomPOList.get(i).setRoomNum(RoomPOList.get(i).getRoomNum()-num);
+				roomdataservice.update(RoomPOList.get(i));
 			}
 		}
 		

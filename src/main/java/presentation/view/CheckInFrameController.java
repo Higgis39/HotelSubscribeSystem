@@ -36,6 +36,10 @@ public class CheckInFrameController {
 	@FXML
 	private Label id;
 	@FXML
+	private Label rt;
+	@FXML
+	private Label rn;
+	@FXML
 	private TextField enterid;
 	@FXML
 	private TextField enterroomnum;
@@ -60,9 +64,17 @@ public class CheckInFrameController {
 		if(checkbox.isSelected()){
 			id.setDisable(false);
 			enterid.setDisable(false);
+			rt.setDisable(true);
+			rn.setDisable(true);
+			roomtype.setDisable(true);
+			enterroomnum.setDisable(true);
 		}else{
 			id.setDisable(true);
 			enterid.setDisable(true);
+			rt.setDisable(false);
+			rn.setDisable(false);
+			roomtype.setDisable(false);
+			enterroomnum.setDisable(false);
 		}
 	}
 	
@@ -82,11 +94,10 @@ public class CheckInFrameController {
 	 * 确定按钮的监听
 	 */
 	private void confirmAction() throws NumberFormatException, SQLException{
-		String roomnum = enterroomnum.getText();
-		String intime = entercheckintime.getText();
-		String outtime = entercheckoutdate.getValue().toString()+" "+entercheckouthour.getText()+entercheckoutminute.getText();
 		if(checkbox.isSelected()){
 			String id = enterid.getText();
+			String intime = entercheckintime.getText();
+			String outtime = entercheckoutdate.getValue().toString()+" "+entercheckouthour.getText()+entercheckoutminute.getText();
 			CustomerViewOrderService s = new CustomerViewOrderController();
 			OrderVO ordervo = s.ShowOrderMessage(id);
 			ordervo.setEntryTime(intime);
@@ -94,8 +105,10 @@ public class CheckInFrameController {
 			ExcuteOrderService service = new ExcuteOrderController();
 			service.CheckIn(ordervo);
 		}else{
+			String room = roomtype.getSelectionModel().getSelectedItem();
+			String roomnum = enterroomnum.getText();
 			UpdateService service = new UpdateController();
-			service.CheckIn(HotelNameVO.getHotelname(),roomtype.getSelectionModel().getSelectedItem(),Integer.valueOf(roomnum));
+			service.CheckIn(HotelNameVO.getHotelname(),room,Integer.valueOf(roomnum));
 		}
 	}
 	

@@ -99,7 +99,7 @@ public class HotelMessageFrameController {
 		id.setText(IdVO.getid());
 		hotelname.setText(hotelvo.getName());
 		phonenumber.setText(hotelvo.getPhonenumber());
-		address.setText(hotelvo.getBusinessArea());
+		address.setText(hotelvo.getAddress());
 		city.setText(hotelvo.getBusinessArea());
 		introduction.setText(hotelvo.getIntroduction());
 		service.setText(hotelvo.getFacilities());

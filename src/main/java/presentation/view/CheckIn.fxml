@@ -20,9 +20,9 @@
       <DatePicker fx:id="entercheckoutdate" layoutX="223.0" layoutY="223.0" prefHeight="23.0" prefWidth="118.0" />
       <TextField fx:id="entercheckoutminute" layoutX="391.0" layoutY="223.0" prefHeight="23.0" prefWidth="30.0" text="00" />
       <Label layoutX="379.0" layoutY="227.0" text="：" />
-      <Label layoutX="137.0" layoutY="106.0" text="房间类型：" />
-      <TextField fx:id="enterroomnum" layoutX="223.0" layoutY="139.0" prefHeight="22.0" prefWidth="118.0" />
-      <Label layoutX="137.0" layoutY="143.0" text="房间数量：" />
-      <ComboBox fx:id="roomtype" layoutX="223.0" layoutY="102.0" prefHeight="23.0" prefWidth="118.0" />
+      <Label fx:id="rt" disable="true" layoutX="137.0" layoutY="106.0" text="房间类型：" />
+      <TextField fx:id="enterroomnum" disable="true" layoutX="223.0" layoutY="139.0" prefHeight="22.0" prefWidth="118.0" />
+      <Label fx:id="rn" disable="true" layoutX="137.0" layoutY="143.0" text="房间数量：" />
+      <ComboBox fx:id="roomtype" disable="true" layoutX="223.0" layoutY="102.0" prefHeight="23.0" prefWidth="118.0" />
    </children>
 </AnchorPane>

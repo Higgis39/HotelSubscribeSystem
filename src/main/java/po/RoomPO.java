@@ -20,7 +20,7 @@ public class RoomPO {
 		roomType=RoomType;
 		roomPrice=RoomPrice;
 		peopleNumber=PeopleNumber;
-		IsEmpty=false;
+		IsEmpty=true;
 	}
 	
 	public String getHotelName(){

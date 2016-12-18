@@ -68,13 +68,14 @@ public class CheckOutFrameController {
 	 */
 	private void confirmAction() throws SQLException{
 		UpdateService service = new UpdateController();
+		int num = Integer.valueOf(enterroomnum.getText());
+		String room = roomtype.getSelectionModel().getSelectedItem();
 		if(checkbox.isSelected()){
 			String id = enterid.getText();
 			String outtime = entercheckouttime.getText();
-			service.CheckOut(id, outtime);
+			service.CheckOut(HotelNameVO.getHotelname(),id,room,num,outtime);
 		}else{
-			int num = Integer.valueOf(enterroomnum.getText());
-			service.CheckOut(HotelNameVO.getHotelname(),roomtype.getSelectionModel().getSelectedItem(),num);
+			service.CheckOut(HotelNameVO.getHotelname(),room,num);
 		}
 	}
 	
@@ -88,7 +89,7 @@ public class CheckOutFrameController {
 	
 	@FXML
 	private void initialize(){
-		
+		roomtype.getItems().addAll("单人间","标准间","家庭套房");
 	}
 
 	public void setCheckOutFrame(CheckOutFrame checkoutframe) {

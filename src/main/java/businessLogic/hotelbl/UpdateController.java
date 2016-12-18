@@ -14,10 +14,11 @@ public class UpdateController implements UpdateService{
 	 * @param checkoutTime String
 	 * @param checkoutDate String
 	 * @return UpdateState boolean
+	 * @throws SQLException 
 	 */
 	
-	public boolean CheckOut(String orderID, String checkoutTime){
-		return hotel.CheckOut(orderID, checkoutTime);
+	public boolean CheckOut(String hotelname,String orderID,String room,int num, String checkoutTime) throws SQLException{
+		return hotel.CheckOut(hotelname,orderID,room,num, checkoutTime);
 	}
 	
 	/**
