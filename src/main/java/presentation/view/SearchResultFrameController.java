@@ -48,27 +48,29 @@ public class SearchResultFrameController {
 	 */
 	private void initialize(){
 		ArrayList<HotelVO> hotel = ArrayListVO.getArrayList();
-		ObservableList<HotelVO> data = FXCollections.observableArrayList(hotel);
-		tableview.setItems(data);
-		hotelname.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
-		address.setCellValueFactory(cellData->cellData.getValue().getAddressProperty());
-		phonenumber.setCellValueFactory(cellData->cellData.getValue().getPhonenumberProperty());
-		star.setCellValueFactory(cellData->cellData.getValue().getStarProperty());
-		grade.setCellValueFactory(cellData->cellData.getValue().getGradeProperty());
-		
-		link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HotelVO, Boolean>, ObservableValue<Boolean>>() {
-            @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<HotelVO, Boolean> p) {
-                return new SimpleBooleanProperty(p.getValue()!=null);
-            }
-        });
+		if(hotel!=null){
+			ObservableList<HotelVO> data = FXCollections.observableArrayList(hotel);
+			tableview.setItems(data);
+			hotelname.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
+			address.setCellValueFactory(cellData->cellData.getValue().getAddressProperty());
+			phonenumber.setCellValueFactory(cellData->cellData.getValue().getPhonenumberProperty());
+			star.setCellValueFactory(cellData->cellData.getValue().getStarProperty());
+			grade.setCellValueFactory(cellData->cellData.getValue().getGradeProperty());
+			
+			link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HotelVO, Boolean>, ObservableValue<Boolean>>() {
+	            @Override
+	            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<HotelVO, Boolean> p) {
+	                return new SimpleBooleanProperty(p.getValue()!=null);
+	            }
+	        });
 
-        link.setCellFactory(new Callback<TableColumn<HotelVO, Boolean>, TableCell<HotelVO, Boolean>>() {
-            @Override
-            public TableCell<HotelVO, Boolean> call(TableColumn<HotelVO, Boolean> p) {
-                return new ButtonCell();
-            }
-        });
+	        link.setCellFactory(new Callback<TableColumn<HotelVO, Boolean>, TableCell<HotelVO, Boolean>>() {
+	            @Override
+	            public TableCell<HotelVO, Boolean> call(TableColumn<HotelVO, Boolean> p) {
+	                return new ButtonCell();
+	            }
+	        });
+		}
 	}
 	
 	public void setSearchResultFrame(SearchResultFrame searchresultframe){
