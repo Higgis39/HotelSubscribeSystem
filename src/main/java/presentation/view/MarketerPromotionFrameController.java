@@ -90,14 +90,17 @@ public class MarketerPromotionFrameController {
 		
 		WebPromotionBLService s = new WebPromotionController();
 		List<WebPromotionVO> promotion = s.webPromotionFind();
-		ObservableList<WebPromotionVO> data = FXCollections.observableList(promotion);
-		tableview.setItems(data);
-		promotiontype.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
-		begintime.setCellValueFactory(cellData->cellData.getValue().getBegintimeProperty());
-		endtime.setCellValueFactory(cellData->cellData.getValue().getEndtimeProperty());
-		businessarea.setCellValueFactory(cellData->cellData.getValue().getSpecificbusinessareaProperty());
-		VIPgrade.setCellValueFactory(cellData->cellData.getValue().getVIPgradeProperty());
-		discount.setCellValueFactory(cellData->cellData.getValue().getDiscountProperty());
+		
+		if(promotion!=null){
+			ObservableList<WebPromotionVO> data = FXCollections.observableList(promotion);
+			tableview.setItems(data);
+			promotiontype.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
+			begintime.setCellValueFactory(cellData->cellData.getValue().getBegintimeProperty());
+			endtime.setCellValueFactory(cellData->cellData.getValue().getEndtimeProperty());
+			businessarea.setCellValueFactory(cellData->cellData.getValue().getSpecificbusinessareaProperty());
+			VIPgrade.setCellValueFactory(cellData->cellData.getValue().getVIPgradeProperty());
+			discount.setCellValueFactory(cellData->cellData.getValue().getDiscountProperty());
+		}
 	}
 	
 	public void setMarketerPromotionFrame(MarketerPromotionFrame marketerpromotionframe){

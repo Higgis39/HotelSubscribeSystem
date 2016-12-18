@@ -1,7 +1,6 @@
 package presentation.view;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import businessLogic.orderbl.CustomerViewOrderController;
@@ -20,7 +19,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
 import presentation.controller.FrameController;
-import vo.HotelVO;
 import vo.IdVO;
 import vo.OrderVO;
 import vo.UserVO;
@@ -89,27 +87,29 @@ public class HistoricalOrderFrameController {
 		CustomerViewOrderService service = new CustomerViewOrderController();
 		
 		List<OrderVO> list = service.getSpecificOrders(id.getText(),ordertype);
-		ObservableList<OrderVO> data = FXCollections.observableList(list);
-		tableview.setItems(data);
-		orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
-		hotelname.setCellValueFactory(cellData->cellData.getValue().getHotelIdProperty());
-		intime.setCellValueFactory(cellData->cellData.getValue().getEntryTimeProperty());
-		outtime.setCellValueFactory(cellData->cellData.getValue().getLastTimeProperty());
-		price.setCellValueFactory(cellData->cellData.getValue().getPriceProperty());
-		
-		link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
-            @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<OrderVO, Boolean> p) {
-                return new SimpleBooleanProperty(p.getValue()!=null);
-            }
-        });
+		if(list != null){
+			ObservableList<OrderVO> data = FXCollections.observableList(list);
+			tableview.setItems(data);
+			orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
+			hotelname.setCellValueFactory(cellData->cellData.getValue().getHotelIdProperty());
+			intime.setCellValueFactory(cellData->cellData.getValue().getEntryTimeProperty());
+			outtime.setCellValueFactory(cellData->cellData.getValue().getLastTimeProperty());
+			price.setCellValueFactory(cellData->cellData.getValue().getPriceProperty());
+			
+			link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
+	            @Override
+	            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<OrderVO, Boolean> p) {
+	                return new SimpleBooleanProperty(p.getValue()!=null);
+	            }
+	        });
 
-        link.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
-            @Override
-            public TableCell<OrderVO, Boolean> call(TableColumn<OrderVO, Boolean> p) {
-                return new ButtonCell2();
-            }
-        });
+	        link.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
+	            @Override
+	            public TableCell<OrderVO, Boolean> call(TableColumn<OrderVO, Boolean> p) {
+	                return new ButtonCell2();
+	            }
+	        });
+		}
 	}
 	
 	@FXML

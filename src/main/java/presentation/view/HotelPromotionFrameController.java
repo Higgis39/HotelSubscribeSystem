@@ -112,15 +112,18 @@ public class HotelPromotionFrameController {
 		
 		HotelPromotionBLService s = new HotelPromotionController();
 		List<HotelPromotionVO> promotion = s.hotelPromotionFind(hotelname.getText());
-		ObservableList<HotelPromotionVO> data = FXCollections.observableList(promotion);
-		tableview.setItems(data);
-		promotiontype.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
-		birthday.setCellValueFactory(cellData->cellData.getValue().getisbirthdayProperty());
-		roomnum.setCellValueFactory(cellData->cellData.getValue().getNumberofroomProperty());
-		begindate.setCellValueFactory(cellData->cellData.getValue().getBegintimeProperty());
-		enddate.setCellValueFactory(cellData->cellData.getValue().getEndtimeProperty());
-		companyVIP.setCellValueFactory(cellData->cellData.getValue().getisIspartnerProperty());
-		discount.setCellValueFactory(cellData->cellData.getValue().getDiscountProperty());
+		
+		if(promotion != null){
+			ObservableList<HotelPromotionVO> data = FXCollections.observableList(promotion);
+			tableview.setItems(data);
+			promotiontype.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
+			birthday.setCellValueFactory(cellData->cellData.getValue().getisbirthdayProperty());
+			roomnum.setCellValueFactory(cellData->cellData.getValue().getNumberofroomProperty());
+			begindate.setCellValueFactory(cellData->cellData.getValue().getBegintimeProperty());
+			enddate.setCellValueFactory(cellData->cellData.getValue().getEndtimeProperty());
+			companyVIP.setCellValueFactory(cellData->cellData.getValue().getisIspartnerProperty());
+			discount.setCellValueFactory(cellData->cellData.getValue().getDiscountProperty());
+		}
 	}
 
 	public void setHotelPromotionFrame(HotelPromotionFrame hotelpromotionframe) {

@@ -126,12 +126,14 @@ public class HotelMainFrameController {
 		
 		AddRoomService service = new AddRoomController();
 		ArrayList<RoomVO> roomlist = service.getRoom(hotelname.getText());
-		ObservableList<RoomVO> roomdata = FXCollections.observableArrayList(roomlist);
-		tableview.setItems(roomdata);
-		roomtype.setCellValueFactory(cellData->cellData.getValue().roomtypeProperty());
-		peoplenum.setCellValueFactory(cellData->cellData.getValue().peoplenumProperty());
-		roomnum.setCellValueFactory(cellData->cellData.getValue().roomnumProperty());
-		roomprice.setCellValueFactory(cellData->cellData.getValue().roompriceProperty());
+		if(roomlist != null){
+			ObservableList<RoomVO> roomdata = FXCollections.observableArrayList(roomlist);
+			tableview.setItems(roomdata);
+			roomtype.setCellValueFactory(cellData->cellData.getValue().roomtypeProperty());
+			peoplenum.setCellValueFactory(cellData->cellData.getValue().peoplenumProperty());
+			roomnum.setCellValueFactory(cellData->cellData.getValue().roomnumProperty());
+			roomprice.setCellValueFactory(cellData->cellData.getValue().roompriceProperty());
+		}
 	}
 
 	public void setHotelMainFrame(HotelMainFrame hotelmainframe) {

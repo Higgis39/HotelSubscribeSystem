@@ -200,7 +200,6 @@ public class UserMainFrameController {
 		SearchService s = new SearchController();
 		ArrayList<HotelVO> list = s.Search(city, businesscircle, roomtype,price, indate, outdate, star, grade, only);
 		ArrayListVO.setArrayList(list);
-		System.out.println(ArrayListVO.getArrayList());
 		
 		StageVO.setStage(usermainframe.getPrimaryStage());
 		usermainframe.getPrimaryStage().hide();

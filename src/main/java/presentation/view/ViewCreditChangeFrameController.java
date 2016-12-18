@@ -35,8 +35,10 @@ public class ViewCreditChangeFrameController {
 	private void initialize(){
 		MessageBLService service = new MessageController();
 		ArrayList<String> creditchange = service.GetCreditChange(IdVO.getid());
-		ObservableList<String> items = FXCollections.observableArrayList (creditchange);
-		list.setItems(items);
+		if(creditchange != null){
+			ObservableList<String> items = FXCollections.observableArrayList (creditchange);
+			list.setItems(items);
+		}
 	}
 
 	public void setUserPersonalFrame(ViewCreditChangeFrame viewcreditchangeframe) {

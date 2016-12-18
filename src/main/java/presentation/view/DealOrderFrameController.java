@@ -1,7 +1,6 @@
 package presentation.view;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import businessLogic.orderbl.HotelViewOrderController;
@@ -86,13 +85,15 @@ public class DealOrderFrameController {
 		String ordertype = enterordertype.getSelectionModel().getSelectedItem();
 		HotelViewOrderService service = new HotelViewOrderController();
 		List<OrderVO> list = service.GetSpecificOrders(IdVO.getid(), ordertype);
-		ObservableList<OrderVO> data = FXCollections.observableList(list);
-		tableview.setItems(data);
-		orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
-		userid.setCellValueFactory(cellData->cellData.getValue().getUserIdProperty());
-		intime.setCellValueFactory(cellData->cellData.getValue().getEntryTimeProperty());
-		outtime.setCellValueFactory(cellData->cellData.getValue().getLastTimeProperty());
-		price.setCellValueFactory(cellData->cellData.getValue().getPriceProperty());
+		if(list != null){
+			ObservableList<OrderVO> data = FXCollections.observableList(list);
+			tableview.setItems(data);
+			orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
+			userid.setCellValueFactory(cellData->cellData.getValue().getUserIdProperty());
+			intime.setCellValueFactory(cellData->cellData.getValue().getEntryTimeProperty());
+			outtime.setCellValueFactory(cellData->cellData.getValue().getLastTimeProperty());
+			price.setCellValueFactory(cellData->cellData.getValue().getPriceProperty());
+		}
 	}
 	
 	@FXML
