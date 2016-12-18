@@ -66,11 +66,4 @@ public class HotelPromotionController implements HotelPromotionBLService{
 		return list;
 	}
 
-	@Override
-	public void hotelPromotionexecute(HotelPromotionVO hpv) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-
 }

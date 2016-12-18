@@ -10,7 +10,6 @@ import java.util.List;
 import JDBC.DBUtil;
 import dataService.OrderDataService;
 import po.OrderPO;
-import po.UserPO;
 
 /**
  * OrderData的职责是实现对数据库中user对象的增删改查
@@ -19,6 +18,8 @@ import po.UserPO;
  */
 public class OrderData implements OrderDataService{
 
+	Encryption encryption = new Encryption();
+	
 	/**
 	 * 增加order对象
 	 * 
@@ -29,21 +30,21 @@ public class OrderData implements OrderDataService{
 	@Override
 	public boolean insert(OrderPO o) {
 		Connection conn = DBUtil.getConnection();
-		String sql = "insert into order "
-				+ "( hotelId, userId, status, entryTime, lastTime, price, comment, RoomType, RoomNum ) "
-				+ " values(?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into orders "
+				+ "(id, hotelId, userId, status, entryTime, lastTime, price, comment, RoomType, RoomNum)"
+				+ "values(?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
-//			ptmt.setString(1, o.getId());
-			ptmt.setString(1, o.getHotelId());
-			ptmt.setString(2, o.getUserId());
-			ptmt.setString(3, o.getStatus());
-			ptmt.setString(4, o.getEntryTime());
-			ptmt.setString(5, o.getLastTime());
-			ptmt.setDouble(6, o.getPrice());
-			ptmt.setString(7, o.getComment());
-			ptmt.setString(8, o.getRoomType());
-			ptmt.setInt(9, o.getRoomNum());
+			ptmt.setString(1, o.getId());
+			ptmt.setString(2, o.getHotelId());
+			ptmt.setString(3, encryption.decryption(o.getUserId()));
+			ptmt.setString(4, o.getStatus());
+			ptmt.setString(5, o.getEntryTime());
+			ptmt.setString(6, o.getLastTime());
+			ptmt.setDouble(7, o.getPrice());
+			ptmt.setString(8, o.getComment());
+			ptmt.setString(9, o.getRoomType());
+			ptmt.setInt(10, o.getRoomNum());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,14 +63,14 @@ public class OrderData implements OrderDataService{
 	@Override
 	public boolean update(OrderPO o) {
 		Connection conn = DBUtil.getConnection();
-		String sql = "update order "
-				+ " id, hotelId, userId, status, entryTime, lastTime, price, comment, RoomType, RoomNum "
+		String sql = "update orders "
+				+ " id=?, hotelId=?, userId=?, status=?, entryTime=?, lastTime=?, price=?, comment=?, RoomType=?, RoomNum=? "
 				+ " where id=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, o.getId());
 			ptmt.setString(2, o.getHotelId());
-			ptmt.setString(3, o.getUserId());
+			ptmt.setString(3, encryption.decryption(o.getUserId()));
 			ptmt.setString(4, o.getStatus());
 			ptmt.setString(5, o.getEntryTime());
 			ptmt.setString(6, o.getLastTime());
@@ -77,6 +78,7 @@ public class OrderData implements OrderDataService{
 			ptmt.setString(8, o.getComment());
 			ptmt.setString(9, o.getRoomType());
 			ptmt.setInt(10, o.getRoomNum());
+			ptmt.setString(11, encryption.decryption(o.getUserId()));
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -97,24 +99,24 @@ public class OrderData implements OrderDataService{
 		OrderPO o = null;
 		Connection conn = DBUtil.getConnection();
 		
-		String sql = " select * from order "
+		String sql = " select * from orders "
 				   + " where id=? ";
 		
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			
-			ptmt.setString(1, ID);
+			ptmt.setString(1, encryption.encryption(ID));
 			ResultSet rs = ptmt.executeQuery();
 			
 			while(rs.next()){
 				o = new OrderPO();
 				o.setId(rs.getString("id"));
 				o.setHotelId(rs.getString("hotelId"));
-				o.setUserId(rs.getString("userId"));
+				o.setUserId(encryption.decryption(rs.getString("userId")));
 				o.setStatus(rs.getString("status"));
 				o.setEntryTime(rs.getString("entryTime"));
 				o.setLastTime(rs.getString("lastTime"));
-				o.setPrice(rs.getInt("price"));
+				o.setPrice(rs.getDouble("price"));
 				o.setComment(rs.getString("comment"));
 				o.setRoomType(rs.getString("RoomType"));
 				o.setRoomNum(rs.getInt("RoomNum"));
@@ -140,7 +142,7 @@ public class OrderData implements OrderDataService{
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
-		sb.append(" select * from order");
+		sb.append(" select * from orders");
 		sb.append(" where entryTime=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
@@ -153,7 +155,7 @@ public class OrderData implements OrderDataService{
 			o = new OrderPO();
 			o.setId(rs.getString("id"));
 			o.setHotelId(rs.getString("hotelId"));
-			o.setUserId(rs.getString("userId"));
+			o.setUserId(encryption.decryption(rs.getString("userId")));
 			o.setStatus(rs.getString("status"));
 			o.setEntryTime(rs.getString("entryTime"));
 			o.setLastTime(rs.getString("lastTime"));
@@ -180,7 +182,7 @@ public class OrderData implements OrderDataService{
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
-		sb.append(" select * from order");
+		sb.append(" select * from orders");
 		sb.append(" where hotelId=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
@@ -193,7 +195,7 @@ public class OrderData implements OrderDataService{
 			o = new OrderPO();
 			o.setId(rs.getString("id"));
 			o.setHotelId(rs.getString("hotelId"));
-			o.setUserId(rs.getString("userId"));
+			o.setUserId(encryption.decryption(rs.getString("userId")));
 			o.setStatus(rs.getString("status"));
 			o.setEntryTime(rs.getString("entryTime"));
 			o.setLastTime(rs.getString("lastTime"));
@@ -219,11 +221,11 @@ public class OrderData implements OrderDataService{
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
-		sb.append(" select * from order");
-		sb.append(" where userId=?");
+		sb.append(" select * from orders ");
+		sb.append(" where userId=? ");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-		ptmt.setString(1, ID);
+		ptmt.setString(1, encryption.encryption(ID));
 		
 		ResultSet rs = ptmt.executeQuery();
 		
@@ -232,7 +234,7 @@ public class OrderData implements OrderDataService{
 			o = new OrderPO();
 			o.setId(rs.getString("id"));
 			o.setHotelId(rs.getString("hotelId"));
-			o.setUserId(rs.getString("userId"));
+			o.setUserId(encryption.decryption(rs.getString("userId")));
 			o.setStatus(rs.getString("status"));
 			o.setEntryTime(rs.getString("entryTime"));
 			o.setLastTime(rs.getString("lastTime"));
@@ -259,7 +261,7 @@ public class OrderData implements OrderDataService{
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
-		sb.append(" select * from order");
+		sb.append(" select * from orders ");
 		sb.append(" where status=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
@@ -272,11 +274,11 @@ public class OrderData implements OrderDataService{
 			o = new OrderPO();
 			o.setId(rs.getString("id"));
 			o.setHotelId(rs.getString("hotelId"));
-			o.setUserId(rs.getString("userId"));
+			o.setUserId(encryption.decryption(rs.getString("userId")));
 			o.setStatus(rs.getString("status"));
 			o.setEntryTime(rs.getString("entryTime"));
 			o.setLastTime(rs.getString("lastTime"));
-			o.setPrice(rs.getInt("price"));
+			o.setPrice(rs.getDouble("price"));
 			o.setComment(rs.getString("comment"));
 			o.setRoomType(rs.getString("RoomType"));
 			o.setRoomNum(rs.getInt("RoomNum"));
@@ -296,7 +298,7 @@ public class OrderData implements OrderDataService{
 		OrderPO o = null;
 		Connection conn = DBUtil.getConnection();
 			
-		String sql = " select * from order where orderkey=(select MAX(orderkey) from user) ";
+		String sql = " select * from orders where orderkey=(select MAX(orderkey) from orders) ";
 			
 		PreparedStatement ptmt = conn.prepareStatement(sql);
 			

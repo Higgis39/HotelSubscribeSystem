@@ -1,7 +1,7 @@
 package businessLogicService.promotionBLService;
 
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 import vo.WebPromotionVO;
 
 /**
@@ -17,7 +17,6 @@ public interface WebPromotionBLService {
 	
 	public void webPromotionDelete(WebPromotionVO wpv);
 	
-	public List<WebPromotionVO> webPromotionFind() throws SQLException;
+	public ArrayList<WebPromotionVO> webPromotionFind() throws SQLException;
 	
-	public void webPromotionexecute(WebPromotionVO wpv);
 }

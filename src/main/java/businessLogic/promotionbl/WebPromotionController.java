@@ -2,7 +2,6 @@ package businessLogic.promotionbl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import businessLogicService.promotionBLService.WebPromotionBLService;
 import data.WebPromotionData;
@@ -45,9 +44,9 @@ public class WebPromotionController implements WebPromotionBLService {
 	}
 
 	@Override
-	public List<WebPromotionVO> webPromotionFind() throws SQLException {
-		List<WebPromotionPO> webPromotion = wpd.find();
-		List<WebPromotionVO> list = new ArrayList<WebPromotionVO>();
+	public ArrayList<WebPromotionVO> webPromotionFind() throws SQLException {
+		ArrayList<WebPromotionPO> webPromotion = wpd.find();
+		ArrayList<WebPromotionVO> list = new ArrayList<WebPromotionVO>();
 		for(int i=0;i<webPromotion.size();i++){
 			WebPromotionPO po = webPromotion.get(i);
 			WebPromotionVO vo = new WebPromotionVO(po.getName(),po.getBegintime(),po.getEndtime(),po.getSpecificbusinessarea(),po.getVIPgrade(),po.getDiscount());
@@ -56,8 +55,4 @@ public class WebPromotionController implements WebPromotionBLService {
 		return list;
 	}
 
-	@Override
-	public void webPromotionexecute(WebPromotionVO wpv) {
-		
-	}
 }

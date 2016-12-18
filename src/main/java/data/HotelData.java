@@ -28,7 +28,7 @@ public class HotelData implements HotelDataService{
 	public void insert(HotelPO h){
 		Connection conn = DBUtil.getConnection();
 		String sql = "insert into hotel "
-				+ " (hotelid, password, hotelname, phonenumber, address, businessarea, introduction, facilities, star, grade, worker)"
+				+ " (hotelid, password, hotelname, phonenumber, address, city, businessarea, introduction, facilities, star, grade)"
 				+ " values(?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
@@ -37,11 +37,12 @@ public class HotelData implements HotelDataService{
 			ptmt.setString(3, h.getName());
 			ptmt.setString(4, h.getPhonenumber());
 			ptmt.setString(5, h.getAddress());
-			ptmt.setString(6, h.getBusinessArea());
-			ptmt.setString(7, h.getIntroduction());
-			ptmt.setString(8, h.getFacilities());
-			ptmt.setInt(9, h.getStar());
-			ptmt.setDouble(10, h.getGrade());
+			ptmt.setString(6, h.getCity());
+			ptmt.setString(7, h.getBusinessArea());
+			ptmt.setString(8, h.getIntroduction());
+			ptmt.setString(9, h.getFacilities());
+			ptmt.setInt(10, h.getStar());
+			ptmt.setDouble(11, h.getGrade());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -58,7 +59,7 @@ public class HotelData implements HotelDataService{
 	public void update(HotelPO h){
 		Connection conn = DBUtil.getConnection();
 		String sql = "update hotel "
-				+ " hotelid=?, password=?, hotelname=?, phonenumber=?, address=?, businessarea=?, introduction=?, facilities=?, star=?, grade=?, worker=?"
+				+ " hotelid=?, password=?, hotelname=?, phonenumber=?, address=?, city=?, businessarea=?, introduction=?, facilities=?, star=?, grade=?"
 				+ " where hotelname=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
@@ -67,12 +68,13 @@ public class HotelData implements HotelDataService{
 			ptmt.setString(3, h.getName());
 			ptmt.setString(4, h.getPhonenumber());
 			ptmt.setString(5, h.getAddress());
-			ptmt.setString(6, h.getBusinessArea());
-			ptmt.setString(7, h.getIntroduction());
-			ptmt.setString(8, h.getFacilities());
-			ptmt.setInt(9, h.getStar());
-			ptmt.setDouble(10, h.getGrade());
-			ptmt.setString(11, h.getName());
+			ptmt.setString(6, h.getCity());
+			ptmt.setString(7, h.getBusinessArea());
+			ptmt.setString(8, h.getIntroduction());
+			ptmt.setString(9, h.getFacilities());
+			ptmt.setInt(10, h.getStar());
+			ptmt.setDouble(11, h.getGrade());
+			ptmt.setString(12, h.getName());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -123,6 +125,7 @@ public class HotelData implements HotelDataService{
 				h.setHotelname(rs.getString("hotelname"));
 				h.setPhonenumber(rs.getString("phonenumber"));
 				h.setAddress(rs.getString("address"));
+				h.setCity(rs.getString("city"));
 				h.setBusinessarea(rs.getString("businessarea"));
 				h.setIntroduction(rs.getString("introduction"));
 				h.setFacilities(rs.getString("facilities"));
@@ -159,6 +162,7 @@ public class HotelData implements HotelDataService{
 				h.setHotelname(rs.getString("hotelname"));
 				h.setPhonenumber(rs.getString("phonenumber"));
 				h.setAddress(rs.getString("address"));
+				h.setCity(rs.getString("city"));
 				h.setBusinessarea(rs.getString("businessarea"));
 				h.setIntroduction(rs.getString("introduction"));
 				h.setFacilities(rs.getString("facilities"));
@@ -179,16 +183,16 @@ public class HotelData implements HotelDataService{
 	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
 	 */
-	public ArrayList<HotelPO> findByAddressAndBusinessarea(String address, String businessarea) throws SQLException{
+	public ArrayList<HotelPO> findByAddressAndBusinessarea(String city, String businessarea) throws SQLException{
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
 		sb.append("select * from hotel");
-		sb.append(" where address=? and businessarea=? ");
+		sb.append(" where city=? and businessarea=? ");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-		ptmt.setString(1, address);
+		ptmt.setString(1, city);
 		ptmt.setString(2, businessarea);
 		
 		ResultSet rs = ptmt.executeQuery();
@@ -201,6 +205,7 @@ public class HotelData implements HotelDataService{
 			h.setHotelname(rs.getString("hotelname"));
 			h.setPhonenumber(rs.getString("phonenumber"));
 			h.setAddress(rs.getString("address"));
+			h.setCity(rs.getString("city"));
 			h.setBusinessarea(rs.getString("businessarea"));
 			h.setIntroduction(rs.getString("introduction"));
 			h.setFacilities(rs.getString("facilities"));
@@ -221,16 +226,16 @@ public class HotelData implements HotelDataService{
 	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
 	 */
-	public ArrayList<HotelPO> findByAddressAndBusinessareaAndStar(String address, String businessarea, int star) throws SQLException{
+	public ArrayList<HotelPO> findByAddressAndBusinessareaAndStar(String city, String businessarea, int star) throws SQLException{
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
 		sb.append("select * from hotel");
-		sb.append(" where address=? and businessarea=? and star=?");
+		sb.append(" where city=? and businessarea=? and star=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-		ptmt.setString(1, address);
+		ptmt.setString(1, city);
 		ptmt.setString(2, businessarea);
 		ptmt.setInt(3, star);
 		
@@ -244,6 +249,7 @@ public class HotelData implements HotelDataService{
 			h.setHotelname(rs.getString("hotelname"));
 			h.setPhonenumber(rs.getString("phonenumber"));
 			h.setAddress(rs.getString("address"));
+			h.setCity(rs.getString("city"));
 			h.setBusinessarea(rs.getString("businessarea"));
 			h.setIntroduction(rs.getString("introduction"));
 			h.setFacilities(rs.getString("facilities"));
@@ -264,16 +270,16 @@ public class HotelData implements HotelDataService{
 	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
 	 */
-	public ArrayList<HotelPO> findByAddressAndBusinessareaAndGrade(String address, String businessarea, double grade) throws SQLException{
+	public ArrayList<HotelPO> findByAddressAndBusinessareaAndGrade(String city, String businessarea, double grade) throws SQLException{
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
 		sb.append("select * from hotel");
-		sb.append(" where address=? and businessarea=? and grade=?");
+		sb.append(" where city=? and businessarea=? and grade=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-		ptmt.setString(1, address);
+		ptmt.setString(1, city);
 		ptmt.setString(2, businessarea);
 		ptmt.setDouble(3, grade);
 		
@@ -287,6 +293,7 @@ public class HotelData implements HotelDataService{
 			h.setHotelname(rs.getString("hotelname"));
 			h.setPhonenumber(rs.getString("phonenumber"));
 			h.setAddress(rs.getString("address"));
+			h.setCity(rs.getString("city"));
 			h.setBusinessarea(rs.getString("businessarea"));
 			h.setIntroduction(rs.getString("introduction"));
 			h.setFacilities(rs.getString("facilities"));
@@ -308,16 +315,16 @@ public class HotelData implements HotelDataService{
 	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
 	 */
-	public ArrayList<HotelPO> findByAll(String address, String businessarea, int star, double grade) throws SQLException{
+	public ArrayList<HotelPO> findByAll(String city, String businessarea, int star, double grade) throws SQLException{
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
 		sb.append("select * from hotel");
-		sb.append(" where address=? and businessarea=? and star=? and grade=?");
+		sb.append(" where city=? and businessarea=? and star=? and grade=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-		ptmt.setString(1, address);
+		ptmt.setString(1, city);
 		ptmt.setString(2, businessarea);
 		ptmt.setInt(3, star);
 		ptmt.setDouble(4, grade);
@@ -332,6 +339,7 @@ public class HotelData implements HotelDataService{
 			h.setHotelname(rs.getString("hotelname"));
 			h.setPhonenumber(rs.getString("phonenumber"));
 			h.setAddress(rs.getString("address"));
+			h.setCity(rs.getString("city"));
 			h.setBusinessarea(rs.getString("businessarea"));
 			h.setIntroduction(rs.getString("introduction"));
 			h.setFacilities(rs.getString("facilities"));
@@ -343,7 +351,7 @@ public class HotelData implements HotelDataService{
 		return result;
 	}
 	
-	public ArrayList<HotelPO> findBy(String address, int roomID) throws SQLException{
+	public ArrayList<HotelPO> findBy(String city, int roomID) throws SQLException{
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
@@ -411,6 +419,7 @@ public class HotelData implements HotelDataService{
 			h.setHotelname(rs.getString("hotelname"));
 			h.setPhonenumber(rs.getString("phonenumber"));
 			h.setAddress(rs.getString("address"));
+			h.setCity(rs.getString("city"));
 			h.setBusinessarea(rs.getString("businessarea"));
 			h.setIntroduction(rs.getString("introduction"));
 			h.setFacilities(rs.getString("facilities"));

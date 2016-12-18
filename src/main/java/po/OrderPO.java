@@ -35,7 +35,7 @@ public class OrderPO {
 		private int RoomNum;
 		
 		public OrderPO(){
-			super();
+			
 		}
 
 		public OrderPO(String id, String hotelId, String userId, String status,
@@ -118,8 +118,8 @@ public class OrderPO {
 			return price;
 		}
 
-		public void setPrice(int price) {
-			this.price = price;
+		public void setPrice(double d) {
+			this.price = d;
 		}
 
 		public String getComment(){
@@ -145,4 +145,13 @@ public class OrderPO {
 		public void setRoomNum(int roomNum) {
 			RoomNum = roomNum;
 		}
+
+		@Override
+		public String toString() {
+			return "OrderPO [id=" + id + ", hotelId=" + hotelId + ", userId=" + userId + ", status=" + status
+					+ ", entryTime=" + entryTime + ", lastTime=" + lastTime + ", price=" + price + ", comment="
+					+ comment + ", RoomType=" + RoomType + ", RoomNum=" + RoomNum + "]";
+		}
+		
+		
 }

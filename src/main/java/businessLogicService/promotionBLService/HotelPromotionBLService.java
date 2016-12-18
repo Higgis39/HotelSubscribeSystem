@@ -22,6 +22,4 @@ public interface HotelPromotionBLService {
 	
 	public List<HotelPromotionVO> hotelPromotionFind(String hotelname) throws SQLException;
 	
-	public void hotelPromotionexecute(HotelPromotionVO hpv);
-	
 }

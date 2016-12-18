@@ -2,7 +2,11 @@ package JDBC;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import data.HotelData;
@@ -37,29 +41,15 @@ public class JDBCTest {
 //			System.out.print(po.get(i).toString()+" ");
 //		}
 		
-//		OrderData od = new OrderData();
-//		
-//		OrderPO op = new OrderPO();
-//		op.setId("");
-//		op.setHotelId("12");
-//		op.setUserId("2");
-//		op.setStatus("sdf");
-//		op.setEntryTime("12");
-//		op.setLastTime("adf");
-//		op.setPrice(90);
-//		op.setComment("asdf");
-//		op.setRoomType("a");
-//		op.setRoomNum(4);
-//		
-//		od.insert(op);
+
 		
-		UserData ud = new UserData();
-		
-		UserPO up = new UserPO();
-//		up.setName("学神");
-//		up.setId("10002");
-//		up.setPassword("7k7k4399");
-//		up.setUsertype("普通用户");
+//		UserData ud = new UserData();
+//		
+//		UserPO up = new UserPO();
+//		up.setName("学渣");
+//		up.setId("10003");
+//		up.setPassword("123456");
+//		up.setUsertype("酒店工作人员");
 //		up.setCreditvalue(1000);
 //		up.setVIPtype("企业会员");
 //		up.setVIPgrade(5);
@@ -70,26 +60,53 @@ public class JDBCTest {
 //		
 //		ud.insert(up);
 		
-		up = ud.find("10002");
-		System.out.println(up.getname());
-		System.out.println(up.getid());
-		System.out.println(up.getpassword());
-		System.out.println(up.getphonenumber());
+//		up = ud.find("10002");
+//		System.out.println(up.getname());
+//		System.out.println(up.getid());
+//		System.out.println(up.getpassword());
+//		System.out.println(up.getphonenumber());
 		
 //		String id = ud.distributeid();
 //		System.out.println(id);
 //		UserPO up = ud.find("10000");
+		
+//		HotelData  hd = new HotelData();
+////		ArrayList<HotelPO> h = new ArrayList<>();
+////		h = hd.findByAddressAndBusinessarea("南京", "仙林中心");
+//		HotelPO h = new HotelPO();
+//		h = hd.findById("10000");
+//		String name = h.getName();
+//		System.out.println(name);
+		
+		OrderData od = new OrderData();
+//		OrderPO op = new OrderPO();
+//		op.setId("10001");
+//		op.setHotelId("10000");
+//		op.setUserId("10002");
+//		op.setStatus("未执行");
+//		op.setEntryTime("11-11");
+//		op.setLastTime("11-14");
+//		op.setPrice(90);
+//		op.setComment("一般般");
+//		op.setRoomType("双人间");
+//		op.setRoomNum(4);
+//		od.insert(op);
+		
+		List<OrderPO> o = new ArrayList<>(); 
+//		o = od.findByStatus("已执行");
+		o = od.findByClient("10002");
+		String name = o.get(0).getComment();
+		System.out.println(name);
 	}			
 }
 
-//String name;
-//String id;
-//String password;
-//String usertype;
-//int creditvalue;
-//String VIPtype;
-//int VIPgrade;
-//String phonenumber;
-//String birthday;
-//String company;
-//ArrayList<String> creditchange;
+//private String id;
+//private String hotelId;
+//private String userId;
+//private String status;
+//private String entryTime;
+//private String lastTime;
+//private double price;
+//private String comment;
+//private String RoomType;
+//private int RoomNum;

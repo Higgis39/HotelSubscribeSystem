@@ -56,6 +56,16 @@ public class HotelPO {
 		return address;
 	}
 	
+	
+	
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
 	//得到酒店所处商圈
 	public String getBusinessArea(){
 		return businessarea;
