@@ -431,6 +431,47 @@ public class HotelData implements HotelDataService{
 		return result;
 	}
 	
+	public ArrayList<HotelPO> findPrevious(ArrayList<Map<String, Object>> params) throws SQLException{
+		ArrayList<HotelPO> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append("select * from hotel INNER JOIN room on hotel.hotelname=room.hotelName where 1=1");
+		
+		ArrayList<String> hotel = new ArrayList<>();
+		
+		
+		if(params!=null && params.size()>0){
+			for(int i=0; i<params.size(); i++){
+				Map<String, Object> map = params.get(i);
+				sb.append(" and "+map.get("name")+" "+ map.get("rela") +" "+map.get("value"));
+			}
+		}
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		HotelPO h = null;
+		while(rs.next()){
+			h = new HotelPO();
+			h.setHotelid(rs.getString("hotelid"));
+			h.setPassword(rs.getString("password"));
+			h.setHotelname(rs.getString("hotelname"));
+			h.setPhonenumber(rs.getString("phonenumber"));
+			h.setAddress(rs.getString("address"));
+			h.setCity(rs.getString("city"));
+			h.setBusinessarea(rs.getString("businessarea"));
+			h.setIntroduction(rs.getString("introduction"));
+			h.setFacilities(rs.getString("facilities"));
+			h.setStar(rs.getInt("star"));
+			h.setGrade(rs.getDouble("grade"));
+			
+			result.add(h);
+		}
+		return result;
+	}
+	
 	/**
 	 * 得到最后一个hotel对象的id
 	 * 

@@ -21,7 +21,7 @@ public class JDBCTest {
 	
 	public static void main(String[] args) throws SQLException {
 		
-//		HotelData hd = new HotelData();
+		HotelData hd = new HotelData();
 //		
 //		ArrayList<Map<String, Object>> params = new ArrayList<Map<String, Object>>();
 //		Map<String, Object> param = new HashMap<String, Object>();
@@ -35,37 +35,40 @@ public class JDBCTest {
 //		param.put("value", "4");
 //		params.add(param);
 //		
-//		ArrayList<HotelPO> po = hd.find(params);
+		ArrayList<HotelPO> po = hd.findByAddressAndBusinessarea("南京", "仙林中心");
 //		
-//		for(int i=0; i<po.size(); i++){
-//			System.out.print(po.get(i).toString()+" ");
-//		}
+		for(int i=0; i<po.size(); i++){
+			System.out.print(po.get(i).toString()+" ");
+		}
 		
 
 		
 //		UserData ud = new UserData();
-//		
+////		
 //		UserPO up = new UserPO();
-//		up.setName("学渣");
-//		up.setId("10003");
+//		up.setName("啦啦啦");
+//		up.setId("10004");
 //		up.setPassword("123456");
-//		up.setUsertype("酒店工作人员");
+//		up.setUsertype("普通客户");
 //		up.setCreditvalue(1000);
 //		up.setVIPtype("企业会员");
 //		up.setVIPgrade(5);
 //		up.setPhonenumber("13579246868");
-//		up.setBirthday("06-19");
+//		up.setBirthday("06-20");
 //		up.setCompany("google");
-//		up.setCreditchange(null);
+//		ArrayList<String> a = new ArrayList<>();
+//		a.add("增加50");
+//		a.add("减少50");
+//		up.setCreditchange(a);
 //		
 //		ud.insert(up);
 		
-//		up = ud.find("10002");
+//		up = ud.find("10005");
 //		System.out.println(up.getname());
 //		System.out.println(up.getid());
 //		System.out.println(up.getpassword());
 //		System.out.println(up.getphonenumber());
-		
+//		System.out.println(up.getcreditchange());
 //		String id = ud.distributeid();
 //		System.out.println(id);
 //		UserPO up = ud.find("10000");
@@ -78,7 +81,7 @@ public class JDBCTest {
 //		String name = h.getName();
 //		System.out.println(name);
 		
-		OrderData od = new OrderData();
+//		OrderData od = new OrderData();
 //		OrderPO op = new OrderPO();
 //		op.setId("10001");
 //		op.setHotelId("10000");
@@ -92,11 +95,11 @@ public class JDBCTest {
 //		op.setRoomNum(4);
 //		od.insert(op);
 		
-		List<OrderPO> o = new ArrayList<>(); 
-//		o = od.findByStatus("已执行");
-		o = od.findByClient("10002");
-		String name = o.get(0).getComment();
-		System.out.println(name);
+//		List<OrderPO> o = new ArrayList<>(); 
+////		o = od.findByStatus("已执行");
+//		o = od.findByClient("10002");
+//		String name = o.get(0).getComment();
+//		System.out.println(name);
 	}			
 }
 

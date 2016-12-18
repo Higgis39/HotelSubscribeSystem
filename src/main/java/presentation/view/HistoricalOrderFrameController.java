@@ -126,7 +126,7 @@ public class HistoricalOrderFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		enterordertype.getItems().addAll("未执行的正常订单","已执行的正常订单","异常订单","已撤销订单");
+		enterordertype.getItems().addAll("未执行","已执行","异常","已撤销");
 		MessageBLService service = new MessageController();
 		UserVO uservo = service.GetMessage(IdVO.getid());
 		id.setText(uservo.getid());

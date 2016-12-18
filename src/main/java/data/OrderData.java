@@ -288,6 +288,8 @@ public class OrderData implements OrderDataService{
 		return result;
 	}
 
+//	public ArrayList<String>
+	
 	/**
 	 * 得到最后一个order对象的id
 	 * 

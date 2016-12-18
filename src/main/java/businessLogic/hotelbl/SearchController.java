@@ -25,7 +25,7 @@ public class SearchController implements SearchService{
 	 * @return 返回符合搜索条件的酒店列表
 	 */
 	
-	public ArrayList<HotelVO> Search(String Address, String BusinessArea, String RoomType, String price, String checkinTime, String checkoutTime, int Star, String grade,boolean hasfixed) throws SQLException{
-		return hotel.Search(Address, BusinessArea, RoomType, price, checkinTime, checkoutTime, Star, grade,hasfixed);
+	public ArrayList<HotelVO> Search(String hotelName, String city, String BusinessArea, String RoomType, String price, String checkinTime, String checkoutTime, int Star, String grade,boolean hasfixed) throws SQLException{
+		return hotel.Search(hotelName, city, BusinessArea, RoomType, price, checkinTime, checkoutTime, Star, grade,hasfixed);
 	}
 }

@@ -54,6 +54,7 @@ public class UserData implements UserDataService{
 	 * 更新user对象
 	 * 
 	 * @param u UserPO类型，系统用来存储的User对象
+	 * @return 
 	 * @see
 	 * try/catch块捕获数据库连接失败异常
 	 */
@@ -74,7 +75,7 @@ public class UserData implements UserDataService{
 			ptmt.setString(8, u.getbirthday());
 			ptmt.setString(9, u.getcompany());
 			ptmt.setString(10, creditchangeToSql(u.getcreditchange()));
-			ptmt.setString(11, u.getid());
+			ptmt.setString(11, encryption.encryption(u.getid()));
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -113,6 +114,7 @@ public class UserData implements UserDataService{
 				u.setPhonenumber(encryption.decryption(rs.getString("phonenumber")));
 				u.setBirthday(rs.getString("birthday"));
 				u.setCompany(rs.getString("company"));
+//				System.out.println(rs.getString("creditchange"));
 				u.setCreditchange(creditchangeToList(rs.getString("creditchange")));
 			}
 			
@@ -140,7 +142,7 @@ public class UserData implements UserDataService{
 		
 		while(rs.next()){
 			u = new UserPO();
-			u.setId(rs.getString("id"));
+			u.setId(encryption.decryption(rs.getString("id")));
 		}
 					
 		return u.getid();
@@ -171,8 +173,8 @@ public class UserData implements UserDataService{
 	 * @return
 	 */
 	public ArrayList<String> creditchangeToList(String creditchange){
+		ArrayList<String> cc = new ArrayList<>();
 		if(creditchange!=null){
-			ArrayList<String> cc = new ArrayList<>();
 			String tempcreditchange = "";
 			for(int i=1; i<creditchange.length(); i++){
 				if(creditchange.charAt(i) == '#'){
