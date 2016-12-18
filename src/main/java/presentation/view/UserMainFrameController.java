@@ -221,10 +221,10 @@ public class UserMainFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-//		MessageBLService service = new MessageController();
-//		UserVO uservo = service.GetMessage(IdVO.getid());
-//		id.setText(uservo.getid());
-//		username.setText(uservo.getname());
+		MessageBLService service = new MessageController();
+		UserVO uservo = service.GetMessage(IdVO.getid());
+		id.setText(uservo.getid());
+		username.setText(uservo.getname());
 		
 		enterroomtype.getItems().addAll("单人间","标准间","家庭套房");
 		enterprice.getItems().addAll("150以下","150~300","300~500","500~700","700~1000","1000以上");
