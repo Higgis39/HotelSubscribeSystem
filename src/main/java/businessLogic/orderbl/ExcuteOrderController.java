@@ -10,7 +10,7 @@ import vo.OrderVO;
 public class ExcuteOrderController implements ExcuteOrderService{
 
 	@Override
-	public boolean CheckIn(OrderVO vo) {
+	public boolean CheckIn(OrderVO vo) throws SQLException {
 		return new Order(vo).CheckIn();
 	}
 

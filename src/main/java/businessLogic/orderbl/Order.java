@@ -55,8 +55,9 @@ public class Order{
 	/**
 	 * 记录入住信息
 	 * @return
+	 * @throws SQLException 
 	 */
-	public boolean CheckIn(){
+	public boolean CheckIn() throws SQLException{
 		OrderPO po=service.findByOrderID(vo.getorderId());
 		if(!po.getStatus().equals("未执行"))
 			return false;
@@ -64,6 +65,11 @@ public class Order{
 		po.setStatus("已执行");
 		po.setEntryTime(vo.getEntryTime());
 		po.setLastTime(vo.getLastTime());
+		String OrderID = service.distributeid();
+		int id = Integer.valueOf(OrderID);
+		id++;
+		OrderID = String.valueOf(id);
+		po.setId(OrderID);
 		manager.addCredit(po);
 		service.update(po);
 		return true;
