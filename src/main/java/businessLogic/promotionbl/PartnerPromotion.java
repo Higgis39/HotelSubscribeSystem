@@ -26,7 +26,7 @@ public class PartnerPromotion implements HotelPromotionType{
 	 */
 	public boolean isPartner(String userId){
 		String partner = info.getUserCompany(userId);
-		if(partner==""){
+		if(partner=="google"){
 			return true;
 		}
 		return false;

@@ -137,9 +137,4 @@ public class HotelPO {
 				+ phonenumber + ", address=" + address + ", businessarea=" + businessarea + ", introduction="
 				+ introduction + ", facilities=" + facilities + ", star=" + star + ", grade=" + grade + "]";
 	}
-
-
-	
-	
-	
 }

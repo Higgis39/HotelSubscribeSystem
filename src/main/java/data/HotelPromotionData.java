@@ -58,7 +58,7 @@ public class HotelPromotionData implements HotelPromotionDataService{
 		Connection conn = DBUtil.getConnection();
 		//是否可以根据名字来改名字？
 		String sql = "update hotelpromotion "
-				+ " hotelname=?, name=?, isbirthday=?, numberofroom=?, ispartner=?, begintime=?, endtime=? discount=? "
+				+ " set hotelname=?, name=?, isbirthday=?, numberofroom=?, ispartner=?, begintime=?, endtime=? discount=? "
 				+ " where name=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);

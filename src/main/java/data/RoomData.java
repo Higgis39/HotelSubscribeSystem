@@ -25,17 +25,23 @@ public class RoomData implements RoomDataService{
 	 * @see
 	 * try/catch块捕获数据库连接失败异常
 	 */
+//	String hotelName;
+//	int roomNum;
+//	String roomType;
+//	int roomPrice;
+//	int peopleNumber;
+//	boolean IsEmpty;
 	public void insert(RoomPO r) {
 		Connection conn = DBUtil.getConnection();
 		String sql = " insert into room "
-				+ " (hotelName, roomID, roomType, roomPrice, peopleNumber, IsEmpty) "
+				+ " (hotelName, roomNum, roomType, roomPrice, peopleNumber, IsEmpty) "
 				+ " values(?,?,?,?,?,?) ";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, r.getHotelName());
 			ptmt.setInt(2, r.getRoomNum());
 			ptmt.setString(3, r.getRoomType());
-			ptmt.setDouble(4, r.getRoomPrice());
+			ptmt.setInt(4, r.getRoomPrice());
 			ptmt.setInt(5, r.getPeopleNumber());
 			ptmt.setBoolean(6, r.getIsEmpty());
 			ptmt.execute();
@@ -54,16 +60,17 @@ public class RoomData implements RoomDataService{
 	public void update(RoomPO r) {
 		Connection conn = DBUtil.getConnection();
 		String sql = "update room "
-				+ " set hotelName=?, roomID=?, roomType=?, roomPrice=?, peopleNumber=?, IsEmpty=? "
-				+ " where roomID=?";
+				+ " set hotelName=?, roomNum=?, roomType=?, roomPrice=?, peopleNumber=?, IsEmpty=? "
+				+ " where hotelName=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, r.getHotelName());
 			ptmt.setInt(2, r.getRoomNum());
 			ptmt.setString(3, r.getRoomType());
-			ptmt.setDouble(4, r.getRoomPrice());
+			ptmt.setInt(4, r.getRoomPrice());
 			ptmt.setInt(5, r.getPeopleNumber());
 			ptmt.setBoolean(6, r.getIsEmpty());
+			ptmt.setString(7, r.getHotelName());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();

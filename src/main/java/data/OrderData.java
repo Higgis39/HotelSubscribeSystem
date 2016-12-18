@@ -64,13 +64,13 @@ public class OrderData implements OrderDataService{
 	public boolean update(OrderPO o) {
 		Connection conn = DBUtil.getConnection();
 		String sql = "update orders "
-				+ " id=?, hotelId=?, userId=?, status=?, entryTime=?, lastTime=?, price=?, comment=?, RoomType=?, RoomNum=? "
+				+ " set id=?, hotelId=?, userId=?, status=?, entryTime=?, lastTime=?, price=?, comment=?, RoomType=?, RoomNum=? "
 				+ " where id=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, o.getId());
 			ptmt.setString(2, o.getHotelId());
-			ptmt.setString(3, encryption.decryption(o.getUserId()));
+			ptmt.setString(3, encryption.encryption(o.getUserId()));
 			ptmt.setString(4, o.getStatus());
 			ptmt.setString(5, o.getEntryTime());
 			ptmt.setString(6, o.getLastTime());
@@ -78,7 +78,7 @@ public class OrderData implements OrderDataService{
 			ptmt.setString(8, o.getComment());
 			ptmt.setString(9, o.getRoomType());
 			ptmt.setInt(10, o.getRoomNum());
-			ptmt.setString(11, encryption.decryption(o.getUserId()));
+			ptmt.setString(11, o.getId());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -105,7 +105,7 @@ public class OrderData implements OrderDataService{
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			
-			ptmt.setString(1, encryption.encryption(ID));
+			ptmt.setString(1, ID);
 			ResultSet rs = ptmt.executeQuery();
 			
 			while(rs.next()){

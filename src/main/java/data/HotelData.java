@@ -18,6 +18,7 @@ import po.HotelPO;
  */
 public class HotelData implements HotelDataService{
 
+	Encryption encryption = new Encryption();
 	/**
 	 * 增加hotel对象
 	 * 
@@ -59,7 +60,7 @@ public class HotelData implements HotelDataService{
 	public void update(HotelPO h){
 		Connection conn = DBUtil.getConnection();
 		String sql = "update hotel "
-				+ " hotelid=?, password=?, hotelname=?, phonenumber=?, address=?, city=?, businessarea=?, introduction=?, facilities=?, star=?, grade=?"
+				+ " set hotelid=?, password=?, hotelname=?, phonenumber=?, address=?, city=?, businessarea=?, introduction=?, facilities=?, star=?, grade=?"
 				+ " where hotelname=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);

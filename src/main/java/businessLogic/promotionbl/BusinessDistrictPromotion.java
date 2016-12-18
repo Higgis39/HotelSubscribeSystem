@@ -11,7 +11,7 @@ public class BusinessDistrictPromotion implements WebPromotionType{
 	
 	HotelToolForPromotion info = new HotelToolForPromotion();
 		
-	double discount;
+	double discount = 0.7;
 		
 	/**
 	 * 设定不同商圈折扣
@@ -26,6 +26,8 @@ public class BusinessDistrictPromotion implements WebPromotionType{
 			break;
 		case "新街口" :
 			discount = 0.8;
+			break;
+		default:
 			break;
 		}
 		return discount;

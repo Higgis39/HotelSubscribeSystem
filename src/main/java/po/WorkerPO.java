@@ -8,13 +8,13 @@ public class WorkerPO {
 	private String name;
 	private int age;
 	private String sex;
-	private Date beginTime;
+	private String beginTime;
 	
 	public WorkerPO() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public WorkerPO(String hotelName, String name, int age, String sex, Date beginTime) {
+	public WorkerPO(String hotelName, String name, int age, String sex, String beginTime) {
 		super();
 		this.hotelName = hotelName;
 		this.name = name;
@@ -47,11 +47,11 @@ public class WorkerPO {
 		this.sex = sex;
 	}
 
-	public Date getBeginTime() {
+	public String getBeginTime() {
 		return beginTime;
 	}
 
-	public void setBeginTime(Date beginTime) {
+	public void setBeginTime(String beginTime) {
 		this.beginTime = beginTime;
 	}
 

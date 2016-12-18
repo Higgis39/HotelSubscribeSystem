@@ -114,7 +114,6 @@ public class UserData implements UserDataService{
 				u.setPhonenumber(encryption.decryption(rs.getString("phonenumber")));
 				u.setBirthday(rs.getString("birthday"));
 				u.setCompany(rs.getString("company"));
-//				System.out.println(rs.getString("creditchange"));
 				u.setCreditchange(creditchangeToList(rs.getString("creditchange")));
 			}
 			

@@ -46,7 +46,7 @@ public class WorkerData implements WorkerDataService{
 			w.setName(rs.getString("name"));
 			w.setAge(rs.getInt("age"));
 			w.setSex(rs.getString("sex"));
-			w.setBeginTime(rs.getDate("begintime"));
+			w.setBeginTime(rs.getString("begintime"));
 			
 			result.add(w);
 		}
@@ -70,7 +70,7 @@ public class WorkerData implements WorkerDataService{
 			ptmt.setString(2, p.getName());
 			ptmt.setInt(3, p.getAge());
 			ptmt.setString(4, p.getSex());
-			ptmt.setDate(5, (java.sql.Date) new Date(p.getBeginTime().getTime()));
+			ptmt.setString(5, p.getBeginTime());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();

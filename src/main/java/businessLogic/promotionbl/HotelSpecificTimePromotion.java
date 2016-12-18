@@ -1,5 +1,7 @@
 package businessLogic.promotionbl;
 
+import java.time.LocalDate;
+
 /**
  * 酒店特定时间优惠策略
  * @author Thpffcj
@@ -8,8 +10,6 @@ package businessLogic.promotionbl;
 public class HotelSpecificTimePromotion implements HotelPromotionType{
 
 	public double calculateDiscount(String userId, String hotelId, String entryTime) {
-		String beginTime = null;
-		String endTime = null;
 		double discount = 0.8;
 		if(isInPromotionTime()){
 			return discount;
@@ -22,6 +22,14 @@ public class HotelSpecificTimePromotion implements HotelPromotionType{
 	 * @return
 	 */
 	public boolean isInPromotionTime(){
+		String beginTime = "2016-11-11";
+		String endTime = "2016-11-12";
+		LocalDate begin = LocalDate.parse(beginTime);
+		LocalDate end = LocalDate.parse(endTime);
+		LocalDate current = LocalDate.now();
+		if(current.isAfter(begin) && current.isBefore(end)){
+			return true;
+		}
 		return false;
 	}
 }

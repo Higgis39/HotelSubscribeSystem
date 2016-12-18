@@ -1,5 +1,6 @@
 package businessLogic.promotionbl;
 
+import java.time.LocalDate;
 import java.util.Date;
 /**
  * specificTimePromotion职责是制定特定时间的折扣
@@ -10,8 +11,7 @@ import java.util.Date;
 public class WebSpecificTimePromotion implements WebPromotionType{
 
 	public double calculateDiscount(String hotelId) {
-		String beginTime = null;
-		String endTime = null;
+		
 		double discount = 0.8;
 		if(isInPromotionTime()){
 			return discount;
@@ -24,6 +24,14 @@ public class WebSpecificTimePromotion implements WebPromotionType{
 	 * @return
 	 */
 	public boolean isInPromotionTime(){
+		String beginTime = "2016-11-11";
+		String endTime = "2016-11-12";
+		LocalDate begin = LocalDate.parse(beginTime);
+		LocalDate end = LocalDate.parse(endTime);
+		LocalDate current = LocalDate.now();
+		if(current.isAfter(begin) && current.isBefore(end)){
+			return true;
+		}
 		return false;
 	}
 }

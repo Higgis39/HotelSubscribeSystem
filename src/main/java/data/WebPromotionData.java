@@ -56,7 +56,7 @@ public class WebPromotionData implements WebPromotionDataService{
 		Connection conn = DBUtil.getConnection();
 		//是否可以根据名字来改名字？
 		String sql = "update webpromotion "
-				+ " name=?, begintime=?, endtime=?, VIPgrade=?, specificbusinessarea=? discount=? "
+				+ " set name=?, begintime=?, endtime=?, VIPgrade=?, specificbusinessarea=? discount=? "
 				+ " where name=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
