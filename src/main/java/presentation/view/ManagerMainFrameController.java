@@ -1,9 +1,16 @@
 package presentation.view;
 
-import java.time.LocalDate;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+import businessLogic.hotelbl.ViewController;
 import businessLogic.userbl.MessageController;
+import businessLogicService.hotelBLService.ViewService;
 import businessLogicService.userBLService.MessageBLService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -46,7 +53,7 @@ public class ManagerMainFrameController {
 	@FXML
 	private TableColumn<UserVO,Number> creditvalue;
 	@FXML
-	private TableColumn<UserVO,String> VIPgrade;
+	private TableColumn<UserVO,Number> VIPgrade;
 	@FXML
 	private TableColumn<UserVO,String> birthdayorcompany;
 	@FXML
@@ -54,7 +61,7 @@ public class ManagerMainFrameController {
 	@FXML
 	private TableColumn<WorkerVO,Number> age;
 	@FXML
-	private TableColumn<WorkerVO,LocalDate> begindate;
+	private TableColumn<WorkerVO,String> begindate;
 	@FXML
 	private TableColumn<WorkerVO,String> sex;
 	@FXML
@@ -70,6 +77,25 @@ public class ManagerMainFrameController {
 	 */
 	private void lookuserAction(){
 		//查询用户信息
+		MessageBLService service = new MessageController();
+		UserVO vo = service.GetMessage(enterid.getText());
+		ArrayList<UserVO> list = new ArrayList<UserVO>();
+		list.add(vo);
+		ObservableList<UserVO> data = FXCollections.observableList(list);
+		user.setItems(data);
+		username.setCellValueFactory(cellData->cellData.getValue().getnameProperty());
+		usertype.setCellValueFactory(cellData->cellData.getValue().getusertypeProperty());
+		address.setCellValueFactory(cellData->cellData.getValue().getphonenumberProperty());
+		VIPtype.setCellValueFactory(cellData->cellData.getValue().getVIPtypeProperty());
+		creditvalue.setCellValueFactory(cellData->cellData.getValue().getcreditvalueProperty());
+		VIPgrade.setCellValueFactory(cellData->cellData.getValue().getVIPgradeProperty());
+		if(vo.getbirthday()==null){
+			birthdayorcompany.setText("企业");
+			birthdayorcompany.setCellValueFactory(cellData->cellData.getValue().getcompanyProperty());
+		}else{
+			birthdayorcompany.setText("生日");
+			birthdayorcompany.setCellValueFactory(cellData->cellData.getValue().getbirthdayProperty());
+		}
 		
 		if(!enterid.getText().equals("")){
 			link.setVisible(true);
@@ -81,8 +107,16 @@ public class ManagerMainFrameController {
 	}
 	
 	@FXML
-	private void lookworkerAction(){
+	private void lookworkerAction() throws SQLException{
 		//查询酒店工作人员信息
+		ViewService service = new ViewController();
+		List<WorkerVO> vo = service.findworker(enterhotelid.getText());
+		ObservableList<WorkerVO> data = FXCollections.observableList(vo);
+		worker.setItems(data);
+		workername.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
+		age.setCellValueFactory(cellData->cellData.getValue().getAgeProperty());
+		begindate.setCellValueFactory(cellData->cellData.getValue().getBeginTimeProperty());
+		sex.setCellValueFactory(cellData->cellData.getValue().getSexProperty());
 		
 		if(!enterhotelid.getText().equals("")){
 			worker.setVisible(true);

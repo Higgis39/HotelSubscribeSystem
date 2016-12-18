@@ -9,5 +9,5 @@ import vo.OrderVO;
 public interface ExcuteOrderService {
     public List<OrderVO> FindOrderByHotelID(String ID)throws SQLException;
 	
-	public boolean CheckIn(OrderVO vo);
+	public boolean CheckIn(OrderVO vo)throws SQLException;
 }

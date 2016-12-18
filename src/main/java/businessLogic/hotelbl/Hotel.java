@@ -1,22 +1,28 @@
 package businessLogic.hotelbl;
 
+import java.util.List;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import po.RoomPO;
+import po.WorkerPO;
 import businessLogic.orderbl.OrderToolForHotel;
 import data.HotelData;
 import data.RoomData;
+import data.WorkerData;
 import vo.HotelVO;
 import vo.RoomVO;
+import vo.WorkerVO;
 import dataService.HotelDataService;
 import dataService.RoomDataService;
+import dataService.WorkerDataService;
 import po.HotelPO;
 
 public class Hotel{
 	HotelDataService hoteldataservice = new HotelData();
 	OrderInfoForHotel orderdataservice = new OrderToolForHotel();
 	RoomDataService roomdataservice = new RoomData();
+	WorkerDataService workerdataservice = new WorkerData();
 	
 	/**
 	 * 搜索酒店
@@ -250,5 +256,21 @@ public class Hotel{
 		}
 		
 		return true;
+	}
+	
+	/**
+	 * 根据酒店账号查找酒店的工作人员
+	 * @param hotelid
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<WorkerVO> findworker(String hotelid) throws SQLException{
+		String hotelname = hoteldataservice.findById(hotelid).getName();
+		List<WorkerPO> po = workerdataservice.findByHotelName(hotelname);
+		List<WorkerVO> vo = new ArrayList<WorkerVO>();
+		for(int i=0;i<po.size();i++){
+			vo.add(new WorkerVO(po.get(i).getHotelName(),po.get(i).getName(),po.get(i).getAge(),po.get(i).getSex(),po.get(i).getBeginTime()));
+		}
+		return vo;
 	}
 }
