@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import businessLogicService.hotelBLService.SearchService;
-import po.HotelPO;
 import vo.HotelVO;
 
 public class SearchController implements SearchService{
@@ -26,7 +25,7 @@ public class SearchController implements SearchService{
 	 * @return 返回符合搜索条件的酒店列表
 	 */
 	
-	public ArrayList<HotelVO> Search(String Address, String BusinessArea, String RoomType, double minPrice, double maxPrice, String checkinTime, String checkoutTime, int Star, double minGrade, double maxGrade,boolean hasfixed)throws SQLException{
-		return hotel.Search(Address, BusinessArea, RoomType, minPrice, maxPrice, checkinTime, checkoutTime, Star, minGrade, maxGrade,hasfixed);
+	public ArrayList<HotelVO> Search(String Address, String BusinessArea, String RoomType, String price, String checkinTime, String checkoutTime, int Star, String grade,boolean hasfixed) throws SQLException{
+		return hotel.Search(Address, BusinessArea, RoomType, price, checkinTime, checkoutTime, Star, grade,hasfixed);
 	}
 }

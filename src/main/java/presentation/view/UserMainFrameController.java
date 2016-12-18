@@ -179,59 +179,28 @@ public class UserMainFrameController {
 		String hotelname = enterhotelname.getText();
 		String roomtype = enterroomtype.getSelectionModel().getSelectedItem();
 		String price = enterprice.getSelectionModel().getSelectedItem();
-		int minprice,maxprice;
-		if(price.equals("150以下")){
-			minprice = 0;
-			maxprice = 150;
-		}else if(price.equals("150~300")){
-			minprice = 150;
-			maxprice = 300;
-		}else if(price.equals("300~500")){
-			minprice = 300;
-			maxprice = 500;
-		}else if(price.equals("500~700")){
-			minprice = 500;
-			maxprice = 700;
-		}else if(price.equals("700~1000")){
-			minprice = 700;
-			maxprice = 1000;
-		}else{
-			minprice = 1000;
-			maxprice = 1000000000;
-		}
 		int roomnum = 0;
 		if(!enterroomnum.getText().equals("")){
 			roomnum = Integer.valueOf(enterroomnum.getText());
 		}
-		String indate = enterindate.getValue().toString();
-		String outdate = enteroutdate.getValue().toString();
+		String indate = null,outdate = null;
+		if(enterindate.getValue()!=null){
+			indate = enterindate.getValue().toString();
+		}
+		if(enteroutdate.getValue()!=null){
+			outdate = enteroutdate.getValue().toString();
+		}
 		int star = 0;
 		if(!enterstar.getText().equals("")){
 			star = Integer.valueOf(enterstar.getText());
 		}
 		String grade = entergrade.getSelectionModel().getSelectedItem();
-		double mingrade,maxgrade;
-		if(grade.equals("1分以下")){
-			mingrade = 0;
-			maxgrade = 1;
-		}else if(grade.equals("1~2分")){
-			mingrade = 1;
-			maxgrade = 2;
-		}else if(grade.equals("2~3分")){
-			mingrade = 2;
-			maxgrade = 3;
-		}else if(grade.equals("3~4分")){
-			mingrade = 3;
-			maxgrade = 4;
-		}else{
-			mingrade = 4;
-			maxgrade = 5;
-		}
 		Boolean only = checkbox.isSelected();
 		//调用hotel模块的搜索酒店方法
 		SearchService s = new SearchController();
-		ArrayList<HotelVO> list = s.Search(city, businesscircle, roomtype, minprice, maxprice, indate, outdate, star, mingrade, maxgrade, only);
+		ArrayList<HotelVO> list = s.Search(city, businesscircle, roomtype,price, indate, outdate, star, grade, only);
 		ArrayListVO.setArrayList(list);
+		System.out.println(ArrayListVO.getArrayList());
 		
 		StageVO.setStage(usermainframe.getPrimaryStage());
 		usermainframe.getPrimaryStage().hide();
@@ -252,10 +221,10 @@ public class UserMainFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		MessageBLService service = new MessageController();
-		UserVO uservo = service.GetMessage(IdVO.getid());
-		id.setText(uservo.getid());
-		username.setText(uservo.getname());
+//		MessageBLService service = new MessageController();
+//		UserVO uservo = service.GetMessage(IdVO.getid());
+//		id.setText(uservo.getid());
+//		username.setText(uservo.getname());
 		
 		enterroomtype.getItems().addAll("单人间","标准间","家庭套房");
 		enterprice.getItems().addAll("150以下","150~300","300~500","500~700","700~1000","1000以上");

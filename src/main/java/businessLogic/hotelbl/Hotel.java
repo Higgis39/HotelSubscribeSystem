@@ -22,27 +22,64 @@ public class Hotel{
 	 * @param Address String
 	 * @param BusinessArea String
 	 * @param RoomType String
-	 * @param minPrice double
-	 * @param maxPrice double
+	 * @param price String
 	 * @param checkinTime String
 	 * @param checkoutTime String
 	 * @param Star String
-	 * @param minGrade double
-	 * @param maxGrade double
+	 * @param grade String
 	 * @param hasfixed boolean
 	 * @return 返回符合搜索条件的酒店列表
 	 * @throws SQLException 
 	 */
-	public ArrayList<HotelVO> Search(String Address, String BusinessArea, String RoomType, double minPrice, double maxPrice, String checkinTime, String checkoutTime, int Star, double minGrade, double maxGrade,boolean hasfixed) throws SQLException{
+	public ArrayList<HotelVO> Search(String Address, String BusinessArea, String RoomType, String price, String checkinTime, String checkoutTime, int Star, String grade,boolean hasfixed) throws SQLException{
+		int minprice,maxprice;
+		if(price.equals("150以下")){
+			minprice = 0;
+			maxprice = 150;
+		}else if(price.equals("150~300")){
+			minprice = 150;
+			maxprice = 300;
+		}else if(price.equals("300~500")){
+			minprice = 300;
+			maxprice = 500;
+		}else if(price.equals("500~700")){
+			minprice = 500;
+			maxprice = 700;
+		}else if(price.equals("700~1000")){
+			minprice = 700;
+			maxprice = 1000;
+		}else{
+			minprice = 1000;
+			maxprice = 1000000000;
+		}
+		
+		double mingrade,maxgrade;
+		if(grade.equals("1分以下")){
+			mingrade = 0;
+			maxgrade = 1;
+		}else if(grade.equals("1~2分")){
+			mingrade = 1;
+			maxgrade = 2;
+		}else if(grade.equals("2~3分")){
+			mingrade = 2;
+			maxgrade = 3;
+		}else if(grade.equals("3~4分")){
+			mingrade = 3;
+			maxgrade = 4;
+		}else{
+			mingrade = 4;
+			maxgrade = 5;
+		}
+		
 		ArrayList<HotelPO> HotelPOList = new ArrayList<HotelPO>();
 		ArrayList<HotelVO> HotelVOList = new ArrayList<HotelVO>();
 		
-		if(Star==-1 && minGrade==-1 && maxGrade==-1){
+		if(Star==-1 && mingrade==-1 && maxgrade==-1){
 			HotelPOList=hoteldataservice.findByAddressAndBusinessarea(Address, BusinessArea);
-		}else if(minGrade ==-1 && maxGrade==-1){
+		}else if(mingrade ==-1 && maxgrade==-1){
 			HotelPOList=hoteldataservice.findByAddressAndBusinessareaAndStar(Address, BusinessArea, Star);
 		}else{
-			if(minGrade==-1){
+			if(mingrade==-1){
 				HotelPOList=hoteldataservice.findByAddressAndBusinessareaAndGrade(Address, BusinessArea, Star);
 			}
 			else{
