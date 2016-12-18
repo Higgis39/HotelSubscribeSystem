@@ -1,6 +1,8 @@
 package businessLogic.orderbl;
 
-import businessLogic.orderbl.stub.HotelInfoForOrder_stub;
+import java.sql.SQLException;
+
+import businessLogic.hotelbl.HotelToolForOrder;
 import businessLogicService.orderBLService.CreateOrderService;
 import vo.OrderVO;
 
@@ -18,20 +20,22 @@ public class CreateOrderController implements CreateOrderService{
 	 * @param hotelID
 	 * @param roomType
 	 * @return 返回该房间类型的数量
+	 * @throws SQLException 
 	 */
-	public int CheckRoom(String hotelName,String roomType){
-		return new HotelInfoForOrder_stub().CheckEnoughRoom(hotelName, roomType);
+	public int CheckRoom(String hotelName,String roomType) throws SQLException{
+		return new HotelToolForOrder().CheckEnoughRoom(hotelName, roomType);
 	}
 	
-	public int CheckMax(String hotelName,String roomType){
-		return new HotelInfoForOrder_stub().CheckEnoughRoom(hotelName, roomType);
+	public int CheckMax(String hotelName,String roomType) throws SQLException{
+		return new HotelToolForOrder().CheckEnoughRoom(hotelName, roomType);
 	}
 	 
 	/**
 	 * 计算订单总价
 	 * @return 返回订单总价
+	 * @throws SQLException 
 	 */
-	public double getTotal(OrderVO vo) {
+	public double getTotal(OrderVO vo) throws SQLException {
 		return new Order(vo).getTotal();
 	}
 

@@ -1,4 +1,4 @@
-package businessLogic.orderbl.stub;
+package businessLogic.orderbl;
 
 import po.UserPO;
 

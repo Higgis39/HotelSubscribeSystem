@@ -1,4 +1,4 @@
-package businessLogic.orderbl.stub;
+package businessLogic.orderbl;
 
 import vo.HotelPromotionVO;
 import vo.OrderVO;

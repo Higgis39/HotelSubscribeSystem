@@ -1,17 +1,20 @@
 package businessLogic.orderbl;
 
 import vo.OrderVO;
+import vo.HotelPromotionVO;
+import vo.WebPromotionVO;
 
 import java.sql.SQLException;
 import java.util.*;
 
-import businessLogic.orderbl.stub.HotelInfoForOrder;
-import businessLogic.orderbl.stub.HotelInfoForOrder_stub;
-import businessLogic.orderbl.stub.PromotionInfoForOrder;
-import businessLogic.promotionbl.PromotionToolForOrder;
+import businessLogic.hotelbl.HotelToolForOrder;
+import businessLogic.orderbl.HotelInfoForOrder;
+import businessLogic.orderbl.PromotionInfoForOrder;
+import businessLogic.promotionbl.AppropriatePromotion;
 import data.OrderData;
 import dataService.OrderDataService;
 import po.OrderPO;
+import po.UserPO;
 
 public class Order{
 	OrderVO vo;
@@ -29,14 +32,16 @@ public class Order{
 	 * 获取订单总价
 	 * @param OrderDataService service
 	 * @return 订单总价值
+	 * @throws SQLException 
 	 */
-	public int getTotal(){
-		PromotionInfoForOrder promotionService=new PromotionToolForOrder();
-		HotelInfoForOrder hotelService=new HotelInfoForOrder_stub();
+	public int getTotal() throws SQLException{
+		PromotionInfoForOrder promotionService=new AppropriatePromotion();
+		HotelInfoForOrder hotelService=new HotelToolForOrder();
 		double HotelDiscount=promotionService.getApproriateHotelPromotion(vo);
 		double WebDiscount=promotionService.getAppropriateWebPromotion(vo);
-		int roomPrice = hotelService.getHotelRoomPrice(vo.getHotelId(), vo.getRoomType());
-		int totalPrice=(int) (roomPrice*vo.getRoomNum()*HotelDiscount*WebDiscount);
+		int roomPrice;
+		roomPrice = hotelService.getHotelRoomPrice(vo.getHotelId(), vo.getRoomType());
+	    int totalPrice=(int) (roomPrice*vo.getRoomNum()*HotelDiscount*WebDiscount);
 		return totalPrice;
 	}
 	

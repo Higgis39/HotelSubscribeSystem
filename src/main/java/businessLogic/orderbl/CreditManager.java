@@ -3,14 +3,14 @@
  * 对于用户信用值的操作
  */
 package businessLogic.orderbl;
-import businessLogic.orderbl.stub.UserInfoForOrder;
-import businessLogic.orderbl.stub.UserInfoForOrder_stub;
+import businessLogic.orderbl.UserInfoForOrder;
+import businessLogic.userbl.UserInfotoOrder;
 import po.OrderPO;
 import po.UserPO;
 
 public  class CreditManager {
 
-	private UserInfoForOrder UserService=new UserInfoForOrder_stub();
+	private UserInfoForOrder UserService=new UserInfotoOrder();
 	private static CreditManager manager;
 	private CreditManager(){
 		super();
