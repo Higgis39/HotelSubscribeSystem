@@ -209,6 +209,7 @@ public class User{
 		userdataservice.insert(new UserPO(hotelvo.getName(),newid,hotelvo.getPassword(),"酒店工作人员",0,null,0,null,null,null,null));
 //		添加HotelPO
 		hotelinfoforuser.addHotel(newid, hotelvo.getPassword(),hotelvo.getName(), hotelvo.getPhonenumber(), hotelvo.getAddress(), hotelvo.getBusinessArea(), hotelvo.getIntroduction(), hotelvo.getFacilities(), hotelvo.getStar());
+		System.out.println(newid);
 		return newid;
 		
 	}

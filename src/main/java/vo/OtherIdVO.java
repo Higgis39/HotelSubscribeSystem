@@ -10,7 +10,7 @@ public class OtherIdVO {
 	static String id;
 		
 	public static void setid(String id){
-		IdVO.id = id;
+		OtherIdVO.id = id;
 	}
 		
 	public static String getid(){

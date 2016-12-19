@@ -352,38 +352,6 @@ public class HotelData implements HotelDataService{
 		return result;
 	}
 	
-	public ArrayList<HotelPO> findBy(String city, int roomID) throws SQLException{
-		ArrayList<HotelPO> result = new ArrayList<>();
-		
-		Connection conn = DBUtil.getConnection();
-		StringBuilder sb = new StringBuilder();
-		sb.append("select * from hotel INNER JOIN room on hotel.hotelname=room.hotelName");
-		sb.append(" where room.roomID=?");
-		
-		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-//		ptmt.setString(1, address);
-		ptmt.setInt(1, roomID);
-		
-		ResultSet rs = ptmt.executeQuery();
-		
-		HotelPO h = null;
-		while(rs.next()){
-			h = new HotelPO();
-			h.setHotelid(rs.getString("hotelid"));
-			h.setPassword(rs.getString("password"));
-			h.setHotelname(rs.getString("hotelname"));
-			h.setPhonenumber(rs.getString("phonenumber"));
-			h.setAddress(rs.getString("address"));
-			h.setBusinessarea(rs.getString("businessarea"));
-			h.setIntroduction(rs.getString("introduction"));
-			h.setFacilities(rs.getString("facilities"));
-			h.setStar(rs.getInt("star"));
-			h.setGrade(rs.getDouble("grade"));
-			
-			result.add(h);
-		}
-		return result;
-	}
 	
 	/**
 	 * 根据输入的不同条件获得hotel对象
