@@ -134,7 +134,7 @@ public class HotelPO {
 	@Override
 	public String toString() {
 		return "HotelPO [hotelid=" + hotelid + ", password=" + password + ", hotelname=" + hotelname + ", phonenumber="
-				+ phonenumber + ", address=" + address + ", businessarea=" + businessarea + ", introduction="
+				+ phonenumber + ", city=" + city + ", businessarea=" + businessarea + ",address" + address + ", introduction="
 				+ introduction + ", facilities=" + facilities + ", star=" + star + ", grade=" + grade + "]";
 	}
 }
