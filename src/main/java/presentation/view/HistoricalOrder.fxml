@@ -27,7 +27,7 @@
       <TableView fx:id="tableview" layoutX="77.0" layoutY="140.0" prefHeight="220.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="orderid" prefWidth="100.0" text="订单号" />
-          <TableColumn fx:id="hotelname" prefWidth="100.0" text="酒店名称" />
+          <TableColumn fx:id="hotelname" prefWidth="100.0" text="酒店账号" />
             <TableColumn fx:id="intime" prefWidth="100.0" text="入住时间" />
             <TableColumn fx:id="outtime" prefWidth="100.0" text="离开时间" />
             <TableColumn fx:id="price" prefWidth="100.0" text="价格" />
