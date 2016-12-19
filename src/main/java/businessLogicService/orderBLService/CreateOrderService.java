@@ -9,7 +9,7 @@ public interface CreateOrderService {
 
 	public double getTotal(OrderVO vo) throws SQLException;
 	
-	public boolean addNewOrder(OrderVO vo);
+	public String addNewOrder(OrderVO vo) throws SQLException;
 	
 	public int CheckRoom(String hotelName,String roomType) throws SQLException;
 	
