@@ -54,7 +54,7 @@ public class RoomData implements RoomDataService{
 		Connection conn = DBUtil.getConnection();
 		String sql = "update room "
 				+ " set roomNum=?, roomType=?, roomPrice=?, peopleNumber=?, IsEmpty=? "
-				+ " where hotelName=?";
+				+ " where hotelName=? and roomType=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setInt(1, r.getRoomNum());
@@ -63,6 +63,7 @@ public class RoomData implements RoomDataService{
 			ptmt.setInt(4, r.getPeopleNumber());
 			ptmt.setBoolean(5, r.getIsEmpty());
 			ptmt.setString(6, r.getHotelName());
+			ptmt.setString(7, r.getRoomType());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
