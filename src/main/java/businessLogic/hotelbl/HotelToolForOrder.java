@@ -30,7 +30,7 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 		
 		int length=RoomPOList.size();
 		for(int i=0;i<length;i++){
-			if(RoomPOList.get(i).getRoomType()==RoomType){
+			if(RoomPOList.get(i).getRoomType().equals(RoomType)){
 				roomnum=roomnum+RoomPOList.get(i).getRoomNum();
 			}
 		}
@@ -53,7 +53,7 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 		
 		int length=RoomPOList.size();
 		for(int i=0;i<length;i++){
-			if(RoomPOList.get(i).getRoomType()==RoomType){
+			if(RoomPOList.get(i).getRoomType().equals(RoomType)){
 				peoplenum=peoplenum+RoomPOList.get(i).getPeopleNumber();
 			}
 		}
@@ -94,7 +94,7 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 		
 		int length=RoomPOList.size();
 		for(int i=0;i<length;i++){
-			if(RoomPOList.get(i).getRoomType()==RoomType){
+			if(RoomPOList.get(i).getRoomType().equals(RoomType)){
 				RoomPOList.get(i).setRoomNum(RoomNum);
 			}
 		}		
