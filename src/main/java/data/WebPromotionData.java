@@ -54,19 +54,17 @@ public class WebPromotionData implements WebPromotionDataService{
 	 */
 	public boolean update(WebPromotionPO wp){
 		Connection conn = DBUtil.getConnection();
-		//是否可以根据名字来改名字？
 		String sql = "update webpromotion "
-				+ " set name=?, begintime=?, endtime=?, VIPgrade=?, specificbusinessarea=? discount=? "
-				+ " where name=?";
+				+ " set begintime=?, endtime=?, VIPgrade=?, specificbusinessarea=?, discount=? "
+				+ " where name=? ";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
-			ptmt.setString(1, wp.getName());
-			ptmt.setString(2, wp.getBegintime());
-			ptmt.setString(3, wp.getEndtime());
-			ptmt.setInt(4, wp.getVIPgrade());
-			ptmt.setString(5, wp.getSpecificbusinessarea());
-			ptmt.setDouble(6, wp.getDiscount());
-			ptmt.setString(7, wp.getName());
+			ptmt.setString(1, wp.getBegintime());
+			ptmt.setString(2, wp.getEndtime());
+			ptmt.setInt(3, wp.getVIPgrade());
+			ptmt.setString(4, wp.getSpecificbusinessarea());
+			ptmt.setDouble(5, wp.getDiscount());
+			ptmt.setString(6, wp.getName());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -15,7 +15,7 @@ public interface HotelPromotionBLService {
 
 	public boolean hotelPromotionCreate(HotelPromotionVO hpv);
 	
-	public boolean hotelPromotionUpdate(HotelPromotionVO hpv);
+//	public boolean hotelPromotionUpdate(HotelPromotionVO hpv);
 	
 	public void hotelPromotionDelete(HotelPromotionVO hpv);
 	

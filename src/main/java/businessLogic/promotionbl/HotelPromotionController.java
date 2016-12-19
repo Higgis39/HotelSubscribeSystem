@@ -8,6 +8,7 @@ import businessLogicService.promotionBLService.HotelPromotionBLService;
 import data.HotelPromotionData;
 import dataService.HotelPromotionDataService;
 import po.HotelPromotionPO;
+import po.WebPromotionPO;
 import vo.HotelPromotionVO;
 
 /**
@@ -22,31 +23,51 @@ public class HotelPromotionController implements HotelPromotionBLService{
 	
 	@Override
 	public boolean hotelPromotionCreate(HotelPromotionVO hpv) {
-		HotelPromotionPO hpp = new HotelPromotionPO();
-		hpp.setHotelname(hpv.getHotelName());
-		hpp.setName(hpv.getName());
-		hpp.setIsbirthday(hpv.getisIsbirthday());
-		hpp.setNumberofroom(hpv.getNumberofroom());
-		hpp.setIspartner(hpv.getisIspartner());
-		hpp.setBegintime(hpv.getBegintime());
-		hpp.setEndtime(hpv.getEndtime());
-		hpd.insert(hpp);
+		try {
+			ArrayList<HotelPromotionPO> promotion = new ArrayList<>();
+			promotion = hpd.findByHotelname(hpv.getHotelName());
+			
+			ArrayList<String> name = new ArrayList<>();
+			for(int i=0; i<promotion.size(); i++){
+				name.add(promotion.get(i).getName());
+			}
+			
+			HotelPromotionPO hpp = new HotelPromotionPO();
+			hpp.setHotelname(hpv.getHotelName());
+			hpp.setName(hpv.getName());
+			hpp.setIsbirthday(hpv.getisIsbirthday());
+			hpp.setNumberofroom(hpv.getNumberofroom());
+			hpp.setIspartner(hpv.getisIspartner());
+			hpp.setBegintime(hpv.getBegintime());
+			hpp.setEndtime(hpv.getEndtime());
+			
+			for(int i=0; i<name.size(); i++){
+				if(hpv.getName().equals(name.get(i))){
+					hpd.update(hpp);
+					return true;
+				}
+			}
+			hpd.insert(hpp);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return true;
 	}
 
-	@Override
-	public boolean hotelPromotionUpdate(HotelPromotionVO hpv) {
-		HotelPromotionPO hpp = new HotelPromotionPO();
-		hpp.setHotelname(hpv.getHotelName());
-		hpp.setName(hpv.getName());
-		hpp.setIsbirthday(hpv.getisIsbirthday());
-		hpp.setNumberofroom(hpv.getNumberofroom());
-		hpp.setIspartner(hpv.getisIspartner());
-		hpp.setBegintime(hpv.getBegintime());
-		hpp.setEndtime(hpv.getEndtime());
-		hpd.update(hpp);
-		return true;
-	}
+//	@Override
+//	public boolean hotelPromotionUpdate(HotelPromotionVO hpv) {
+//		HotelPromotionPO hpp = new HotelPromotionPO();
+//		hpp.setHotelname(hpv.getHotelName());
+//		hpp.setName(hpv.getName());
+//		hpp.setIsbirthday(hpv.getisIsbirthday());
+//		hpp.setNumberofroom(hpv.getNumberofroom());
+//		hpp.setIspartner(hpv.getisIspartner());
+//		hpp.setBegintime(hpv.getBegintime());
+//		hpp.setEndtime(hpv.getEndtime());
+//		hpd.update(hpp);
+//		return true;
+//	}
 
 	@Override
 	public void hotelPromotionDelete(HotelPromotionVO hpv) {

@@ -56,21 +56,19 @@ public class HotelPromotionData implements HotelPromotionDataService{
 	 */
 	public boolean update(HotelPromotionPO hp){
 		Connection conn = DBUtil.getConnection();
-		//是否可以根据名字来改名字？
 		String sql = "update hotelpromotion "
-				+ " set hotelname=?, name=?, isbirthday=?, numberofroom=?, ispartner=?, begintime=?, endtime=? discount=? "
+				+ " set hotelname=?,  isbirthday=?, numberofroom=?, ispartner=?, begintime=?, endtime=?, discount=? "
 				+ " where name=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, hp.getHotelname());
-			ptmt.setString(2, hp.getName());
-			ptmt.setBoolean(3, hp.isIsbirthday());
-			ptmt.setInt(4, hp.getNumberofroom());
-			ptmt.setBoolean(5, hp.isIspartner());
-			ptmt.setString(6, hp.getBegintime());
-			ptmt.setString(7, hp.getEndtime());
-			ptmt.setDouble(8, hp.getDiscount());
-			ptmt.setString(9, hp.getName());
+			ptmt.setBoolean(2, hp.isIsbirthday());
+			ptmt.setInt(3, hp.getNumberofroom());
+			ptmt.setBoolean(4, hp.isIspartner());
+			ptmt.setString(5, hp.getBegintime());
+			ptmt.setString(6, hp.getEndtime());
+			ptmt.setDouble(7, hp.getDiscount());
+			ptmt.setString(8, hp.getName());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();

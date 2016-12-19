@@ -127,6 +127,7 @@ public class MakeHotelPromotionFrameController {
 		if(checkbox.isSelected()){
 			HotelPromotionVO vo = new HotelPromotionVO(HotelNameVO.getHotelname(),enterpromotionname.getText(),isbirthday,
 					Integer.valueOf(enterroomnum.getText()),iscompany,begindate.getValue().toString(),enddate.getValue().toString(),discount);
+			
 			service.hotelPromotionCreate(vo);
 		}else{
 			HotelPromotionVO vo = new HotelPromotionVO(HotelNameVO.getHotelname(),enterpromotiontype.getSelectionModel().getSelectedItem(),isbirthday,

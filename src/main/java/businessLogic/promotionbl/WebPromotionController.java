@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import businessLogicService.promotionBLService.WebPromotionBLService;
 import data.WebPromotionData;
+import dataService.WebPromotionDataService;
 import po.WebPromotionPO;
 import vo.WebPromotionVO;
 /**
@@ -14,28 +15,48 @@ import vo.WebPromotionVO;
  */
 public class WebPromotionController implements WebPromotionBLService {
 
-	WebPromotionData wpd = new WebPromotionData();
+	WebPromotionDataService wpd = new WebPromotionData();
 	
 	@Override
 	public boolean webPromotionCreate(WebPromotionVO wpv) {
-		WebPromotionPO wpp = new WebPromotionPO();
-		wpp.setName(wpv.getName());
-		wpp.setBegintime(wpv.getBegintime());
-		wpp.setEndtime(wpv.getEndtime());
-		wpp.setSpecificbusinessarea(wpv.getSpecificbusinessarea());
-		wpd.insert(wpp);
+		try {
+			ArrayList<WebPromotionPO> promotion = new ArrayList<>();
+			promotion = wpd.find();
+			ArrayList<String> name = new ArrayList<>();
+			for(int i=0; i<promotion.size(); i++){
+				name.add(promotion.get(i).getName());
+			}
+			
+			WebPromotionPO wpp = new WebPromotionPO();
+			wpp.setName(wpv.getName());
+			wpp.setBegintime(wpv.getBegintime());
+			wpp.setEndtime(wpv.getEndtime());
+			wpp.setVIPgrade(wpv.getVIPgrade());
+			wpp.setSpecificbusinessarea(wpv.getSpecificbusinessarea());
+			wpp.setDiscount(wpv.getDiscount());
+			
+			for(int i=0; i<name.size(); i++){
+				if(wpv.getName().equals(name.get(i))){
+					wpd.update(wpp);
+					return true;
+				}
+			}
+			wpd.insert(wpp);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return true;
 	}
 
-	@Override
-	public boolean webPromotionUpdate(WebPromotionVO wpv) {
-		WebPromotionPO wpp = new WebPromotionPO();
-		wpp.setBegintime(wpv.getBegintime());
-		wpp.setEndtime(wpv.getEndtime());
-		wpp.setSpecificbusinessarea(wpv.getSpecificbusinessarea());
-		wpd.update(wpp);
-		return true;
-	}
+//	@Override
+//	public boolean webPromotionUpdate(WebPromotionVO wpv) {
+//		WebPromotionPO wpp = new WebPromotionPO();
+//		wpp.setBegintime(wpv.getBegintime());
+//		wpp.setEndtime(wpv.getEndtime());
+//		wpp.setSpecificbusinessarea(wpv.getSpecificbusinessarea());
+//		wpd.update(wpp);
+//		return true;
+//	}
 
 	@Override
 	public void webPromotionDelete(WebPromotionVO wpv) {
