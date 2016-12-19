@@ -187,7 +187,7 @@ public class Hotel{
 	 */
 	public ArrayList<RoomVO> getRoom(String HotelName) throws SQLException{
 		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
-		RoomPOList = roomdataservice.findByHotelname(HotelName);
+		RoomPOList = roomdataservice.findByHotelName(HotelName);
 		
 		ArrayList<RoomVO> RoomVOList = new ArrayList<RoomVO>();
 		int length=RoomPOList.size();
@@ -212,7 +212,7 @@ public class Hotel{
 	 * @return 
 	 */
 	public boolean UpdateRoom(String hotelName,String roomtype,int peoplenum,int roomnum,int price)throws SQLException{
-		ArrayList<RoomPO> RoomPOList = roomdataservice.findByHotelname(hotelName);
+		ArrayList<RoomPO> RoomPOList = roomdataservice.findByHotelName(hotelName);
 		
 		int length=RoomPOList.size();
 		boolean IsFind = false;
@@ -244,7 +244,7 @@ public class Hotel{
 	public boolean CheckOut(String hotelname,String orderID,String room,int num, String checkoutTime) throws SQLException{
 		boolean IsSuccess = orderdataservice.Update(orderID,checkoutTime);
 		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
-		RoomPOList = roomdataservice.findByHotelname(hotelname);
+		RoomPOList = roomdataservice.findByHotelName(hotelname);
 		
 		int length=RoomPOList.size();
 		for(int i=0;i<length;i++){
@@ -267,7 +267,7 @@ public class Hotel{
 	 */
 	public boolean CheckOut(String HotelName,String roomType,int num) throws SQLException{
 		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
-		RoomPOList = roomdataservice.findByHotelname(HotelName);
+		RoomPOList = roomdataservice.findByHotelName(HotelName);
 		
 		int length=RoomPOList.size();
 		for(int i=0;i<length;i++){
@@ -290,7 +290,7 @@ public class Hotel{
 	 */
 	public boolean CheckIn(String HotelName,String roomType,int num) throws SQLException{
 		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
-		RoomPOList = roomdataservice.findByHotelname(HotelName);
+		RoomPOList = roomdataservice.findByHotelName(HotelName);
 		
 		int length=RoomPOList.size();
 		for(int i=0;i<length;i++){

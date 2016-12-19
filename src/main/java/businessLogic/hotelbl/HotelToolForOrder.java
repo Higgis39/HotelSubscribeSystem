@@ -26,9 +26,10 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 	 * @return 某种房间类型的数量  Integer
 	 * @throws SQLException 
 	 */
-	public int CheckEnoughRoom(String HotelName, String RoomType) throws SQLException{
+	public int CheckEnoughRoom(String HotelId, String RoomType) throws SQLException{
+		String HotelName = hoteldataservice.findById(HotelId).getName();
 		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
-		RoomPOList = roomdataservice.findByHotelname(HotelName);
+		RoomPOList = roomdataservice.findByHotelName(HotelName);
 		
 		int roomnum=0;
 		
@@ -49,9 +50,10 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 	 * @return 某种房间的入住人数  Integer
 	 * @throws SQLException 
 	 */
-	public int CheckMaxInRoom(String HotelName,String RoomType) throws SQLException{
+	public int CheckMaxInRoom(String HotelId,String RoomType) throws SQLException{
+		String HotelName = hoteldataservice.findById(HotelId).getName();
 		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
-		RoomPOList = roomdataservice.findByHotelname(HotelName);
+		RoomPOList = roomdataservice.findByHotelName(HotelName);
 		
 		int peoplenum=0;
 		
@@ -71,18 +73,17 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 	 * @param RoomType String
 	 * @return 某种房间的价格  Integer
 	 */
-	public int getHotelRoomPrice(String HotelName,String RoomType) throws SQLException{
+	public int getHotelRoomPrice(String HotelId,String RoomType) throws SQLException{
+		String HotelName = hoteldataservice.findById(HotelId).getName();
 		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
-		RoomPOList = roomdataservice.findByHotelname(HotelName);
+		RoomPOList = roomdataservice.findByHotelName(HotelName);
 		int roomprice=0;
-		
 		int length=RoomPOList.size();
 		for(int i=0;i<length;i++){
 			if(RoomPOList.get(i).getRoomType().equals(RoomType)){
 				roomprice=roomprice+RoomPOList.get(i).getRoomPrice();
 			}
 		}
-		
 		return roomprice;
 	};
 	
@@ -93,8 +94,9 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 	 * @param RoomNum Integer
 	 * @return
 	 */
-	public boolean updateRoom(String HotelName,String RoomType,int RoomNum)throws SQLException{
-		ArrayList<RoomPO> RoomPOList = roomdataservice.findByHotelname(HotelName);
+	public boolean updateRoom(String HotelId,String RoomType,int RoomNum)throws SQLException{
+		String HotelName = hoteldataservice.findById(HotelId).getName();
+		ArrayList<RoomPO> RoomPOList = roomdataservice.findByHotelName(HotelName);
 		
 		int length=RoomPOList.size();
 		for(int i=0;i<length;i++){
@@ -110,7 +112,8 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 	 * @param point double
 	 * @return
 	 */
-	public boolean updatePoint(String HotelName,double point){
+	public boolean updatePoint(String HotelId,double point){
+		String HotelName = hoteldataservice.findById(HotelId).getName();
 		HotelPO hotelpo = hoteldataservice.findByName(HotelName);
 		
 		hotelpo.setGrade(point);

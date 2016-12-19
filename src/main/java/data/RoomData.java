@@ -24,12 +24,6 @@ public class RoomData implements RoomDataService{
 	 * @see
 	 * try/catch块捕获数据库连接失败异常
 	 */
-//	String hotelName;
-//	int roomNum;
-//	String roomType;
-//	int roomPrice;
-//	int peopleNumber;
-//	boolean IsEmpty;
 	public void insert(RoomPO r) {
 		Connection conn = DBUtil.getConnection();
 		String sql = " insert into room "
@@ -82,16 +76,16 @@ public class RoomData implements RoomDataService{
 	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
 	 */
-	public ArrayList<RoomPO> findByHotelname(String hotelName) throws SQLException {
+	public ArrayList<RoomPO> findByHotelName(String HotelName) throws SQLException {
 		ArrayList<RoomPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
 		sb.append(" select * from room ");
-		sb.append(" where hotelName=?");
+		sb.append(" where HotelName=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-		ptmt.setString(1, hotelName);
+		ptmt.setString(1, HotelName);
 		
 		ResultSet rs = ptmt.executeQuery();
 		
