@@ -10,7 +10,6 @@ public class CommentOrderController implements CommentOrderService{
 	 * 客户评价订单
 	 * @return 成功返回true，否则返回false
 	 */
-	@Override
 	public boolean addComment(OrderVO vo,int point) {
 		HotelInfoForOrder service = new HotelToolForOrder();
 		return new Order(vo).Comment()&&service.updatePoint(vo.getHotelId(),point);

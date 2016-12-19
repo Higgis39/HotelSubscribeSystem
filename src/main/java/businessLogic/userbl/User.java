@@ -15,6 +15,7 @@ import vo.WorkerVO;
  * 
  * @author 费慧通
  *
+ *具体实现User模块的逻辑操作
  */
 public class User{
 	UserDataService userdataservice = new UserData();
@@ -137,6 +138,9 @@ public class User{
 	 */
 	public boolean RegisterVIP(String id,String VIPtype,String CompanyOrBirthday){
 		UserPO userpo = userdataservice.find(id);
+		if(userpo.getVIPtype()!=null){
+			return false;
+		}
 		userpo.setVIPtype(VIPtype);
 		if(VIPtype.equals("普通会员")){
 			userpo.setBirthday(CompanyOrBirthday);

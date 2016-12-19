@@ -15,12 +15,10 @@ public class CustomerViewOrderController implements CustomerViewOrderService{
 		return new Order().gerOrderByOrderID(OrderID);
 	}
 
-	@Override
 	public List<OrderVO> getAllUserOrders(String userID) throws SQLException {
 		return new Order().getOrderByUserID(userID);
 	}
 
-	@Override
 	public List<OrderVO> getSpecificOrders(String userID, String Status) throws SQLException {
 		return new Order().filterOrderByStatus(new Order().getOrderByUserID(userID), Status);
 	}
