@@ -138,6 +138,7 @@ public class Order{
 	 */
 	public List<OrderVO> getOrderByHotelID(String hotelID) throws SQLException{
 		List<OrderPO> orderListPO=service.findByHotelID(hotelID);
+		System.out.println(orderListPO);
 		return this.turnPOtoVO(orderListPO);
 	}
 	

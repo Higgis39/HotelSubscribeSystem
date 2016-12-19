@@ -27,7 +27,7 @@ public class CreateOrderController implements CreateOrderService{
 	}
 	
 	public int CheckMax(String hotelName,String roomType) throws SQLException{
-		return new HotelToolForOrder().CheckEnoughRoom(hotelName, roomType);
+		return new HotelToolForOrder().CheckMaxInRoom(hotelName, roomType);
 	}
 	 
 	/**

@@ -26,7 +26,6 @@ public class PromotionToolForOrder implements PromotionInfoForOrder{
 		//计算生日促销策略折扣
 		BirthdayPromotion bp = new BirthdayPromotion();
 		double a = bp.calculateDiscount(userID, hotelID, entryTime);
-		System.out.println(a);
 		
 		//计算三件以上策略折扣
 		ThreemorePromotion tp = new ThreemorePromotion();
@@ -67,7 +66,6 @@ public class PromotionToolForOrder implements PromotionInfoForOrder{
 	public double getAppropriateWebPromotion(OrderVO vo) {
 		
 		String hotelID = vo.getHotelId();
-		System.out.println(hotelID);
 		
 		//网站特定时间促销策略
 		WebSpecificTimePromotion wstp = new WebSpecificTimePromotion();
