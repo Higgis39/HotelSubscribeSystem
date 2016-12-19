@@ -7,6 +7,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import po.OrderPO;
 
+
+/**
+ * 
+ * @author Administrator
+ *
+ *界面与逻辑之间传输的订单信息
+ */
 public class OrderVO {
 	private StringProperty orderId;
 	

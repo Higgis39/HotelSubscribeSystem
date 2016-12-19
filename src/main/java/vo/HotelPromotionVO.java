@@ -7,6 +7,12 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * 
+ * @author 费慧通
+ *
+ *界面与逻辑层之间传输的酒店促销策略
+ */
 public class HotelPromotionVO {
 	private final StringProperty hotelname;
 	private final StringProperty name;

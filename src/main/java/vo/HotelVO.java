@@ -7,6 +7,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * 
+ *界面与逻辑之间传输的酒店信息
+ */
 public class HotelVO {
 	private StringProperty hotelid;
 	private StringProperty password;

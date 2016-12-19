@@ -1,7 +1,11 @@
 package vo;
 
+/**
+ * 
+ * @author Administrator
+ *跳转界面时界面之间传输的id
+ */
 public class IdVO {
-	//跳转界面时界面之间传输的id
 	static String id;
 	
 	public static void setid(String id){

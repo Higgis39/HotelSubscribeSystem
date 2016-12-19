@@ -7,6 +7,12 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * 
+ * @author Administrator
+ *
+ *界面与逻辑层之间传输的网站营销策略信息
+ */
 public class WebPromotionVO {
 
 	private final StringProperty name;

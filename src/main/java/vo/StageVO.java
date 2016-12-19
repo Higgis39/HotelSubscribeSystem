@@ -2,6 +2,12 @@ package vo;
 
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Administrator
+ *
+ *为方便界面跳转保存的前一个界面的信息
+ */
 public class StageVO {
 	//当前界面跳转前的界面
 	private static Stage stage;

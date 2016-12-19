@@ -76,17 +76,23 @@ public class RegisterVIPFrameController {
 	 */
 	private void confirmAction(){
 		RegisterVIPBLService service = new RegisterVIPController();
+		boolean result;
 		if(commonVIP.isSelected()){
 			String birthday = enterbirthday.getValue().toString();
-			service.RegisterVIP(IdVO.getid(),"普通会员",birthday);
+			result = service.RegisterVIP(IdVO.getid(),"普通会员",birthday);
 		}else{
 			String company = entercompany.getText();
-			service.RegisterVIP(IdVO.getid(),"企业会员",company);
+			result = service.RegisterVIP(IdVO.getid(),"企业会员",company);
 		}
-		viewcontrol.openSuccessAdd2Frame();
-		StageVO.getSatge().close();
-		viewcontrol.openUserPersonalFrame();
-		registerVIPframe.getPrimaryStage().close();
+		if(result==true){
+			viewcontrol.openSuccessAdd2Frame();
+			StageVO.getSatge().close();
+			viewcontrol.openUserPersonalFrame();
+			registerVIPframe.getPrimaryStage().close();
+		}else{
+			
+		}
+		
 	}
 	
 	@FXML

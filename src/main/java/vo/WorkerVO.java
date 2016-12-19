@@ -5,6 +5,13 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+
+/**
+ * 
+ * @author Administrator
+ *
+ *界面与逻辑层之间传输的酒店工作人员信息
+ */
 public class WorkerVO {
 	private StringProperty hotelname;
 	private StringProperty name;
