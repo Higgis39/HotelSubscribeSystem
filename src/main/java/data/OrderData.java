@@ -37,7 +37,7 @@ public class OrderData implements OrderDataService{
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, o.getId());
 			ptmt.setString(2, o.getHotelId());
-			ptmt.setString(3, encryption.decryption(o.getUserId()));
+			ptmt.setString(3, encryption.encryption(o.getUserId()));
 			ptmt.setString(4, o.getStatus());
 			ptmt.setString(5, o.getEntryTime());
 			ptmt.setString(6, o.getLastTime());
@@ -288,7 +288,37 @@ public class OrderData implements OrderDataService{
 		return result;
 	}
 
-//	public ArrayList<String>
+	public ArrayList<String> findHotelIdByUserId(String userId) throws SQLException{
+		ArrayList<String> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append(" select * from orders ");
+		sb.append(" where userId=?");
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
+		ptmt.setString(1, userId);
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		OrderPO o = null;
+		while(rs.next()){
+			o = new OrderPO();
+			o.setId(rs.getString("id"));
+			o.setHotelId(rs.getString("hotelId"));
+			o.setUserId(encryption.decryption(rs.getString("userId")));
+			o.setStatus(rs.getString("status"));
+			o.setEntryTime(rs.getString("entryTime"));
+			o.setLastTime(rs.getString("lastTime"));
+			o.setPrice(rs.getDouble("price"));
+			o.setComment(rs.getString("comment"));
+			o.setRoomType(rs.getString("RoomType"));
+			o.setRoomNum(rs.getInt("RoomNum"));
+			
+			result.add(rs.getString("hotelId"));
+		}
+		return result;
+	}
 	
 	/**
 	 * 得到最后一个order对象的id
@@ -313,4 +343,6 @@ public class OrderData implements OrderDataService{
 					
 		return o.getId();
 	}
+	
+	
 }

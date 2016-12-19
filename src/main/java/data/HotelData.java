@@ -9,7 +9,9 @@ import java.util.Map;
 
 import JDBC.DBUtil;
 import dataService.HotelDataService;
+import dataService.UserDataService;
 import po.HotelPO;
+import po.UserPO;
 
 /**
  * HotelData的职责是实现对数据库中hotel对象的增删改查
@@ -19,6 +21,7 @@ import po.HotelPO;
 public class HotelData implements HotelDataService{
 
 	Encryption encryption = new Encryption();
+	
 	/**
 	 * 增加hotel对象
 	 * 
@@ -184,7 +187,7 @@ public class HotelData implements HotelDataService{
 	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
 	 */
-	public ArrayList<HotelPO> findByAddressAndBusinessarea(String city, String businessarea) throws SQLException{
+	public ArrayList<HotelPO> findByCityAndBusinessarea(String city, String businessarea) throws SQLException{
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
@@ -218,6 +221,43 @@ public class HotelData implements HotelDataService{
 		return result;
 	}
 	
+	@Override
+	public ArrayList<HotelPO> findByCityAndBusinessareaAndName(String city, String businessarea, String hotelname)
+			throws SQLException {
+		ArrayList<HotelPO> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append("select * from hotel");
+		sb.append(" where city=? and businessarea=? and hotelname=?");
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
+		ptmt.setString(1, city);
+		ptmt.setString(2, businessarea);
+		ptmt.setString(3, hotelname);
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		HotelPO h = null;
+		while(rs.next()){
+			h = new HotelPO();
+			h.setHotelid(rs.getString("hotelid"));
+			h.setPassword(rs.getString("password"));
+			h.setHotelname(rs.getString("hotelname"));
+			h.setPhonenumber(rs.getString("phonenumber"));
+			h.setAddress(rs.getString("address"));
+			h.setCity(rs.getString("city"));
+			h.setBusinessarea(rs.getString("businessarea"));
+			h.setIntroduction(rs.getString("introduction"));
+			h.setFacilities(rs.getString("facilities"));
+			h.setStar(rs.getInt("star"));
+			h.setGrade(rs.getDouble("grade"));
+			
+			result.add(h);
+		}
+		return result;
+	}
+	
 	/**
 	 * 根据城市和所属商圈和酒店星级获得hotel对象
 	 * 
@@ -227,7 +267,7 @@ public class HotelData implements HotelDataService{
 	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
 	 */
-	public ArrayList<HotelPO> findByAddressAndBusinessareaAndStar(String city, String businessarea, int star) throws SQLException{
+	public ArrayList<HotelPO> findByCityAndBusinessareaAndStar(String city, String businessarea, int star) throws SQLException{
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
@@ -271,18 +311,19 @@ public class HotelData implements HotelDataService{
 	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
 	 */
-	public ArrayList<HotelPO> findByAddressAndBusinessareaAndGrade(String city, String businessarea, double grade) throws SQLException{
+	public ArrayList<HotelPO> findByCityAndBusinessareaAndGrade(String city, String businessarea, double mingrade, double maxgrade) throws SQLException{
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
 		sb.append("select * from hotel");
-		sb.append(" where city=? and businessarea=? and grade=?");
+		sb.append(" where city=? and businessarea=? and grade>? and grade<? ");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
 		ptmt.setString(1, city);
 		ptmt.setString(2, businessarea);
-		ptmt.setDouble(3, grade);
+		ptmt.setDouble(3, mingrade);
+		ptmt.setDouble(4, maxgrade);
 		
 		ResultSet rs = ptmt.executeQuery();
 		
@@ -316,19 +357,20 @@ public class HotelData implements HotelDataService{
 	 * @throws SQLException 抛出数据库连接失败异常
 	 * @see
 	 */
-	public ArrayList<HotelPO> findByAll(String city, String businessarea, int star, double grade) throws SQLException{
+	public ArrayList<HotelPO> findByAll(String city, String businessarea, int star, double mingrade, double maxgrade) throws SQLException{
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
 		sb.append("select * from hotel");
-		sb.append(" where city=? and businessarea=? and star=? and grade=?");
+		sb.append(" where city=? and businessarea=? and star=? and grade<? and grade>?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
 		ptmt.setString(1, city);
 		ptmt.setString(2, businessarea);
 		ptmt.setInt(3, star);
-		ptmt.setDouble(4, grade);
+		ptmt.setDouble(4, mingrade);
+		ptmt.setDouble(5, maxgrade);
 		
 		ResultSet rs = ptmt.executeQuery();
 		
@@ -400,47 +442,6 @@ public class HotelData implements HotelDataService{
 		return result;
 	}
 	
-	public ArrayList<HotelPO> findPrevious(ArrayList<Map<String, Object>> params) throws SQLException{
-		ArrayList<HotelPO> result = new ArrayList<>();
-		
-		Connection conn = DBUtil.getConnection();
-		StringBuilder sb = new StringBuilder();
-		sb.append("select * from hotel INNER JOIN room on hotel.hotelname=room.hotelName where 1=1");
-		
-		ArrayList<String> hotel = new ArrayList<>();
-		
-		
-		if(params!=null && params.size()>0){
-			for(int i=0; i<params.size(); i++){
-				Map<String, Object> map = params.get(i);
-				sb.append(" and "+map.get("name")+" "+ map.get("rela") +" "+map.get("value"));
-			}
-		}
-		
-		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-		
-		ResultSet rs = ptmt.executeQuery();
-		
-		HotelPO h = null;
-		while(rs.next()){
-			h = new HotelPO();
-			h.setHotelid(rs.getString("hotelid"));
-			h.setPassword(rs.getString("password"));
-			h.setHotelname(rs.getString("hotelname"));
-			h.setPhonenumber(rs.getString("phonenumber"));
-			h.setAddress(rs.getString("address"));
-			h.setCity(rs.getString("city"));
-			h.setBusinessarea(rs.getString("businessarea"));
-			h.setIntroduction(rs.getString("introduction"));
-			h.setFacilities(rs.getString("facilities"));
-			h.setStar(rs.getInt("star"));
-			h.setGrade(rs.getDouble("grade"));
-			
-			result.add(h);
-		}
-		return result;
-	}
-	
 	/**
 	 * 得到最后一个hotel对象的id
 	 * 
@@ -464,4 +465,238 @@ public class HotelData implements HotelDataService{
 		
 		return h.getHotelId();
 	}
+
+	@Override
+	public ArrayList<HotelPO> pfindByCityAndBusinessarea(String city, String businessarea, String userId) throws SQLException {
+		
+		ArrayList<String> hotelName = new ArrayList<>();
+		OrderData od = new OrderData();
+		hotelName = od.findHotelIdByUserId(userId);
+		
+		ArrayList<HotelPO> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append("select * from hotel");
+		sb.append(" where city=? and businessarea=? ");
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
+		ptmt.setString(1, city);
+		ptmt.setString(2, businessarea);
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		HotelPO h = null;
+		while(rs.next()){
+			h = new HotelPO();
+			h.setHotelid(rs.getString("hotelid"));
+			h.setPassword(rs.getString("password"));
+			h.setHotelname(rs.getString("hotelname"));
+			h.setPhonenumber(rs.getString("phonenumber"));
+			h.setAddress(rs.getString("address"));
+			h.setCity(rs.getString("city"));
+			h.setBusinessarea(rs.getString("businessarea"));
+			h.setIntroduction(rs.getString("introduction"));
+			h.setFacilities(rs.getString("facilities"));
+			h.setStar(rs.getInt("star"));
+			h.setGrade(rs.getDouble("grade"));
+			
+			for(int i=0; i<hotelName.size(); i++){
+				if(rs.getString("hotelid") == hotelName.get(i)){
+					result.add(h);
+					break;
+				}
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public ArrayList<HotelPO> pfindByCityAndBusinessareaAndName(String city, String businessarea, String hotelname, String userId) throws SQLException {
+		
+		ArrayList<String> hotelName = new ArrayList<>();
+		OrderData od = new OrderData();
+		hotelName = od.findHotelIdByUserId(userId);
+		
+		ArrayList<HotelPO> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append("select * from hotel");
+		sb.append(" where city=? and businessarea=? and hotelname=?");
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
+		ptmt.setString(1, city);
+		ptmt.setString(2, businessarea);
+		ptmt.setString(3, hotelname);
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		HotelPO h = null;
+		while(rs.next()){
+			h = new HotelPO();
+			h.setHotelid(rs.getString("hotelid"));
+			h.setPassword(rs.getString("password"));
+			h.setHotelname(rs.getString("hotelname"));
+			h.setPhonenumber(rs.getString("phonenumber"));
+			h.setAddress(rs.getString("address"));
+			h.setCity(rs.getString("city"));
+			h.setBusinessarea(rs.getString("businessarea"));
+			h.setIntroduction(rs.getString("introduction"));
+			h.setFacilities(rs.getString("facilities"));
+			h.setStar(rs.getInt("star"));
+			h.setGrade(rs.getDouble("grade"));
+			
+			for(int i=0; i<hotelName.size(); i++){
+				if(rs.getString("hotelid") == hotelName.get(i)){
+					result.add(h);
+					break;
+				}
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public ArrayList<HotelPO> pfindByCityAndBusinessareaAndStar(String city, String businessarea, int star, String userId) throws SQLException {
+		 
+		ArrayList<String> hotelName = new ArrayList<>();
+		OrderData od = new OrderData();
+		hotelName = od.findHotelIdByUserId(userId);
+		
+		ArrayList<HotelPO> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append("select * from hotel");
+		sb.append(" where city=? and businessarea=? and star=?");
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
+		ptmt.setString(1, city);
+		ptmt.setString(2, businessarea);
+		ptmt.setInt(3, star);
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		HotelPO h = null;
+		while(rs.next()){
+			h = new HotelPO();
+			h.setHotelid(rs.getString("hotelid"));
+			h.setPassword(rs.getString("password"));
+			h.setHotelname(rs.getString("hotelname"));
+			h.setPhonenumber(rs.getString("phonenumber"));
+			h.setAddress(rs.getString("address"));
+			h.setCity(rs.getString("city"));
+			h.setBusinessarea(rs.getString("businessarea"));
+			h.setIntroduction(rs.getString("introduction"));
+			h.setFacilities(rs.getString("facilities"));
+			h.setStar(rs.getInt("star"));
+			h.setGrade(rs.getDouble("grade"));
+			
+			for(int i=0; i<hotelName.size(); i++){
+				if(rs.getString("hotelid") == hotelName.get(i)){
+					result.add(h);
+					break;
+				}
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public ArrayList<HotelPO> pfindByCityAndBusinessareaAndGrade(String city, String businessarea, double mingrade, double maxgrade , String userId) throws SQLException {
+		
+		ArrayList<String> hotelName = new ArrayList<>();
+		OrderData od = new OrderData();
+		hotelName = od.findHotelIdByUserId(userId);
+		
+		ArrayList<HotelPO> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append("select * from hotel");
+		sb.append(" where city=? and businessarea=? and grade>? and grade<? ");
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
+		ptmt.setString(1, city);
+		ptmt.setString(2, businessarea);
+		ptmt.setDouble(3, mingrade);
+		ptmt.setDouble(4, maxgrade);
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		HotelPO h = null;
+		while(rs.next()){
+			h = new HotelPO();
+			h.setHotelid(rs.getString("hotelid"));
+			h.setPassword(rs.getString("password"));
+			h.setHotelname(rs.getString("hotelname"));
+			h.setPhonenumber(rs.getString("phonenumber"));
+			h.setAddress(rs.getString("address"));
+			h.setCity(rs.getString("city"));
+			h.setBusinessarea(rs.getString("businessarea"));
+			h.setIntroduction(rs.getString("introduction"));
+			h.setFacilities(rs.getString("facilities"));
+			h.setStar(rs.getInt("star"));
+			h.setGrade(rs.getDouble("grade"));
+			
+			for(int i=0; i<hotelName.size(); i++){
+				if(rs.getString("hotelid") == hotelName.get(i)){
+					result.add(h);
+					break;
+				}
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public ArrayList<HotelPO> pfindByAll(String city, String businessarea, int star, double mingrade, double maxgrade, String userId) throws SQLException {
+		
+		ArrayList<String> hotelName = new ArrayList<>();
+		OrderData od = new OrderData();
+		hotelName = od.findHotelIdByUserId(userId);
+		
+		ArrayList<HotelPO> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append("select * from hotel");
+		sb.append(" where city=? and businessarea=? and star=? and grade<? and grade>?");
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
+		ptmt.setString(1, city);
+		ptmt.setString(2, businessarea);
+		ptmt.setInt(3, star);
+		ptmt.setDouble(4, mingrade);
+		ptmt.setDouble(5, maxgrade);
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		HotelPO h = null;
+		while(rs.next()){
+			h = new HotelPO();
+			h.setHotelid(rs.getString("hotelid"));
+			h.setPassword(rs.getString("password"));
+			h.setHotelname(rs.getString("hotelname"));
+			h.setPhonenumber(rs.getString("phonenumber"));
+			h.setAddress(rs.getString("address"));
+			h.setCity(rs.getString("city"));
+			h.setBusinessarea(rs.getString("businessarea"));
+			h.setIntroduction(rs.getString("introduction"));
+			h.setFacilities(rs.getString("facilities"));
+			h.setStar(rs.getInt("star"));
+			h.setGrade(rs.getDouble("grade"));
+			
+			for(int i=0; i<hotelName.size(); i++){
+				if(rs.getString("hotelid") == hotelName.get(i)){
+					result.add(h);
+					break;
+				}
+			}
+		}
+		return result;
+	}
+
+	
 }
