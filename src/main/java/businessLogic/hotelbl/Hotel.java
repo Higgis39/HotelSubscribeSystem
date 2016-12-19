@@ -57,7 +57,7 @@ public class Hotel{
 //			maxgrade = 5;
 //		}
 		ArrayList<HotelPO> HotelPOList = new ArrayList<HotelPO>();
-		HotelPOList = hoteldataservice.findByAddressAndBusinessarea(city, BusinessArea);
+		HotelPOList = hoteldataservice.findByCityAndBusinessarea(city, BusinessArea);
 		ArrayList<HotelVO> HotelVOList = new ArrayList<HotelVO>();
 		
 //		if(Star==-1 && mingrade==-1 && maxgrade==-1){
