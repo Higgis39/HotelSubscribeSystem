@@ -70,18 +70,18 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 	public int getHotelRoomPrice(String HotelName,String RoomType) throws SQLException{
 		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
 		RoomPOList = roomdataservice.findByHotelname(HotelName);
-		
 		int roomprice=0;
 		
 		int length=RoomPOList.size();
 		for(int i=0;i<length;i++){
-			if(RoomPOList.get(i).getRoomType()==RoomType){
+			if(RoomPOList.get(i).getRoomType().equals(RoomType)){
 				roomprice=roomprice+RoomPOList.get(i).getRoomPrice();
 			}
 		}
 		
 		return roomprice;
 	};
+	
 	/**
 	 * 更新酒店房间数量
 	 * @param HotelID

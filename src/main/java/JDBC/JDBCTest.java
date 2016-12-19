@@ -21,22 +21,22 @@ public class JDBCTest {
 	
 	public static void main(String[] args) throws SQLException {
 		
-		HotelData hd = new HotelData();
-//		
-		ArrayList<Map<String, Object>> params = new ArrayList<Map<String, Object>>();
-		Map<String, Object> param = new HashMap<String, Object>();
-		//查找roomID=2;
-		param.put("name", "roomID");
-		param.put("rela", "=");
-		param.put("value", "2");
-		//查找star小于4
-		param.put("name", "grade");
-		param.put("rela", "<=");
-		param.put("value", "3");
-		param.put("name", "grade");
-		param.put("rela", ">=");
-		param.put("value", "2");
-		params.add(param);
+//		HotelData hd = new HotelData();
+////		
+//		ArrayList<Map<String, Object>> params = new ArrayList<Map<String, Object>>();
+//		Map<String, Object> param = new HashMap<String, Object>();
+//		//查找roomID=2;
+//		param.put("name", "roomID");
+//		param.put("rela", "=");
+//		param.put("value", "2");
+//		//查找star小于4
+//		param.put("name", "grade");
+//		param.put("rela", "<=");
+//		param.put("value", "3");
+//		param.put("name", "grade");
+//		param.put("rela", ">=");
+//		param.put("value", "2");
+//		params.add(param);
 //		
 //		ArrayList<HotelPO> po = hd.findByAddressAndBusinessarea("南京", "仙林中心");
 ////		
@@ -46,25 +46,25 @@ public class JDBCTest {
 		
 
 		
-		UserData ud = new UserData();
-////		
-		UserPO up = new UserPO();
-		up.setName("网站管理人员");
-		up.setId("10004");
-		up.setPassword("0");
-//		up.setUsertype("普通客户");
-//		up.setCreditvalue(1000);
-//		up.setVIPtype("企业会员");
-//		up.setVIPgrade(5);
-		up.setPhonenumber("13579246868");
-//		up.setBirthday("06-20");
+//		UserData ud = new UserData();
+//////		
+//		UserPO up = new UserPO();
+//		up.setName("网站管理人员");
+//		up.setId("10004");
+//		up.setPassword("0");
+////		up.setUsertype("普通客户");
+////		up.setCreditvalue(1000);
+////		up.setVIPtype("企业会员");
+////		up.setVIPgrade(5);
+//		up.setPhonenumber("13579246868");
+////		up.setBirthday("06-20");
 //		up.setCompany("google");
 //		ArrayList<String> a = new ArrayList<>();
 //		a.add("增加50");
 //		a.add("减少50");
 //		up.setCreditchange(a);
 		
-		ud.insert(up);
+//		ud.insert(up);
 		
 //		up = ud.find("10005");
 //		System.out.println(up.getname());

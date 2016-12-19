@@ -18,7 +18,6 @@ public class BirthdayPromotion implements HotelPromotionType{
 	
 	public double calculateDiscount(String userId, String hotelId, String entryTimeId) {
 		if(isBirthday(userId)){
-			System.out.println(discount);
 			return discount;
 		}
 		return 1;
@@ -29,9 +28,8 @@ public class BirthdayPromotion implements HotelPromotionType{
 	 * @return
 	 */
 	public boolean isBirthday(String userId){
-		String birthday = ""; 
-		birthday = info.getUserBirthday(userId);
-		if(birthday != null){
+		String birthday = info.getUserBirthday(userId);
+		if(birthday!=null){
 			LocalDate current = LocalDate.now();
 			LocalDate b = LocalDate.parse(birthday);
 			if(current.isEqual(b)){
@@ -39,10 +37,5 @@ public class BirthdayPromotion implements HotelPromotionType{
 			}
 		}
 		return false;
-	}
-	
-	public static void main(String[] args) {
-		BirthdayPromotion a = new BirthdayPromotion();
-		a.calculateDiscount("10007", "", "");
 	}
 }

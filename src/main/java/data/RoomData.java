@@ -88,7 +88,7 @@ public class RoomData implements RoomDataService{
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
-		sb.append(" select * from room");
+		sb.append(" select * from room ");
 		sb.append(" where hotelName=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
