@@ -26,53 +26,90 @@ public class Hotel{
 	
 	/**
 	 * 搜索酒店
-	 * @param Address String
-	 * @param BusinessArea String
-	 * @param RoomType String
+	 * @param userID
+	 * @param hotelName
+	 * @param city String
+	 * @param businessArea String
+	 * @param roomType String
 	 * @param price String
 	 * @param checkinTime String
 	 * @param checkoutTime String
-	 * @param Star String
+	 * @param star String
 	 * @param grade String
 	 * @param hasfixed boolean
 	 * @return 返回符合搜索条件的酒店列表
 	 * @throws SQLException 
 	 */
-	public ArrayList<HotelVO> Search(String hotelName, String city, String BusinessArea, String RoomType, String price, String checkinTime, String checkoutTime, int Star, String grade,boolean hasfixed) throws SQLException{
-//		double mingrade,maxgrade;
-//		if(grade.equals("1分以下")){
-//			mingrade = 0;
-//			maxgrade = 1;
-//		}else if(grade.equals("1~2分")){
-//			mingrade = 1;
-//			maxgrade = 2;
-//		}else if(grade.equals("2~3分")){
-//			mingrade = 2;
-//			maxgrade = 3;
-//		}else if(grade.equals("3~4分")){
-//			mingrade = 3;
-//			maxgrade = 4;
-//		}else{
-//			mingrade = 4;
-//			maxgrade = 5;
-//		}
+	public ArrayList<HotelVO> Search(String userID, String hotelName, String city, String businessArea, String roomType, String price, String checkinTime, String checkoutTime, int star, String grade,boolean hasfixed) throws SQLException{
+		double minGrade,maxGrade;
+		
+		if(grade.equals("1分以下")){
+			minGrade = 0;
+			maxGrade = 1.0;
+		}else if(grade.equals("1~2分")){
+			minGrade = 1.0;
+			maxGrade = 2.0;
+		}else if(grade.equals("2~3分")){
+			minGrade = 2.0;
+			maxGrade = 3.0;
+		}else if(grade.equals("3~4分")){
+			minGrade = 3.0;
+			maxGrade = 4.0;
+		}else{
+			minGrade = 4.0;
+			maxGrade = 5.0;
+		}
+		
 		ArrayList<HotelPO> HotelPOList = new ArrayList<HotelPO>();
-		HotelPOList = hoteldataservice.findByCityAndBusinessarea(city, BusinessArea);
+		
+		if(hasfixed == true){
+			if(hotelName == ""){
+				if(star == 0){
+					if(grade == ""){
+						HotelPOList=hoteldataservice.pfindByCityAndBusinessarea(city, businessArea, userID);
+					}
+					else{
+						HotelPOList=hoteldataservice.pfindByCityAndBusinessareaAndGrade(city, businessArea, minGrade, maxGrade, userID);
+					}
+				}
+				else{
+					if(grade == ""){
+						HotelPOList=hoteldataservice.pfindByCityAndBusinessareaAndStar(city, businessArea, star, userID);
+					}
+					else{
+						HotelPOList=hoteldataservice.pfindByAll(city, businessArea, star, minGrade, maxGrade, userID);
+					}
+				}
+			}
+			else{
+				HotelPOList = hoteldataservice.pfindByCityAndBusinessareaAndName(city, businessArea, hotelName, userID);
+			}
+		}
+		else{
+			if(hotelName == ""){
+				if(star == 0){
+					if(grade == ""){
+						HotelPOList=hoteldataservice.findByCityAndBusinessarea(city, businessArea);
+					}
+					else{
+						HotelPOList=hoteldataservice.findByCityAndBusinessareaAndGrade(city, businessArea, minGrade, maxGrade);
+					}
+				}
+				else{
+					if(grade == ""){
+						HotelPOList=hoteldataservice.findByCityAndBusinessareaAndStar(city, businessArea, star);
+					}
+					else{
+						HotelPOList=hoteldataservice.findByAll(city, businessArea, star, minGrade, maxGrade);
+					}
+				}
+			}
+			else{
+				HotelPOList = hoteldataservice.findByCityAndBusinessareaAndName(city, businessArea, hotelName);
+			}
+		}
+
 		ArrayList<HotelVO> HotelVOList = new ArrayList<HotelVO>();
-		
-//		if(Star==-1 && mingrade==-1 && maxgrade==-1){
-//			HotelPOList=hoteldataservice.findByAddressAndBusinessarea(Address, BusinessArea);
-//		}else if(mingrade ==-1 && maxgrade==-1){
-//			HotelPOList=hoteldataservice.findByAddressAndBusinessareaAndStar(Address, BusinessArea, Star);
-//		}else{
-//			if(mingrade==-1){
-//				HotelPOList=hoteldataservice.findByAddressAndBusinessareaAndGrade(Address, BusinessArea, Star);
-//			}
-//			else{
-//				HotelPOList=hoteldataservice.findByAddressAndBusinessareaAndGrade(Address, BusinessArea, Star);
-//			}
-//		}
-		
 
 		int length=HotelPOList.size();
 		for(int i=0;i<length;i++){
@@ -82,6 +119,7 @@ public class Hotel{
 			
 			HotelVOList.add(hotelvo);
 		}
+		
 		return HotelVOList;
 	}
 	
