@@ -46,11 +46,17 @@ public class Order{
 	 * 添加新的订单
 	 * @param OrderDataService service
 	 * @return 添加成功返回true，否则false
+	 * @throws SQLException 
 	 */
-	public boolean addNewOrder(){
+	public String addNewOrder() throws SQLException{
 		OrderPO po=new OrderPO(vo);
+		String OrderID = service.distributeid();
+		int id = Integer.valueOf(OrderID);
+		id++;
+		OrderID = String.valueOf(id);
+		po.setId(OrderID);
 		service.insert(po);
-		return true;
+		return OrderID;
 	}
 	/**
 	 * 记录入住信息
@@ -65,11 +71,6 @@ public class Order{
 		po.setStatus("已执行");
 		po.setEntryTime(vo.getEntryTime());
 		po.setLastTime(vo.getLastTime());
-		String OrderID = service.distributeid();
-		int id = Integer.valueOf(OrderID);
-		id++;
-		OrderID = String.valueOf(id);
-		po.setId(OrderID);
 		manager.addCredit(po);
 		service.update(po);
 		return true;

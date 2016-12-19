@@ -42,8 +42,9 @@ public class CreateOrderController implements CreateOrderService{
 	/**
 	 * 客户确认下单
 	 * @return 订单生成成功并添加进数据库中返回true，否则返回false
+	 * @throws SQLException 
 	 */
-	public boolean addNewOrder(OrderVO vo) {
+	public String addNewOrder(OrderVO vo) throws SQLException {
 		return new Order(vo).addNewOrder();
 	}
 	
