@@ -14,11 +14,12 @@ public class HotelPO {
 	double grade;
 	
 	//构造函数
-	public HotelPO(String hotelid,String password,String hotelname,String phonenumber,String address,String businessarea,String introduction,String facilities,int star,double grade){
+	public HotelPO(String hotelid,String password,String hotelname,String phonenumber,String city,String address,String businessarea,String introduction,String facilities,int star,double grade){
 		this.hotelid = hotelid;
 		this.password = password;
 		this.hotelname = hotelname;
 		this.phonenumber = phonenumber;
+		this.city = city;
 		this.address = address;
 		this.businessarea= businessarea;
 		this.introduction = introduction;

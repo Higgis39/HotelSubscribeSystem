@@ -70,9 +70,9 @@ public class Hotel{
 		ArrayList<HotelPO> HotelPOList = new ArrayList<HotelPO>();
 		
 		if(hasfixed == true){
-			if(hotelName == ""){
+			if(hotelName.equals("")){
 				if(star == 0){
-					if(grade.equals(null)){
+					if(grade==null){
 						HotelPOList=hoteldataservice.pfindByCityAndBusinessarea(city, businessArea, userID);
 					}
 					else{
@@ -80,7 +80,7 @@ public class Hotel{
 					}
 				}
 				else{
-					if(grade.equals(null)){
+					if(grade==null){
 						HotelPOList=hoteldataservice.pfindByCityAndBusinessareaAndStar(city, businessArea, star, userID);
 					}
 					else{
@@ -93,9 +93,9 @@ public class Hotel{
 			}
 		}
 		else{
-			if(hotelName == ""){
+			if(hotelName.equals("")){
 				if(star == 0){
-					if(grade.equals(null)){
+					if(grade==null){
 						HotelPOList=hoteldataservice.findByCityAndBusinessarea(city, businessArea);
 					}
 					else{
@@ -103,7 +103,7 @@ public class Hotel{
 					}
 				}
 				else{
-					if(grade.equals(null)){
+					if(grade==null){
 						HotelPOList=hoteldataservice.findByCityAndBusinessareaAndStar(city, businessArea, star);
 					}
 					else{
@@ -173,7 +173,7 @@ public class Hotel{
 	public boolean UpdateHotelMessage(String hotelName,String address, String phoneNumber, String Introduction, String Facilities, int Star){
 		
 		HotelPO hotelpo = hoteldataservice.findByName(hotelName);
-		hotelpo = new HotelPO(hotelpo.getHotelId(),hotelpo.getPassword(),hotelName,phoneNumber,address,hotelpo.getBusinessArea(),Introduction,Facilities,Star,hotelpo.getGrade());
+		hotelpo = new HotelPO(hotelpo.getHotelId(),hotelpo.getPassword(),hotelName,phoneNumber,hotelpo.getCity(),address,hotelpo.getBusinessArea(),Introduction,Facilities,Star,hotelpo.getGrade());
 		hoteldataservice.update(hotelpo);
 		
 		return true;
