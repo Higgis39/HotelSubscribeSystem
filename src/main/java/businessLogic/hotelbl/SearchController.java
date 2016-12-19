@@ -5,15 +5,19 @@ import java.util.ArrayList;
 
 import businessLogicService.hotelBLService.SearchService;
 import vo.HotelVO;
-
+/*
+ * 
+ * @author 梁先伟
+ * 
+ */
 public class SearchController implements SearchService{
 	
 	Hotel hotel = new Hotel();
 	
 	/**
 	 * 搜索酒店
-	 * @param userID
-	 * @param hotelName
+	 * @param userID String
+	 * @param hotelName String
 	 * @param city String
 	 * @param businessArea String
 	 * @param roomType String

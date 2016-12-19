@@ -7,7 +7,11 @@ import data.HotelData;
 import data.WorkerData;
 import dataService.HotelDataService;
 import dataService.WorkerDataService;
-
+/*
+ * 
+ * @author 梁先伟
+ * 
+ */
 public class HotelToolForUser implements HotelInfoForUser{
 	HotelDataService hoteldataservice = new HotelData();
 	WorkerDataService workerdataservice = new WorkerData();

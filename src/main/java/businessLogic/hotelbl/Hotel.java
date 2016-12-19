@@ -17,7 +17,11 @@ import dataService.HotelDataService;
 import dataService.RoomDataService;
 import dataService.WorkerDataService;
 import po.HotelPO;
-
+/*
+ * 
+ * @author 梁先伟
+ * 
+ */
 public class Hotel{
 	HotelDataService hoteldataservice = new HotelData();
 	OrderInfoForHotel orderdataservice = new OrderToolForHotel();
@@ -26,8 +30,8 @@ public class Hotel{
 	
 	/**
 	 * 搜索酒店
-	 * @param userID
-	 * @param hotelName
+	 * @param userID String
+	 * @param hotelName String
 	 * @param city String
 	 * @param businessArea String
 	 * @param roomType String

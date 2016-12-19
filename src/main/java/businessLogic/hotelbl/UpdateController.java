@@ -3,7 +3,11 @@ package businessLogic.hotelbl;
 import java.sql.SQLException;
 
 import businessLogicService.hotelBLService.UpdateService;
-
+/*
+ * 
+ * @author 梁先伟
+ * 
+ */
 public class UpdateController implements UpdateService{
 	
 	Hotel hotel = new Hotel();
@@ -25,7 +29,7 @@ public class UpdateController implements UpdateService{
 	 * 登记入住信息(线下)
 	 * @param HotelName String
 	 * @param roomType String
-	 * @param num
+	 * @param num Integer
 	 * @return
 	 * @throws SQLException 
 	 */
@@ -37,7 +41,7 @@ public class UpdateController implements UpdateService{
 	 * 更新退房信息(线下)
 	 * @param HotelName String
 	 * @param roomType String
-	 * @param num
+	 * @param num Integer
 	 * @return
 	 * @throws SQLException 
 	 */

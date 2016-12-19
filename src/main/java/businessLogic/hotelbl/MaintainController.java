@@ -1,7 +1,11 @@
 package businessLogic.hotelbl;
 
 import businessLogicService.hotelBLService.MaintainService;
-
+/*
+ * 
+ * @author 梁先伟
+ * 
+ */
 public class MaintainController implements MaintainService{
 	
 	Hotel hotel = new Hotel();

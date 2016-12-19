@@ -10,16 +10,20 @@ import data.RoomData;
 import dataService.HotelDataService;
 import dataService.RoomDataService;
 import po.RoomPO;
-
+/*
+ * 
+ * @author 梁先伟
+ * 
+ */
 public class HotelToolForOrder implements HotelInfoForOrder{
 	RoomDataService roomdataservice = new RoomData();
 	HotelDataService hoteldataservice = new HotelData();
 	
 	/**
 	 * 查询该酒店的某种房间类型的数量
-	 * @param HotelID
-	 * @param RoomType
-	 * @return 某种房间类型的数量
+	 * @param HotelName String
+	 * @param RoomType String
+	 * @return 某种房间类型的数量  Integer
 	 * @throws SQLException 
 	 */
 	public int CheckEnoughRoom(String HotelName, String RoomType) throws SQLException{
@@ -40,9 +44,9 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 	
 	/**
 	 * 查询该酒店某房间类型的最大入住人数
-	 * @param HotelID
-	 * @param RoomType
-	 * @return
+	 * @param HotelName String
+	 * @param RoomType String
+	 * @return 某种房间的入住人数  Integer
 	 * @throws SQLException 
 	 */
 	public int CheckMaxInRoom(String HotelName,String RoomType) throws SQLException{
@@ -63,9 +67,9 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 	
 	/**
 	 * 查询酒店某种房间类型的价格
-	 * @param HotelID
-	 * @param RoomType
-	 * @return
+	 * @param HotelName String
+	 * @param RoomType String
+	 * @return 某种房间的价格  Integer
 	 */
 	public int getHotelRoomPrice(String HotelName,String RoomType) throws SQLException{
 		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
@@ -84,9 +88,9 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 	
 	/**
 	 * 更新酒店房间数量
-	 * @param HotelID
-	 * @param RoomType
-	 * @param RoomNum
+	 * @param HotelName String
+	 * @param RoomType String
+	 * @param RoomNum Integer
 	 * @return
 	 */
 	public boolean updateRoom(String HotelName,String RoomType,int RoomNum)throws SQLException{
@@ -102,8 +106,8 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 	};
 	/**
 	 * 更新酒店评分
-	 * @param HotelID
-	 * @param point
+	 * @param HotelName String
+	 * @param point double
 	 * @return
 	 */
 	public boolean updatePoint(String HotelName,double point){

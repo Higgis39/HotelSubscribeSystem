@@ -5,7 +5,11 @@ import java.util.ArrayList;
 
 import businessLogicService.hotelBLService.AddRoomService;
 import vo.RoomVO;
-
+/*
+ * 
+ * @author 梁先伟
+ * 
+ */
 public class AddRoomController implements AddRoomService{
 	Hotel hotel = new Hotel();
 	

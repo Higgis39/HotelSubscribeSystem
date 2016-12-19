@@ -5,7 +5,11 @@ import java.util.List;
 
 import vo.HotelVO;
 import vo.WorkerVO;
-
+/*
+ * 
+ * @author 梁先伟
+ * 
+ */
 public interface ViewService {
 	public HotelVO View(String hotelName);
 

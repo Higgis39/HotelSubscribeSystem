@@ -6,7 +6,11 @@ import java.util.List;
 import businessLogicService.hotelBLService.ViewService;
 import vo.HotelVO;
 import vo.WorkerVO;
-
+/*
+ * 
+ * @author 梁先伟
+ * 
+ */
 public class ViewController implements ViewService{
 	
 	Hotel hotel = new Hotel();
