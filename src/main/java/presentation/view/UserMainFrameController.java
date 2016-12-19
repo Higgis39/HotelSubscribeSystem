@@ -198,7 +198,7 @@ public class UserMainFrameController {
 		Boolean only = checkbox.isSelected();
 		//调用hotel模块的搜索酒店方法
 		SearchService s = new SearchController();
-		ArrayList<HotelVO> list = s.Search(hotelname,city, businesscircle, roomtype,price, indate, outdate, star, grade, only);
+		ArrayList<HotelVO> list = s.Search(id.getText(),hotelname,city, businesscircle, roomtype,price, indate, outdate, star, grade, only);
 		ArrayListVO.setArrayList(list);
 		
 		StageVO.setStage(usermainframe.getPrimaryStage());

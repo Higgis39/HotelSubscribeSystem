@@ -47,7 +47,10 @@ public class Hotel{
 	public ArrayList<HotelVO> Search(String userID, String hotelName, String city, String businessArea, String roomType, String price, String checkinTime, String checkoutTime, int star, String grade,boolean hasfixed) throws SQLException{
 		double minGrade,maxGrade;
 		
-		if(grade.equals("1分以下")){
+		if(grade==null){
+			minGrade = 0;
+			maxGrade = 0;
+		}else if(grade.equals("1分以下")){
 			minGrade = 0;
 			maxGrade = 1.0;
 		}else if(grade.equals("1~2分")){
@@ -307,12 +310,16 @@ public class Hotel{
 	 * @throws SQLException
 	 */
 	public List<WorkerVO> findworker(String hotelid) throws SQLException{
-		String hotelname = hoteldataservice.findById(hotelid).getName();
-		List<WorkerPO> po = workerdataservice.findByHotelName(hotelname);
-		List<WorkerVO> vo = new ArrayList<WorkerVO>();
-		for(int i=0;i<po.size();i++){
-			vo.add(new WorkerVO(po.get(i).getHotelName(),po.get(i).getName(),po.get(i).getAge(),po.get(i).getSex(),po.get(i).getBeginTime()));
+		HotelPO hotelpo = hoteldataservice.findById(hotelid);
+		if(hotelpo!=null){
+			String hotelname = hotelpo.getName();
+			List<WorkerPO> po = workerdataservice.findByHotelName(hotelname);
+			List<WorkerVO> vo = new ArrayList<WorkerVO>();
+			for(int i=0;i<po.size();i++){
+				vo.add(new WorkerVO(po.get(i).getHotelName(),po.get(i).getName(),po.get(i).getAge(),po.get(i).getSex(),po.get(i).getBeginTime()));
+			}
+			return vo;
 		}
-		return vo;
+		return null;
 	}
 }

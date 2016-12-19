@@ -110,13 +110,14 @@ public class ManagerMainFrameController {
 		//查询酒店工作人员信息
 		ViewService service = new ViewController();
 		List<WorkerVO> vo = service.findworker(enterhotelid.getText());
-		ObservableList<WorkerVO> data = FXCollections.observableList(vo);
-		worker.setItems(data);
-		workername.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
-		age.setCellValueFactory(cellData->cellData.getValue().getAgeProperty());
-		begindate.setCellValueFactory(cellData->cellData.getValue().getBeginTimeProperty());
-		sex.setCellValueFactory(cellData->cellData.getValue().getSexProperty());
-		
+		if(vo!=null){
+			ObservableList<WorkerVO> data = FXCollections.observableList(vo);
+			worker.setItems(data);
+			workername.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
+			age.setCellValueFactory(cellData->cellData.getValue().getAgeProperty());
+			begindate.setCellValueFactory(cellData->cellData.getValue().getBeginTimeProperty());
+			sex.setCellValueFactory(cellData->cellData.getValue().getSexProperty());
+		}
 		if(!enterhotelid.getText().equals("")){
 			worker.setVisible(true);
 		}else{

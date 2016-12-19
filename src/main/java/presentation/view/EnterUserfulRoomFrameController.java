@@ -36,9 +36,9 @@ public class EnterUserfulRoomFrameController {
 	 * +号按钮的监听
 	 */
 	private void plusAction(){
-		int num = Integer.valueOf(enterroomnum.getText());
+		int num = Integer.valueOf(enterpeoplenum.getText());
 		num++;
-		enterroomnum.setText(Integer.toString(num));
+		enterpeoplenum.setText(Integer.toString(num));
 	}
 	
 	@FXML
@@ -46,11 +46,11 @@ public class EnterUserfulRoomFrameController {
 	 * -号按钮的监听
 	 */
 	private void minusAction(){
-		int num = Integer.valueOf(enterroomnum.getText());
+		int num = Integer.valueOf(enterpeoplenum.getText());
 		if(num>1){
 			num--;
 		}
-		enterroomnum.setText(Integer.toString(num));
+		enterpeoplenum.setText(Integer.toString(num));
 	}
 	
 	@FXML

@@ -94,7 +94,6 @@ public class FillOrderFrameController {
 		int max = 1000;
 		if(roomtype!=null){
 			max = service.CheckRoom(hotelname.getText(), roomtype);
-			System.out.println(max);
 		}
 		int num = Integer.valueOf(enterroomnum.getText());
 		if(num<max){
