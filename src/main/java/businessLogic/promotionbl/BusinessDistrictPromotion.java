@@ -11,7 +11,7 @@ public class BusinessDistrictPromotion implements WebPromotionType{
 	
 	HotelToolForPromotion info = new HotelToolForPromotion();
 		
-	double discount = 0.7;
+	double discount;
 		
 	/**
 	 * 设定不同商圈折扣
@@ -20,6 +20,7 @@ public class BusinessDistrictPromotion implements WebPromotionType{
 	 */
 	public double location(String hotelId){
 		String hotelAddress = info.getHotelBusinessDistrict(hotelId);
+		System.out.println(hotelAddress);
 		switch(hotelAddress){
 		case "仙林中心" :
 			discount = 0.9;
@@ -28,8 +29,10 @@ public class BusinessDistrictPromotion implements WebPromotionType{
 			discount = 0.8;
 			break;
 		default:
+			discount = 1;
 			break;
 		}
+		System.out.println(discount);
 		return discount;
 	}
 	
@@ -42,8 +45,15 @@ public class BusinessDistrictPromotion implements WebPromotionType{
 		//计算会员等级折扣
 		VIPGradePromotion v = new VIPGradePromotion();
 		double VIPDiscount = v.calculateDiscount(hotelId);
-		
+		System.out.println(VIPDiscount);
 		discount = location(hotelId)*VIPDiscount;
+		System.out.println(discount);
 		return discount;
+	}
+	
+	public static void main(String[] args) {
+		BusinessDistrictPromotion b = new BusinessDistrictPromotion();
+		double discount = b.calculateDiscount("100000");
+		System.out.println(discount);
 	}
 }

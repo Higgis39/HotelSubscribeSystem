@@ -9,8 +9,8 @@ public class HotelToolForPromotion implements HotelInfoForPromotion{
 	
 	HotelDataService hoteldataservice = new HotelData();
 	
-	public String getHotelBusinessDistrict(String hotelId){
-		HotelPO hotelpo = hoteldataservice.findById(hotelId);
+	public String getHotelBusinessDistrict(String hotelName){
+		HotelPO hotelpo = hoteldataservice.findByName(hotelName);
 		
 		String businessArea=hotelpo.getBusinessArea();
 		

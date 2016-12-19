@@ -19,8 +19,8 @@ public class PromotionToolForOrder implements PromotionInfoForOrder{
 	 */
 	public double getApproriateHotelPromotion(OrderVO vo) {
 		
-		String hotelID = vo.getHotelId();
 		String userID = vo.getUserId();
+		String hotelID = vo.getHotelId();
 		String entryTime= vo.getEntryTime();
 		
 		//计算生日促销策略折扣
@@ -67,6 +67,7 @@ public class PromotionToolForOrder implements PromotionInfoForOrder{
 	public double getAppropriateWebPromotion(OrderVO vo) {
 		
 		String hotelID = vo.getHotelId();
+		System.out.println(hotelID);
 		
 		//网站特定时间促销策略
 		WebSpecificTimePromotion wstp = new WebSpecificTimePromotion();

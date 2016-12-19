@@ -31,7 +31,7 @@ public class WorkerData implements WorkerDataService{
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
 		sb.append(" select * from worker");
-		sb.append(" where hotelname=?");
+		sb.append(" where hotelName=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
 		ptmt.setString(1, hotelName);
@@ -41,11 +41,11 @@ public class WorkerData implements WorkerDataService{
 		WorkerPO w = null;
 		while(rs.next()){
 			w = new WorkerPO();
-			w.setHotelName(rs.getString("hotelname"));
+			w.setHotelName(rs.getString("hotelName"));
 			w.setName(rs.getString("name"));
 			w.setAge(rs.getInt("age"));
 			w.setSex(rs.getString("sex"));
-			w.setBeginTime(rs.getString("begintime"));
+			w.setBeginTime(rs.getString("beginTime"));
 			
 			result.add(w);
 		}
