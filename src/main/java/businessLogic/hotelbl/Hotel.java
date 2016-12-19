@@ -69,7 +69,7 @@ public class Hotel{
 		if(hasfixed == true){
 			if(hotelName == ""){
 				if(star == 0){
-					if(grade == ""){
+					if(grade.equals(null)){
 						HotelPOList=hoteldataservice.pfindByCityAndBusinessarea(city, businessArea, userID);
 					}
 					else{
@@ -77,7 +77,7 @@ public class Hotel{
 					}
 				}
 				else{
-					if(grade == ""){
+					if(grade.equals(null)){
 						HotelPOList=hoteldataservice.pfindByCityAndBusinessareaAndStar(city, businessArea, star, userID);
 					}
 					else{
@@ -92,7 +92,7 @@ public class Hotel{
 		else{
 			if(hotelName == ""){
 				if(star == 0){
-					if(grade == ""){
+					if(grade.equals(null)){
 						HotelPOList=hoteldataservice.findByCityAndBusinessarea(city, businessArea);
 					}
 					else{
@@ -100,7 +100,7 @@ public class Hotel{
 					}
 				}
 				else{
-					if(grade == ""){
+					if(grade.equals(null)){
 						HotelPOList=hoteldataservice.findByCityAndBusinessareaAndStar(city, businessArea, star);
 					}
 					else{
