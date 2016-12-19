@@ -35,6 +35,8 @@ public class AddHotelFrameController {
 	@FXML
 	private TextField enterservice;
 	@FXML
+	private TextField entercity;
+	@FXML
 	private TextArea enterintroduction;
 	@FXML
 	private PasswordField enterpassword1;
@@ -76,6 +78,7 @@ public class AddHotelFrameController {
 	private void coinfirmAction() throws SQLException{
 		String hotelname = entername.getText();
 		String phonenumber = enteraddress.getText();
+		String city = entercity.getText();
 		String address = enteraddress.getText();
 		String businessarea = enterbusinessarea.getText();
 		int star = Integer.valueOf(enterstar.getText());
@@ -88,7 +91,7 @@ public class AddHotelFrameController {
 			samepassword.setText("两次密码不同");
 		}else{
 			samepassword.setText(null);
-			HotelVO hotelvo = new HotelVO(null,password1,hotelname,phonenumber,address,businessarea,introduction,service,star,0.0);
+			HotelVO hotelvo = new HotelVO(null,password1,hotelname,phonenumber,city,address,businessarea,introduction,service,star,0.0);
 			String result = addhotelblservice.AddHotel(hotelvo);
 			OtherIdVO.setid(result);
 			viewcontrol.openSuccessAddFrame();

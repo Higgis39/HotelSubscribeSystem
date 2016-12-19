@@ -16,6 +16,7 @@ public class HotelVO {
 	private StringProperty password;
 	private StringProperty hotelname;
 	private StringProperty phonenumber;
+	private StringProperty city;
 	private StringProperty address;
 	private StringProperty businessarea;
 	private StringProperty introduction;
@@ -24,11 +25,12 @@ public class HotelVO {
 	private DoubleProperty grade;
 	
 	//构造函数
-	public HotelVO(String hotelid,String password,String hotelname,String phonenumber,String address,String businessarea,String introduction,String facilities,int star,double grade){
+	public HotelVO(String hotelid,String password,String hotelname,String phonenumber,String city,String address,String businessarea,String introduction,String facilities,int star,double grade){
 		this.hotelid = new SimpleStringProperty(hotelid);
 		this.password = new SimpleStringProperty(password);
 		this.hotelname = new SimpleStringProperty(hotelname);
 		this.phonenumber = new SimpleStringProperty(phonenumber);
+		this.city = new SimpleStringProperty(city);
 		this.address = new SimpleStringProperty(address);
 		this.businessarea= new SimpleStringProperty(businessarea);
 		this.introduction = new SimpleStringProperty(introduction);
@@ -81,6 +83,15 @@ public class HotelVO {
 	
 	public StringProperty getAddressProperty(){
 		return address;
+	}
+	
+	//得到酒店城市
+	public String getCity(){
+		return city.get();
+	}
+		
+	public StringProperty getCityProperty(){
+		return city;
 	}
 	
 	//得到酒店所处商圈

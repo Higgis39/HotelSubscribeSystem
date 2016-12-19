@@ -5,30 +5,32 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.AddHotelFrameController">
+<AnchorPane prefHeight="443.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.AddHotelFrameController">
    <children>
-      <Label layoutX="170.0" layoutY="24.0" text="酒店名称：" />
-      <Label layoutX="170.0" layoutY="92.0" text="地址：" />
-      <Label layoutX="170.0" layoutY="57.0" text="联系方式：" />
+      <Label layoutX="161.0" layoutY="24.0" text="酒店名称：" />
+      <Label layoutX="170.0" layoutY="160.0" text="地址：" />
+      <Label layoutX="161.0" layoutY="57.0" text="联系方式：" />
       <Label layoutX="170.0" layoutY="124.0" text="商圈：" />
-      <Label layoutX="170.0" layoutY="154.0" text="简介：" />
-      <Label layoutX="170.0" layoutY="208.0" text="设施服务：" />
-      <Label layoutX="173.0" layoutY="241.0" text="星级：" />
-      <Label layoutX="173.0" layoutY="275.0" text="密码：" />
-      <Label layoutX="170.0" layoutY="309.0" text="确认密码：" />
+      <Label layoutX="170.0" layoutY="191.0" text="简介：" />
+      <Label layoutX="170.0" layoutY="233.0" text="设施服务：" />
+      <Label layoutX="173.0" layoutY="266.0" text="星级：" />
+      <Label layoutX="173.0" layoutY="300.0" text="密码：" />
+      <Label layoutX="170.0" layoutY="334.0" text="确认密码：" />
       <TextField fx:id="entername" layoutX="270.0" layoutY="20.0" />
       <TextField fx:id="enterphonenumber" layoutX="270.0" layoutY="53.0" />
-      <TextField fx:id="enteraddress" layoutX="270.0" layoutY="88.0" />
+      <TextField fx:id="enteraddress" layoutX="270.0" layoutY="156.0" />
       <TextField fx:id="enterbusinessarea" layoutX="270.0" layoutY="120.0" />
-      <TextArea fx:id="enterintroduction" layoutX="270.0" layoutY="156.0" prefHeight="43.0" prefWidth="161.0" />
-      <TextField fx:id="enterservice" layoutX="270.0" layoutY="204.0" />
-      <TextField fx:id="enterstar" alignment="CENTER" layoutX="286.0" layoutY="237.0" prefHeight="23.0" prefWidth="44.0" text="3" />
-      <PasswordField fx:id="enterpassword1" layoutX="270.0" layoutY="271.0" />
-      <PasswordField fx:id="enterpassword2" layoutX="270.0" layoutY="305.0" />
-      <Button layoutX="318.0" layoutY="237.0" mnemonicParsing="false" onAction="#plusAction" text="+" />
-      <Button layoutX="270.0" layoutY="237.0" mnemonicParsing="false" onAction="#minusAction" prefHeight="23.0" prefWidth="25.0" text="-" />
-      <Button layoutX="179.0" layoutY="350.0" mnemonicParsing="false" onAction="#coinfirmAction" prefHeight="23.0" prefWidth="60.0" text="确认" />
-      <Button layoutX="365.0" layoutY="350.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="60.0" text="取消" />
+      <TextArea fx:id="enterintroduction" layoutX="270.0" layoutY="191.0" prefHeight="33.0" prefWidth="161.0" />
+      <TextField fx:id="enterservice" layoutX="270.0" layoutY="229.0" />
+      <TextField fx:id="enterstar" alignment="CENTER" layoutX="283.0" layoutY="262.0" prefHeight="23.0" prefWidth="44.0" text="3" />
+      <PasswordField fx:id="enterpassword1" layoutX="270.0" layoutY="296.0" />
+      <PasswordField fx:id="enterpassword2" layoutX="270.0" layoutY="330.0" />
+      <Button layoutX="315.0" layoutY="262.0" mnemonicParsing="false" onAction="#plusAction" text="+" />
+      <Button layoutX="270.0" layoutY="262.0" mnemonicParsing="false" onAction="#minusAction" prefHeight="0.0" prefWidth="25.0" text="-" />
+      <Button layoutX="179.0" layoutY="375.0" mnemonicParsing="false" onAction="#coinfirmAction" prefHeight="23.0" prefWidth="60.0" text="确认" />
+      <Button layoutX="365.0" layoutY="375.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="60.0" text="取消" />
       <Label fx:id="samepassword" layoutX="439.0" layoutY="309.0" prefHeight="15.0" prefWidth="150.0" />
+      <Label layoutX="170.0" layoutY="90.0" text="城市：" />
+      <TextField fx:id="entercity" layoutX="270.0" layoutY="86.0" />
    </children>
 </AnchorPane>

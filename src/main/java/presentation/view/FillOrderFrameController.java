@@ -3,7 +3,9 @@ package presentation.view;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import businessLogic.hotelbl.ViewController;
 import businessLogic.orderbl.CreateOrderController;
+import businessLogicService.hotelBLService.ViewService;
 import businessLogicService.orderBLService.CreateOrderService;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -92,6 +94,7 @@ public class FillOrderFrameController {
 		int max = 1000;
 		if(roomtype!=null){
 			max = service.CheckRoom(hotelname.getText(), roomtype);
+			System.out.println(max);
 		}
 		int num = Integer.valueOf(enterroomnum.getText());
 		if(num<max){
@@ -151,7 +154,6 @@ public class FillOrderFrameController {
 		String indate = enterindate.getValue().toString()+" 18:00";
 		String outdate = enteroutdate.getValue().toString();
 		int roomnum = Integer.valueOf(enterroomnum.getText());
-//		int peoplenum = Integer.valueOf(enterpeoplenum.getText());
 		String haschild = enterhaschild.getSelectionModel().getSelectedItem();
 		if(roomtype==null){
 			roomtypeword.setText("您必须选择房间类型");
@@ -164,7 +166,9 @@ public class FillOrderFrameController {
 			haschildword.setText(null);
 		}
 		
-		OrderVO ordervo = new OrderVO(null,hotelname.getText(),IdVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum);
+		ViewService s = new ViewController();
+		String hotelid = s.View(hotelname.getText()).getId();
+		OrderVO ordervo = new OrderVO(null,hotelid,IdVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum);
 		double p = service.getTotal(ordervo);
 		ordervo.setprice(p);
 		service.addNewOrder(ordervo);

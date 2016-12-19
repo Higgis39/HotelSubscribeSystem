@@ -114,7 +114,7 @@ public class Hotel{
 		int length=HotelPOList.size();
 		for(int i=0;i<length;i++){
 			HotelVO hotelvo = new HotelVO(HotelPOList.get(i).getHotelId(), HotelPOList.get(i).getPassword(), HotelPOList.get(i).getName(), 
-					                      HotelPOList.get(i).getPhonenumber(), HotelPOList.get(i).getAddress(), HotelPOList.get(i).getBusinessArea(),
+					                      HotelPOList.get(i).getPhonenumber(),HotelPOList.get(i).getCity(), HotelPOList.get(i).getAddress(), HotelPOList.get(i).getBusinessArea(),
 					                      HotelPOList.get(i).getIntroduction(), HotelPOList.get(i).getFacilities(), HotelPOList.get(i).getStar(), HotelPOList.get(i).getGrade());
 			
 			HotelVOList.add(hotelvo);
@@ -132,7 +132,7 @@ public class Hotel{
 		
 		HotelPO hotelpo = hoteldataservice.findByName(hotelName);
 		HotelVO hotelvo = new HotelVO(hotelpo.getHotelId(), hotelpo.getPassword(), hotelName, hotelpo.getPhonenumber(), 
-				                      hotelpo.getAddress(),hotelpo.getBusinessArea(), hotelpo.getIntroduction(),
+				hotelpo.getCity(),hotelpo.getAddress(),hotelpo.getBusinessArea(), hotelpo.getIntroduction(),
 				                      hotelpo.getFacilities(),hotelpo.getStar(), hotelpo.getGrade());
 		return hotelvo;
 	}
@@ -147,7 +147,7 @@ public class Hotel{
 		HotelPO hotelpo = hoteldataservice.findById(id);
 		
 		HotelVO hotelvo = new HotelVO(id, hotelpo.getPassword(), hotelpo.getName(), hotelpo.getPhonenumber(), 
-				                      hotelpo.getAddress(),hotelpo.getBusinessArea(), hotelpo.getIntroduction(),
+				hotelpo.getCity(),hotelpo.getAddress(),hotelpo.getBusinessArea(), hotelpo.getIntroduction(),
 				                      hotelpo.getFacilities(),hotelpo.getStar(), hotelpo.getGrade());
 		return hotelvo;
 	}
@@ -210,7 +210,7 @@ public class Hotel{
 		int length=RoomPOList.size();
 		boolean IsFind = false;
 		for(int i=0;i<length;i++){
-			if(RoomPOList.get(i).getRoomType()==roomtype){
+			if(RoomPOList.get(i).getRoomType().equals(roomtype)){
 				IsFind = true;
 				RoomPOList.get(i).setRoomNum(RoomPOList.get(i).getRoomNum()+roomnum);
 				RoomPOList.get(i).setPeopleNumber(peoplenum);
@@ -221,7 +221,7 @@ public class Hotel{
 		
 		if(IsFind == false){
 			RoomPO roompo = new RoomPO(hotelName,roomnum,peoplenum,price,roomtype);
-			roomdataservice.update(roompo);
+			roomdataservice.insert(roompo);
 		}
 	
 		return true;
@@ -241,7 +241,7 @@ public class Hotel{
 		
 		int length=RoomPOList.size();
 		for(int i=0;i<length;i++){
-			if(RoomPOList.get(i).getRoomType()==room){
+			if(RoomPOList.get(i).getRoomType().equals(room)){
 				RoomPOList.get(i).setRoomNum(RoomPOList.get(i).getRoomNum()+num);
 				roomdataservice.update(RoomPOList.get(i));
 			}
@@ -264,7 +264,7 @@ public class Hotel{
 		
 		int length=RoomPOList.size();
 		for(int i=0;i<length;i++){
-			if(RoomPOList.get(i).getRoomType()==roomType){
+			if(RoomPOList.get(i).getRoomType().equals(roomType)){
 				RoomPOList.get(i).setRoomNum(RoomPOList.get(i).getRoomNum()+num);
 				roomdataservice.update(RoomPOList.get(i));
 			}
@@ -287,7 +287,7 @@ public class Hotel{
 		
 		int length=RoomPOList.size();
 		for(int i=0;i<length;i++){
-			if(RoomPOList.get(i).getRoomType()==roomType){
+			if(RoomPOList.get(i).getRoomType().equals(roomType)){
 				RoomPOList.get(i).setRoomNum(RoomPOList.get(i).getRoomNum()-num);
 				roomdataservice.update(RoomPOList.get(i));
 			}
