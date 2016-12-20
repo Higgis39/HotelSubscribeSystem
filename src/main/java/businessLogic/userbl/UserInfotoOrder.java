@@ -1,5 +1,7 @@
 package businessLogic.userbl;
 
+import java.util.ArrayList;
+
 import businessLogic.orderbl.UserInfoForOrder;
 import data.UserData;
 import dataService.UserDataService;
@@ -35,6 +37,13 @@ public class UserInfotoOrder implements UserInfoForOrder{
 		UserPO userpo = service.find(ID);
 		userpo.setCreditvalue(userpo.getcreditvalue()+creditchange);
 		userpo.setVIPgrade(grade.setVIPgradeByCredit(userpo.getcreditvalue(),userpo.getVIPtype()));
+		ArrayList<String> change = userpo.getcreditchange();
+		if(creditchange>0){
+			change.add("增加"+Integer.toString(creditchange));
+		}else{
+			change.add("减少"+Integer.toString(creditchange));
+		}
+		userpo.setCreditchange(change);
 		service.update(userpo);
 		return true;
 	}

@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
 import vo.IdVO;
 import vo.StageVO;
+import vo.WordVO;
 
 
 /**
@@ -85,10 +86,11 @@ public class RegisterVIPFrameController {
 			result = service.RegisterVIP(IdVO.getid(),"企业会员",company);
 		}
 		if(result==true){
-			viewcontrol.openSuccessAdd2Frame();
 			StageVO.getSatge().close();
 			viewcontrol.openUserPersonalFrame();
 			registerVIPframe.getPrimaryStage().close();
+			WordVO.setword("注册成功");
+			viewcontrol.openSuccessSaveFrame();
 		}else{
 			
 		}

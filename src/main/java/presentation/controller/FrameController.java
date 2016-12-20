@@ -4,9 +4,7 @@ import javafx.stage.Stage;
 import presentation.view.RegisterClientFrame;
 import presentation.view.RegisterVIPFrame;
 import presentation.view.SearchResultFrame;
-import presentation.view.SuccessAdd2Frame;
 import presentation.view.SuccessAddFrame;
-import presentation.view.SuccessOrderFrame;
 import presentation.view.SuccessRegisterFrame;
 import presentation.view.SuccessSaveFrame;
 import presentation.view.UserMainFrame;
@@ -74,13 +72,6 @@ public class FrameController{
 	 */
 	public void openSuccessAddFrame(){
 		new SuccessAddFrame().start(new Stage());
-	}
-	
-	/**
-	 * 打开添加成功(酒店工作人员)界面
-	 */
-	public void openSuccessAdd2Frame(){
-		new SuccessAdd2Frame().start(new Stage());
 	}
 	
 	/**
@@ -314,10 +305,4 @@ public class FrameController{
 		new NoEnoughCreditFrame().start(new Stage());
 	}
 	
-	/**
-	 * 打开成功下单界面
-	 */
-	public void openSuccessOrderFrame(){
-		new SuccessOrderFrame().start(new Stage());
-	}
 }

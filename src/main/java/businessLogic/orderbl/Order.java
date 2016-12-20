@@ -171,12 +171,14 @@ public class Order{
 	 * @return
 	 */
 	public List<OrderVO> filterOrderByStatus(List<OrderVO> list,String Status){
+		List<OrderVO> result = new ArrayList<OrderVO>();
 		for(int i=0;i<list.size();i++){
 			OrderVO vo=list.get(i);
-			if(!vo.getStatus().equals(Status))
-				list.remove(i);
+			if(vo.getStatus().equals(Status)){
+				result.add(vo);
+			}	
 		}
-		return list;
+		return result;
 	}
 	
 	/**

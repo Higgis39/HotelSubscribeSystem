@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
+import vo.WordVO;
 import vo.WorkerVO;
 
 /**
@@ -55,7 +56,8 @@ public class AddHotelWorkerFrameController {
 		boolean result = addhotelblservice.AddHotelWorker(new WorkerVO(hotelname,workername,age,sex,begindate));
 		if(result==true){
 			addhotelworkerframe.getPrimaryStage().close();
-			viewcontrol.openSuccessAdd2Frame();
+			WordVO.setword("添加成功！");
+			viewcontrol.openSuccessSaveFrame();
 		}
 	}
 	

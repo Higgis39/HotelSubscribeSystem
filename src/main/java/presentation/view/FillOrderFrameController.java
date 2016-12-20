@@ -17,6 +17,7 @@ import vo.HotelNameVO;
 import vo.IdVO;
 import vo.OrderVO;
 import vo.StageVO;
+import vo.WordVO;
 
 /**
  * 
@@ -174,7 +175,9 @@ public class FillOrderFrameController {
 		ordervo.setprice(p);
 		service.addNewOrder(ordervo);
 		fillorderframe.getPrimaryStage().close();
-		viewcontrol.openSuccessOrderFrame();
+		viewcontrol.openUserMainFrame();
+		WordVO.setword("下单成功");
+		viewcontrol.openSuccessSaveFrame();
 	}
 	
 	@FXML

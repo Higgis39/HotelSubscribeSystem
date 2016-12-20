@@ -87,7 +87,8 @@ public class HistoricalOrderFrameController {
 		CustomerViewOrderService service = new CustomerViewOrderController();
 		
 		List<OrderVO> list = service.getSpecificOrders(id.getText(),ordertype);
-		if(list != null){
+		if(list != null&&ordertype=="已执行"){
+			link.setVisible(true);
 			ObservableList<OrderVO> data = FXCollections.observableList(list);
 			tableview.setItems(data);
 			orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
@@ -109,6 +110,42 @@ public class HistoricalOrderFrameController {
 	                return new ButtonCell2();
 	            }
 	        });
+		}else if(list != null&&ordertype.equals("未执行")){
+			ObservableList<OrderVO> data = FXCollections.observableList(list);
+			tableview.setItems(data);
+			intime.setText("预计入住时间");
+			outtime.setText("预计退房时间");
+			link.setText("撤销");
+			link.setVisible(true);
+			orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
+			hotelname.setCellValueFactory(cellData->cellData.getValue().getHotelIdProperty());
+			intime.setCellValueFactory(cellData->cellData.getValue().getEntryTimeProperty());
+			outtime.setCellValueFactory(cellData->cellData.getValue().getLastTimeProperty());
+			price.setCellValueFactory(cellData->cellData.getValue().getPriceProperty());
+			
+			link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
+	            @Override
+	            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<OrderVO, Boolean> p) {
+	                return new SimpleBooleanProperty(p.getValue()!=null);
+	            }
+	        });
+
+	        link.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
+	            @Override
+	            public TableCell<OrderVO, Boolean> call(TableColumn<OrderVO, Boolean> p) {
+	                return new ButtonCell3();
+	            }
+	        });
+		}else if(list!=null){
+			link.setVisible(false);
+			tableview.setPrefWidth(500);
+			ObservableList<OrderVO> data = FXCollections.observableList(list);
+			tableview.setItems(data);
+			orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
+			hotelname.setCellValueFactory(cellData->cellData.getValue().getHotelIdProperty());
+			intime.setCellValueFactory(cellData->cellData.getValue().getEntryTimeProperty());
+			outtime.setCellValueFactory(cellData->cellData.getValue().getLastTimeProperty());
+			price.setCellValueFactory(cellData->cellData.getValue().getPriceProperty());
 		}
 	}
 	
