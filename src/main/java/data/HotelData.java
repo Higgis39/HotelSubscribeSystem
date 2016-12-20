@@ -500,7 +500,7 @@ public class HotelData implements HotelDataService{
 			h.setGrade(rs.getDouble("grade"));
 			
 			for(int i=0; i<hotelName.size(); i++){
-				if(rs.getString("hotelid") == hotelName.get(i)){
+				if(rs.getString("hotelid").equals(hotelName.get(i))){
 					result.add(h);
 					break;
 				}
@@ -520,7 +520,7 @@ public class HotelData implements HotelDataService{
 		
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
-		sb.append("select * from hotel");
+		sb.append(" select * from hotel");
 		sb.append(" where city=? and businessarea=? and hotelname=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
@@ -546,7 +546,7 @@ public class HotelData implements HotelDataService{
 			h.setGrade(rs.getDouble("grade"));
 			
 			for(int i=0; i<hotelName.size(); i++){
-				if(rs.getString("hotelid") == hotelName.get(i)){
+				if(rs.getString("hotelid").equals(hotelName.get(i))){
 					result.add(h);
 					break;
 				}
@@ -592,7 +592,7 @@ public class HotelData implements HotelDataService{
 			h.setGrade(rs.getDouble("grade"));
 			
 			for(int i=0; i<hotelName.size(); i++){
-				if(rs.getString("hotelid") == hotelName.get(i)){
+				if(rs.getString("hotelid").equals(hotelName.get(i))){
 					result.add(h);
 					break;
 				}
@@ -639,7 +639,7 @@ public class HotelData implements HotelDataService{
 			h.setGrade(rs.getDouble("grade"));
 			
 			for(int i=0; i<hotelName.size(); i++){
-				if(rs.getString("hotelid") == hotelName.get(i)){
+				if(rs.getString("hotelid").equals(hotelName.get(i))){
 					result.add(h);
 					break;
 				}
@@ -687,7 +687,7 @@ public class HotelData implements HotelDataService{
 			h.setGrade(rs.getDouble("grade"));
 			
 			for(int i=0; i<hotelName.size(); i++){
-				if(rs.getString("hotelid") == hotelName.get(i)){
+				if(rs.getString("hotelid").equals(hotelName.get(i))){
 					result.add(h);
 					break;
 				}

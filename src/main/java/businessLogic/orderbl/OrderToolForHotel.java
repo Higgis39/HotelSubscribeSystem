@@ -18,6 +18,8 @@ public class OrderToolForHotel implements OrderInfoForHotel{
 		if(!po.getStatus().equals("已执行"))
 			return false;
 		po.setLastTime(checkoutTime);
+		po.setStatus("已退房");
+		service.update(po);
 		return true;
 	};
 }

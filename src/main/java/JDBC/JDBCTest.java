@@ -98,8 +98,9 @@ public class JDBCTest {
 //		op.setRoomNum(4);
 //		od.insert(op);
 		
-//		List<OrderPO> o = new ArrayList<>(); 
-////		o = od.findByStatus("已执行");
+//		List<String> o = new ArrayList<>(); 
+//		o = od.findHotelIdByUserId("10005");
+//		System.out.println(o.get(0));
 //		o = od.findByClient("10002");
 //		String name = o.get(0).getComment();
 //		System.out.println(name);

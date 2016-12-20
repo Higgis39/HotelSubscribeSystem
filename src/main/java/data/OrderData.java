@@ -297,7 +297,7 @@ public class OrderData implements OrderDataService{
 		sb.append(" where userId=?");
 		
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-		ptmt.setString(1, userId);
+		ptmt.setString(1, encryption.encryption(userId));
 		
 		ResultSet rs = ptmt.executeQuery();
 		

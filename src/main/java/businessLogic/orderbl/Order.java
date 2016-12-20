@@ -112,7 +112,7 @@ public class Order{
 	 */
 	public boolean Comment(){
 		OrderPO po = service.findByOrderID(vo.getorderId());
-		if(!po.getStatus().equals("已执行"))
+		if(!po.getStatus().equals("已退房"))
 			return false;
 		po.setComment(vo.getComment());
 		po.setStatus("已评价");
