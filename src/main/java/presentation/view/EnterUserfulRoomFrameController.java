@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
 import vo.HotelNameVO;
 import vo.StageVO;
+import vo.WordVO;
 
 /**
  * 
@@ -79,6 +80,7 @@ public class EnterUserfulRoomFrameController {
 		enteruserfulroomframe.getPrimaryStage().close();
 		StageVO.getSatge().close();
 		viewcontrol.openHotelMainFrame();
+		WordVO.setword("保存成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

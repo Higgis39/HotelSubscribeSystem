@@ -30,6 +30,8 @@ public class SearchResultFrameController {
 	@FXML
 	private TableColumn<HotelVO,Number> grade;
 	@FXML
+	private TableColumn<HotelVO,Boolean> view;
+	@FXML
 	private TableColumn<HotelVO,Boolean> link;
 
 	private SearchResultFrame searchresultframe;
@@ -56,6 +58,20 @@ public class SearchResultFrameController {
 			phonenumber.setCellValueFactory(cellData->cellData.getValue().getPhonenumberProperty());
 			star.setCellValueFactory(cellData->cellData.getValue().getStarProperty());
 			grade.setCellValueFactory(cellData->cellData.getValue().getGradeProperty());
+			
+			view.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HotelVO, Boolean>, ObservableValue<Boolean>>() {
+	            @Override
+	            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<HotelVO, Boolean> p) {
+	                return new SimpleBooleanProperty(p.getValue()!=null);
+	            }
+	        });
+
+	        view.setCellFactory(new Callback<TableColumn<HotelVO, Boolean>, TableCell<HotelVO, Boolean>>() {
+	            @Override
+	            public TableCell<HotelVO, Boolean> call(TableColumn<HotelVO, Boolean> p) {
+	                return new ButtonCell5();
+	            }
+	        });
 			
 			link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HotelVO, Boolean>, ObservableValue<Boolean>>() {
 	            @Override

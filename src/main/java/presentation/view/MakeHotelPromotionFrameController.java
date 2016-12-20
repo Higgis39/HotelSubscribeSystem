@@ -12,6 +12,7 @@ import presentation.controller.FrameController;
 import vo.HotelNameVO;
 import vo.HotelPromotionVO;
 import vo.StageVO;
+import vo.WordVO;
 
 /**
  * 
@@ -138,6 +139,7 @@ public class MakeHotelPromotionFrameController {
 		makehotelpromotionframe.getPrimaryStage().close();
 		StageVO.getSatge().close();
 		viewcontrol.openHotelPromotionFrame();
+		WordVO.setword("保存成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

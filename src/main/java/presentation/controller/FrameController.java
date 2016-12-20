@@ -9,6 +9,7 @@ import presentation.view.SuccessRegisterFrame;
 import presentation.view.SuccessSaveFrame;
 import presentation.view.UserMainFrame;
 import presentation.view.UserPersonalFrame;
+import presentation.view.UserViewRoomFrame;
 import presentation.view.ViewCreditChangeFrame;
 import presentation.view.AddHotelFrame;
 import presentation.view.AddHotelWorkerFrame;
@@ -305,4 +306,10 @@ public class FrameController{
 		new NoEnoughCreditFrame().start(new Stage());
 	}
 	
+	/**
+	 * 打开用户查看房间类型界面
+	 */
+	public void openUserViewRoomFrame(){
+		new UserViewRoomFrame().start(new Stage());
+	}
 }

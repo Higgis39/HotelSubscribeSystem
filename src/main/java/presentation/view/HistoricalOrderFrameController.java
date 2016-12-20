@@ -21,6 +21,7 @@ import javafx.util.Callback;
 import presentation.controller.FrameController;
 import vo.IdVO;
 import vo.OrderVO;
+import vo.StageVO;
 import vo.UserVO;
 
 /**
@@ -48,6 +49,8 @@ public class HistoricalOrderFrameController {
 	private TableColumn<OrderVO,String> outtime;
 	@FXML
 	private TableColumn<OrderVO,Number> price;
+	@FXML
+	private TableColumn<OrderVO,Boolean> again;
 	@FXML
 	private TableColumn<OrderVO,Boolean> link;
 	
@@ -81,14 +84,16 @@ public class HistoricalOrderFrameController {
 	 * @throws SQLException
 	 */
 	private void viewAction() throws SQLException{
+		StageVO.setStage2(historicalorderframe.getPrimaryStage());
+		
 		String ordertype = enterordertype.getSelectionModel().getSelectedItem();
 		//根据得到的订单类型进行搜索
 		
 		CustomerViewOrderService service = new CustomerViewOrderController();
 		
 		List<OrderVO> list = service.getSpecificOrders(id.getText(),ordertype);
-		if(list != null&&ordertype=="已执行"){
-			link.setVisible(true);
+		
+		if(list!=null){
 			ObservableList<OrderVO> data = FXCollections.observableList(list);
 			tableview.setItems(data);
 			orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
@@ -97,55 +102,58 @@ public class HistoricalOrderFrameController {
 			outtime.setCellValueFactory(cellData->cellData.getValue().getLastTimeProperty());
 			price.setCellValueFactory(cellData->cellData.getValue().getPriceProperty());
 			
-			link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
+			again.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
 	            @Override
 	            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<OrderVO, Boolean> p) {
 	                return new SimpleBooleanProperty(p.getValue()!=null);
 	            }
 	        });
 
-	        link.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
+	        again.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
 	            @Override
 	            public TableCell<OrderVO, Boolean> call(TableColumn<OrderVO, Boolean> p) {
-	                return new ButtonCell2();
+	                return new ButtonCell4();
 	            }
 	        });
-		}else if(list != null&&ordertype.equals("未执行")){
-			ObservableList<OrderVO> data = FXCollections.observableList(list);
-			tableview.setItems(data);
-			intime.setText("预计入住时间");
-			outtime.setText("预计退房时间");
-			link.setText("撤销");
-			link.setVisible(true);
-			orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
-			hotelname.setCellValueFactory(cellData->cellData.getValue().getHotelIdProperty());
-			intime.setCellValueFactory(cellData->cellData.getValue().getEntryTimeProperty());
-			outtime.setCellValueFactory(cellData->cellData.getValue().getLastTimeProperty());
-			price.setCellValueFactory(cellData->cellData.getValue().getPriceProperty());
 			
-			link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
-	            @Override
-	            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<OrderVO, Boolean> p) {
-	                return new SimpleBooleanProperty(p.getValue()!=null);
-	            }
-	        });
+			if(ordertype.equals("已执行")){
+				link.setVisible(true);
+				link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
+		            @Override
+		            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<OrderVO, Boolean> p) {
+		                return new SimpleBooleanProperty(p.getValue()!=null);
+		            }
+		        });
 
-	        link.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
-	            @Override
-	            public TableCell<OrderVO, Boolean> call(TableColumn<OrderVO, Boolean> p) {
-	                return new ButtonCell3();
-	            }
-	        });
-		}else if(list!=null){
-			link.setVisible(false);
-			tableview.setPrefWidth(500);
-			ObservableList<OrderVO> data = FXCollections.observableList(list);
-			tableview.setItems(data);
-			orderid.setCellValueFactory(cellData->cellData.getValue().getorderIdProperty());
-			hotelname.setCellValueFactory(cellData->cellData.getValue().getHotelIdProperty());
-			intime.setCellValueFactory(cellData->cellData.getValue().getEntryTimeProperty());
-			outtime.setCellValueFactory(cellData->cellData.getValue().getLastTimeProperty());
-			price.setCellValueFactory(cellData->cellData.getValue().getPriceProperty());
+		        link.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
+		            @Override
+		            public TableCell<OrderVO, Boolean> call(TableColumn<OrderVO, Boolean> p) {
+		                return new ButtonCell2();
+		            }
+		        });
+			}else if(ordertype.equals("未执行")){
+				intime.setText("预计入住时间");
+				outtime.setText("预计退房时间");
+				link.setText("撤销");
+				link.setVisible(true);
+				
+				link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
+		            @Override
+		            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<OrderVO, Boolean> p) {
+		                return new SimpleBooleanProperty(p.getValue()!=null);
+		            }
+		        });
+
+		        link.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
+		            @Override
+		            public TableCell<OrderVO, Boolean> call(TableColumn<OrderVO, Boolean> p) {
+		                return new ButtonCell3();
+		            }
+		        });
+			}else{
+				link.setVisible(false);
+				tableview.setPrefWidth(550);
+			}
 		}
 	}
 	

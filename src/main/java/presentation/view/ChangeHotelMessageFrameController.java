@@ -11,6 +11,7 @@ import presentation.controller.FrameController;
 import vo.HotelNameVO;
 import vo.HotelVO;
 import vo.StageVO;
+import vo.WordVO;
 
 public class ChangeHotelMessageFrameController {
 	@FXML
@@ -68,6 +69,7 @@ public class ChangeHotelMessageFrameController {
 		changehotelmessageframe.getPrimaryStage().close();
 		StageVO.getSatge().close();
 		viewcontrol.openHotelMessageFrame();
+		WordVO.setword("保存成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

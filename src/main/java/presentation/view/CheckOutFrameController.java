@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
 import vo.HotelNameVO;
+import vo.WordVO;
 
 
 /**
@@ -81,6 +82,7 @@ public class CheckOutFrameController {
 			service.CheckOut(HotelNameVO.getHotelname(),room,num);
 		}
 		checkoutframe.getPrimaryStage().close();
+		WordVO.setword("退房成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

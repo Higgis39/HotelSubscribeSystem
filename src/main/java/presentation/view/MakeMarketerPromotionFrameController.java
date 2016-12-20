@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
 import vo.StageVO;
 import vo.WebPromotionVO;
+import vo.WordVO;
 
 /**
  * 
@@ -111,6 +112,7 @@ public class MakeMarketerPromotionFrameController {
 		makemarketerpromotionframe.getPrimaryStage().close();
 		StageVO.getSatge().close();
 		viewcontrol.openMarketerPromotionFrame();
+		WordVO.setword("保存成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	@FXML

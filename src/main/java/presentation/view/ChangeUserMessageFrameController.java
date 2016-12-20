@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
 import vo.OtherIdVO;
 import vo.UserVO;
+import vo.WordVO;
 
 /**
  * 
@@ -57,6 +58,7 @@ public class ChangeUserMessageFrameController {
 			service.ChangeClientMessaage(OtherIdVO.getid(), name, phonenumber, creditvalue, null, company);
 		}
 		changeusermessageframe.getPrimaryStage().close();
+		WordVO.setword("保存成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

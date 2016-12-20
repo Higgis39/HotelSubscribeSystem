@@ -5,18 +5,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="presentation.view.SearchResultFrameController">
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.SearchResultFrameController">
    <children>
       <Button layoutX="49.0" layoutY="39.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="24.0" prefWidth="64.0" text="返回" />
-      <TableView fx:id="tableview" layoutX="75.0" layoutY="100.0" prefHeight="337.0" prefWidth="600.0">
+      <TableView fx:id="tableview" layoutX="65.0" layoutY="98.0" prefHeight="337.0" prefWidth="620.0">
         <columns>
           <TableColumn fx:id="hotelname" prefWidth="120.0" text="酒店名称" />
-          <TableColumn fx:id="address" prefWidth="140.0" text="地址" />
+          <TableColumn fx:id="address" prefWidth="120.0" text="地址" />
             <TableColumn fx:id="phonenumber" prefWidth="100.0" text="联系方式" />
-            <TableColumn fx:id="star" prefWidth="70.0" text="星级" />
-            <TableColumn fx:id="grade" prefWidth="70.0" text="评分" />
-            <TableColumn fx:id="link" prefWidth="100.0" text="下单" />
+            <TableColumn fx:id="star" prefWidth="60.0" text="星级" />
+            <TableColumn fx:id="grade" prefWidth="60.0" text="评分" />
+            <TableColumn fx:id="view" text="查看房间" />
+            <TableColumn fx:id="link" text="下单" />
         </columns>
       </TableView>
    </children>

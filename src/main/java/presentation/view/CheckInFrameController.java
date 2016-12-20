@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
 import vo.HotelNameVO;
 import vo.OrderVO;
+import vo.WordVO;
 
 
 /**
@@ -111,6 +112,7 @@ public class CheckInFrameController {
 			service.CheckIn(HotelNameVO.getHotelname(),room,Integer.valueOf(roomnum));
 		}
 		checkinframe.getPrimaryStage().close();
+		WordVO.setword("登记成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

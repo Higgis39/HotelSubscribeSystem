@@ -8,6 +8,7 @@ import presentation.controller.FrameController;
 import vo.IdVO;
 import vo.StageVO;
 import vo.UserVO;
+import vo.WordVO;
 
 /**
  * 
@@ -39,6 +40,7 @@ public class ChangePersonalMessageFrameController {
 		changepersonalmessageframe.getPrimaryStage().close();
 		StageVO.getSatge().close();
 		viewcontrol.openUserPersonalFrame();
+		WordVO.setword("保存成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

@@ -10,6 +10,7 @@ import javafx.scene.control.TextArea;
 import presentation.controller.FrameController;
 import vo.OrderIdVO;
 import vo.OrderVO;
+import vo.WordVO;
 
 /**
  * 
@@ -42,6 +43,7 @@ public class AssessOrderFrameController {
 			CommentOrderService s = new CommentOrderController();
 			s.addComment(vo,grade);
 			assessorderframe.getPrimaryStage().close();
+			WordVO.setword("保存成功");
 			viewcontrol.openSuccessSaveFrame();
 		}else{
 			assessorderframe.getPrimaryStage().close();
