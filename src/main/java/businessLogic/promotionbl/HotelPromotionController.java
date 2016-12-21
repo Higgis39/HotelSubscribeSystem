@@ -40,6 +40,7 @@ public class HotelPromotionController implements HotelPromotionBLService{
 			hpp.setIspartner(hpv.getisIspartner());
 			hpp.setBegintime(hpv.getBegintime());
 			hpp.setEndtime(hpv.getEndtime());
+			hpp.setDiscount(hpv.getDiscount());
 			
 			for(int i=0; i<name.size(); i++){
 				if(hpv.getName().equals(name.get(i))){

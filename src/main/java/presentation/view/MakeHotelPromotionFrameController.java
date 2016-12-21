@@ -124,7 +124,7 @@ public class MakeHotelPromotionFrameController {
 		}else{
 			iscompany = false;
 		}
-		double discount = Integer.valueOf(enterdiscount.getText())/100;
+		double discount = (double)(Integer.valueOf(enterdiscount.getText()))/100;
 		if(checkbox.isSelected()){
 			HotelPromotionVO vo = new HotelPromotionVO(HotelNameVO.getHotelname(),enterpromotionname.getText(),isbirthday,
 					Integer.valueOf(enterroomnum.getText()),iscompany,begindate.getValue().toString(),enddate.getValue().toString(),discount);
