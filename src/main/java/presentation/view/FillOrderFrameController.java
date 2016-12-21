@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
@@ -19,6 +20,7 @@ import vo.HotelPromotionVO;
 import vo.IdVO;
 import vo.OrderVO;
 import vo.StageVO;
+import vo.WebPromotionVO;
 import vo.WordVO;
 
 /**
@@ -45,7 +47,17 @@ public class FillOrderFrameController {
 	@FXML
 	private TextField enterpeoplenum;
 	@FXML
-	private TableView<HotelPromotionVO> tableview;
+	private TableView<HotelPromotionVO> tableview1;
+	@FXML
+	private TableView<WebPromotionVO> tableview2;
+	@FXML
+	private TableColumn<HotelPromotionVO,String> promotionname1;
+	@FXML
+	private TableColumn<HotelPromotionVO,Number> discount1;
+	@FXML
+	private TableColumn<WebPromotionVO,String> promotionname2;
+	@FXML
+	private TableColumn<WebPromotionVO,Number> discount2;
 	
 	private FillOrderFrame fillorderframe;
 	
