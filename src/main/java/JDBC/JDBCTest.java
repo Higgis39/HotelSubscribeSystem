@@ -21,22 +21,36 @@ public class JDBCTest {
 	
 	public static void main(String[] args) throws SQLException {
 		
-//		HotelData hd = new HotelData();
-////		
-//		ArrayList<Map<String, Object>> params = new ArrayList<Map<String, Object>>();
-//		Map<String, Object> param = new HashMap<String, Object>();
-//		//查找roomID=2;
-//		param.put("name", "roomID");
+		HotelData hd = new HotelData();
+//		
+		ArrayList<Map<String, Object>> params = new ArrayList<Map<String, Object>>();
+		Map<String, Object> param = new HashMap<String, Object>();
+		//查找roomID=2;
+//		param.put("name", "city");
 //		param.put("rela", "=");
-//		param.put("value", "2");
-//		//查找star小于4
-//		param.put("name", "grade");
-//		param.put("rela", "<=");
-//		param.put("value", "3");
-//		param.put("name", "grade");
-//		param.put("rela", ">=");
-//		param.put("value", "2");
+//		param.put("value", "'南京'");
+////		//查找star小于4
 //		params.add(param);
+		
+//		param.put("name", "star");
+//		param.put("rela", "=");
+//		param.put("value", "4");
+//		params.add(param);
+//		param = new HashMap<String, Object>();
+		param.put("name", "businessarea");
+		param.put("rela", "=");
+		param.put("value","'仙林中心'");
+		params.add(param);
+		param.put("name", "roomPrice");
+		param.put("rela", "<");
+		param.put("value",75);
+		params.add(param);
+		System.out.println(params.size());
+		ArrayList<HotelPO> po = hd.find(params);
+		for(int i=0; i<po.size(); i++){
+			System.out.println(po.get(i).getName());
+		}
+//		System.out.println(po.get(3).getName());
 //		
 //		ArrayList<HotelPO> po = hd.findByAddressAndBusinessarea("南京", "仙林中心");
 ////		

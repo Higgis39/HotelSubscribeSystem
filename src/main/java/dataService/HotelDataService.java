@@ -47,6 +47,7 @@ public interface HotelDataService {
 	
 	
 	public ArrayList<HotelPO> find(ArrayList<Map<String, Object>> params) throws SQLException;
+	public ArrayList<HotelPO> pfind(ArrayList<Map<String, Object>> params, String userId) throws SQLException;
 	
 	/**
 	 * 得到最后一个hotel对象的id

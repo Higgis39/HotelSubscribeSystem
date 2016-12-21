@@ -1,8 +1,10 @@
 package businessLogic.hotelbl;
 
 import java.util.List;
+import java.util.Map;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import po.RoomPO;
 import po.WorkerPO;
@@ -45,6 +47,7 @@ public class Hotel{
 	 * @throws SQLException 
 	 */
 	public ArrayList<HotelVO> Search(String userID, String hotelName, String city, String businessArea, String roomType, String price, String checkinTime, String checkoutTime, int star, String grade,boolean hasfixed) throws SQLException{
+		
 		double minGrade,maxGrade;
 		
 		if(grade==null){
@@ -67,54 +70,199 @@ public class Hotel{
 			maxGrade = 5.0;
 		}
 		
+		double minPrice, maxPrice;
+		if(price==null){
+			minPrice = 0;
+			maxPrice = 20000;
+		}else if(price.equals("150以下")){
+			minPrice = 0;
+			maxPrice = 150;
+		}else if(price.equals("150~300")){
+			minPrice = 150;
+			maxPrice = 300;
+		}else if(price.equals("300~500")){
+			minPrice = 300;
+			maxPrice = 500;
+		}else if(price.equals("500~700")){
+			minPrice = 500;
+			maxPrice = 700;
+		}else if(price.equals("700~1000")){
+			minPrice = 700;
+			maxPrice = 1000;
+		}else{
+			minPrice = 1000;
+			maxPrice = 20000;
+		}
+		
+		ArrayList<Map<String, Object>> params = new ArrayList<Map<String, Object>>();
+		Map<String, Object> param = new HashMap<String, Object>();
 		ArrayList<HotelPO> HotelPOList = new ArrayList<HotelPO>();
 		
 		if(hasfixed == true){
-			if(hotelName.equals("")){
-				if(star == 0){
-					if(grade==null){
-						HotelPOList=hoteldataservice.pfindByCityAndBusinessarea(city, businessArea, userID);
-					}
-					else{
-						HotelPOList=hoteldataservice.pfindByCityAndBusinessareaAndGrade(city, businessArea, minGrade, maxGrade, userID);
-					}
-				}
-				else{
-					if(grade==null){
-						HotelPOList=hoteldataservice.pfindByCityAndBusinessareaAndStar(city, businessArea, star, userID);
-					}
-					else{
-						HotelPOList=hoteldataservice.pfindByAll(city, businessArea, star, minGrade, maxGrade, userID);
-					}
-				}
+			String tcity = '\''+city+'\'';
+			String tbusinessArea = '\''+businessArea+'\'';
+			param.put("name", "city");
+			param.put("rela", "=");
+			param.put("value", tcity);
+			params.add(param);
+			param = new HashMap<String, Object>();
+			param.put("name", "businessarea");
+			param.put("rela", "=");
+			param.put("value", tbusinessArea);
+			params.add(param);
+			if(!hotelName.equals("")){
+				param = new HashMap<String, Object>();
+				String thotelName = '\''+hotelName+'\'';
+				param.put("name", "hotelname");
+				param.put("rela", "=");
+				param.put("value", thotelName);
+				params.add(param);
 			}
-			else{
-				HotelPOList = hoteldataservice.pfindByCityAndBusinessareaAndName(city, businessArea, hotelName, userID);
+			if(star!=0){
+				param = new HashMap<String, Object>();
+				param.put("name", "star");
+				param.put("rela", "=");
+				param.put("value", star);
+				params.add(param);
 			}
+			if(grade!=null){
+				param = new HashMap<String, Object>();
+				param.put("name", "grade");
+				param.put("rela", ">");
+				param.put("value", minGrade);
+				params.add(param);
+				param = new HashMap<String, Object>();
+				param.put("name", "grade");
+				param.put("rela", "<");
+				param.put("value", maxGrade);
+				params.add(param);
+			}
+			if(price!=null){
+				param = new HashMap<String, Object>();
+				param.put("name", "roomPrice");
+				param.put("rela", ">");
+				param.put("value", minPrice);
+				params.add(param);
+				param = new HashMap<String, Object>();
+				param.put("name", "roomPrice");
+				param.put("rela", "<");
+				param.put("value", maxPrice);
+				params.add(param);
+			}
+			if(roomType!=null){
+				param = new HashMap<String, Object>();
+				String troomType = '\''+roomType+'\'';
+				param.put("name", "roomType");
+				param.put("rela", "=");
+				param.put("value", troomType);
+				params.add(param);
+			}
+			HotelPOList = hoteldataservice.pfind(params, userID);
+//			if(hotelName.equals("")){
+//				if(star == 0){
+//					if(grade==null){
+//						HotelPOList=hoteldataservice.pfindByCityAndBusinessarea(city, businessArea, userID);
+//					}
+//					else{
+//						HotelPOList=hoteldataservice.pfindByCityAndBusinessareaAndGrade(city, businessArea, minGrade, maxGrade, userID);
+//					}
+//				}
+//				else{
+//					if(grade==null){
+//						HotelPOList=hoteldataservice.pfindByCityAndBusinessareaAndStar(city, businessArea, star, userID);
+//					}
+//					else{
+//						HotelPOList=hoteldataservice.pfindByAll(city, businessArea, star, minGrade, maxGrade, userID);
+//					}
+//				}
+//			}
+//			else{
+//				HotelPOList = hoteldataservice.pfindByCityAndBusinessareaAndName(city, businessArea, hotelName, userID);
+//			}
 		}
 		else{
-			if(hotelName.equals("")){
-				if(star == 0){
-					if(grade==null){
-						HotelPOList=hoteldataservice.findByCityAndBusinessarea(city, businessArea);
-					}
-					else{
-						HotelPOList=hoteldataservice.findByCityAndBusinessareaAndGrade(city, businessArea, minGrade, maxGrade);
-					}
-				}
-				else{
-					if(grade==null){
-						HotelPOList=hoteldataservice.findByCityAndBusinessareaAndStar(city, businessArea, star);
-					}
-					else{
-						HotelPOList=hoteldataservice.findByAll(city, businessArea, star, minGrade, maxGrade);
-					}
-				}
+//			if(hotelName.equals("")){
+//				if(star == 0){
+//					if(grade==null){
+//						HotelPOList=hoteldataservice.findByCityAndBusinessarea(city, businessArea);
+//					}
+//					else{
+//						HotelPOList=hoteldataservice.findByCityAndBusinessareaAndGrade(city, businessArea, minGrade, maxGrade);
+//					}
+//				}
+//				else{
+//					if(grade==null){
+//						HotelPOList=hoteldataservice.findByCityAndBusinessareaAndStar(city, businessArea, star);
+//					}
+//					else{
+//						HotelPOList=hoteldataservice.findByAll(city, businessArea, star, minGrade, maxGrade);
+//					}
+//				}
+//			}
+//			else{
+//				HotelPOList = hoteldataservice.findByCityAndBusinessareaAndName(city, businessArea, hotelName);
+//			}
+			String tcity = '\''+city+'\'';
+			String tbusinessArea = '\''+businessArea+'\'';
+			param.put("name", "city");
+			param.put("rela", "=");
+			param.put("value", tcity);
+			params.add(param);
+			param = new HashMap<String, Object>();
+			param.put("name", "businessarea");
+			param.put("rela", "=");
+			param.put("value", tbusinessArea);
+			params.add(param);
+			if(! hotelName.equals("")){
+				param = new HashMap<String, Object>();
+				String thotelName = '\''+hotelName+'\'';
+				param.put("name", "hotelname");
+				param.put("rela", "=");
+				param.put("value", thotelName);
+				params.add(param);
 			}
-			else{
-				HotelPOList = hoteldataservice.findByCityAndBusinessareaAndName(city, businessArea, hotelName);
+			if(star!=0){
+				param = new HashMap<String, Object>();
+				param.put("name", "star");
+				param.put("rela", "=");
+				param.put("value", star);
+				params.add(param);
 			}
+			if(grade!=null){
+				param = new HashMap<String, Object>();
+				param.put("name", "grade");
+				param.put("rela", ">");
+				param.put("value", minGrade);
+				params.add(param);
+				param = new HashMap<String, Object>();
+				param.put("name", "grade");
+				param.put("rela", "<");
+				param.put("value", maxGrade);
+				params.add(param);
+			}
+			if(price!=null){
+				param = new HashMap<String, Object>();
+				param.put("name", "roomPrice");
+				param.put("rela", ">");
+				param.put("value", minPrice);
+				params.add(param);
+				param = new HashMap<String, Object>();
+				param.put("name", "roomPrice");
+				param.put("rela", "<");
+				param.put("value", maxPrice);
+				params.add(param);
+			}
+			if(roomType!=null){
+				param = new HashMap<String, Object>();
+				String troomType = '\''+roomType+'\'';
+				param.put("name", "roomType");
+				param.put("rela", "=");
+				param.put("value", troomType);
+				params.add(param);
+			}
+			HotelPOList = hoteldataservice.find(params);
 		}
+		
 
 		ArrayList<HotelVO> HotelVOList = new ArrayList<HotelVO>();
 

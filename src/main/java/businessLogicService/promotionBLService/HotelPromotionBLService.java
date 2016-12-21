@@ -15,8 +15,6 @@ public interface HotelPromotionBLService {
 
 	public boolean hotelPromotionCreate(HotelPromotionVO hpv);
 	
-//	public boolean hotelPromotionUpdate(HotelPromotionVO hpv);
-	
 	public void hotelPromotionDelete(HotelPromotionVO hpv);
 	
 	public List<HotelPromotionVO> hotelPromotionFind(String hotelname) throws SQLException;

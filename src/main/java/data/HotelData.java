@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import JDBC.DBUtil;
@@ -403,6 +404,9 @@ public class HotelData implements HotelDataService{
 //	sb.append("select * from hotel INNER JOIN room on hotel.hotelname=room.hotelName");
 //	sb.append(" where room.roomID=?");
 	public ArrayList<HotelPO> find(ArrayList<Map<String, Object>> params) throws SQLException{
+		
+		ArrayList<String> hotelName = new ArrayList<>();
+		
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
@@ -412,7 +416,7 @@ public class HotelData implements HotelDataService{
 		if(params!=null && params.size()>0){
 			for(int i=0; i<params.size(); i++){
 				Map<String, Object> map = params.get(i);
-				sb.append(" and "+map.get("name")+" "+ map.get("rela") +" "+map.get("value"));
+				sb.append(" and "+map.get("name")+" "+map.get("rela")+" "+map.get("value"));
 			}
 		}
 		
@@ -435,7 +439,16 @@ public class HotelData implements HotelDataService{
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
 			
-			result.add(h);
+			boolean flag = true;
+			for(int i=0; i<result.size(); i++){
+				if(rs.getString("hotelname").equals(hotelName.get(i))){
+					flag = false;
+				}
+			}
+			if(flag){
+				hotelName.add(rs.getString("hotelname"));
+				result.add(h);
+			}
 		}
 		return result;
 	}
@@ -668,6 +681,55 @@ public class HotelData implements HotelDataService{
 		ptmt.setInt(3, star);
 		ptmt.setDouble(4, mingrade);
 		ptmt.setDouble(5, maxgrade);
+		
+		ResultSet rs = ptmt.executeQuery();
+		
+		HotelPO h = null;
+		while(rs.next()){
+			h = new HotelPO();
+			h.setHotelid(rs.getString("hotelid"));
+			h.setPassword(rs.getString("password"));
+			h.setHotelname(rs.getString("hotelname"));
+			h.setPhonenumber(rs.getString("phonenumber"));
+			h.setAddress(rs.getString("address"));
+			h.setCity(rs.getString("city"));
+			h.setBusinessarea(rs.getString("businessarea"));
+			h.setIntroduction(rs.getString("introduction"));
+			h.setFacilities(rs.getString("facilities"));
+			h.setStar(rs.getInt("star"));
+			h.setGrade(rs.getDouble("grade"));
+			
+			for(int i=0; i<hotelName.size(); i++){
+				if(rs.getString("hotelid").equals(hotelName.get(i))){
+					result.add(h);
+					break;
+				}
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public ArrayList<HotelPO> pfind(ArrayList<Map<String, Object>> params, String userId) throws SQLException {
+		
+		ArrayList<String> hotelName = new ArrayList<>();
+		OrderData od = new OrderData();
+		hotelName = od.findHotelIdByUserId(userId);
+		
+		ArrayList<HotelPO> result = new ArrayList<>();
+		
+		Connection conn = DBUtil.getConnection();
+		StringBuilder sb = new StringBuilder();
+		sb.append("select * from hotel INNER JOIN room on hotel.hotelname=room.hotelName where 1=1");
+		
+		if(params!=null && params.size()>0){
+			for(int i=0; i<params.size(); i++){
+				Map<String, Object> map = params.get(i);
+				sb.append(" and "+map.get("name")+" "+ map.get("rela") +" "+map.get("value"));
+			}
+		}
+		
+		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
 		
 		ResultSet rs = ptmt.executeQuery();
 		

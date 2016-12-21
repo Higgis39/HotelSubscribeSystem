@@ -27,8 +27,8 @@ public class HotelPromotionData implements HotelPromotionDataService{
 	public boolean insert(HotelPromotionPO hp){
 		Connection conn = DBUtil.getConnection();
 		String sql = "insert into hotelpromotion "
-				+ "( hotelname, name, isbirthday, numberofroom, ispartner, begintime, endtime, didcount ) "
-				+ " values(?,?,?,?,?,?,?,?)";
+				+ "(hotelname,name,isbirthday,numberofroom,ispartner,begintime,endtime,discount)"
+				+ "values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, hp.getHotelname());
@@ -57,7 +57,7 @@ public class HotelPromotionData implements HotelPromotionDataService{
 	public boolean update(HotelPromotionPO hp){
 		Connection conn = DBUtil.getConnection();
 		String sql = "update hotelpromotion "
-				+ " set hotelname=?,  isbirthday=?, numberofroom=?, ispartner=?, begintime=?, endtime=?, discount=? "
+				+ " set hotelname=?,isbirthday=?,numberofroom=?,ispartner=?,begintime=?,endtime=?,discount=?"
 				+ " where name=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);

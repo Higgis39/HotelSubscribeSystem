@@ -27,7 +27,7 @@ public class WebPromotionData implements WebPromotionDataService{
 	public boolean insert(WebPromotionPO wp){
 		Connection conn = DBUtil.getConnection();
 		String sql = "insert into webpromotion "
-				+ "( name, begintime, endtime, VIPgrade, specificbusinessarea, discount ) "
+				+ "( name, begintime, endtime, VIPgrade, specificbusinessarea, discount)"
 				+ " values(?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
@@ -55,7 +55,7 @@ public class WebPromotionData implements WebPromotionDataService{
 	public boolean update(WebPromotionPO wp){
 		Connection conn = DBUtil.getConnection();
 		String sql = "update webpromotion "
-				+ " set begintime=?, endtime=?, VIPgrade=?, specificbusinessarea=?, discount=? "
+				+ " set begintime=?, endtime=?, VIPgrade=?, specificbusinessarea=?, discount=?"
 				+ " where name=? ";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);

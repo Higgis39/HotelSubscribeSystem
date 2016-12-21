@@ -13,8 +13,6 @@ public interface WebPromotionBLService {
 	
 	public boolean webPromotionCreate(WebPromotionVO wpv);
 	
-//	public boolean webPromotionUpdate(WebPromotionVO wpv);
-	
 	public void webPromotionDelete(WebPromotionVO wpv);
 	
 	public ArrayList<WebPromotionVO> webPromotionFind() throws SQLException;
