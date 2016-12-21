@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import presentation.controller.FrameController;
+import vo.HotelNameVO;
 import vo.HotelPromotionVO;
 import vo.IdVO;
 import vo.StageVO;
@@ -88,6 +89,7 @@ public class HotelPromotionFrameController {
 	private void linkAction(){
 		//打开制定促销策略界面
 		StageVO.setStage(hotelpromotionframe.getPrimaryStage());
+		HotelNameVO.sethotelname(hotelname.getText());
 		viewcontrol.openMakeHotelPromotionFrame();
 	}
 	

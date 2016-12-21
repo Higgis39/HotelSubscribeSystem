@@ -26,8 +26,7 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 	 * @return 某种房间类型的数量  Integer
 	 * @throws SQLException 
 	 */
-	public int CheckEnoughRoom(String HotelId, String RoomType) throws SQLException{
-		String HotelName = hoteldataservice.findById(HotelId).getName();
+	public int CheckEnoughRoom(String HotelName, String RoomType) throws SQLException{
 		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
 		RoomPOList = roomdataservice.findByHotelName(HotelName);
 		
@@ -50,8 +49,7 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 	 * @return 某种房间的入住人数  Integer
 	 * @throws SQLException 
 	 */
-	public int CheckMaxInRoom(String HotelId,String RoomType) throws SQLException{
-		String HotelName = hoteldataservice.findById(HotelId).getName();
+	public int CheckMaxInRoom(String HotelName,String RoomType) throws SQLException{
 		ArrayList<RoomPO> RoomPOList = new ArrayList<RoomPO>();
 		RoomPOList = roomdataservice.findByHotelName(HotelName);
 		

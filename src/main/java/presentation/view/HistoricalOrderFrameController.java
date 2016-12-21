@@ -118,6 +118,8 @@ public class HistoricalOrderFrameController {
 			
 			if(ordertype.equals("已执行")){
 				link.setVisible(true);
+				intime.setText("入住时间");
+				outtime.setText("离开时间");
 				link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
 		            @Override
 		            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<OrderVO, Boolean> p) {
@@ -153,6 +155,8 @@ public class HistoricalOrderFrameController {
 			}else{
 				link.setVisible(false);
 				tableview.setPrefWidth(550);
+				intime.setText("入住时间");
+				outtime.setText("离开时间");
 			}
 		}
 	}

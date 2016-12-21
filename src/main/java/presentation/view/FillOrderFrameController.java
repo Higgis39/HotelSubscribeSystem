@@ -168,8 +168,6 @@ public class FillOrderFrameController {
 		
 		ViewService s = new ViewController();
 		String hotelid = s.View(hotelname.getText()).getId();
-		System.out.println(hotelname.getText());
-		System.out.println(hotelid);
 		OrderVO ordervo = new OrderVO(null,hotelid,IdVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum);
 		double p = service.getTotal(ordervo);
 		ordervo.setprice(p);

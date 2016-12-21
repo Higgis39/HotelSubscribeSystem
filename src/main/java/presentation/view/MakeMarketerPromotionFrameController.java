@@ -94,7 +94,7 @@ public class MakeMarketerPromotionFrameController {
 		//保存新制定的策略
 		WebPromotionBLService service = new WebPromotionController();
 		
-		int discount = Integer.valueOf(enterdiscount.getText())/100;
+		double discount = Integer.valueOf(enterdiscount.getText())/100;
 		int VIPgrade = 0;
 		if(!enterVIPgrade.getSelectionModel().getSelectedItem().equals("不要求")){
 			VIPgrade = Integer.valueOf(enterVIPgrade.getSelectionModel().getSelectedItem());
