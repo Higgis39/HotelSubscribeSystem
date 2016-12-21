@@ -11,9 +11,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
 import vo.HotelNameVO;
+import vo.HotelPromotionVO;
 import vo.IdVO;
 import vo.OrderVO;
 import vo.StageVO;
@@ -43,13 +45,7 @@ public class FillOrderFrameController {
 	@FXML
 	private TextField enterpeoplenum;
 	@FXML
-	private Label indateword;
-	@FXML
-	private Label outdateword;
-	@FXML
-	private Label roomtypeword;
-	@FXML
-	private Label haschildword;
+	private TableView<HotelPromotionVO> tableview;
 	
 	private FillOrderFrame fillorderframe;
 	
@@ -65,10 +61,8 @@ public class FillOrderFrameController {
 		if(enterindate.getValue().isBefore(LocalDate.now())){
 			enterindate.setValue(LocalDate.now());
 			enteroutdate.setValue(LocalDate.now().plusDays(1));
-			indateword.setText("入住日期不能晚于当前日期");
 		}else{
 			enteroutdate.setValue(enterindate.getValue().plusDays(1));
-			indateword.setText(null);
 		}
 	}
 	
@@ -80,9 +74,7 @@ public class FillOrderFrameController {
 		LocalDate indate = enterindate.getValue();
 		if(enteroutdate.getValue().isEqual(indate)&&enteroutdate.getValue().isBefore(indate)){
 			enteroutdate.setValue(indate.plusDays(1));
-			outdateword.setText("退房日期不能晚于入住日期");
 		}else{
-			outdateword.setText(null);
 		}
 	}
 	
@@ -154,21 +146,16 @@ public class FillOrderFrameController {
 		String indate = enterindate.getValue().toString()+" 18:00";
 		String outdate = enteroutdate.getValue().toString();
 		int roomnum = Integer.valueOf(enterroomnum.getText());
-		String haschild = enterhaschild.getSelectionModel().getSelectedItem();
-		if(roomtype==null){
-			roomtypeword.setText("您必须选择房间类型");
+		String child = enterhaschild.getSelectionModel().getSelectedItem();
+		boolean haschild;
+		if(child.equals("是")){
+			haschild = true;
 		}else{
-			roomtypeword.setText(null);
+			haschild = false;
 		}
-		if(haschild==null){
-			haschildword.setText("您必须填写有无儿童");
-		}else{
-			haschildword.setText(null);
-		}
-		
 		ViewService s = new ViewController();
 		String hotelid = s.View(hotelname.getText()).getId();
-		OrderVO ordervo = new OrderVO(null,hotelid,IdVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum);
+		OrderVO ordervo = new OrderVO(null,hotelid,IdVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum,haschild);
 		double p = service.getTotal(ordervo);
 		ordervo.setprice(p);
 		service.addNewOrder(ordervo);
@@ -197,10 +184,17 @@ public class FillOrderFrameController {
 		String indate = enterindate.getValue().toString();
 		String outdate = enteroutdate.getValue().toString();
 		int roomnum = Integer.valueOf(enterroomnum.getText());
+		String child = enterhaschild.getSelectionModel().getSelectedItem();
+		boolean haschild;
+		if(child.equals("是")){
+			haschild = true;
+		}else{
+			haschild = false;
+		}
 		
 		ViewService s = new ViewController();
 		String hotelid = s.View(hotelname.getText()).getId();
-		OrderVO ordervo = new OrderVO(null,hotelid,IdVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum);
+		OrderVO ordervo = new OrderVO(null,hotelid,IdVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum,haschild);
 		double p = service.getTotal(ordervo);
 		price.setText(Double.toString(p));
 	}

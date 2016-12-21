@@ -35,8 +35,10 @@ public class OrderVO {
 	
 	private IntegerProperty roomnum;
 	
+	private boolean haschild;
 	
-	public OrderVO(String orderId, String hotelId, String userId, String status,String entryTime, String lastTime,double price,String comment,String roomtype,int roomnum) {
+	
+	public OrderVO(String orderId, String hotelId, String userId, String status,String entryTime, String lastTime,double price,String comment,String roomtype,int roomnum,boolean haschild) {
 		super();
 		this.orderId = new SimpleStringProperty(orderId);
 		this.hotelId = new SimpleStringProperty(hotelId);
@@ -48,10 +50,11 @@ public class OrderVO {
 		this.comment = new SimpleStringProperty(comment);
 		this.roomtype = new SimpleStringProperty(roomtype);
 		this.roomnum = new SimpleIntegerProperty(roomnum);
+		this.haschild = haschild;
 	}
 	
 	public OrderVO(OrderPO po){
-		this(po.getId(),po.getHotelId(),po.getUserId(),po.getStatus(),po.getEntryTime(),po.getLastTime(),po.getPrice(),po.getComment(),po.getRoomType(),po.getRoomNum());
+		this(po.getId(),po.getHotelId(),po.getUserId(),po.getStatus(),po.getEntryTime(),po.getLastTime(),po.getPrice(),po.getComment(),po.getRoomType(),po.getRoomNum(),po.gethaschild());
 	}
 	
 	public String getorderId() {
@@ -172,5 +175,13 @@ public class OrderVO {
 
 	public void setRoomNum(int roomNum) {
 		this.roomnum = new SimpleIntegerProperty(roomNum);
+	}
+	
+	public boolean gethaschild(){
+		return haschild;
+	}
+	
+	public void sethaschild(boolean haschild){
+		this.haschild = haschild;
 	}
 }

@@ -3,16 +3,6 @@ package po;
 import vo.OrderVO;
 
 public class OrderPO {
-	/**
-	 * id			订单编号
-	 * hotelId		酒店编号
-	 * userId		用户编号
-	 * status		订单状态(已执行；未执行；已撤销；异常；已退房；已评价)
-	 * entryTime	用户入住时间/用户预计入住时间
-	 * lastTime		用户退房时间/用户预计退房时间
-	 * price		订单价值
-	 * comment      订单评价
-	 */
 		
 		private String id;
 		
@@ -34,12 +24,14 @@ public class OrderPO {
 		
 		private int RoomNum;
 		
+		private boolean haschild;
+		
 		public OrderPO(){
 			
 		}
 
 		public OrderPO(String id, String hotelId, String userId, String status,
-				String entryTime, String lastTime,int price,String comment,String RoomType,int RoomNum) {
+				String entryTime, String lastTime,int price,String comment,String RoomType,int RoomNum,boolean haschild) {
 			super();
 			this.id = id;
 			this.hotelId = hotelId;
@@ -51,6 +43,7 @@ public class OrderPO {
 			this.comment = comment;
 			this.RoomType = RoomType;
 			this.RoomNum = RoomNum;
+			this.haschild = haschild;
 		}
 		
 		public OrderPO(OrderVO vo){
@@ -64,6 +57,7 @@ public class OrderPO {
 			this.comment = vo.getComment();
 			this.RoomType = vo.getRoomType();
 			this.RoomNum = vo.getRoomNum();
+			this.haschild = vo.gethaschild();
 		}
 
 		public String getId() {
@@ -144,6 +138,14 @@ public class OrderPO {
 
 		public void setRoomNum(int roomNum) {
 			RoomNum = roomNum;
+		}
+		
+		public boolean gethaschild(){
+			return haschild;
+		}
+		
+		public void sethaschild(boolean haschild){
+			this.haschild = haschild;
 		}
 
 		@Override
