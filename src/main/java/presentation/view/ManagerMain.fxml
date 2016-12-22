@@ -21,11 +21,11 @@
          </font>
       </Label>
       <Separator layoutY="62.0" prefHeight="4.0" prefWidth="750.0" />
-      <TableView fx:id="user" layoutX="113.0" layoutY="155.0" prefHeight="65.0" prefWidth="530.0" visible="false">
+      <TableView fx:id="user" layoutX="113.0" layoutY="155.0" prefHeight="65.0" prefWidth="540.0" visible="false">
         <columns>
           <TableColumn fx:id="username" prefWidth="75.0" text="用户名" />
           <TableColumn fx:id="usertype" prefWidth="75.0" text="用户类型" />
-            <TableColumn fx:id="address" prefWidth="75.0" text="联系方式" />
+            <TableColumn fx:id="address" prefWidth="90.0" text="联系方式" />
             <TableColumn fx:id="creditvalue" prefWidth="75.0" text="信用值" />
             <TableColumn fx:id="VIPtype" prefWidth="75.0" text="会员类型" />
             <TableColumn fx:id="VIPgrade" prefWidth="75.0" text="会员等级" />

@@ -26,10 +26,10 @@
       <Hyperlink layoutX="620.0" layoutY="36.0" onAction="#logoutAction" text="退出登录" />
       <TableView fx:id="tableview" layoutX="129.0" layoutY="134.0" prefHeight="300.0" prefWidth="500.0">
         <columns>
-          <TableColumn fx:id="orderid" prefWidth="100.0" text="订单号" />
-          <TableColumn fx:id="userid" prefWidth="100.0" text="用户账号" />
-            <TableColumn fx:id="intime" prefWidth="100.0" text="入住时间" />
-            <TableColumn fx:id="outtime" prefWidth="100.0" text="离开时间" />
+          <TableColumn fx:id="orderid" text="订单号" />
+          <TableColumn fx:id="userid" text="用户账号" />
+            <TableColumn fx:id="intime" prefWidth="120.0" text="入住时间" />
+            <TableColumn fx:id="outtime" prefWidth="120.0" text="离开时间" />
             <TableColumn fx:id="price" prefWidth="100.0" text="价格" />
         </columns>
       </TableView>
