@@ -3,11 +3,11 @@ package presentation.view;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import presentation.controller.FrameController;
-import vo.OtherIdVO;
+import vo.WordVO;
 
 public class SuccessAddFrameController {
 	@FXML
-	private Label id;
+	private Label word;
 
 	private SuccessAddFrame successaddframe;
 	
@@ -26,7 +26,7 @@ public class SuccessAddFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		id.setText(OtherIdVO.getid());
+		word.setText(WordVO.getword());
 	}
 	
 	public void setSuccessAddFrame(SuccessAddFrame successaddframe){

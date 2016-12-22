@@ -11,7 +11,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
 import vo.HotelVO;
-import vo.OtherIdVO;
+import vo.WordVO;
 
 /**
  * 
@@ -93,7 +93,7 @@ public class AddHotelFrameController {
 			samepassword.setText(null);
 			HotelVO hotelvo = new HotelVO(null,password1,hotelname,phonenumber,city,address,businessarea,introduction,service,star,0.0,0);
 			String result = addhotelblservice.AddHotel(hotelvo);
-			OtherIdVO.setid(result);
+			WordVO.setword("添加成功，账号为"+result);
 			viewcontrol.openSuccessAddFrame();
 			addhotelframe.getPrimaryStage().close();
 		}

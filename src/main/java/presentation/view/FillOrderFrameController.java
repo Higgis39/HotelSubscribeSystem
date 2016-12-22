@@ -177,11 +177,11 @@ public class FillOrderFrameController {
 		OrderVO ordervo = new OrderVO(null,hotelid,IdVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum,haschild);
 		double p = service.getTotal(ordervo);
 		ordervo.setprice(p);
-		service.addNewOrder(ordervo);
+		String orderid = service.addNewOrder(ordervo);
 		fillorderframe.getPrimaryStage().close();
 		viewcontrol.openUserMainFrame();
-		WordVO.setword("下单成功");
-		viewcontrol.openSuccessSaveFrame();
+		WordVO.setword("下单成功,订单号为"+orderid);
+		viewcontrol.openSuccessAddFrame();
 	}
 	
 	@FXML
