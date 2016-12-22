@@ -117,4 +117,14 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 		hotelpo.setGrade(point);
 		return true;
 	};
+	
+	/**
+	 * 返回酒店的评价人数
+	 * @param HotelId
+	 * @return
+	 */
+	public int getNumberOfEvaluators(String HotelId){
+		int number = hoteldataservice.findById(HotelId).getNumberofevaluators();
+		return number;
+	}
 }

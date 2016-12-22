@@ -13,9 +13,10 @@ public class HotelPO {
 	int star;
 	double grade;
 	int minprice;
+	int numberofevaluators;
 	
 	//构造函数
-	public HotelPO(String hotelid,String password,String hotelname,String phonenumber,String city,String address,String businessarea,String introduction,String facilities,int star,double grade,int minprice){
+	public HotelPO(String hotelid,String password,String hotelname,String phonenumber,String city,String address,String businessarea,String introduction,String facilities,int star,double grade,int minprice, int numberofevaluators){
 		this.hotelid = hotelid;
 		this.password = password;
 		this.hotelname = hotelname;
@@ -28,6 +29,7 @@ public class HotelPO {
 		this.star = star;
 		this.grade = grade;
 		this.minprice = minprice;
+		this.numberofevaluators = numberofevaluators;
 	}
 	
 	public HotelPO(){
@@ -142,10 +144,23 @@ public class HotelPO {
 		this.minprice = minprice;
 	}
 
+	public int getNumberofevaluators() {
+		return numberofevaluators;
+	}
+
+	public void setNumberofevaluators(int numberofevaluators) {
+		this.numberofevaluators = numberofevaluators;
+	}
+
 	@Override
 	public String toString() {
 		return "HotelPO [hotelid=" + hotelid + ", password=" + password + ", hotelname=" + hotelname + ", phonenumber="
-				+ phonenumber + ", city=" + city + ", businessarea=" + businessarea + ",address" + address + ", introduction="
-				+ introduction + ", facilities=" + facilities + ", star=" + star + ", grade=" + grade + "]";
+				+ phonenumber + ", address=" + address + ", city=" + city + ", businessarea=" + businessarea
+				+ ", introduction=" + introduction + ", facilities=" + facilities + ", star=" + star + ", grade="
+				+ grade + ", minprice=" + minprice + ", numberofevaluators=" + numberofevaluators + "]";
 	}
+
+	
+
+	
 }

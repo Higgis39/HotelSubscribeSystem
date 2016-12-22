@@ -45,8 +45,21 @@ public interface HotelDataService {
 	public ArrayList<HotelPO> pfindByCityAndBusinessareaAndGrade(String city, String businessarea, double mingrade, double maxgrade, String userId) throws SQLException;
 	public ArrayList<HotelPO> pfindByAll(String address, String businessarea, int star, double mingrade, double maxgrade, String userId) throws SQLException;
 	
-	
+	/**
+	 * 查询酒店
+	 * @param params
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<HotelPO> find(ArrayList<Map<String, Object>> params) throws SQLException;
+	
+	/**
+	 * 查询预订过的酒店
+	 * @param params
+	 * @param userId
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<HotelPO> pfind(ArrayList<Map<String, Object>> params, String userId) throws SQLException;
 	
 	/**
@@ -56,4 +69,5 @@ public interface HotelDataService {
 	 * @throws SQLException 抛出数据库连接失败异常
 	 */
 	public String distributeid() throws SQLException;
+	
 }

@@ -5,14 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 import JDBC.DBUtil;
 import dataService.HotelDataService;
-import dataService.UserDataService;
 import po.HotelPO;
-import po.UserPO;
 
 /**
  * HotelData的职责是实现对数据库中hotel对象的增删改查
@@ -33,8 +30,8 @@ public class HotelData implements HotelDataService{
 	public void insert(HotelPO h){
 		Connection conn = DBUtil.getConnection();
 		String sql = "insert into hotel "
-				+ " (hotelid, password, hotelname, phonenumber, address, city, businessarea, introduction, facilities, star, grade)"
-				+ " values(?,?,?,?,?,?,?,?,?,?,?)";
+				+ " (hotelid, password, hotelname, phonenumber, address, city, businessarea, introduction, facilities, star, grade, minprice, numberofevaluators)"
+				+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, h.getHotelId());
@@ -48,6 +45,8 @@ public class HotelData implements HotelDataService{
 			ptmt.setString(9, h.getFacilities());
 			ptmt.setInt(10, h.getStar());
 			ptmt.setDouble(11, h.getGrade());
+			ptmt.setInt(12, h.getminprice());
+			ptmt.setInt(13, h.getNumberofevaluators());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -64,7 +63,7 @@ public class HotelData implements HotelDataService{
 	public void update(HotelPO h){
 		Connection conn = DBUtil.getConnection();
 		String sql = "update hotel "
-				+ " set hotelid=?, password=?, hotelname=?, phonenumber=?, address=?, city=?, businessarea=?, introduction=?, facilities=?, star=?, grade=?";
+				+ " set hotelid=?, password=?, hotelname=?, phonenumber=?, address=?, city=?, businessarea=?, introduction=?, facilities=?, star=?, grade=?, minprice=?, numberofevaluators=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, h.getHotelId());
@@ -78,6 +77,8 @@ public class HotelData implements HotelDataService{
 			ptmt.setString(9, h.getFacilities());
 			ptmt.setInt(10, h.getStar());
 			ptmt.setDouble(11, h.getGrade());
+			ptmt.setInt(12, h.getminprice());
+			ptmt.setInt(13, h.getNumberofevaluators());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -134,6 +135,8 @@ public class HotelData implements HotelDataService{
 				h.setFacilities(rs.getString("facilities"));
 				h.setStar(rs.getInt("star"));
 				h.setGrade(rs.getDouble("grade"));
+				h.setMinprice(rs.getInt("minprice"));
+				h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -171,6 +174,8 @@ public class HotelData implements HotelDataService{
 				h.setFacilities(rs.getString("facilities"));
 				h.setStar(rs.getInt("star"));
 				h.setGrade(rs.getDouble("grade"));
+				h.setMinprice(rs.getInt("minprice"));
+				h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -214,6 +219,8 @@ public class HotelData implements HotelDataService{
 			h.setFacilities(rs.getString("facilities"));
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
+			h.setMinprice(rs.getInt("minprice"));
+			h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			
 			result.add(h);
 		}
@@ -251,6 +258,8 @@ public class HotelData implements HotelDataService{
 			h.setFacilities(rs.getString("facilities"));
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
+			h.setMinprice(rs.getInt("minprice"));
+			h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			
 			result.add(h);
 		}
@@ -295,6 +304,8 @@ public class HotelData implements HotelDataService{
 			h.setFacilities(rs.getString("facilities"));
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
+			h.setMinprice(rs.getInt("minprice"));
+			h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			
 			result.add(h);
 		}
@@ -340,6 +351,8 @@ public class HotelData implements HotelDataService{
 			h.setFacilities(rs.getString("facilities"));
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
+			h.setMinprice(rs.getInt("minprice"));
+			h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			
 			result.add(h);
 		}
@@ -387,6 +400,8 @@ public class HotelData implements HotelDataService{
 			h.setFacilities(rs.getString("facilities"));
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
+			h.setMinprice(rs.getInt("minprice"));
+			h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			
 			result.add(h);
 		}
@@ -438,6 +453,8 @@ public class HotelData implements HotelDataService{
 			h.setFacilities(rs.getString("facilities"));
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
+			h.setMinprice(rs.getInt("minprice"));
+			h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			
 			boolean flag = true;
 			for(int i=0; i<result.size(); i++){
@@ -511,6 +528,8 @@ public class HotelData implements HotelDataService{
 			h.setFacilities(rs.getString("facilities"));
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
+			h.setMinprice(rs.getInt("minprice"));
+			h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			
 			for(int i=0; i<hotelName.size(); i++){
 				if(rs.getString("hotelid").equals(hotelName.get(i))){
@@ -557,6 +576,8 @@ public class HotelData implements HotelDataService{
 			h.setFacilities(rs.getString("facilities"));
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
+			h.setMinprice(rs.getInt("minprice"));
+			h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			
 			for(int i=0; i<hotelName.size(); i++){
 				if(rs.getString("hotelid").equals(hotelName.get(i))){
@@ -603,6 +624,8 @@ public class HotelData implements HotelDataService{
 			h.setFacilities(rs.getString("facilities"));
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
+			h.setMinprice(rs.getInt("minprice"));
+			h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			
 			for(int i=0; i<hotelName.size(); i++){
 				if(rs.getString("hotelid").equals(hotelName.get(i))){
@@ -650,6 +673,8 @@ public class HotelData implements HotelDataService{
 			h.setFacilities(rs.getString("facilities"));
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
+			h.setMinprice(rs.getInt("minprice"));
+			h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			
 			for(int i=0; i<hotelName.size(); i++){
 				if(rs.getString("hotelid").equals(hotelName.get(i))){
@@ -698,6 +723,8 @@ public class HotelData implements HotelDataService{
 			h.setFacilities(rs.getString("facilities"));
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
+			h.setMinprice(rs.getInt("minprice"));
+			h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			
 			for(int i=0; i<hotelName.size(); i++){
 				if(rs.getString("hotelid").equals(hotelName.get(i))){
@@ -712,13 +739,14 @@ public class HotelData implements HotelDataService{
 	@Override
 	public ArrayList<HotelPO> pfind(ArrayList<Map<String, Object>> params, String userId) throws SQLException {
 		
-		ArrayList<String> hotelName = new ArrayList<>();
-		
+		//通过用户ID查找住过的酒店ID
 		ArrayList<String> photelId = new ArrayList<>();
 		OrderData od = new OrderData();
 		photelId = od.findHotelIdByUserId(userId);
 		
-		ArrayList<HotelPO> presult = new ArrayList<>();
+		//存放符合预定条件的酒店
+		ArrayList<String> presult = new ArrayList<>();
+		//存放最后的返回对象
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
@@ -750,27 +778,34 @@ public class HotelData implements HotelDataService{
 			h.setFacilities(rs.getString("facilities"));
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
+			h.setMinprice(rs.getInt("minprice"));
+			h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			
 			for(int i=0; i<photelId.size(); i++){
 				if(rs.getString("hotelid").equals(photelId.get(i))){
-					presult.add(h);
+					presult.add(h.getHotelId());
 					break;
 				}
 			}
+			//presult存放住过的酒店ID
 			
 			boolean flag = true;
 			for(int i=0; i<result.size(); i++){
-				if(rs.getString("hotelid").equals(photelId.get(i))){
-					flag = false;
+				for(int j=0; j<presult.size(); j++){
+					if(result.get(i).getHotelId().equals(presult.get(j))){
+						flag = false;
+					}
 				}
 			}
 			if(flag){
-				hotelName.add(rs.getString("hotelname"));
+				presult.add(rs.getString("hotelname"));
 				result.add(h);
 			}
 		}
 		return result;
 	}
+	
+	
 
 	
 }

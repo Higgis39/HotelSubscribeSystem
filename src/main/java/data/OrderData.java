@@ -31,8 +31,8 @@ public class OrderData implements OrderDataService{
 	public boolean insert(OrderPO o) {
 		Connection conn = DBUtil.getConnection();
 		String sql = "insert into orders "
-				+ "(id, hotelId, userId, status, entryTime, lastTime, price, comment, RoomType, RoomNum)"
-				+ "values(?,?,?,?,?,?,?,?,?,?)";
+				+ "(id, hotelId, userId, status, entryTime, lastTime, price, comment, RoomType, RoomNum, haschild)"
+				+ "values(?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, o.getId());
@@ -45,6 +45,7 @@ public class OrderData implements OrderDataService{
 			ptmt.setString(8, o.getComment());
 			ptmt.setString(9, o.getRoomType());
 			ptmt.setInt(10, o.getRoomNum());
+			ptmt.setBoolean(11, o.gethaschild());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -64,7 +65,7 @@ public class OrderData implements OrderDataService{
 	public boolean update(OrderPO o) {
 		Connection conn = DBUtil.getConnection();
 		String sql = "update orders "
-				+ " set id=?, hotelId=?, userId=?, status=?, entryTime=?, lastTime=?, price=?, comment=?, RoomType=?, RoomNum=? "
+				+ " set id=?, hotelId=?, userId=?, status=?, entryTime=?, lastTime=?, price=?, comment=?, RoomType=?, RoomNum=?, haschild=? "
 				+ " where id=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
@@ -79,6 +80,7 @@ public class OrderData implements OrderDataService{
 			ptmt.setString(9, o.getRoomType());
 			ptmt.setInt(10, o.getRoomNum());
 			ptmt.setString(11, o.getId());
+			ptmt.setBoolean(12, o.gethaschild());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -120,6 +122,7 @@ public class OrderData implements OrderDataService{
 				o.setComment(rs.getString("comment"));
 				o.setRoomType(rs.getString("RoomType"));
 				o.setRoomNum(rs.getInt("RoomNum"));
+				o.sethaschild(rs.getBoolean("haschild"));
 			}
 			
 		} catch (SQLException e) {
@@ -163,6 +166,7 @@ public class OrderData implements OrderDataService{
 			o.setComment(rs.getString("comment"));
 			o.setRoomType(rs.getString("RoomType"));
 			o.setRoomNum(rs.getInt("RoomNum"));
+			o.sethaschild(rs.getBoolean("haschild"));
 			
 			result.add(o);
 		}
@@ -203,6 +207,7 @@ public class OrderData implements OrderDataService{
 			o.setComment(rs.getString("comment"));
 			o.setRoomType(rs.getString("RoomType"));
 			o.setRoomNum(rs.getInt("RoomNum"));
+			o.sethaschild(rs.getBoolean("haschild"));
 			
 			result.add(o);
 		}
@@ -242,6 +247,7 @@ public class OrderData implements OrderDataService{
 			o.setComment(rs.getString("comment"));
 			o.setRoomType(rs.getString("RoomType"));
 			o.setRoomNum(rs.getInt("RoomNum"));
+			o.sethaschild(rs.getBoolean("haschild"));
 			
 			result.add(o);
 		}
@@ -282,6 +288,7 @@ public class OrderData implements OrderDataService{
 			o.setComment(rs.getString("comment"));
 			o.setRoomType(rs.getString("RoomType"));
 			o.setRoomNum(rs.getInt("RoomNum"));
+			o.sethaschild(rs.getBoolean("haschild"));
 			
 			result.add(o);
 		}
@@ -314,6 +321,7 @@ public class OrderData implements OrderDataService{
 			o.setComment(rs.getString("comment"));
 			o.setRoomType(rs.getString("RoomType"));
 			o.setRoomNum(rs.getInt("RoomNum"));
+			o.sethaschild(rs.getBoolean("haschild"));
 			
 			result.add(rs.getString("hotelId"));
 		}
