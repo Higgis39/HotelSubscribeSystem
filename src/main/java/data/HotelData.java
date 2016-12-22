@@ -744,11 +744,12 @@ public class HotelData implements HotelDataService{
 		OrderData od = new OrderData();
 		photelId = od.findHotelIdByUserId(userId);
 		
-		//存放符合预定条件的酒店
-		ArrayList<String> presult = new ArrayList<>();
-		//存放最后的返回对象
+		//存放返回对象
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
+		//存放符合预定条件的酒店
+		ArrayList<HotelPO> fresult = new ArrayList<>();
+				
 		Connection conn = DBUtil.getConnection();
 		StringBuilder sb = new StringBuilder();
 		sb.append("select * from hotel INNER JOIN room on hotel.hotelname=room.hotelName where 1=1");
@@ -765,6 +766,8 @@ public class HotelData implements HotelDataService{
 		ResultSet rs = ptmt.executeQuery();
 		
 		HotelPO h = null;
+		//符合基础搜索条件的酒店
+		int hotelnum = -1;
 		while(rs.next()){
 			h = new HotelPO();
 			h.setHotelid(rs.getString("hotelid"));
@@ -781,28 +784,24 @@ public class HotelData implements HotelDataService{
 			h.setMinprice(rs.getInt("minprice"));
 			h.setNumberofevaluators(rs.getInt("numberofevaluators"));
 			
-			for(int i=0; i<photelId.size(); i++){
-				if(rs.getString("hotelid").equals(photelId.get(i))){
-					presult.add(h.getHotelId());
-					break;
-				}
-			}
-			//presult存放住过的酒店ID
-			
 			boolean flag = true;
 			for(int i=0; i<result.size(); i++){
-				for(int j=0; j<presult.size(); j++){
-					if(result.get(i).getHotelId().equals(presult.get(j))){
-						flag = false;
-					}
+				if(rs.getString("hotelid").equals(result.get(i).getHotelId())){
+					flag = false;
 				}
 			}
 			if(flag){
-				presult.add(rs.getString("hotelname"));
 				result.add(h);
+				hotelnum++;
+			
+				for(int i=0; i<photelId.size(); i++){
+					if(result.get(hotelnum).getHotelId().equals(photelId.get(i))){
+						fresult.add(result.get(hotelnum));
+					}
+				}
 			}
 		}
-		return result;
+		return fresult;
 	}
 	
 	
