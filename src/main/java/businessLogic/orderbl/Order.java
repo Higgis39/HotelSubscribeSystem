@@ -67,7 +67,6 @@ public class Order{
 		OrderPO po=service.findByOrderID(vo.getorderId());
 		if(!po.getStatus().equals("未执行"))
 			return false;
-		
 		po.setStatus("已执行");
 		po.setEntryTime(vo.getEntryTime());
 		po.setLastTime(vo.getLastTime());
@@ -81,27 +80,27 @@ public class Order{
 	 */
 	public boolean Cancel(){
 		OrderPO po=service.findByOrderID(vo.getorderId());
-	if(!po.getStatus().equals("未执行"))
-		return false;
+	    if(!po.getStatus().equals("未执行"))
+		    return false;
 	
-		po.setStatus("已撤销");
-		manager.subCredit(po);
-		service.update(po);
-		return true;
+	    po.setStatus("已撤销");
+	    manager.subCredit(po);
+	    service.update(po);
+	    return true;
 	}
 	
 	/**
 	 * 恢复异常订单
 	 * @return
 	 */
-	public boolean Recover(){
+	public boolean Recover(double RecoverPercent){
 		OrderPO po=service.findByOrderID(vo.getorderId());
-		if(po.getStatus().equals("异常"))
+		if(!po.getStatus().equals("异常"))
 			return false;
 		po.setStatus("已执行");
 		po.setEntryTime(vo.getEntryTime());
 		po.setLastTime(vo.getLastTime());
-		manager.recoverCredit(po);
+		manager.recoverCredit(po,RecoverPercent);
 		service.update(po);
 		return true;
 	}

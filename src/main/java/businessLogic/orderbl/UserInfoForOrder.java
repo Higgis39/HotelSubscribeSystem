@@ -16,5 +16,5 @@ public interface UserInfoForOrder {
 	 * @param CreditChange
 	 * @return
 	 */
-	public boolean ChangeCredit(String UserID,int CreditChange);
+	public boolean ChangeCredit(String UserID,String Reason,int CreditChange);
 }

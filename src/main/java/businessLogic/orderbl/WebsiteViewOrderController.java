@@ -17,8 +17,8 @@ public class WebsiteViewOrderController implements WebsiteViewOrderService{
 	}
 
 	@Override
-	public boolean RecoverCredit(OrderVO vo) {
-		return new Order(vo).Recover();
+	public boolean RecoverCredit(OrderVO vo,double RecoverPercent) {
+		return new Order(vo).Recover(RecoverPercent);
 	}
 
 }

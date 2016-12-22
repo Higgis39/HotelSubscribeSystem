@@ -9,5 +9,5 @@ public interface WebsiteViewOrderService {
 	
 	public List<OrderVO> ViewException(String Date)throws SQLException;
 	
-	public boolean RecoverCredit(OrderVO vo);
+	public boolean RecoverCredit(OrderVO vo,double RecoverPercent);
 }

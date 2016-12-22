@@ -28,7 +28,7 @@ public  class CreditManager {
 	 */
 	public void subCredit(OrderPO po){
 		int CreditChange = (int)po.getPrice();
-		UserService.ChangeCredit(po.getUserId(), 0-CreditChange);
+		UserService.ChangeCredit(po.getUserId(), "撤销订单" ,0-CreditChange);
 	}
 	/**
 	 * 根据已执行的订单价值计算用户应增加的信用值
@@ -37,16 +37,16 @@ public  class CreditManager {
 	 */
 	public void addCredit(OrderPO po){
 		int CreditChange = (int)po.getPrice();
-		UserService.ChangeCredit(po.getUserId(), CreditChange);
+		UserService.ChangeCredit(po.getUserId(), "成功下单" ,CreditChange);
 	}
 	/**
 	 * 根据已撤销的订单计算用户应恢复的信用值
 	 * @param orderID
 	 * @return
 	 */
-	public void recoverCredit(OrderPO po){
-		int CreditChange = (int)po.getPrice()/2;
-		UserService.ChangeCredit(po.getUserId(), CreditChange);
+	public void recoverCredit(OrderPO po,double RecoverPercent){
+		int CreditChange = (int)(po.getPrice()*RecoverPercent);
+		UserService.ChangeCredit(po.getUserId(), "恢复异常订单" ,CreditChange);
 	}
 	/**
 	 * 检查用户的信用值是否达到下订单的最低标准
