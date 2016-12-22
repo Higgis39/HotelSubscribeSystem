@@ -119,12 +119,20 @@ public class HotelToolForOrder implements HotelInfoForOrder{
 	};
 	
 	/**
-	 * 返回酒店的评价人数
-	 * @param HotelId
-	 * @return
+	 * 更新酒店评分及评价人数
 	 */
-	public int getNumberOfEvaluators(String HotelId){
-		int number = hoteldataservice.findById(HotelId).getNumberofevaluators();
-		return number;
+	public void updateGrade(String HotelName, int grade) {
+		HotelPO tempHotel = hoteldataservice.findByName(HotelName);
+		int number = tempHotel.getNumberofevaluators();
+		double avegrade = (tempHotel.getGrade()*number+grade)/(number+1);
+		number++;
+		tempHotel.setNumberofevaluators(number);
+		tempHotel.setGrade(avegrade);
+		hoteldataservice.update(tempHotel);
+	}
+	
+	public static void main(String[] args) {
+		HotelToolForOrder a = new HotelToolForOrder();
+		a.updateGrade("皇冠", 100);
 	}
 }

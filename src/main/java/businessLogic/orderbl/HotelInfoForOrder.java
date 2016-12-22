@@ -40,5 +40,5 @@ public interface HotelInfoForOrder {
 	 * @param point
 	 * @return
 	 */
-	public boolean updateGrade(String HotelName,int grade);
+	public void updateGrade(String HotelName,int grade);
 }

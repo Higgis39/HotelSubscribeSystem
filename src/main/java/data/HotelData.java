@@ -63,7 +63,8 @@ public class HotelData implements HotelDataService{
 	public void update(HotelPO h){
 		Connection conn = DBUtil.getConnection();
 		String sql = "update hotel "
-				+ " set hotelid=?, password=?, hotelname=?, phonenumber=?, address=?, city=?, businessarea=?, introduction=?, facilities=?, star=?, grade=?, minprice=?, numberofevaluators=?";
+				+ " set hotelid=?, password=?, hotelname=?, phonenumber=?, address=?, city=?, businessarea=?, introduction=?, facilities=?, star=?, grade=?, minprice=?, numberofevaluators=?"
+				+ " where hotelid=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, h.getHotelId());
@@ -79,6 +80,7 @@ public class HotelData implements HotelDataService{
 			ptmt.setDouble(11, h.getGrade());
 			ptmt.setInt(12, h.getminprice());
 			ptmt.setInt(13, h.getNumberofevaluators());
+			ptmt.setString(14, h.getHotelId());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
