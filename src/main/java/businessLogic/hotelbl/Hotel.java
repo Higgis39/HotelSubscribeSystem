@@ -390,6 +390,12 @@ public class Hotel{
 	 * @return 
 	 */
 	public boolean UpdateRoom(String hotelName,String roomtype,int peoplenum,int roomnum,int price)throws SQLException{
+		HotelPO hotelpo = hoteldataservice.findByName(hotelName);
+		if(hotelpo.getminprice()>price){
+			hotelpo.setMinprice(price);
+		}
+		hoteldataservice.update(hotelpo);
+		
 		ArrayList<RoomPO> RoomPOList = roomdataservice.findByHotelName(hotelName);
 		
 		int length=RoomPOList.size();
