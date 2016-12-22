@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.util.Callback;
 import presentation.controller.FrameController;
 import vo.ArrayListVO;
@@ -33,6 +34,8 @@ public class SearchResultFrameController {
 	private TableColumn<HotelVO,Boolean> view;
 	@FXML
 	private TableColumn<HotelVO,Boolean> link;
+	@FXML
+	private TableColumn<HotelVO,Boolean> IsIn;
 
 	private SearchResultFrame searchresultframe;
 	
@@ -58,6 +61,15 @@ public class SearchResultFrameController {
 			phonenumber.setCellValueFactory(cellData->cellData.getValue().getPhonenumberProperty());
 			star.setCellValueFactory(cellData->cellData.getValue().getStarProperty());
 			grade.setCellValueFactory(cellData->cellData.getValue().getGradeProperty());
+			
+			IsIn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HotelVO,Boolean>,ObservableValue<Boolean>>(){
+				@Override
+				public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<HotelVO, Boolean> param){   
+					return param.getValue().getIsInProperty();
+				}   
+			});
+			
+			IsIn.setCellFactory( CheckBoxTableCell.forTableColumn(IsIn));
 			
 			view.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HotelVO, Boolean>, ObservableValue<Boolean>>() {
 	            @Override

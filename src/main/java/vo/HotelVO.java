@@ -1,7 +1,9 @@
 package vo;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -23,6 +25,7 @@ public class HotelVO {
 	private StringProperty facilities;
 	private IntegerProperty star;
 	private DoubleProperty grade;
+	private BooleanProperty IsIn;
 	
 	//构造函数
 	public HotelVO(String hotelid,String password,String hotelname,String phonenumber,String city,String address,String businessarea,String introduction,String facilities,int star,double grade){
@@ -137,5 +140,13 @@ public class HotelVO {
 	
 	public DoubleProperty getGradeProperty(){
 		return grade;
+	}
+	
+	public BooleanProperty getIsInProperty(){
+		return IsIn;
+	}
+	
+	public void setIsIn(boolean isin){
+		this.IsIn = new SimpleBooleanProperty(isin);
 	}
 }

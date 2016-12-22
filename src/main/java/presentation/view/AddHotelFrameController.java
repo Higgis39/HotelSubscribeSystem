@@ -77,7 +77,7 @@ public class AddHotelFrameController {
 	 */
 	private void coinfirmAction() throws SQLException{
 		String hotelname = entername.getText();
-		String phonenumber = enteraddress.getText();
+		String phonenumber = enterphonenumber.getText();
 		String city = entercity.getText();
 		String address = enteraddress.getText();
 		String businessarea = enterbusinessarea.getText();
