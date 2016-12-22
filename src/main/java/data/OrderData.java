@@ -79,8 +79,9 @@ public class OrderData implements OrderDataService{
 			ptmt.setString(8, o.getComment());
 			ptmt.setString(9, o.getRoomType());
 			ptmt.setInt(10, o.getRoomNum());
-			ptmt.setString(11, o.getId());
-			ptmt.setBoolean(12, o.gethaschild());
+			ptmt.setBoolean(11, o.gethaschild());
+			ptmt.setString(12, o.getId());
+			
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
