@@ -713,9 +713,12 @@ public class HotelData implements HotelDataService{
 	public ArrayList<HotelPO> pfind(ArrayList<Map<String, Object>> params, String userId) throws SQLException {
 		
 		ArrayList<String> hotelName = new ArrayList<>();
-		OrderData od = new OrderData();
-		hotelName = od.findHotelIdByUserId(userId);
 		
+		ArrayList<String> photelId = new ArrayList<>();
+		OrderData od = new OrderData();
+		photelId = od.findHotelIdByUserId(userId);
+		
+		ArrayList<HotelPO> presult = new ArrayList<>();
 		ArrayList<HotelPO> result = new ArrayList<>();
 		
 		Connection conn = DBUtil.getConnection();
@@ -748,11 +751,22 @@ public class HotelData implements HotelDataService{
 			h.setStar(rs.getInt("star"));
 			h.setGrade(rs.getDouble("grade"));
 			
-			for(int i=0; i<hotelName.size(); i++){
-				if(rs.getString("hotelid").equals(hotelName.get(i))){
-					result.add(h);
+			for(int i=0; i<photelId.size(); i++){
+				if(rs.getString("hotelid").equals(photelId.get(i))){
+					presult.add(h);
 					break;
 				}
+			}
+			
+			boolean flag = true;
+			for(int i=0; i<result.size(); i++){
+				if(rs.getString("hotelid").equals(photelId.get(i))){
+					flag = false;
+				}
+			}
+			if(flag){
+				hotelName.add(rs.getString("hotelname"));
+				result.add(h);
 			}
 		}
 		return result;
