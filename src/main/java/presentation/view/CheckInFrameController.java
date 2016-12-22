@@ -18,9 +18,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.HotelNameVO;
+import vo.FrameToFrameVO;
 import vo.OrderVO;
-import vo.WordVO;
 
 
 /**
@@ -109,10 +108,10 @@ public class CheckInFrameController {
 			String room = roomtype.getSelectionModel().getSelectedItem();
 			String roomnum = enterroomnum.getText();
 			UpdateService service = new UpdateController();
-			service.CheckIn(HotelNameVO.getHotelname(),room,Integer.valueOf(roomnum));
+			service.CheckIn(FrameToFrameVO.getHotelname(),room,Integer.valueOf(roomnum));
 		}
 		checkinframe.getPrimaryStage().close();
-		WordVO.setword("登记成功");
+		FrameToFrameVO.setword("登记成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

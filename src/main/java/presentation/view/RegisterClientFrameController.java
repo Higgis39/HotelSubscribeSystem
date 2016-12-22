@@ -9,8 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.IdVO;
-import vo.StageVO;
+import vo.FrameToFrameVO;
 import vo.UserVO;
 
 /**
@@ -70,7 +69,7 @@ public class RegisterClientFrameController {
 			}else{
 				//跳转到注册成功界面
 				String result = registerclient.RegisterClient(new UserVO(username,null,password1,null,null,0,null,0,null,null));
-				IdVO.setid(result);
+				FrameToFrameVO.setid(result);
 				viewcontrol.openSuccessRegisterFrame();
 				registerclientframe.getPrimaryStage().close();
 			}
@@ -84,7 +83,7 @@ public class RegisterClientFrameController {
 	 */
 	private void cancelAction(){
 		viewcontrol.openDoCancelPopup();
-		StageVO.setStage(registerclientframe.getPrimaryStage());
+		FrameToFrameVO.setStage(registerclientframe.getPrimaryStage());
 	}
 	
 	

@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import presentation.controller.FrameController;
-import vo.OrderIdVO;
+import vo.FrameToFrameVO;
 import vo.OrderVO;
 
 public class ButtonCell2 extends TableCell<OrderVO,Boolean> {
@@ -18,7 +18,7 @@ public class ButtonCell2 extends TableCell<OrderVO,Boolean> {
 			@Override
             public void handle(ActionEvent t) {
 				OrderVO ordervo = getTableView().getItems().get( getIndex() );
-				OrderIdVO.setorderid(ordervo.getorderId());
+				FrameToFrameVO.setorderid(ordervo.getorderId());
                 viewcontrol.openAssessOrderFrame();
             }
         });

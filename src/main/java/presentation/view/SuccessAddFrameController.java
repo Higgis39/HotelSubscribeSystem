@@ -3,7 +3,7 @@ package presentation.view;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import presentation.controller.FrameController;
-import vo.WordVO;
+import vo.FrameToFrameVO;
 
 public class SuccessAddFrameController {
 	@FXML
@@ -26,7 +26,7 @@ public class SuccessAddFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		word.setText(WordVO.getword());
+		word.setText(FrameToFrameVO.getword());
 	}
 	
 	public void setSuccessAddFrame(SuccessAddFrame successaddframe){

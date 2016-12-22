@@ -9,10 +9,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.HotelNameVO;
+import vo.FrameToFrameVO;
 import vo.HotelPromotionVO;
-import vo.StageVO;
-import vo.WordVO;
 
 /**
  * 
@@ -126,20 +124,20 @@ public class MakeHotelPromotionFrameController {
 		}
 		double discount = (double)(Integer.valueOf(enterdiscount.getText()))/100;
 		if(checkbox.isSelected()){
-			HotelPromotionVO vo = new HotelPromotionVO(HotelNameVO.getHotelname(),enterpromotionname.getText(),isbirthday,
+			HotelPromotionVO vo = new HotelPromotionVO(FrameToFrameVO.getHotelname(),enterpromotionname.getText(),isbirthday,
 					Integer.valueOf(enterroomnum.getText()),iscompany,begindate.getValue().toString(),enddate.getValue().toString(),discount);
 			
 			service.hotelPromotionCreate(vo);
 		}else{
-			HotelPromotionVO vo = new HotelPromotionVO(HotelNameVO.getHotelname(),enterpromotiontype.getSelectionModel().getSelectedItem(),isbirthday,
+			HotelPromotionVO vo = new HotelPromotionVO(FrameToFrameVO.getHotelname(),enterpromotiontype.getSelectionModel().getSelectedItem(),isbirthday,
 					Integer.valueOf(enterroomnum.getText()),iscompany,begindate.getValue().toString(),enddate.getValue().toString(),discount);
 			service.hotelPromotionCreate(vo);
 		}
 		
 		makehotelpromotionframe.getPrimaryStage().close();
-		StageVO.getSatge().close();
+		FrameToFrameVO.getSatge().close();
 		viewcontrol.openHotelPromotionFrame();
-		WordVO.setword("保存成功");
+		FrameToFrameVO.setword("保存成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

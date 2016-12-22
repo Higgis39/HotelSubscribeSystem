@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import vo.HotelNameVO;
+import vo.FrameToFrameVO;
 import vo.RoomVO;
 
 public class UserViewRoomFrameController {
@@ -39,7 +39,7 @@ public class UserViewRoomFrameController {
 	 */
 	private void initialize() throws SQLException{
 		AddRoomService service = new AddRoomController();
-		ArrayList<RoomVO> roomlist = service.getRoom(HotelNameVO.getHotelname());
+		ArrayList<RoomVO> roomlist = service.getRoom(FrameToFrameVO.getHotelname());
 		if(roomlist != null){
 			ObservableList<RoomVO> roomdata = FXCollections.observableArrayList(roomlist);
 			tableview.setItems(roomdata);

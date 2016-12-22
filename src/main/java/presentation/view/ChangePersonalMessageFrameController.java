@@ -5,10 +5,8 @@ import businessLogicService.userBLService.MessageBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.IdVO;
-import vo.StageVO;
+import vo.FrameToFrameVO;
 import vo.UserVO;
-import vo.WordVO;
 
 /**
  * 
@@ -36,11 +34,11 @@ public class ChangePersonalMessageFrameController {
 		String name = entername.getText();
 		String phonenumber = enterphonenumber.getText();
 		//进行保存操作
-		service.ChangeMessage(IdVO.getid(), name, phonenumber);
+		service.ChangeMessage(FrameToFrameVO.getid(), name, phonenumber);
 		changepersonalmessageframe.getPrimaryStage().close();
-		StageVO.getSatge().close();
+		FrameToFrameVO.getSatge().close();
 		viewcontrol.openUserPersonalFrame();
-		WordVO.setword("保存成功");
+		FrameToFrameVO.setword("保存成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	
@@ -57,7 +55,7 @@ public class ChangePersonalMessageFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		UserVO uservo = service.GetMessage(IdVO.getid());
+		UserVO uservo = service.GetMessage(FrameToFrameVO.getid());
 		entername.setText(uservo.getname());
 		enterphonenumber.setText(uservo.getphonenumber());
 	}

@@ -6,10 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.IdVO;
-import vo.StageVO;
+import vo.FrameToFrameVO;
 import vo.UserVO;
-import vo.WordVO;
 
 /**
  * 
@@ -33,11 +31,11 @@ public class ChangeBirOrComFrameController {
 	private void confirmAction(){
 		String birorcom = enterbircom.getText();
 		//保存新输入的生日/公司信息
-		service.ChangeBirOrComFrame(IdVO.getid(), birorcom);
+		service.ChangeBirOrComFrame(FrameToFrameVO.getid(), birorcom);
 		changebirorcomframe.getPrimaryStage().close();
-		StageVO.getSatge().close();
+		FrameToFrameVO.getSatge().close();
 		viewcontrol.openUserPersonalFrame();
-		WordVO.setword("保存成功");
+		FrameToFrameVO.setword("保存成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	
@@ -54,7 +52,7 @@ public class ChangeBirOrComFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		UserVO uservo = service.GetMessage(IdVO.getid());
+		UserVO uservo = service.GetMessage(FrameToFrameVO.getid());
 		if(uservo.getbirthday()==null){
 			bircom.setText("企业");
 			enterbircom.setText(uservo.getcompany());

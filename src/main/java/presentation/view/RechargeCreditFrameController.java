@@ -5,7 +5,7 @@ import businessLogicService.userBLService.RechargeCreditBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.WordVO;
+import vo.FrameToFrameVO;
 
 /**
  * 
@@ -34,7 +34,7 @@ public class RechargeCreditFrameController {
 		int creditrecharge = Integer.valueOf(enterrecharge.getText());
 		service.RechargeCredit("网站营销人员",id,creditrecharge);
 		rechargecreditframe.getPrimaryStage().close();
-		WordVO.setword("充值成功");
+		FrameToFrameVO.setword("充值成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

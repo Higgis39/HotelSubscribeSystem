@@ -7,10 +7,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import presentation.controller.FrameController;
-import vo.HotelNameVO;
+import vo.FrameToFrameVO;
 import vo.HotelVO;
-import vo.IdVO;
-import vo.StageVO;
 import vo.UserVO;
 
 public class ButtonCell extends TableCell<HotelVO,Boolean> {
@@ -23,13 +21,13 @@ public class ButtonCell extends TableCell<HotelVO,Boolean> {
 			@Override
             public void handle(ActionEvent t) {
 				MessageBLService service = new MessageController();
-				UserVO uservo = service.GetMessage(IdVO.getid());
+				UserVO uservo = service.GetMessage(FrameToFrameVO.getid());
 				if(uservo.getcreditvalue()<0){
 					viewcontrol.openNoEnoughCreditFrame();
 				}else{
 					HotelVO hotelvo = getTableView().getItems().get( getIndex() );
-					HotelNameVO.sethotelname(hotelvo.getName());
-					StageVO.getSatge2().hide();
+					FrameToFrameVO.sethotelname(hotelvo.getName());
+					FrameToFrameVO.getSatge2().hide();
 					viewcontrol.openFillOrderFrame();
 				}
 				

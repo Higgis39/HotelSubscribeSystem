@@ -9,8 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
+import vo.FrameToFrameVO;
 import vo.UserVO;
-import vo.WordVO;
 
 public class AddMarketerFrameController {
 	@FXML
@@ -40,7 +40,7 @@ public class AddMarketerFrameController {
 		}else{
 			samepassword.setText(null);
 			String result = service.AddMarketer(new UserVO(name,null,password1,null,null,0,null,0,null,null));
-			WordVO.setword("添加成功，账号为"+result);
+			FrameToFrameVO.setword("添加成功，账号为"+result);
 			viewcontrol.openSuccessAddFrame();
 			addmarketerframe.getPrimaryStage().close();
 		}

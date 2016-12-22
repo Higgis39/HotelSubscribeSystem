@@ -14,8 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import presentation.controller.FrameController;
-import vo.IdVO;
-import vo.StageVO;
+import vo.FrameToFrameVO;
 import vo.UserVO;
 import vo.WebPromotionVO;
 
@@ -65,7 +64,7 @@ public class MarketerPromotionFrameController {
 	 */
 	private void linkAction(){
 		//打开制定营销策略的监听
-		StageVO.setStage(marketerpromotionframe.getPrimaryStage());
+		FrameToFrameVO.setStage(marketerpromotionframe.getPrimaryStage());
 		viewcontrol.openMakeMarketerPromotionFrame();
 	}
 	
@@ -84,7 +83,7 @@ public class MarketerPromotionFrameController {
 	 */
 	private void initialize() throws SQLException{
 		MessageBLService service = new MessageController();
-		UserVO uservo = service.GetMessage(IdVO.getid());
+		UserVO uservo = service.GetMessage(FrameToFrameVO.getid());
 		id.setId(uservo.getid());
 		name.setText(uservo.getname());
 		

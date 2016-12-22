@@ -8,10 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.HotelNameVO;
+import vo.FrameToFrameVO;
 import vo.HotelVO;
-import vo.StageVO;
-import vo.WordVO;
 
 public class ChangeHotelMessageFrameController {
 	@FXML
@@ -64,12 +62,12 @@ public class ChangeHotelMessageFrameController {
 		String service = enterservice.getText();
 		int star = Integer.valueOf(enterstar.getText());
 		MaintainService s = new MaintainController();
-		s.Maintain(HotelNameVO.getHotelname(), address, phonenumber, introduction,service, star);
+		s.Maintain(FrameToFrameVO.getHotelname(), address, phonenumber, introduction,service, star);
 		
 		changehotelmessageframe.getPrimaryStage().close();
-		StageVO.getSatge().close();
+		FrameToFrameVO.getSatge().close();
 		viewcontrol.openHotelMessageFrame();
-		WordVO.setword("保存成功");
+		FrameToFrameVO.setword("保存成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	
@@ -87,7 +85,7 @@ public class ChangeHotelMessageFrameController {
 	 */
 	private void initialize(){
 		ViewService s = new ViewController();
-		HotelVO hotelvo = s.View(HotelNameVO.getHotelname());
+		HotelVO hotelvo = s.View(FrameToFrameVO.getHotelname());
 		enterphonenumber.setText(hotelvo.getPhonenumber());
 		enteraddress.setText(hotelvo.getAddress());
 		enterintroduction.setText(hotelvo.getIntroduction());

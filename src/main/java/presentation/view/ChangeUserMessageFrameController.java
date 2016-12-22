@@ -11,9 +11,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.OtherIdVO;
+import vo.FrameToFrameVO;
 import vo.UserVO;
-import vo.WordVO;
 
 /**
  * 
@@ -52,13 +51,13 @@ public class ChangeUserMessageFrameController {
 		int creditvalue = Integer.valueOf(entercreditvalue.getText());
 		if(!enterbirthday.isDisable()){
 			String birthday = enterbirthday.getValue().toString();
-			service.ChangeClientMessaage(OtherIdVO.getid(), name, phonenumber, creditvalue, birthday, null);
+			service.ChangeClientMessaage(FrameToFrameVO.getotherid(), name, phonenumber, creditvalue, birthday, null);
 		}else{
 			String company = entercompany.getText();
-			service.ChangeClientMessaage(OtherIdVO.getid(), name, phonenumber, creditvalue, null, company);
+			service.ChangeClientMessaage(FrameToFrameVO.getotherid(), name, phonenumber, creditvalue, null, company);
 		}
 		changeusermessageframe.getPrimaryStage().close();
-		WordVO.setword("保存成功");
+		FrameToFrameVO.setword("保存成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	
@@ -76,7 +75,7 @@ public class ChangeUserMessageFrameController {
 	 */
 	private void initialize(){
 		MessageBLService service = new MessageController();
-		UserVO uservo = service.GetMessage(OtherIdVO.getid());
+		UserVO uservo = service.GetMessage(FrameToFrameVO.getotherid());
 		entername.setText(uservo.getname());
 		enterphonenumber.setText(uservo.getphonenumber());
 		entercreditvalue.setText(Integer.toString(uservo.getcreditvalue()));

@@ -8,9 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import presentation.controller.FrameController;
-import vo.OrderIdVO;
+import vo.FrameToFrameVO;
 import vo.OrderVO;
-import vo.WordVO;
 
 /**
  * 
@@ -38,12 +37,12 @@ public class AssessOrderFrameController {
 		if(judge.isEditable()){
 			String judgement = judge.getText();
 			int grade = combobox.getSelectionModel().getSelectedIndex();
-			OrderVO vo = service.ShowOrderMessage(OrderIdVO.getorderid());
+			OrderVO vo = service.ShowOrderMessage(FrameToFrameVO.getorderid());
 			vo.setcomment(judgement);
 			CommentOrderService s = new CommentOrderController();
 			s.addComment(vo,grade);
 			assessorderframe.getPrimaryStage().close();
-			WordVO.setword("保存成功");
+			FrameToFrameVO.setword("保存成功");
 			viewcontrol.openSuccessSaveFrame();
 		}else{
 			assessorderframe.getPrimaryStage().close();
@@ -65,7 +64,7 @@ public class AssessOrderFrameController {
 	 */
 	private void initialize(){
 		combobox.getItems().addAll(1,2,3,4,5);
-		OrderVO ordervo = service.ShowOrderMessage(OrderIdVO.getorderid());
+		OrderVO ordervo = service.ShowOrderMessage(FrameToFrameVO.getorderid());
 		if(ordervo.getComment()!=null){
 			judge.setText(ordervo.getComment());
 			judge.setEditable(false);

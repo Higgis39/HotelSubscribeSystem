@@ -8,9 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.HotelNameVO;
-import vo.StageVO;
-import vo.WordVO;
+import vo.FrameToFrameVO;
 
 /**
  * 
@@ -75,12 +73,12 @@ public class EnterUserfulRoomFrameController {
 		int roomprice = Integer.valueOf(enterroomprice.getText());
 		//保存客房信息
 		AddRoomService service = new AddRoomController();
-		service.UpdateRoom(HotelNameVO.getHotelname(), roomtype, peoplenum, roomnum, roomprice);
+		service.UpdateRoom(FrameToFrameVO.getHotelname(), roomtype, peoplenum, roomnum, roomprice);
 		
 		enteruserfulroomframe.getPrimaryStage().close();
-		StageVO.getSatge().close();
+		FrameToFrameVO.getSatge().close();
 		viewcontrol.openHotelMainFrame();
-		WordVO.setword("保存成功");
+		FrameToFrameVO.setword("保存成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

@@ -5,10 +5,8 @@ import businessLogicService.hotelBLService.ViewService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import presentation.controller.FrameController;
-import vo.HotelNameVO;
+import vo.FrameToFrameVO;
 import vo.HotelVO;
-import vo.IdVO;
-import vo.StageVO;
 
 
 /**
@@ -75,8 +73,8 @@ public class HotelMessageFrameController {
 	 */
 	private void linkAction(){
 		//打开修改酒店基本信息界面
-		StageVO.setStage(hotelmessageframe.getPrimaryStage());
-		HotelNameVO.sethotelname(hotelname.getText());
+		FrameToFrameVO.setStage(hotelmessageframe.getPrimaryStage());
+		FrameToFrameVO.sethotelname(hotelname.getText());
 		viewcontrol.openChangeHotelMessageFrame();
 	}
 	
@@ -95,8 +93,8 @@ public class HotelMessageFrameController {
 	 */
 	private void initialize(){
 		ViewService s = new ViewController();
-		HotelVO hotelvo = s.ViewByid(IdVO.getid());
-		id.setText(IdVO.getid());
+		HotelVO hotelvo = s.ViewByid(FrameToFrameVO.getid());
+		id.setText(FrameToFrameVO.getid());
 		hotelname.setText(hotelvo.getName());
 		phonenumber.setText(hotelvo.getPhonenumber());
 		address.setText(hotelvo.getAddress());

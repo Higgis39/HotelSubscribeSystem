@@ -7,8 +7,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import presentation.controller.FrameController;
+import vo.FrameToFrameVO;
 import vo.OrderVO;
-import vo.WordVO;
 
 public class ButtonCell3 extends TableCell<OrderVO,Boolean>{
 FrameController viewcontrol = new FrameController();
@@ -22,7 +22,7 @@ FrameController viewcontrol = new FrameController();
 				OrderVO ordervo = getTableView().getItems().get( getIndex() );
 				CancelOrderService service = new CancelOrderController();
 				service.Cancel(ordervo);
-				WordVO.setword("撤销成功");
+				FrameToFrameVO.setword("撤销成功");
 				viewcontrol.openSuccessSaveFrame();
             }
         });

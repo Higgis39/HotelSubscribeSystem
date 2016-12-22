@@ -7,9 +7,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import presentation.controller.FrameController;
-import vo.HotelNameVO;
+import vo.FrameToFrameVO;
 import vo.OrderVO;
-import vo.StageVO;
 
 public class ButtonCell4 extends TableCell<OrderVO,Boolean>{
 
@@ -25,8 +24,8 @@ public class ButtonCell4 extends TableCell<OrderVO,Boolean>{
 				String hotelid = ordervo.getHotelId();
 				ViewService service = new ViewController();
 				String hotelname = service.ViewByid(hotelid).getName();
-				HotelNameVO.sethotelname(hotelname);
-				StageVO.getSatge2().hide();
+				FrameToFrameVO.sethotelname(hotelname);
+				FrameToFrameVO.getSatge2().hide();
 				viewcontrol.openFillOrderFrame();
             }
         });

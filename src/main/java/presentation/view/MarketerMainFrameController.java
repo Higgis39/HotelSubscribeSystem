@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import presentation.controller.FrameController;
-import vo.IdVO;
+import vo.FrameToFrameVO;
 import vo.OrderVO;
 import vo.UserVO;
 
@@ -92,7 +92,7 @@ public class MarketerMainFrameController {
 	 */
 	private void initialize() throws SQLException{
 		MessageBLService service = new MessageController();
-		UserVO uservo = service.GetMessage(IdVO.getid());
+		UserVO uservo = service.GetMessage(FrameToFrameVO.getid());
 		id.setId(uservo.getid());
 		name.setText(uservo.getname());
 		

@@ -18,8 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
 import vo.WorkerVO;
-import vo.IdVO;
-import vo.OtherIdVO;
+import vo.FrameToFrameVO;
 import vo.UserVO;
 
 /**
@@ -131,7 +130,7 @@ public class ManagerMainFrameController {
 	 */
 	private void linkAction(){
 		//打开修改用户信息的界面
-		OtherIdVO.setid(enterid.getText());
+		FrameToFrameVO.setotherid(enterid.getText());
 		viewcontrol.openChangeUserMessageFrame();
 	}
 	
@@ -177,7 +176,7 @@ public class ManagerMainFrameController {
 	 */
 	private void initialize(){
 		MessageBLService service = new MessageController();
-		UserVO uservo = service.GetMessage(IdVO.getid());
+		UserVO uservo = service.GetMessage(FrameToFrameVO.getid());
 		id.setId(uservo.getid());
 		name.setText(uservo.getname());
 	}

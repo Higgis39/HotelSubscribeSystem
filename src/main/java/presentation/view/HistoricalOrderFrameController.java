@@ -19,9 +19,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
 import presentation.controller.FrameController;
-import vo.IdVO;
+import vo.FrameToFrameVO;
 import vo.OrderVO;
-import vo.StageVO;
 import vo.UserVO;
 
 /**
@@ -84,7 +83,7 @@ public class HistoricalOrderFrameController {
 	 * @throws SQLException
 	 */
 	private void viewAction() throws SQLException{
-		StageVO.setStage2(historicalorderframe.getPrimaryStage());
+		FrameToFrameVO.setStage2(historicalorderframe.getPrimaryStage());
 		
 		String ordertype = enterordertype.getSelectionModel().getSelectedItem();
 		//根据得到的订单类型进行搜索
@@ -118,6 +117,7 @@ public class HistoricalOrderFrameController {
 			
 			if(ordertype.equals("已执行")){
 				link.setVisible(true);
+				tableview.setPrefWidth(625);
 				intime.setText("入住时间");
 				outtime.setText("离开时间");
 				link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
@@ -138,6 +138,7 @@ public class HistoricalOrderFrameController {
 				outtime.setText("预计退房时间");
 				link.setText("撤销");
 				link.setVisible(true);
+				tableview.setPrefWidth(625);
 				
 				link.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrderVO, Boolean>, ObservableValue<Boolean>>() {
 		            @Override
@@ -177,7 +178,7 @@ public class HistoricalOrderFrameController {
 	private void initialize(){
 		enterordertype.getItems().addAll("未执行","已执行","异常","已撤销");
 		MessageBLService service = new MessageController();
-		UserVO uservo = service.GetMessage(IdVO.getid());
+		UserVO uservo = service.GetMessage(FrameToFrameVO.getid());
 		id.setText(uservo.getid());
 		username.setText(uservo.getname());
 	}

@@ -13,8 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.HotelNameVO;
-import vo.WordVO;
+import vo.FrameToFrameVO;
 
 
 /**
@@ -77,12 +76,12 @@ public class CheckOutFrameController {
 		if(checkbox.isSelected()){
 			String id = enterid.getText();
 			String outtime = entercheckouttime.getText();
-			service.CheckOut(HotelNameVO.getHotelname(),id,room,num,outtime);
+			service.CheckOut(FrameToFrameVO.getHotelname(),id,room,num,outtime);
 		}else{
-			service.CheckOut(HotelNameVO.getHotelname(),room,num);
+			service.CheckOut(FrameToFrameVO.getHotelname(),room,num);
 		}
 		checkoutframe.getPrimaryStage().close();
-		WordVO.setword("退房成功");
+		FrameToFrameVO.setword("退房成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

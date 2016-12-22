@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import presentation.controller.FrameController;
-import vo.IdVO;
+import vo.FrameToFrameVO;
 import vo.OrderVO;
 
 
@@ -84,7 +84,7 @@ public class DealOrderFrameController {
 	private void viewAction() throws SQLException{
 		String ordertype = enterordertype.getSelectionModel().getSelectedItem();
 		HotelViewOrderService service = new HotelViewOrderController();
-		List<OrderVO> list = service.GetSpecificOrders(IdVO.getid(), ordertype);
+		List<OrderVO> list = service.GetSpecificOrders(FrameToFrameVO.getid(), ordertype);
 		if(list != null){
 			ObservableList<OrderVO> data = FXCollections.observableList(list);
 			tableview.setItems(data);

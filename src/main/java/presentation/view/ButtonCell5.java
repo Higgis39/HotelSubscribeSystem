@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import presentation.controller.FrameController;
-import vo.HotelNameVO;
+import vo.FrameToFrameVO;
 import vo.HotelVO;
 
 public class ButtonCell5 extends TableCell<HotelVO,Boolean> {
@@ -19,7 +19,7 @@ public class ButtonCell5 extends TableCell<HotelVO,Boolean> {
             public void handle(ActionEvent t) {
 				HotelVO hotelvo = getTableView().getItems().get( getIndex() );
 				String hotelname = hotelvo.getName();
-				HotelNameVO.sethotelname(hotelname);
+				FrameToFrameVO.sethotelname(hotelname);
 				viewcontrol.openUserViewRoomFrame();
             }
         });

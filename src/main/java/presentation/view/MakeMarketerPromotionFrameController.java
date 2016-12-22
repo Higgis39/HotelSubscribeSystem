@@ -11,9 +11,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.StageVO;
+import vo.FrameToFrameVO;
 import vo.WebPromotionVO;
-import vo.WordVO;
 
 /**
  * 
@@ -110,9 +109,9 @@ public class MakeMarketerPromotionFrameController {
 		}
 		
 		makemarketerpromotionframe.getPrimaryStage().close();
-		StageVO.getSatge().close();
+		FrameToFrameVO.getSatge().close();
 		viewcontrol.openMarketerPromotionFrame();
-		WordVO.setword("保存成功");
+		FrameToFrameVO.setword("保存成功");
 		viewcontrol.openSuccessSaveFrame();
 	}
 	@FXML

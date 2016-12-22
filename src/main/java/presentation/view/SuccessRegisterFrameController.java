@@ -3,7 +3,7 @@ package presentation.view;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import presentation.controller.FrameController;
-import vo.IdVO;
+import vo.FrameToFrameVO;
 
 public class SuccessRegisterFrameController {
 	@FXML
@@ -27,7 +27,7 @@ public class SuccessRegisterFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		id.setText(IdVO.getid());
+		id.setText(FrameToFrameVO.getid());
 	}
 	
 	public void setSuccessRegisterFrame(SuccessRegisterFrame successregisterframe){

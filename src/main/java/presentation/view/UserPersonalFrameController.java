@@ -6,8 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import presentation.controller.FrameController;
-import vo.IdVO;
-import vo.StageVO;
+import vo.FrameToFrameVO;
 import vo.UserVO;
 
 /**
@@ -74,7 +73,7 @@ public class UserPersonalFrameController {
 	 */
 	private void changepersonalmessageAction(){
 		//打开修改个人信息页面
-		StageVO.setStage(userpersonalframe.getPrimaryStage());
+		FrameToFrameVO.setStage(userpersonalframe.getPrimaryStage());
 		viewcontrol.openChangePersonalMessageFrame();
 	}
 	
@@ -93,7 +92,7 @@ public class UserPersonalFrameController {
 	 */
 	private void registerVIPAction(){
 		//打开注册会员页面
-		StageVO.setStage(userpersonalframe.getPrimaryStage());
+		FrameToFrameVO.setStage(userpersonalframe.getPrimaryStage());
 		viewcontrol.openRegisterVIPFrame();
 	}
 	
@@ -103,7 +102,7 @@ public class UserPersonalFrameController {
 	 */
 	private void changebirthAction(){
 		//打开修改生日/企业的界面
-		StageVO.setStage(userpersonalframe.getPrimaryStage());
+		FrameToFrameVO.setStage(userpersonalframe.getPrimaryStage());
 		viewcontrol.openChangeBirOrComFrame();
 	}
 	
@@ -121,7 +120,7 @@ public class UserPersonalFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		String getid = IdVO.getid();
+		String getid = FrameToFrameVO.getid();
 		MessageBLService user = new MessageController();
 		UserVO uservo = user.GetMessage(getid);
 		id.setText(uservo.getid());

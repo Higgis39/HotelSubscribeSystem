@@ -14,11 +14,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import presentation.controller.FrameController;
-import vo.HotelNameVO;
+import vo.FrameToFrameVO;
 import vo.HotelVO;
-import vo.IdVO;
 import vo.RoomVO;
-import vo.StageVO;
 
 /**
  * 
@@ -82,8 +80,8 @@ public class HotelMainFrameController {
 	 */
 	private void enteruserfulroomAction(){
 		//打开录入可用客房的界面
-		StageVO.setStage(hotelmainframe.getPrimaryStage());
-		HotelNameVO.sethotelname(hotelname.getText());
+		FrameToFrameVO.setStage(hotelmainframe.getPrimaryStage());
+		FrameToFrameVO.sethotelname(hotelname.getText());
 		viewcontrol.openEnterUserfulRoomFrame();
 	}
 	
@@ -120,7 +118,7 @@ public class HotelMainFrameController {
 	 */
 	private void initialize() throws SQLException{
 		ViewService s = new ViewController();
-		HotelVO hotelvo = s.ViewByid(IdVO.getid());
+		HotelVO hotelvo = s.ViewByid(FrameToFrameVO.getid());
 		id.setText(hotelvo.getId());
 		hotelname.setText(hotelvo.getName());
 		

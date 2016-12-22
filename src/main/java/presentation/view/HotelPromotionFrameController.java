@@ -14,10 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import presentation.controller.FrameController;
-import vo.HotelNameVO;
+import vo.FrameToFrameVO;
 import vo.HotelPromotionVO;
-import vo.IdVO;
-import vo.StageVO;
 import vo.UserVO;
 
 /**
@@ -88,8 +86,8 @@ public class HotelPromotionFrameController {
 	 */
 	private void linkAction(){
 		//打开制定促销策略界面
-		StageVO.setStage(hotelpromotionframe.getPrimaryStage());
-		HotelNameVO.sethotelname(hotelname.getText());
+		FrameToFrameVO.setStage(hotelpromotionframe.getPrimaryStage());
+		FrameToFrameVO.sethotelname(hotelname.getText());
 		viewcontrol.openMakeHotelPromotionFrame();
 	}
 	
@@ -108,7 +106,7 @@ public class HotelPromotionFrameController {
 	 */
 	private void initialize() throws SQLException{
 		MessageBLService service = new MessageController();
-		UserVO uservo = service.GetMessage(IdVO.getid());
+		UserVO uservo = service.GetMessage(FrameToFrameVO.getid());
 		id.setId(uservo.getid());
 		hotelname.setText(uservo.getname());
 		

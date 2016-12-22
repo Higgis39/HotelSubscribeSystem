@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.IdVO;
+import vo.FrameToFrameVO;
 
 /**
  * 
@@ -70,7 +70,7 @@ public class LoginFrameController {
 			viewcontrol.openFailLoginPopup();
 		}else{
 			//打开相应的用户类型的主界面
-			IdVO.setid(enterid.getText());
+			FrameToFrameVO.setid(enterid.getText());
 			if(usertype.equals("普通客户")){
 				viewcontrol.openUserMainFrame();
 			}else if(usertype.equals("酒店工作人员")){

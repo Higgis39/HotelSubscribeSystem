@@ -15,10 +15,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.ArrayListVO;
+import vo.FrameToFrameVO;
 import vo.HotelVO;
-import vo.IdVO;
-import vo.StageVO;
 import vo.UserVO;
 
 /**
@@ -199,9 +197,9 @@ public class UserMainFrameController {
 		//调用hotel模块的搜索酒店方法
 		SearchService s = new SearchController();
 		ArrayList<HotelVO> list = s.Search(id.getText(),hotelname,city, businesscircle, roomtype, price, indate, outdate, star, grade, only);
-		ArrayListVO.setArrayList(list);
+		FrameToFrameVO.setArrayList(list);
 		
-		StageVO.setStage(usermainframe.getPrimaryStage());
+		FrameToFrameVO.setStage(usermainframe.getPrimaryStage());
 		usermainframe.getPrimaryStage().hide();
 		viewcontrol.openSearchResultFrame();
 	}
@@ -221,7 +219,7 @@ public class UserMainFrameController {
 	 */
 	private void initialize(){
 		MessageBLService service = new MessageController();
-		UserVO uservo = service.GetMessage(IdVO.getid());
+		UserVO uservo = service.GetMessage(FrameToFrameVO.getid());
 		id.setText(uservo.getid());
 		username.setText(uservo.getname());
 		

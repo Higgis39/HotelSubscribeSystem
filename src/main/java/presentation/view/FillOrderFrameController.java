@@ -22,13 +22,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.HotelNameVO;
+import vo.FrameToFrameVO;
 import vo.HotelPromotionVO;
-import vo.IdVO;
 import vo.OrderVO;
-import vo.StageVO;
 import vo.WebPromotionVO;
-import vo.WordVO;
 
 /**
  * 
@@ -174,13 +171,13 @@ public class FillOrderFrameController {
 		}
 		ViewService s = new ViewController();
 		String hotelid = s.View(hotelname.getText()).getId();
-		OrderVO ordervo = new OrderVO(null,hotelid,IdVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum,haschild);
+		OrderVO ordervo = new OrderVO(null,hotelid,FrameToFrameVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum,haschild);
 		double p = service.getTotal(ordervo);
 		ordervo.setprice(p);
 		String orderid = service.addNewOrder(ordervo);
 		fillorderframe.getPrimaryStage().close();
 		viewcontrol.openUserMainFrame();
-		WordVO.setword("下单成功,订单号为"+orderid);
+		FrameToFrameVO.setword("下单成功,订单号为"+orderid);
 		viewcontrol.openSuccessAddFrame();
 	}
 	
@@ -191,7 +188,7 @@ public class FillOrderFrameController {
 	private void cancelAction(){
 		fillorderframe.getPrimaryStage().close();
 		//返回之前的界面
-		StageVO.getSatge2().show();
+		FrameToFrameVO.getSatge2().show();
 	}
 	
 	@FXML
@@ -213,7 +210,7 @@ public class FillOrderFrameController {
 		
 		ViewService s = new ViewController();
 		String hotelid = s.View(hotelname.getText()).getId();
-		OrderVO ordervo = new OrderVO(null,hotelid,IdVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum,haschild);
+		OrderVO ordervo = new OrderVO(null,hotelid,FrameToFrameVO.getid(),"未执行",indate,outdate,0,null,roomtype,roomnum,haschild);
 		double p = service.getTotal(ordervo);
 		price.setText(Double.toString(p));
 	}
@@ -223,7 +220,7 @@ public class FillOrderFrameController {
 	 * 初始化
 	 */
 	private void initialize() throws SQLException{
-		hotelname.setText(HotelNameVO.getHotelname());
+		hotelname.setText(FrameToFrameVO.getHotelname());
 		enterroomtype.getItems().addAll("单人间","标准间","家庭套房");
 		enterindate.setValue(LocalDate.now());
 		enteroutdate.setValue(LocalDate.now().plusDays(1));
@@ -231,7 +228,7 @@ public class FillOrderFrameController {
 		
 		HotelPromotionBLService service1 = new HotelPromotionController();
 		WebPromotionBLService service2 = new WebPromotionController();
-		List<HotelPromotionVO> list1 = service1.hotelPromotionFind(HotelNameVO.getHotelname());
+		List<HotelPromotionVO> list1 = service1.hotelPromotionFind(FrameToFrameVO.getHotelname());
 		List<WebPromotionVO> list2 = service2.webPromotionFind();
 		if(list1!=null){
 			ObservableList<HotelPromotionVO> data = FXCollections.observableList(list1);

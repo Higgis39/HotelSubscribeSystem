@@ -8,9 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import presentation.controller.FrameController;
-import vo.IdVO;
-import vo.StageVO;
-import vo.WordVO;
+import vo.FrameToFrameVO;
 
 
 /**
@@ -80,16 +78,16 @@ public class RegisterVIPFrameController {
 		boolean result;
 		if(commonVIP.isSelected()){
 			String birthday = enterbirthday.getValue().toString();
-			result = service.RegisterVIP(IdVO.getid(),"普通会员",birthday);
+			result = service.RegisterVIP(FrameToFrameVO.getid(),"普通会员",birthday);
 		}else{
 			String company = entercompany.getText();
-			result = service.RegisterVIP(IdVO.getid(),"企业会员",company);
+			result = service.RegisterVIP(FrameToFrameVO.getid(),"企业会员",company);
 		}
 		if(result==true){
-			StageVO.getSatge().close();
+			FrameToFrameVO.getSatge().close();
 			viewcontrol.openUserPersonalFrame();
 			registerVIPframe.getPrimaryStage().close();
-			WordVO.setword("注册成功");
+			FrameToFrameVO.setword("注册成功");
 			viewcontrol.openSuccessSaveFrame();
 		}else{
 			

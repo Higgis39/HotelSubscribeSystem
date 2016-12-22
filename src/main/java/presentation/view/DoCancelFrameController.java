@@ -2,7 +2,7 @@ package presentation.view;
 
 import javafx.fxml.FXML;
 import presentation.controller.FrameController;
-import vo.StageVO;
+import vo.FrameToFrameVO;
 
 /**
  * 
@@ -21,7 +21,7 @@ public class DoCancelFrameController {
 	 */
 	private void confirmAction(){
 		docancelpopup.getPrimaryStage().close();
-		StageVO.getSatge().close();
+		FrameToFrameVO.getSatge().close();
 		viewcontrol.openLoginFrame();
 	}
 	@FXML

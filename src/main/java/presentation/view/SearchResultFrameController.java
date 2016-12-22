@@ -16,9 +16,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.util.Callback;
 import presentation.controller.FrameController;
-import vo.ArrayListVO;
+import vo.FrameToFrameVO;
 import vo.HotelVO;
-import vo.StageVO;
 
 public class SearchResultFrameController {
 	@FXML
@@ -58,7 +57,7 @@ public class SearchResultFrameController {
 	 */
 	private void returnAction(){
 		searchresultframe.getPrimaryStage().close();
-		StageVO.getSatge().show();
+		FrameToFrameVO.getSatge().show();
 	}
 	
 	@FXML
@@ -69,7 +68,7 @@ public class SearchResultFrameController {
 		String sortstyle = combobox1.getSelectionModel().getSelectedItem();
 		String sortaspect = combobox2.getSelectionModel().getSelectedItem();
 		if(sortstyle!=null&&sortaspect!=null){
-			ArrayList<HotelVO> hotellist = service.SortHotel(ArrayListVO.getArrayList(), sortstyle, sortaspect);
+			ArrayList<HotelVO> hotellist = service.SortHotel(FrameToFrameVO.getArrayList(), sortstyle, sortaspect);
 			ObservableList<HotelVO> data = FXCollections.observableArrayList(hotellist);
 			tableview.setItems(data);
 			hotelname.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
@@ -115,7 +114,7 @@ public class SearchResultFrameController {
 	            }
 	        });
 	        
-	        ArrayListVO.setArrayList(hotellist);
+	        FrameToFrameVO.setArrayList(hotellist);
 		}
 	}
 	
@@ -127,7 +126,7 @@ public class SearchResultFrameController {
 		combobox1.getItems().addAll("按酒店星级排序","按酒店评分排序","按房间最低价格排序");
 		combobox2.getItems().addAll("从大到小","从小到大");
 		
-		ArrayList<HotelVO> hotel = ArrayListVO.getArrayList();
+		ArrayList<HotelVO> hotel = FrameToFrameVO.getArrayList();
 		if(hotel!=null){
 			ObservableList<HotelVO> data = FXCollections.observableArrayList(hotel);
 			tableview.setItems(data);
@@ -178,6 +177,6 @@ public class SearchResultFrameController {
 	
 	public void setSearchResultFrame(SearchResultFrame searchresultframe){
 		this.searchresultframe = searchresultframe;
-		StageVO.setStage2(searchresultframe.getPrimaryStage());
+		FrameToFrameVO.setStage2(searchresultframe.getPrimaryStage());
 	}
 }

@@ -8,7 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import vo.IdVO;
+import vo.FrameToFrameVO;
 
 
 /**
@@ -34,7 +34,7 @@ public class ViewCreditChangeFrameController {
 	 */
 	private void initialize(){
 		MessageBLService service = new MessageController();
-		ArrayList<String> creditchange = service.GetCreditChange(IdVO.getid());
+		ArrayList<String> creditchange = service.GetCreditChange(FrameToFrameVO.getid());
 		if(creditchange != null){
 			ObservableList<String> items = FXCollections.observableArrayList (creditchange);
 			list.setItems(items);
