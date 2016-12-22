@@ -93,14 +93,19 @@ public class Order{
 	 * 恢复异常订单
 	 * @return
 	 */
-	public boolean Recover(double RecoverPercent){
+	public boolean Recover(String recoverPercent){
 		OrderPO po=service.findByOrderID(vo.getorderId());
 		if(!po.getStatus().equals("异常"))
 			return false;
 		po.setStatus("已执行");
 		po.setEntryTime(vo.getEntryTime());
 		po.setLastTime(vo.getLastTime());
-		manager.recoverCredit(po,RecoverPercent);
+		if(recoverPercent.equals("全部")){
+			manager.recoverCredit(po,1);
+		}else{
+			manager.recoverCredit(po,0.5);
+		}
+		
 		service.update(po);
 		return true;
 	}

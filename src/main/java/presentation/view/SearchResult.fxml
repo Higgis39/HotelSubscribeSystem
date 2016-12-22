@@ -8,7 +8,7 @@
 <AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.SearchResultFrameController">
    <children>
       <Button layoutX="35.0" layoutY="25.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="24.0" prefWidth="64.0" text="返回" />
-      <TableView fx:id="tableview" layoutX="35.0" layoutY="101.0" prefHeight="350.0" prefWidth="680.0">
+      <TableView fx:id="tableview" layoutX="25.0" layoutY="93.0" prefHeight="350.0" prefWidth="702.0">
         <columns>
           <TableColumn fx:id="IsIn" prefWidth="60.0" text="预定过" />
           <TableColumn fx:id="hotelname" prefWidth="100.0" text="酒店名称" />
@@ -18,7 +18,7 @@
             <TableColumn fx:id="grade" prefWidth="50.0" text="评分" />
             <TableColumn fx:id="minprice" text="房间最低价格" />
             <TableColumn fx:id="view" prefWidth="60.0" text="查看房间" />
-            <TableColumn fx:id="link" prefWidth="60.0" text="下单" />
+            <TableColumn fx:id="link" prefWidth="79.0" text="下单" />
         </columns>
       </TableView>
       <ComboBox fx:id="combobox1" layoutX="272.0" layoutY="38.0" prefWidth="150.0" />

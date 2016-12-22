@@ -303,9 +303,8 @@ public class Hotel{
 		}
 		
 		if(sortaspect.equals("从小到大")){
-			result = ReverseList(list);
+			result = ReverseList(result);
 		}
-		System.out.println(result);
 		return result;
 	}
 	

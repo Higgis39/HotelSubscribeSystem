@@ -2,11 +2,18 @@ package presentation.view;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 
 import businessLogic.hotelbl.ViewController;
 import businessLogic.orderbl.CreateOrderController;
+import businessLogic.promotionbl.HotelPromotionController;
+import businessLogic.promotionbl.WebPromotionController;
 import businessLogicService.hotelBLService.ViewService;
 import businessLogicService.orderBLService.CreateOrderService;
+import businessLogicService.promotionBLService.HotelPromotionBLService;
+import businessLogicService.promotionBLService.WebPromotionBLService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -215,12 +222,29 @@ public class FillOrderFrameController {
 	/**
 	 * 初始化
 	 */
-	private void initialize(){
+	private void initialize() throws SQLException{
 		hotelname.setText(HotelNameVO.getHotelname());
 		enterroomtype.getItems().addAll("单人间","标准间","家庭套房");
 		enterindate.setValue(LocalDate.now());
 		enteroutdate.setValue(LocalDate.now().plusDays(1));
 		enterhaschild.getItems().addAll("有","没有");
+		
+		HotelPromotionBLService service1 = new HotelPromotionController();
+		WebPromotionBLService service2 = new WebPromotionController();
+		List<HotelPromotionVO> list1 = service1.hotelPromotionFind(HotelNameVO.getHotelname());
+		List<WebPromotionVO> list2 = service2.webPromotionFind();
+		if(list1!=null){
+			ObservableList<HotelPromotionVO> data = FXCollections.observableList(list1);
+			tableview1.setItems(data);
+			promotionname1.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
+			discount1.setCellValueFactory(cellData->cellData.getValue().getDiscountProperty());
+		}
+		if(list2!=null){
+			ObservableList<WebPromotionVO> data = FXCollections.observableList(list2);
+			tableview2.setItems(data);
+			promotionname2.setCellValueFactory(cellData->cellData.getValue().getNameProperty());
+			discount2.setCellValueFactory(cellData->cellData.getValue().getDiscountProperty());
+		}
 	}
 
 	public void setFillOrderFrame(FillOrderFrame fillorderframe) {

@@ -33,7 +33,7 @@ public class OrderAppealFrameController {
 		String id = orderid.getText();
 		OrderVO vo = s.ShowOrderMessage(id);
 		String p = reveal.getSelectionModel().getSelectedItem();
-		service.RecoverCredit(vo);
+		service.RecoverCredit(vo, p);
 		
 		orderappealframe.getPrimaryStage().close();
 	}

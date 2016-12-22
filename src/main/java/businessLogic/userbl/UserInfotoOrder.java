@@ -31,7 +31,7 @@ public class UserInfotoOrder implements UserInfoForOrder{
 	 * @param creditchange
 	 * @return
 	 */
-	public boolean ChangeCredit(String ID,int creditchange){
+	public boolean ChangeCredit(String ID,String Reason,int creditchange){
 		UserDataService service = new UserData();
 		CreditGrade grade = new CreditGrade();
 		UserPO userpo = service.find(ID);
@@ -39,9 +39,9 @@ public class UserInfotoOrder implements UserInfoForOrder{
 		userpo.setVIPgrade(grade.setVIPgradeByCredit(userpo.getcreditvalue(),userpo.getVIPtype()));
 		ArrayList<String> change = userpo.getcreditchange();
 		if(creditchange>0){
-			change.add("增加"+Integer.toString(creditchange));
+			change.add(Reason+"增加"+Integer.toString(creditchange));
 		}else{
-			change.add("减少"+Integer.toString(creditchange));
+			change.add(Reason+"减少"+Integer.toString(creditchange));
 		}
 		userpo.setCreditchange(change);
 		service.update(userpo);

@@ -69,7 +69,6 @@ public class SearchResultFrameController {
 		String sortstyle = combobox1.getSelectionModel().getSelectedItem();
 		String sortaspect = combobox2.getSelectionModel().getSelectedItem();
 		if(sortstyle!=null&&sortaspect!=null){
-			System.out.println(ArrayListVO.getArrayList().get(0).getName());
 			ArrayList<HotelVO> hotellist = service.SortHotel(ArrayListVO.getArrayList(), sortstyle, sortaspect);
 			ObservableList<HotelVO> data = FXCollections.observableArrayList(hotellist);
 			tableview.setItems(data);
