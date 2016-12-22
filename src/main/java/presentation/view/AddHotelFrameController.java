@@ -91,7 +91,7 @@ public class AddHotelFrameController {
 			samepassword.setText("两次密码不同");
 		}else{
 			samepassword.setText(null);
-			HotelVO hotelvo = new HotelVO(null,password1,hotelname,phonenumber,city,address,businessarea,introduction,service,star,0.0);
+			HotelVO hotelvo = new HotelVO(null,password1,hotelname,phonenumber,city,address,businessarea,introduction,service,star,0.0,0);
 			String result = addhotelblservice.AddHotel(hotelvo);
 			OtherIdVO.setid(result);
 			viewcontrol.openSuccessAddFrame();

@@ -17,7 +17,7 @@ public class HotelToolForUser implements HotelInfoForUser{
 	WorkerDataService workerdataservice = new WorkerData();
 	
     public boolean addHotel(String id,String password,String hotelname,String phonenumber,String city,String address,String businessarea,String introduction,String facilities,int star){
-    	HotelPO hotelpo = new HotelPO(id, password, hotelname, phonenumber,city, address, businessarea, introduction, facilities, star, 0);
+    	HotelPO hotelpo = new HotelPO(id, password, hotelname, phonenumber,city, address, businessarea, introduction, facilities, star, 0, 0);
     	
     	hoteldataservice.insert(hotelpo);
     	

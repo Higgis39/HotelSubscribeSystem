@@ -34,4 +34,15 @@ public class SearchController implements SearchService{
 	public ArrayList<HotelVO> Search(String userID,String hotelName, String city, String businessArea, String roomType, String price, String checkinTime, String checkoutTime, int star, String grade,boolean hasfixed) throws SQLException{
 		return hotel.Search(userID,hotelName, city, businessArea, roomType, price, checkinTime, checkoutTime, star, grade,hasfixed);
 	}
+	
+	/**
+	 * 根据不同的排序方式进行排序
+	 * @param list
+	 * @param sortstyle
+	 * @param sortaspect
+	 * @return
+	 */
+	public ArrayList<HotelVO> SortHotel(ArrayList<HotelVO> list,String sortstyle,String sortaspect){
+		return hotel.SortHotel(list, sortstyle, sortaspect);
+	}
 }

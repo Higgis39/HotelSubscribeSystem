@@ -12,9 +12,10 @@ public class HotelPO {
 	String facilities;
 	int star;
 	double grade;
+	int minprice;
 	
 	//构造函数
-	public HotelPO(String hotelid,String password,String hotelname,String phonenumber,String city,String address,String businessarea,String introduction,String facilities,int star,double grade){
+	public HotelPO(String hotelid,String password,String hotelname,String phonenumber,String city,String address,String businessarea,String introduction,String facilities,int star,double grade,int minprice){
 		this.hotelid = hotelid;
 		this.password = password;
 		this.hotelname = hotelname;
@@ -26,6 +27,7 @@ public class HotelPO {
 		this.facilities = facilities;
 		this.star = star;
 		this.grade = grade;
+		this.minprice = minprice;
 	}
 	
 	public HotelPO(){
@@ -57,14 +59,9 @@ public class HotelPO {
 		return address;
 	}
 	
-	
-	
+	//得到酒店所在城市
 	public String getCity() {
 		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
 	}
 
 	//得到酒店所处商圈
@@ -92,6 +89,11 @@ public class HotelPO {
 		return grade;
 	}
 	
+	//得到酒店的房间最低价格
+	public int getminprice(){
+		return minprice;
+	}
+	
 	public void setHotelid(String hotelid) {
 		this.hotelid = hotelid;
 	}
@@ -110,6 +112,10 @@ public class HotelPO {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public void setBusinessarea(String businessarea) {
@@ -130,6 +136,10 @@ public class HotelPO {
 
 	public void setGrade(double grade) {
 		this.grade = grade;
+	}
+	
+	public void setMinprice(int minprice){
+		this.minprice = minprice;
 	}
 
 	@Override

@@ -25,10 +25,11 @@ public class HotelVO {
 	private StringProperty facilities;
 	private IntegerProperty star;
 	private DoubleProperty grade;
+	private IntegerProperty minprice;
 	private BooleanProperty IsIn;
 	
 	//构造函数
-	public HotelVO(String hotelid,String password,String hotelname,String phonenumber,String city,String address,String businessarea,String introduction,String facilities,int star,double grade){
+	public HotelVO(String hotelid,String password,String hotelname,String phonenumber,String city,String address,String businessarea,String introduction,String facilities,int star,double grade,int minprice){
 		this.hotelid = new SimpleStringProperty(hotelid);
 		this.password = new SimpleStringProperty(password);
 		this.hotelname = new SimpleStringProperty(hotelname);
@@ -40,6 +41,7 @@ public class HotelVO {
 		this.facilities = new SimpleStringProperty(facilities);
 		this.star = new SimpleIntegerProperty(star);
 		this.grade = new SimpleDoubleProperty(grade);
+		this.minprice = new SimpleIntegerProperty(minprice);
 	}
 	
 	
@@ -140,6 +142,15 @@ public class HotelVO {
 	
 	public DoubleProperty getGradeProperty(){
 		return grade;
+	}
+	
+	//得到酒店最低房间价格
+	public int getminprice(){
+		return minprice.get();
+	}
+	
+	public IntegerProperty getminpriceProperty(){
+		return minprice;
 	}
 	
 	public BooleanProperty getIsInProperty(){

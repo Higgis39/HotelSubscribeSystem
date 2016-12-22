@@ -272,7 +272,7 @@ public class Hotel{
 		for(int i=0;i<length;i++){
 			HotelVO hotelvo = new HotelVO(HotelPOList.get(i).getHotelId(), HotelPOList.get(i).getPassword(), HotelPOList.get(i).getName(), 
 					                      HotelPOList.get(i).getPhonenumber(),HotelPOList.get(i).getCity(), HotelPOList.get(i).getAddress(), HotelPOList.get(i).getBusinessArea(),
-					                      HotelPOList.get(i).getIntroduction(), HotelPOList.get(i).getFacilities(), HotelPOList.get(i).getStar(), HotelPOList.get(i).getGrade());
+					                      HotelPOList.get(i).getIntroduction(), HotelPOList.get(i).getFacilities(), HotelPOList.get(i).getStar(), HotelPOList.get(i).getGrade(),HotelPOList.get(i).getminprice());
 			
 			if(FindFixedHotel(HotelPOList2,HotelPOList.get(i))){
 				hotelvo.setIsIn(true);
@@ -286,6 +286,30 @@ public class Hotel{
 	}
 	
 	/**
+	 * 根据不同的排序方式进行排序
+	 * @param list
+	 * @param sortstyle
+	 * @param sortaspect
+	 * @return
+	 */
+	public ArrayList<HotelVO> SortHotel(ArrayList<HotelVO> list,String sortstyle,String sortaspect){
+		ArrayList<HotelVO> result = new ArrayList<HotelVO>();
+		if(sortstyle.equals("按酒店星级排序")){
+			result = SortHotelByStar(list);
+		}else if(sortstyle.equals("按酒店评分排序")){
+			result = SortHotelByGrade(list);
+		}else{
+			result = SortHotelByMinprice(list);
+		}
+		
+		if(sortaspect.equals("从小到大")){
+			result = ReverseList(list);
+		}
+		System.out.println(result);
+		return result;
+	}
+	
+	/**
 	 * 浏览酒店
 	 * @param hotelName String
 	 * @return 返回酒店的详细信息
@@ -295,7 +319,7 @@ public class Hotel{
 		HotelPO hotelpo = hoteldataservice.findByName(hotelName);
 		HotelVO hotelvo = new HotelVO(hotelpo.getHotelId(), hotelpo.getPassword(), hotelName, hotelpo.getPhonenumber(), 
 				hotelpo.getCity(),hotelpo.getAddress(),hotelpo.getBusinessArea(), hotelpo.getIntroduction(),
-				                      hotelpo.getFacilities(),hotelpo.getStar(), hotelpo.getGrade());
+				                      hotelpo.getFacilities(),hotelpo.getStar(), hotelpo.getGrade(),hotelpo.getminprice());
 		return hotelvo;
 	}
 	
@@ -310,7 +334,7 @@ public class Hotel{
 		
 		HotelVO hotelvo = new HotelVO(id, hotelpo.getPassword(), hotelpo.getName(), hotelpo.getPhonenumber(), 
 				hotelpo.getCity(),hotelpo.getAddress(),hotelpo.getBusinessArea(), hotelpo.getIntroduction(),
-				                      hotelpo.getFacilities(),hotelpo.getStar(), hotelpo.getGrade());
+				                      hotelpo.getFacilities(),hotelpo.getStar(), hotelpo.getGrade(),hotelpo.getminprice());
 		return hotelvo;
 	}
 	
@@ -328,7 +352,7 @@ public class Hotel{
 	public boolean UpdateHotelMessage(String hotelName,String address, String phoneNumber, String Introduction, String Facilities, int Star){
 		
 		HotelPO hotelpo = hoteldataservice.findByName(hotelName);
-		hotelpo = new HotelPO(hotelpo.getHotelId(),hotelpo.getPassword(),hotelName,phoneNumber,hotelpo.getCity(),address,hotelpo.getBusinessArea(),Introduction,Facilities,Star,hotelpo.getGrade());
+		hotelpo = new HotelPO(hotelpo.getHotelId(),hotelpo.getPassword(),hotelName,phoneNumber,hotelpo.getCity(),address,hotelpo.getBusinessArea(),Introduction,Facilities,Star,hotelpo.getGrade(),hotelpo.getminprice());
 		hoteldataservice.update(hotelpo);
 		
 		return true;
@@ -492,5 +516,81 @@ public class Hotel{
 			}
 		}
 		return false;
+	}
+	
+	/**
+	 * 根据酒店星级排序
+	 * @param list
+	 * @return
+	 */
+	public ArrayList<HotelVO> SortHotelByStar(ArrayList<HotelVO> list){
+		ArrayList<HotelVO> result = new ArrayList<HotelVO>();
+		int k = 0;
+		while(list.size()!=0){
+			for(int i=0;i<list.size();i++){
+				if(list.get(i).getStar()>list.get(k).getStar()){
+					k = i;
+				}
+			}
+			result.add(list.get(k));
+			list.remove(k);
+			k = 0;
+		}
+		return result;
+	}
+	
+	/**
+	 * 根据酒店评分排序
+	 * @param list
+	 * @return
+	 */
+	public ArrayList<HotelVO> SortHotelByGrade(ArrayList<HotelVO> list){
+		ArrayList<HotelVO> result = new ArrayList<HotelVO>();
+		int k = 0;
+		while(list.size()!=0){
+			for(int i=0;i<list.size();i++){
+				if(list.get(i).getGrade()>list.get(k).getGrade()){
+					k = i;
+				}
+			}
+			result.add(list.get(k));
+			list.remove(k);
+			k = 0;
+		}
+		return result;
+	}
+	
+	/**
+	 * 根据酒店房间最低价格排序
+	 * @param list
+	 * @return
+	 */
+	public ArrayList<HotelVO> SortHotelByMinprice(ArrayList<HotelVO> list){
+		ArrayList<HotelVO> result = new ArrayList<HotelVO>();
+		int k = 0;
+		while(list.size()!=0){
+			for(int i=0;i<list.size();i++){
+				if(list.get(i).getminprice()>list.get(k).getminprice()){
+					k = i;
+				}
+			}
+			result.add(list.get(k));
+			list.remove(k);
+			k = 0;
+		}
+		return result;
+	}
+	
+	/**
+	 * 反转酒店列表
+	 * @param list
+	 * @return
+	 */
+	public ArrayList<HotelVO> ReverseList(ArrayList<HotelVO> list){
+		ArrayList<HotelVO> result = new ArrayList<HotelVO>();
+		for(int i=list.size()-1;i>=0;i--){
+			result.add(list.get(i));
+		}
+		return result;
 	}
 }
