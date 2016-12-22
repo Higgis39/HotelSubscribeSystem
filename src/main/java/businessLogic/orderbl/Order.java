@@ -114,13 +114,15 @@ public class Order{
 	 * 评价订单
 	 * @return
 	 */
-	public boolean Comment(){
+	public boolean Comment(int grade){
+		HotelInfoForOrder hotelService=new HotelToolForOrder();
 		OrderPO po = service.findByOrderID(vo.getorderId());
 		if(!po.getStatus().equals("已退房"))
 			return false;
 		po.setComment(vo.getComment());
 		po.setStatus("已评价");
 		service.update(po);
+		hotelService.updateGrade(po.getHotelId(), grade);
 		return true;
 	}
 	
