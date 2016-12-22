@@ -97,6 +97,7 @@ public class Hotel{
 		ArrayList<Map<String, Object>> params = new ArrayList<Map<String, Object>>();
 		Map<String, Object> param = new HashMap<String, Object>();
 		ArrayList<HotelPO> HotelPOList = new ArrayList<HotelPO>();
+		ArrayList<HotelPO> HotelPOList2 = new ArrayList<HotelPO>();
 		
 		if(hasfixed == true){
 			String tcity = '\''+city+'\'';
@@ -158,6 +159,7 @@ public class Hotel{
 				params.add(param);
 			}
 			HotelPOList = hoteldataservice.pfind(params, userID);
+			HotelPOList2 = HotelPOList;
 //			if(hotelName.equals("")){
 //				if(star == 0){
 //					if(grade==null){
@@ -261,9 +263,9 @@ public class Hotel{
 				params.add(param);
 			}
 			HotelPOList = hoteldataservice.find(params);
+			HotelPOList2 = hoteldataservice.pfind(params, userID);
 		}
 		
-
 		ArrayList<HotelVO> HotelVOList = new ArrayList<HotelVO>();
 
 		int length=HotelPOList.size();
@@ -272,6 +274,11 @@ public class Hotel{
 					                      HotelPOList.get(i).getPhonenumber(),HotelPOList.get(i).getCity(), HotelPOList.get(i).getAddress(), HotelPOList.get(i).getBusinessArea(),
 					                      HotelPOList.get(i).getIntroduction(), HotelPOList.get(i).getFacilities(), HotelPOList.get(i).getStar(), HotelPOList.get(i).getGrade());
 			
+			if(FindFixedHotel(HotelPOList2,HotelPOList.get(i))){
+				hotelvo.setIsIn(true);
+			}else{
+				hotelvo.setIsIn(false);
+			}
 			HotelVOList.add(hotelvo);
 		}
 		
@@ -469,5 +476,21 @@ public class Hotel{
 			return vo;
 		}
 		return null;
+	}
+	
+	/**
+	 * 判断酒店是否被预定过
+	 * @param list
+	 * @param po
+	 * @return
+	 */
+	public boolean FindFixedHotel(ArrayList<HotelPO> list,HotelPO po){
+		String id = po.getHotelId();
+		for(int i=0;i<list.size();i++){
+			if(list.get(i).getHotelId().equals(id)){
+				return true;
+			}
+		}
+		return false;
 	}
 }
