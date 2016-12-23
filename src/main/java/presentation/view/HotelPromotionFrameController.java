@@ -107,7 +107,7 @@ public class HotelPromotionFrameController {
 	private void initialize() throws SQLException{
 		MessageBLService service = new MessageController();
 		UserVO uservo = service.GetMessage(FrameToFrameVO.getid());
-		id.setId(uservo.getid());
+		id.setText(uservo.getid());
 		hotelname.setText(uservo.getname());
 		
 		HotelPromotionBLService s = new HotelPromotionController();
