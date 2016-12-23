@@ -15,6 +15,8 @@ public class ChangeHotelMessageFrameController {
 	@FXML
 	private TextField enterphonenumber;
 	@FXML
+	private TextField enterbusinessarea;
+	@FXML
 	private TextField enteraddress;
 	@FXML
 	private TextArea enterintroduction;
@@ -57,12 +59,13 @@ public class ChangeHotelMessageFrameController {
 	 */
 	private void confirmAction(){
 		String phonenumber = enterphonenumber.getText();
+		String businessarea = enterbusinessarea.getText();
 		String address = enteraddress.getText();
 		String introduction = enterintroduction.getText();
 		String service = enterservice.getText();
 		int star = Integer.valueOf(enterstar.getText());
 		MaintainService s = new MaintainController();
-		s.Maintain(FrameToFrameVO.getHotelname(), address, phonenumber, introduction,service, star);
+		s.Maintain(FrameToFrameVO.getHotelname(),businessarea, address, phonenumber, introduction,service, star);
 		
 		changehotelmessageframe.getPrimaryStage().close();
 		FrameToFrameVO.getSatge().close();
@@ -87,6 +90,7 @@ public class ChangeHotelMessageFrameController {
 		ViewService s = new ViewController();
 		HotelVO hotelvo = s.View(FrameToFrameVO.getHotelname());
 		enterphonenumber.setText(hotelvo.getPhonenumber());
+		enterbusinessarea.setText(hotelvo.getBusinessArea());
 		enteraddress.setText(hotelvo.getAddress());
 		enterintroduction.setText(hotelvo.getIntroduction());
 		enterservice.setText(hotelvo.getFacilities());

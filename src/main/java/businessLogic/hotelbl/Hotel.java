@@ -348,10 +348,10 @@ public class Hotel{
 	 * @param Worker ArrayList<String>
 	 * @return 成功返回true，失败返回false
 	 */
-	public boolean UpdateHotelMessage(String hotelName,String address, String phoneNumber, String Introduction, String Facilities, int Star){
+	public boolean UpdateHotelMessage(String hotelName,String businessarea,String address, String phoneNumber, String Introduction, String Facilities, int Star){
 		
 		HotelPO hotelpo = hoteldataservice.findByName(hotelName);
-		hotelpo = new HotelPO(hotelpo.getHotelId(),hotelpo.getPassword(),hotelName,phoneNumber,hotelpo.getCity(),address,hotelpo.getBusinessArea(),Introduction,Facilities,Star,hotelpo.getGrade(),hotelpo.getminprice(),hotelpo.getNumberofevaluators());
+		hotelpo = new HotelPO(hotelpo.getHotelId(),hotelpo.getPassword(),hotelName,phoneNumber,hotelpo.getCity(),address,businessarea,Introduction,Facilities,Star,hotelpo.getGrade(),hotelpo.getminprice(),hotelpo.getNumberofevaluators());
 		hoteldataservice.update(hotelpo);
 		
 		return true;

@@ -27,6 +27,8 @@ public class HotelMessageFrameController {
 	@FXML
 	private Label city;
 	@FXML
+	private Label businessarea;
+	@FXML
 	private Label introduction;
 	@FXML
 	private Label service;
@@ -98,7 +100,8 @@ public class HotelMessageFrameController {
 		hotelname.setText(hotelvo.getName());
 		phonenumber.setText(hotelvo.getPhonenumber());
 		address.setText(hotelvo.getAddress());
-		city.setText(hotelvo.getBusinessArea());
+		city.setText(hotelvo.getCity());
+		businessarea.setText(hotelvo.getBusinessArea());
 		introduction.setText(hotelvo.getIntroduction());
 		service.setText(hotelvo.getFacilities());
 		star.setText(Integer.toString(hotelvo.getStar()));

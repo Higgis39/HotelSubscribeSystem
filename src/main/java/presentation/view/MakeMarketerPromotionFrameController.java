@@ -1,7 +1,5 @@
 package presentation.view;
 
-import java.time.LocalDate;
-
 import businessLogic.promotionbl.WebPromotionController;
 import businessLogicService.promotionBLService.WebPromotionBLService;
 import javafx.fxml.FXML;
@@ -69,9 +67,6 @@ public class MakeMarketerPromotionFrameController {
 	 * 开始日期的监听
 	 */
 	private void begindateAction(){
-		if(begindate.getValue().isBefore(LocalDate.now())){
-			begindate.setValue(LocalDate.now());
-		}
 		enddate.setValue(begindate.getValue());
 	}
 	
@@ -93,18 +88,27 @@ public class MakeMarketerPromotionFrameController {
 		//保存新制定的策略
 		WebPromotionBLService service = new WebPromotionController();
 		
-		double discount = Integer.valueOf(enterdiscount.getText())/100;
+		double discount = (double)(Integer.valueOf(enterdiscount.getText()))/100;
 		int VIPgrade = 0;
 		if(!enterVIPgrade.getSelectionModel().getSelectedItem().equals("不要求")){
 			VIPgrade = Integer.valueOf(enterVIPgrade.getSelectionModel().getSelectedItem());
 		}
+		String bdate,edate;
+		if(begindate.getValue()!=null){
+			bdate = begindate.getValue().toString();
+		}else{
+			bdate = null;
+		}
+		if(enddate.getValue()!=null){
+			edate = enddate.getValue().toString();
+		}else{
+			edate = null;
+		}
 		if(checkbox.isSelected()){
-			WebPromotionVO vo = new WebPromotionVO(entername.getText(),begindate.getValue().toString(),enddate.getValue().toString(),
-					entercity.getText(),VIPgrade,discount);
+			WebPromotionVO vo = new WebPromotionVO(entername.getText(),bdate,edate,entercity.getText(),VIPgrade,discount);
 			service.webPromotionCreate(vo);
 		}else{
-			WebPromotionVO vo = new WebPromotionVO(enterpromotiontype.getSelectionModel().getSelectedItem(),begindate.getValue().toString()
-					,enddate.getValue().toString(),entercity.getText(),VIPgrade,discount);
+			WebPromotionVO vo = new WebPromotionVO(enterpromotiontype.getSelectionModel().getSelectedItem(),bdate,edate,entercity.getText(),VIPgrade,discount);
 			service.webPromotionCreate(vo);
 		}
 		
@@ -127,7 +131,7 @@ public class MakeMarketerPromotionFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		enterpromotiontype.getItems().addAll("双11活动折扣","VIP特定商圈专属折扣","会员特定等级专属折扣");
+		enterpromotiontype.getItems().addAll("双11活动折扣","特定商圈专属折扣","会员特定等级专属折扣");
 		enterVIPgrade.getItems().addAll("不要求","1","2","3","4","5");
 	}
 	

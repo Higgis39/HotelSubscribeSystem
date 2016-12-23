@@ -112,7 +112,8 @@ public class MakeHotelPromotionFrameController {
 		HotelPromotionBLService service = new HotelPromotionController();
 		
 		boolean isbirthday,iscompany;
-		if(enterbirthday.getSelectionModel().getSelectedItem().equals("有")){
+		String bdate,edate;
+		if(enterbirthday.getSelectionModel().getSelectedItem().equals("是")){
 			isbirthday = true;
 		}else{
 			isbirthday = false;
@@ -122,15 +123,25 @@ public class MakeHotelPromotionFrameController {
 		}else{
 			iscompany = false;
 		}
+		if(begindate.getValue()!=null){
+			bdate = begindate.getValue().toString();
+		}else{
+			bdate = null;
+		}
+		if(enddate.getValue()!=null){
+			edate = enddate.getValue().toString();
+		}else{
+			edate = null;
+		}
 		double discount = (double)(Integer.valueOf(enterdiscount.getText()))/100;
 		if(checkbox.isSelected()){
 			HotelPromotionVO vo = new HotelPromotionVO(FrameToFrameVO.getHotelname(),enterpromotionname.getText(),isbirthday,
-					Integer.valueOf(enterroomnum.getText()),iscompany,begindate.getValue().toString(),enddate.getValue().toString(),discount);
+					Integer.valueOf(enterroomnum.getText()),iscompany,bdate,edate,discount);
 			
 			service.hotelPromotionCreate(vo);
 		}else{
 			HotelPromotionVO vo = new HotelPromotionVO(FrameToFrameVO.getHotelname(),enterpromotiontype.getSelectionModel().getSelectedItem(),isbirthday,
-					Integer.valueOf(enterroomnum.getText()),iscompany,begindate.getValue().toString(),enddate.getValue().toString(),discount);
+					Integer.valueOf(enterroomnum.getText()),iscompany,bdate,edate,discount);
 			service.hotelPromotionCreate(vo);
 		}
 		

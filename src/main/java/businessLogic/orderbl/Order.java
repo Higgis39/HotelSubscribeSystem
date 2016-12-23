@@ -166,7 +166,7 @@ public class Order{
 	 * @throws SQLException 
 	 */
 	public List<OrderVO> getOrderByDate(String Date) throws SQLException{
-		List<OrderPO> orderListPO=service.findByDate(Date);
+		List<OrderPO> orderListPO=service.findByDate(Date+" 18:00");
 		return this.turnPOtoVO(orderListPO);
 	}
 	

@@ -97,7 +97,7 @@ public class CheckInFrameController {
 		if(checkbox.isSelected()){
 			String id = enterid.getText();
 			String intime = entercheckintime.getText();
-			String outtime = entercheckoutdate.getValue().toString()+" "+entercheckouthour.getText()+entercheckoutminute.getText();
+			String outtime = entercheckoutdate.getValue().toString()+" "+entercheckouthour.getText()+":"+entercheckoutminute.getText();
 			CustomerViewOrderService s = new CustomerViewOrderController();
 			OrderVO ordervo = s.ShowOrderMessage(id);
 			ordervo.setEntryTime(intime);

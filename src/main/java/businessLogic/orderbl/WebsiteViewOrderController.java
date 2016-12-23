@@ -12,7 +12,7 @@ public class WebsiteViewOrderController implements WebsiteViewOrderService{
 	public List<OrderVO> ViewException(String Date) throws SQLException {
 		Order order=new Order();
 		List<OrderVO> list = order.getOrderByDate(Date);
-		list = order.filterOrderByStatus(list, "异常");
+		list = order.filterOrderByStatus(list, "未执行");
 		return list;
 	}
 

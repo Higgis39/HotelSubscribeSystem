@@ -5,5 +5,5 @@ package businessLogicService.hotelBLService;
  * 
  */
 public interface MaintainService {
-	public boolean Maintain(String hotelName,String address, String phoneNumber, String Introduction, String Facilities, int Star);
+	public boolean Maintain(String hotelName,String businessarea,String address, String phoneNumber, String Introduction, String Facilities, int Star);
 }

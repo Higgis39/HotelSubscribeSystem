@@ -22,7 +22,7 @@ public class MaintainController implements MaintainService{
 	 * @return 返回修改后的酒店详细信息
 	 */
 	
-	public boolean Maintain(String hotelName,String address, String phoneNumber, String Introduction, String Facilities, int Star){
-		return hotel.UpdateHotelMessage(hotelName,address, phoneNumber, Introduction, Facilities, Star);
+	public boolean Maintain(String hotelName,String businessarea,String address, String phoneNumber, String Introduction, String Facilities, int Star){
+		return hotel.UpdateHotelMessage(hotelName,businessarea,address, phoneNumber, Introduction, Facilities, Star);
 	}
 }

@@ -7,6 +7,8 @@ import businessLogicService.orderBLService.WebsiteViewOrderService;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import presentation.controller.FrameController;
+import vo.FrameToFrameVO;
 import vo.OrderVO;
 
 /**
@@ -23,6 +25,8 @@ public class OrderAppealFrameController {
 	
 	private OrderAppealFrame orderappealframe;
 	
+	FrameController viewcontrol = new FrameController();
+	
 	@FXML
 	/**
 	 * 确定按钮的监听
@@ -35,6 +39,8 @@ public class OrderAppealFrameController {
 		String p = reveal.getSelectionModel().getSelectedItem();
 		service.RecoverCredit(vo, p);
 		
+		FrameToFrameVO.setword("申诉成功");
+		viewcontrol.openSuccessSaveFrame();
 		orderappealframe.getPrimaryStage().close();
 	}
 	

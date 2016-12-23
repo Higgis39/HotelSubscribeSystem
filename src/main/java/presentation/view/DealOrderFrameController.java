@@ -3,7 +3,9 @@ package presentation.view;
 import java.sql.SQLException;
 import java.util.List;
 
+import businessLogic.hotelbl.ViewController;
 import businessLogic.orderbl.HotelViewOrderController;
+import businessLogicService.hotelBLService.ViewService;
 import businessLogicService.orderBLService.HotelViewOrderService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import presentation.controller.FrameController;
 import vo.FrameToFrameVO;
+import vo.HotelVO;
 import vo.OrderVO;
 
 
@@ -110,6 +113,11 @@ public class DealOrderFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
+		ViewService s = new ViewController();
+		HotelVO hotelvo = s.ViewByid(FrameToFrameVO.getid());
+		id.setText(hotelvo.getId());
+		hotelname.setText(hotelvo.getName());
+		
 		enterordertype.getItems().addAll("未执行","已执行","异常","已撤销");
 	}
 	
