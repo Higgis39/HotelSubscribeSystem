@@ -24,4 +24,10 @@ public class UserInfotoPromotion implements UserInfoForPromotion{
 		UserPO userpo = service.find(userId);
 		return userpo.getcompany();
 	}
+
+	public int getUserGrade(String userId) {
+		UserDataService service = new UserData();
+		UserPO userpo = service.find(userId);
+		return userpo.getVIPgrade();
+	}
 }

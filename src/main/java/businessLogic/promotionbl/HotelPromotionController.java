@@ -56,20 +56,6 @@ public class HotelPromotionController implements HotelPromotionBLService{
 		return true;
 	}
 
-//	@Override
-//	public boolean hotelPromotionUpdate(HotelPromotionVO hpv) {
-//		HotelPromotionPO hpp = new HotelPromotionPO();
-//		hpp.setHotelname(hpv.getHotelName());
-//		hpp.setName(hpv.getName());
-//		hpp.setIsbirthday(hpv.getisIsbirthday());
-//		hpp.setNumberofroom(hpv.getNumberofroom());
-//		hpp.setIspartner(hpv.getisIspartner());
-//		hpp.setBegintime(hpv.getBegintime());
-//		hpp.setEndtime(hpv.getEndtime());
-//		hpd.update(hpp);
-//		return true;
-//	}
-
 	@Override
 	public void hotelPromotionDelete(HotelPromotionVO hpv) {
 		String name = hpv.getName();

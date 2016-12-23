@@ -66,18 +66,24 @@ public class PromotionToolForOrder implements PromotionInfoForOrder{
 	public double getAppropriateWebPromotion(OrderVO vo) {
 		
 		String hotelID = vo.getHotelId();
+		String userID = vo.getUserId();
 		
 		//网站特定时间促销策略
 		WebSpecificTimePromotion wstp = new WebSpecificTimePromotion();
-		double a = wstp.calculateDiscount(hotelID);
+		double a = wstp.calculateDiscount(hotelID, userID);
 		
 		//特定商圈专属折扣
 		BusinessDistrictPromotion bdp = new BusinessDistrictPromotion();
-		double b = bdp.calculateDiscount(hotelID);
+		double b = bdp.calculateDiscount(hotelID, userID);
+		
+		//会员特定等级折扣
+		VIPGradePromotion VIPp = new VIPGradePromotion();
+		double c = VIPp.calculateDiscount(hotelID, userID);
 		
 		ArrayList<Double> discount = new ArrayList<>();
 		discount.add(a);
 		discount.add(b);
+		discount.add(c);
 		
 		//选出折扣最多的促销策略
 		for(int i=0; i<discount.size(); i++){

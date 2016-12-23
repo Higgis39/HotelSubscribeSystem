@@ -9,5 +9,7 @@ public interface WorkerDataService {
 
 	public void insert(WorkerPO po);
 	
+	public void update(WorkerPO po);
+	
 	public List<WorkerPO> findByHotelName(String hotelName) throws SQLException;
 }

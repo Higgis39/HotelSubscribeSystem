@@ -49,15 +49,11 @@ public interface UserDataService {
 	 * 将信用值变化情况转化为String类型
 	 * @param cc ArrayList<String>类型
 	 */
-	public static String creditchangeToSql(ArrayList<String> cc) {
-		return null;
-	}
+	public String creditchangeToSql(ArrayList<String> cc);
 	
 	/**
 	 * 将数据库读出的String类型信用变化转化为ArrayList类型
 	 * @param creditchange String类型
 	 */
-	public static ArrayList<String> creditchangeToList(String creditchange){
-		return null;
-	}
+	public ArrayList<String> creditchangeToList(String creditchange);
 }

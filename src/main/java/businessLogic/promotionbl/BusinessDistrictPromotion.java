@@ -38,11 +38,11 @@ public class BusinessDistrictPromotion implements WebPromotionType{
 	 * 计算折扣=不同商圈折扣*不同等级折扣
 	 * @return 会员特定商圈专属折扣值
 	 */
-	public double calculateDiscount(String hotelId) {
+	public double calculateDiscount(String hotelId, String userId) {
 		
 		//计算会员等级折扣
 		VIPGradePromotion v = new VIPGradePromotion();
-		double VIPDiscount = v.calculateDiscount(hotelId);
+		double VIPDiscount = v.calculateDiscount(hotelId, userId);
 		discount = location(hotelId)*VIPDiscount;
 		return discount;
 	}

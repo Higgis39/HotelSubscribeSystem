@@ -75,4 +75,26 @@ public class WorkerData implements WorkerDataService{
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 更新酒店工作人员
+	 */
+	public void update(WorkerPO p) {
+		Connection conn = DBUtil.getConnection();
+		String sql = "update worker "
+				+ " set hotelName=?, name=?, age=?, sex=?, beginTime=? "
+				+ " where name=?";
+		try {
+			PreparedStatement ptmt = conn.prepareStatement(sql);
+			ptmt.setString(1, p.getHotelName());
+			ptmt.setString(2, p.getName());
+			ptmt.setInt(3, p.getAge());
+			ptmt.setString(4, p.getSex());
+			ptmt.setString(5, p.getBeginTime());
+			ptmt.setString(6, p.getName());
+			ptmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

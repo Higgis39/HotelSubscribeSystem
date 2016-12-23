@@ -22,9 +22,15 @@ public class WebPromotionController implements WebPromotionBLService {
 		try {
 			ArrayList<WebPromotionPO> promotion = new ArrayList<>();
 			promotion = wpd.find();
+			
 			ArrayList<String> name = new ArrayList<>();
+			ArrayList<String> bussinessarea = new ArrayList<>();
+			ArrayList<Integer> VIPgrade = new ArrayList<>();
+			
 			for(int i=0; i<promotion.size(); i++){
 				name.add(promotion.get(i).getName());
+				bussinessarea.add(promotion.get(i).getSpecificbusinessarea());
+				VIPgrade.add(promotion.get(i).getVIPgrade());
 			}
 			
 			WebPromotionPO wpp = new WebPromotionPO();
@@ -36,7 +42,8 @@ public class WebPromotionController implements WebPromotionBLService {
 			wpp.setDiscount(wpv.getDiscount());
 			
 			for(int i=0; i<name.size(); i++){
-				if(wpv.getName().equals(name.get(i))){
+				if(wpv.getName().equals(name.get(i)) && wpv.getSpecificbusinessarea().equals(bussinessarea.get(i))
+						&& wpv.getVIPgrade()==VIPgrade.get(i)){
 					wpd.update(wpp);
 					return true;
 				}
@@ -47,16 +54,6 @@ public class WebPromotionController implements WebPromotionBLService {
 		}
 		return true;
 	}
-
-//	@Override
-//	public boolean webPromotionUpdate(WebPromotionVO wpv) {
-//		WebPromotionPO wpp = new WebPromotionPO();
-//		wpp.setBegintime(wpv.getBegintime());
-//		wpp.setEndtime(wpv.getEndtime());
-//		wpp.setSpecificbusinessarea(wpv.getSpecificbusinessarea());
-//		wpd.update(wpp);
-//		return true;
-//	}
 
 	@Override
 	public void webPromotionDelete(WebPromotionVO wpv) {
