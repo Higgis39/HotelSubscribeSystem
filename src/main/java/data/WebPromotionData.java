@@ -56,7 +56,7 @@ public class WebPromotionData implements WebPromotionDataService{
 		Connection conn = DBUtil.getConnection();
 		String sql = "update webpromotion "
 				+ " set begintime=?, endtime=?, VIPgrade=?, specificbusinessarea=?, discount=?"
-				+ " where name=? ";
+				+ " where name=? and VIPgrade=? and specificbusinessarea=?";
 		try {
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, wp.getBegintime());
@@ -65,6 +65,8 @@ public class WebPromotionData implements WebPromotionDataService{
 			ptmt.setString(4, wp.getSpecificbusinessarea());
 			ptmt.setDouble(5, wp.getDiscount());
 			ptmt.setString(6, wp.getName());
+			ptmt.setInt(7, wp.getVIPgrade());
+			ptmt.setString(8, wp.getSpecificbusinessarea());
 			ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -152,5 +154,11 @@ public class WebPromotionData implements WebPromotionDataService{
 			result.add(wp);
 		}
 		return result;
+	}
+
+	@Override
+	public WebPromotionPO findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -2,6 +2,11 @@ package businessLogic.promotionbl;
 
 import java.time.LocalDate;
 
+import data.HotelData;
+import data.HotelPromotionData;
+import dataService.HotelDataService;
+import dataService.HotelPromotionDataService;
+
 /**
  * 酒店特定时间优惠策略
  * @author Thpffcj
@@ -9,9 +14,13 @@ import java.time.LocalDate;
  */
 public class HotelSpecificTimePromotion implements HotelPromotionType{
 
+	HotelPromotionDataService hpds = new HotelPromotionData();
+	HotelDataService hds = new HotelData();
+	
 	public double calculateDiscount(String userId, String hotelId, String entryTime) {
-		double discount = 0.8;
-		if(isInPromotionTime()){
+		String hotelName = hds.findById(hotelId).getName();
+		double discount = hpds.findByHotelNameAndName(hotelName, "特定时间促销策略").getDiscount();
+		if(isInPromotionTime(hotelName, "特定时间促销策略")){
 			return discount;
 		}
 		return 1;
@@ -21,9 +30,9 @@ public class HotelSpecificTimePromotion implements HotelPromotionType{
 	 * 判断当前时间是否是促销时间
 	 * @return
 	 */
-	public boolean isInPromotionTime(){
-		String beginTime = "2016-11-11";
-		String endTime = "2016-11-12";
+	public boolean isInPromotionTime(String hotelName, String name){
+		String beginTime = hpds.findByHotelNameAndName(hotelName, name).getBegintime();
+		String endTime = hpds.findByHotelNameAndName(hotelName, name).getEndtime();
 		LocalDate begin = LocalDate.parse(beginTime);
 		LocalDate end = LocalDate.parse(endTime);
 		LocalDate current = LocalDate.now();

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import JDBC.DBUtil;
 import dataService.HotelPromotionDataService;
+import po.HotelPO;
 import po.HotelPromotionPO;
 
 /**
@@ -162,5 +163,35 @@ public class HotelPromotionData implements HotelPromotionDataService{
 			result.add(hp);
 		}
 		return result;
+	}
+
+	@Override
+	public HotelPromotionPO findByHotelNameAndName(String hotelName, String name) {
+		HotelPromotionPO hp = null;
+		Connection conn = DBUtil.getConnection();
+		String sql = " select * from hotelpromotion "
+				   + " where hotelname=? and name=?";
+		try {
+			PreparedStatement ptmt = conn.prepareStatement(sql);
+			
+			ptmt.setString(1, hotelName);
+			ptmt.setString(2, name);
+			ResultSet rs = ptmt.executeQuery();
+			
+			while(rs.next()){
+				hp = new HotelPromotionPO();
+				hp.setHotelname(rs.getString("hotelname"));
+				hp.setName(rs.getString("name"));
+				hp.setIsbirthday(rs.getBoolean("isbirthday"));
+				hp.setNumberofroom(rs.getInt("numberofroom"));
+				hp.setIspartner(rs.getBoolean("ispartner"));
+				hp.setBegintime(rs.getString("begintime"));
+				hp.setEndtime(rs.getString("endtime"));
+				hp.setDiscount(rs.getDouble("discount"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return hp;
 	}
 }

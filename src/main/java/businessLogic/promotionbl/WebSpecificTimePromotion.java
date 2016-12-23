@@ -8,11 +8,15 @@ import java.util.Date;
  * @version 1.0
  *
  */
+
+import data.WebPromotionData;
+import dataService.WebPromotionDataService;
 public class WebSpecificTimePromotion implements WebPromotionType{
 
+	WebPromotionDataService wpds = new WebPromotionData();
+	
 	public double calculateDiscount(String hotelId, String userId) {
-		
-		double discount = 0.8;
+		double discount = wpds.findByName("特定时间促销策略").getDiscount();
 		if(isInPromotionTime()){
 			return discount;
 		}
@@ -24,8 +28,8 @@ public class WebSpecificTimePromotion implements WebPromotionType{
 	 * @return
 	 */
 	public boolean isInPromotionTime(){
-		String beginTime = "2016-11-11";
-		String endTime = "2016-11-12";
+		String beginTime = wpds.findByName("特定时间促销策略").getBegintime();
+		String endTime = wpds.findByName("特定时间促销策略").getEndtime();
 		LocalDate begin = LocalDate.parse(beginTime);
 		LocalDate end = LocalDate.parse(endTime);
 		LocalDate current = LocalDate.now();

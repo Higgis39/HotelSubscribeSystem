@@ -12,14 +12,20 @@ import java.util.Map;
 import data.HotelData;
 import data.OrderData;
 import data.UserData;
+import data.WebPromotionData;
+import dataService.WebPromotionDataService;
 import po.HotelPO;
 import po.OrderPO;
 import po.UserPO;
+import po.WebPromotionPO;
 
 
 public class JDBCTest {
 	
 	public static void main(String[] args) throws SQLException {
+//		WebPromotionDataService wp = new WebPromotionData();
+//		ArrayList<WebPromotionPO> w = wp.find();
+		
 		
 //		HotelData hd = new HotelData();
 ////		

@@ -14,7 +14,7 @@ import vo.WebPromotionVO;
  *
  */
 public class WebPromotionController implements WebPromotionBLService {
-
+	
 	WebPromotionDataService wpd = new WebPromotionData();
 	
 	@Override
