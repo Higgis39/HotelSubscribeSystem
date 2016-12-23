@@ -207,9 +207,8 @@ public class User{
 	public String AddHotel(HotelVO hotelvo) throws SQLException{
 		String newid = Integer.toString(Integer.valueOf(userdataservice.distributeid())+1);
 		userdataservice.insert(new UserPO(hotelvo.getName(),newid,hotelvo.getPassword(),"酒店工作人员",0,null,0,null,null,null,null));
-//		添加HotelPO
+		//添加HotelPO
 		hotelinfoforuser.addHotel(newid, hotelvo.getPassword(),hotelvo.getName(), hotelvo.getPhonenumber(),hotelvo.getCity(), hotelvo.getAddress(), hotelvo.getBusinessArea(), hotelvo.getIntroduction(), hotelvo.getFacilities(), hotelvo.getStar());
-		System.out.println(newid);
 		return newid;
 		
 	}
@@ -222,6 +221,21 @@ public class User{
 	public boolean AddHotelWorker(WorkerVO workervo){
 		//添加WorkerPO
 		hotelinfoforuser.addHotelWorker(workervo.getName(), workervo.getHotelname(), workervo.getAge(),workervo.getSex(),workervo.getBeginTime());
+		return true;
+	}
+	
+	/**
+	 * 修改酒店工作人员信息
+	 * @param hotelid
+	 * @param name
+	 * @param age
+	 * @param sex
+	 * @param begindate
+	 * @return
+	 * @throws SQLException 
+	 */
+	public boolean ChangeHotelWorkerMessage(String hotelid,String name,int age,String sex,String begindate) throws SQLException{
+		hotelinfoforuser.ChangeHotelWorkerMessage(hotelid, name, age, sex, begindate);
 		return true;
 	}
 }

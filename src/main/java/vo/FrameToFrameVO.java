@@ -27,6 +27,10 @@ public class FrameToFrameVO {
 	
 	private static String hotelname;
 	
+	private static String hotelid;
+	
+	private static WorkerVO workervo;
+	
 	public static ArrayList<HotelVO> getArrayList(){
 		return hotelvolist;
 	}
@@ -89,5 +93,21 @@ public class FrameToFrameVO {
 	
 	public static void sethotelname(String name){
 		hotelname = name;
+	}
+	
+	public static String gethotelid(){
+		return hotelid;
+	}
+	
+	public static void sethotelid(String id){
+		hotelid = id;
+	}
+	
+	public static WorkerVO getworkervo(){
+		return workervo;
+	}
+	
+	public static void setworkervo(WorkerVO vo){
+		workervo = vo;
 	}
 }

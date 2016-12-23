@@ -1,8 +1,5 @@
 package businessLogic.userbl;
 
-import data.UserData;
-import dataService.UserDataService;
-
 /**
  * 
  * @author 费慧通
@@ -10,7 +7,6 @@ import dataService.UserDataService;
  *根据信用值修改会员等级
  */
 public class CreditGrade {
-	UserDataService userdataservice = new UserData();
 	
 	/**
 	 * 根据信用值修改会员等级

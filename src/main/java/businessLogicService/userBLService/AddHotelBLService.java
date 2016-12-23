@@ -14,4 +14,6 @@ public interface AddHotelBLService {
 	public String AddHotel(HotelVO hotelvo)throws SQLException;
 	
 	public boolean AddHotelWorker(WorkerVO workervo);
+	
+	public boolean ChangeHotelWorkerMessage(String hotelid,String name,int age,String sex,String begindate)throws SQLException;
 }

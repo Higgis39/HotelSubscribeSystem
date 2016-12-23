@@ -8,14 +8,18 @@ import businessLogic.hotelbl.ViewController;
 import businessLogic.userbl.MessageController;
 import businessLogicService.hotelBLService.ViewService;
 import businessLogicService.userBLService.MessageBLService;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.util.Callback;
 import presentation.controller.FrameController;
 import vo.WorkerVO;
 import vo.FrameToFrameVO;
@@ -63,6 +67,8 @@ public class ManagerMainFrameController {
 	@FXML
 	private TableColumn<WorkerVO,String> sex;
 	@FXML
+	private TableColumn<WorkerVO,Boolean> change;
+	@FXML
 	private Hyperlink link;
 
 	private ManagerMainFrame managermainframe;
@@ -106,6 +112,7 @@ public class ManagerMainFrameController {
 	
 	@FXML
 	private void lookworkerAction() throws SQLException{
+		FrameToFrameVO.sethotelid(enterhotelid.getText());
 		//查询酒店工作人员信息
 		ViewService service = new ViewController();
 		List<WorkerVO> vo = service.findworker(enterhotelid.getText());
@@ -116,6 +123,20 @@ public class ManagerMainFrameController {
 			age.setCellValueFactory(cellData->cellData.getValue().getAgeProperty());
 			begindate.setCellValueFactory(cellData->cellData.getValue().getBeginTimeProperty());
 			sex.setCellValueFactory(cellData->cellData.getValue().getSexProperty());
+			
+			change.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<WorkerVO, Boolean>, ObservableValue<Boolean>>() {
+	            @Override
+	            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<WorkerVO, Boolean> p) {
+	                return new SimpleBooleanProperty(p.getValue()!=null);
+	            }
+	        });
+
+	        change.setCellFactory(new Callback<TableColumn<WorkerVO, Boolean>, TableCell<WorkerVO, Boolean>>() {
+	            @Override
+	            public TableCell<WorkerVO, Boolean> call(TableColumn<WorkerVO, Boolean> p) {
+	                return new ButtonCell6();
+	            }
+	        });
 		}
 		if(!enterhotelid.getText().equals("")){
 			worker.setVisible(true);

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="337.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.view.ChangeWorkerMessageFrameController">
+   <children>
+      <Label layoutX="117.0" layoutY="72.0" text="姓名：" />
+      <Label layoutX="117.0" layoutY="120.0" text="年龄：" />
+      <Label layoutX="117.0" layoutY="163.0" text="性别：" />
+      <Label layoutX="93.0" layoutY="207.0" text="开始工作日期：" />
+      <TextField fx:id="age" layoutX="200.0" layoutY="116.0" />
+      <TextField fx:id="sex" layoutX="200.0" layoutY="159.0" />
+      <TextField fx:id="begindate" layoutX="200.0" layoutY="203.0" />
+      <Button layoutX="126.0" layoutY="258.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="23.0" prefWidth="55.0" text="确定" />
+      <Button layoutX="299.0" layoutY="258.0" mnemonicParsing="false" onAction="#CancelAction" prefHeight="23.0" prefWidth="55.0" text="取消" />
+      <Label fx:id="name" layoutX="200.0" layoutY="72.0" prefHeight="15.0" prefWidth="115.0" />
+   </children>
+</AnchorPane>

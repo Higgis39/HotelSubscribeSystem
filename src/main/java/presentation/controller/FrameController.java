@@ -19,6 +19,7 @@ import presentation.view.ChangeBirOrComFrame;
 import presentation.view.ChangeHotelMessageFrame;
 import presentation.view.ChangePersonalMessageFrame;
 import presentation.view.ChangeUserMessageFrame;
+import presentation.view.ChangeWorkerMessageFrame;
 import presentation.view.CheckInFrame;
 import presentation.view.CheckOutFrame;
 import presentation.view.DealOrderFrame;
@@ -311,5 +312,12 @@ public class FrameController{
 	 */
 	public void openUserViewRoomFrame(){
 		new UserViewRoomFrame().start(new Stage());
+	}
+	
+	/**
+	 * 打开修改酒店工作人员信息界面
+	 */
+	public void openChangeWorkerMessageFrame(){
+		new ChangeWorkerMessageFrame().start(new Stage());
 	}
 }

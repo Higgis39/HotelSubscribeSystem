@@ -97,7 +97,7 @@ public class Order{
 		OrderPO po=service.findByOrderID(vo.getorderId());
 		if(!po.getStatus().equals("异常"))
 			return false;
-		po.setStatus("已执行");
+		po.setStatus("已撤销");
 		po.setEntryTime(vo.getEntryTime());
 		po.setLastTime(vo.getLastTime());
 		if(recoverPercent.equals("全部")){

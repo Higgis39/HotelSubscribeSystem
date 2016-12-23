@@ -47,12 +47,13 @@
       <TextField fx:id="enterhotelid" layoutX="247.0" layoutY="282.0" />
       <Button layoutX="449.0" layoutY="282.0" mnemonicParsing="false" onAction="#lookworkerAction" prefHeight="22.0" prefWidth="70.0" text="查询" />
       <Label layoutX="153.0" layoutY="286.0" text="输入酒店账号：" />
-      <TableView fx:id="worker" layoutX="185.0" layoutY="328.0" prefHeight="136.0" prefWidth="400.0" visible="false">
+      <TableView fx:id="worker" layoutX="125.0" layoutY="328.0" prefHeight="136.0" prefWidth="451.0" visible="false">
         <columns>
           <TableColumn fx:id="workername" prefWidth="100.0" text="姓名" />
           <TableColumn fx:id="age" prefWidth="100.0" text="年龄" />
             <TableColumn fx:id="sex" prefWidth="100.0" text="性别" />
-            <TableColumn fx:id="begindate" prefWidth="100.0" text="开始工作日期" />
+            <TableColumn fx:id="begindate" prefWidth="99.0" text="开始工作日期" />
+            <TableColumn fx:id="change" prefWidth="50.0" text="修改" />
         </columns>
       </TableView>
       <Hyperlink layoutX="672.0" layoutY="40.0" onAction="#logoutAction" text="退出登录" />

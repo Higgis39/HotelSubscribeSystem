@@ -32,4 +32,18 @@ public class AddHotelController implements AddHotelBLService{
 	public boolean AddHotelWorker(WorkerVO workervo){
 		return user.AddHotelWorker(workervo);
 	}
+	
+	/**
+	 * 修改酒店工作人员信息
+	 * @param hotelid
+	 * @param name
+	 * @param age
+	 * @param sex
+	 * @param begindate
+	 * @return
+	 * @throws SQLException 
+	 */
+	public boolean ChangeHotelWorkerMessage(String hotelid,String name,int age,String sex,String begindate) throws SQLException{
+		return user.ChangeHotelWorkerMessage(hotelid, name, age, sex, begindate);
+	}
 }
