@@ -19,59 +19,27 @@ import vo.HotelPromotionVO;
  */
 public class HotelPromotionController implements HotelPromotionBLService{
 
-	HotelPromotionData hpd = new HotelPromotionData();
+	Promotion promption = new Promotion();
 	
-	@Override
+	/**
+	 * 新增或修改酒店促销策略
+	 */
 	public boolean hotelPromotionCreate(HotelPromotionVO hpv) {
-		try {
-			ArrayList<HotelPromotionPO> promotion = new ArrayList<>();
-			promotion = hpd.findByHotelname(hpv.getHotelName());
-			
-			ArrayList<String> name = new ArrayList<>();
-			for(int i=0; i<promotion.size(); i++){
-				name.add(promotion.get(i).getName());
-			}
-			
-			HotelPromotionPO hpp = new HotelPromotionPO();
-			hpp.setHotelname(hpv.getHotelName());
-			hpp.setName(hpv.getName());
-			hpp.setIsbirthday(hpv.getisIsbirthday());
-			hpp.setNumberofroom(hpv.getNumberofroom());
-			hpp.setIspartner(hpv.getisIspartner());
-			hpp.setBegintime(hpv.getBegintime());
-			hpp.setEndtime(hpv.getEndtime());
-			hpp.setDiscount(hpv.getDiscount());
-			
-			for(int i=0; i<name.size(); i++){
-				if(hpv.getName().equals(name.get(i))){
-					hpd.update(hpp);
-					return true;
-				}
-			}
-			hpd.insert(hpp);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return true;
+		return promption.hotelPromotionCreate(hpv);
 	}
 
-	@Override
+	/**
+	 * 删除酒店促销策略
+	 */
 	public void hotelPromotionDelete(HotelPromotionVO hpv) {
-		String name = hpv.getName();
-		hpd.delete(name);
+		promption.hotelPromotionDelete(hpv);
 	}
 
-	@Override
+	/**
+	 * 通过酒店名搜索酒店促销策略
+	 */
 	public List<HotelPromotionVO> hotelPromotionFind(String hotelname) throws SQLException {
-		List<HotelPromotionPO> hotelPromotion = hpd.findByHotelname(hotelname);
-		List<HotelPromotionVO> list = new ArrayList<HotelPromotionVO>();
-		for(int i=0;i<hotelPromotion.size();i++){
-			HotelPromotionPO po = hotelPromotion.get(i);
-			HotelPromotionVO vo = new HotelPromotionVO(po.getHotelname(),po.getName(),po.isIsbirthday(),po.getNumberofroom(),po.isIspartner(),po.getBegintime(),po.getEndtime(),po.getDiscount());
-			list.add(vo);
-		}
-		return list;
+		return promption.hotelPromotionFind(hotelname);
 	}
 
 }

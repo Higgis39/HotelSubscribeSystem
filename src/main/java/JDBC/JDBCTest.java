@@ -66,9 +66,11 @@ public class JDBCTest {
 		
 
 		
-//		UserData ud = new UserData();
+		UserData ud = new UserData();
 //////		
-//		UserPO up = new UserPO();
+		UserPO up = new UserPO();
+		up = ud.find("10002");
+		System.out.println(up.getname());
 //		up.setName("网站管理人员");
 //		up.setId("10004");
 //		up.setPassword("0");
@@ -104,7 +106,7 @@ public class JDBCTest {
 //		String name = h.getName();
 //		System.out.println(name);
 		
-		OrderData od = new OrderData();
+//		OrderData od = new OrderData();
 //		OrderPO op = new OrderPO();
 //		op.setId("10001");
 //		op.setHotelId("10000");
@@ -116,8 +118,8 @@ public class JDBCTest {
 //		op.setComment("一般般");
 //		op.setRoomType("双人间");
 //		op.setRoomNum(4);
-		ArrayList<String> hotelid = od.findHotelIdByUserId("10012");
-		System.out.println(hotelid);
+//		ArrayList<String> hotelid = od.findHotelIdByUserId("10012");
+//		System.out.println(hotelid);
 //		List<String> o = new ArrayList<>(); 
 //		o = od.findHotelIdByUserId("10005");
 //		System.out.println(o.get(0));

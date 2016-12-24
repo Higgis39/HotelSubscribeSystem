@@ -187,7 +187,7 @@ public class UserData implements UserDataService{
 			return cc;
 		}
 		else{
-			return null;
+			return cc;
 		}
 	}
 }
