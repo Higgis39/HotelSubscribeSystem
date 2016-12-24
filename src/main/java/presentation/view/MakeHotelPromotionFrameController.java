@@ -165,7 +165,7 @@ public class MakeHotelPromotionFrameController {
 	 * 初始化
 	 */
 	private void initialize(){
-		enterpromotiontype.getItems().addAll("生日特惠折扣","三间及以上预订特惠","合作企业客户折扣","特定期间活动折扣");
+		enterpromotiontype.getItems().addAll("生日特惠策略","三间及以上预订特惠","合作企业客户折扣","特定时间促销策略");
 		enterbirthday.getItems().addAll("是","否");
 		company.getItems().addAll("有","无");
 	}
