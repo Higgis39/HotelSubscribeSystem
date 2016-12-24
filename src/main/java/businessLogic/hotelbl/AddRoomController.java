@@ -24,6 +24,16 @@ public class AddRoomController implements AddRoomService{
 	}
 	
 	/**
+	 * 判断酒店是否还有房间
+	 * @param HotelName
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean HasRoom(String HotelName) throws SQLException{
+		return hotel.HasRoom(HotelName);
+	}
+	
+	/**
 	 * 录入可用客房
 	 * @param hotelname String
 	 * @param roomtype String

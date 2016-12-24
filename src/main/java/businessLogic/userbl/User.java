@@ -31,6 +31,9 @@ public class User{
 	 */
 	public boolean Login(String id,String password,String usertype){
 		UserPO userpo = userdataservice.find(id);
+		if(userpo==null){
+			return false;
+		}
 		if(usertype.equals(userpo.getusertype())&&password.equals(userpo.getpassword())){
 			return true;
 		}
