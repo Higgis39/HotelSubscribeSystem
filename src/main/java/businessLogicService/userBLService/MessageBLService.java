@@ -14,7 +14,7 @@ public interface MessageBLService {
 	
 	public boolean ChangeMessage(String id,String newname,String newphonenumber);
 	
-	public boolean ChangeBirOrComFrame(String id,String birorcom);
+	public boolean ChangeBirOrCom(String id,String birorcom);
 	
 	public ArrayList<String> GetCreditChange(String id);
 }

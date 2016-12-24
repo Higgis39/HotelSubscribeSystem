@@ -39,8 +39,8 @@ public class MessageController implements MessageBLService {
 	 * @param birorcom
 	 * @return
 	 */
-	public boolean ChangeBirOrComFrame(String id,String birorcom){
-		return user.ChangeBirOrComFrame(id, birorcom);
+	public boolean ChangeBirOrCom(String id,String birorcom){
+		return user.ChangeBirOrCom(id, birorcom);
 	}
 	
 	/**

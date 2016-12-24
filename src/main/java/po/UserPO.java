@@ -21,7 +21,9 @@ public class UserPO {
 	ArrayList<String> creditchange;
 	
 	//构造函数
-	public UserPO(String name,String id,String password,String usertype,int creditvalue,String VIPtype,int VIPgrade,String phonenumber,String birthday,String company,ArrayList<String> creditchange){
+	public UserPO(String name,String id,String password,String usertype,
+	int creditvalue,String VIPtype,int VIPgrade,String phonenumber,
+	String birthday,String company,ArrayList<String> creditchange){
 		this.name = name;
 		this.id = id;
 		this.password = password;

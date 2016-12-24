@@ -36,7 +36,14 @@ public class ManageUserController implements ManageUserBLService {
 	public boolean ChangeClientMessaage(String id,String newname,String newphonenumber,int creditvalue,String birthday,String company){
 		return user.ChangeClientMessaage(id,newname,newphonenumber,creditvalue,birthday,company);
 	}
-
+	
+	/**
+	 * 添加网站营销人员
+	 * @param uservo
+	 * @return
+	 * @throws NumberFormatException
+	 * @throws SQLException
+	 */
 	public String AddMarketer(UserVO uservo) throws NumberFormatException, SQLException {
 		return user.AddMarketer(uservo);
 	}

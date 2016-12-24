@@ -80,7 +80,7 @@ public class User{
 	 * @param birorcom
 	 * @return
 	 */
-	public boolean ChangeBirOrComFrame(String id,String birorcom){
+	public boolean ChangeBirOrCom(String id,String birorcom){
 		UserPO userpo = userdataservice.find(id);
 		if(userpo.getbirthday()==null){
 			userpo.setCompany(birorcom);

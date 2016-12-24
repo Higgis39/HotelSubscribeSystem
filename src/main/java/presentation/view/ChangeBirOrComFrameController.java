@@ -31,7 +31,7 @@ public class ChangeBirOrComFrameController {
 	private void confirmAction(){
 		String birorcom = enterbircom.getText();
 		//保存新输入的生日/公司信息
-		service.ChangeBirOrComFrame(FrameToFrameVO.getid(), birorcom);
+		service.ChangeBirOrCom(FrameToFrameVO.getid(), birorcom);
 		changebirorcomframe.getPrimaryStage().close();
 		FrameToFrameVO.getSatge().close();
 		viewcontrol.openUserPersonalFrame();
