@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import JDBC.DBUtil;
 import dataService.WebPromotionDataService;
+import po.HotelPromotionPO;
 import po.WebPromotionPO;
 
 /**
@@ -158,7 +159,28 @@ public class WebPromotionData implements WebPromotionDataService{
 
 	@Override
 	public WebPromotionPO findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		WebPromotionPO wp = null;
+		Connection conn = DBUtil.getConnection();
+		String sql = " select * from webpromotion "
+				   + " where name=?";
+		try {
+			PreparedStatement ptmt = conn.prepareStatement(sql);
+			
+			ptmt.setString(1, name);
+			ResultSet rs = ptmt.executeQuery();
+			
+			while(rs.next()){
+				wp = new WebPromotionPO();
+				wp.setName(rs.getString("name"));
+				wp.setBegintime(rs.getString("begintime"));
+				wp.setEndtime(rs.getString("endtime"));
+				wp.setVIPgrade(rs.getInt("VIPgrade"));
+				wp.setSpecificbusinessarea(rs.getString("specificbusinessarea"));
+				wp.setDiscount(rs.getDouble("discount"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return wp;
 	}
 }
