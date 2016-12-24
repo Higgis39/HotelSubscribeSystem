@@ -1,6 +1,8 @@
 package businessLogic.promotionbl;
 
 import businessLogic.hotelbl.HotelToolForPromotion;
+import data.WebPromotionData;
+import dataService.WebPromotionDataService;
 
 /**
  * businessDistrictPromotion的职责是制定VIP会员特定商圈专属折扣
@@ -9,6 +11,7 @@ import businessLogic.hotelbl.HotelToolForPromotion;
  */
 public class BusinessDistrictPromotion implements WebPromotionType{
 	
+	WebPromotionDataService wpds = new WebPromotionData();
 	HotelToolForPromotion info = new HotelToolForPromotion();
 		
 	double discount;
