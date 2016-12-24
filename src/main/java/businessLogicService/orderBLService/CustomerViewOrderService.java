@@ -11,4 +11,6 @@ public interface CustomerViewOrderService {
     public List<OrderVO> getSpecificOrders(String userID,String Status)throws SQLException;
 	
 	public OrderVO ShowOrderMessage(String OrderID);
+	
+	public List<OrderVO> getOrderByUserAndHotel(String hotelid,String userid) throws SQLException;
 }

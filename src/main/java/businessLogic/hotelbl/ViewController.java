@@ -1,6 +1,7 @@
 package businessLogic.hotelbl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import businessLogicService.hotelBLService.ViewService;
@@ -41,5 +42,24 @@ public class ViewController implements ViewService{
 	 */
 	public List<WorkerVO> findworker(String hotelid) throws SQLException{
 		return hotel.findworker(hotelid);
+	}
+	
+	/**
+	 * 得到城市
+	 * @throws SQLException 
+	 * @return
+	 */
+	public ArrayList<String> getcity() throws SQLException{
+		return hotel.getcity();
+	}
+	
+	/**
+	 * 根据城市得到商圈
+	 * @param city
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<String> getbusinessareaBycity(String city) throws SQLException{
+		return hotel.getbusinessareaBycity(city);
 	}
 }

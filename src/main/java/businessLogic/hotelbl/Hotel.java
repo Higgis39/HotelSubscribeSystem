@@ -9,15 +9,18 @@ import java.util.HashMap;
 import po.RoomPO;
 import po.WorkerPO;
 import businessLogic.orderbl.OrderToolForHotel;
+import data.BussinessAreaData;
 import data.HotelData;
 import data.RoomData;
 import data.WorkerData;
 import vo.HotelVO;
 import vo.RoomVO;
 import vo.WorkerVO;
+import dataService.BussinessAreaDataService;
 import dataService.HotelDataService;
 import dataService.RoomDataService;
 import dataService.WorkerDataService;
+import po.BussinessAreaPO;
 import po.HotelPO;
 /*
  * 
@@ -29,6 +32,7 @@ public class Hotel{
 	OrderInfoForHotel orderdataservice = new OrderToolForHotel();
 	RoomDataService roomdataservice = new RoomData();
 	WorkerDataService workerdataservice = new WorkerData();
+	BussinessAreaDataService businessareadataservice = new BussinessAreaData();
 	
 	/**
 	 * 搜索酒店
@@ -614,6 +618,30 @@ public class Hotel{
 		for(int i=list.size()-1;i>=0;i--){
 			result.add(list.get(i));
 		}
+		return result;
+	}
+	
+	/**
+	 * 得到城市
+	 * @throws SQLException 
+	 * @return
+	 */
+	public ArrayList<String> getcity() throws SQLException{
+		return businessareadataservice.findCity();
+	}
+	
+	/**
+	 * 根据城市得到商圈
+	 * @param city
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<String> getbusinessareaBycity(String city) throws SQLException{
+		 ArrayList<BussinessAreaPO> po = businessareadataservice.findBussinessAreaByCity(city);
+		 ArrayList<String> result = new ArrayList<String>();
+		 for(int i=0;i<po.size();i++){
+			 result.add(po.get(i).getBussinessAreaName());
+		 }
 		return result;
 	}
 }

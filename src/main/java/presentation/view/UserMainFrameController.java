@@ -5,8 +5,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import businessLogic.hotelbl.SearchController;
+import businessLogic.hotelbl.ViewController;
 import businessLogic.userbl.MessageController;
 import businessLogicService.hotelBLService.SearchService;
+import businessLogicService.hotelBLService.ViewService;
 import businessLogicService.userBLService.MessageBLService;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -31,9 +33,9 @@ public class UserMainFrameController {
 	@FXML
 	private Label id;
 	@FXML
-	private TextField entercity;
+	private ComboBox<String> entercity;
 	@FXML
-	private TextField enterbusinesscircle;
+	private ComboBox<String> enterbusinesscircle;
 	@FXML
 	private TextField enterhotelname;
 	@FXML
@@ -72,10 +74,26 @@ public class UserMainFrameController {
 	}
 	
 	@FXML
+	/**
+	 * 个人信息的监听
+	 */
 	private void personalAction(){
 		//打开个人信息界面
 		viewcontrol.openUserPersonalFrame();
 		usermainframe.getPrimaryStage().close();
+	}
+	
+	@FXML
+	/**
+	 * 城市下拉框的监听
+	 */
+	private void cityAction() throws SQLException{
+		String city = entercity.getSelectionModel().getSelectedItem();
+		if(city!=null){
+			ViewService s = new ViewController();
+			ArrayList<String> businessarea = s.getbusinessareaBycity(city);
+			enterbusinesscircle.getItems().addAll(businessarea);
+		}
 	}
 	
 	@FXML
@@ -172,8 +190,8 @@ public class UserMainFrameController {
 	 * 搜索按钮的监听
 	 */
 	private void searchAction() throws SQLException{
-		String city = entercity.getText();
-		String businesscircle = enterbusinesscircle.getText();
+		String city = entercity.getSelectionModel().getSelectedItem();
+		String businesscircle = enterbusinesscircle.getSelectionModel().getSelectedItem();
 		String hotelname = enterhotelname.getText();
 		String roomtype = enterroomtype.getSelectionModel().getSelectedItem();
 		String price = enterprice.getSelectionModel().getSelectedItem();
@@ -217,11 +235,15 @@ public class UserMainFrameController {
 	/**
 	 * 初始化
 	 */
-	private void initialize(){
+	private void initialize() throws SQLException{
 		MessageBLService service = new MessageController();
 		UserVO uservo = service.GetMessage(FrameToFrameVO.getid());
 		id.setText(uservo.getid());
 		username.setText(uservo.getname());
+		
+		ViewService s = new ViewController();
+		ArrayList<String> citylist = s.getcity();
+		entercity.getItems().addAll(citylist);
 		
 		enterroomtype.getItems().addAll("单人间","标准间","家庭套房");
 		enterprice.getItems().addAll("150以下","150~300","300~500","500~700","700~1000","1000以上");

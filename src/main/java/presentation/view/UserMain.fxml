@@ -54,8 +54,6 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="entercity" layoutX="349.0" layoutY="87.0" />
-      <TextField fx:id="enterbusinesscircle" layoutX="349.0" layoutY="117.0" />
       <TextField fx:id="enterhotelname" layoutX="349.0" layoutY="149.0" />
       <CheckBox fx:id="checkbox" layoutX="305.0" layoutY="414.0" mnemonicParsing="false" text="只搜索预定过的酒店" />
       <Label layoutX="299.0" layoutY="186.0" text="类型" />
@@ -87,5 +85,7 @@
       <Button layoutX="467.0" layoutY="15.0" mnemonicParsing="false" onAction="#personalAction" prefHeight="25.0" prefWidth="85.0" text="个人中心" />
       <Label fx:id="id" alignment="CENTER" layoutX="595.0" layoutY="14.0" prefHeight="15.0" prefWidth="48.0" text="id" />
       <Hyperlink layoutX="661.0" layoutY="31.0" onAction="#logoutAction" text="退出登录" />
+      <ComboBox fx:id="entercity" layoutX="349.0" layoutY="87.0" onAction="#cityAction" prefHeight="23.0" prefWidth="161.0" />
+      <ComboBox fx:id="enterbusinesscircle" layoutX="349.0" layoutY="117.0" prefHeight="23.0" prefWidth="161.0" />
    </children>
 </AnchorPane>
