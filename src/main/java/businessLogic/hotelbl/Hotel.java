@@ -381,6 +381,24 @@ public class Hotel{
 	}
 	
 	/**
+	 * 判断酒店是否还有房间
+	 * @param HotelName
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean HasRoom(String HotelName) throws SQLException{
+		ArrayList<RoomVO> list = getRoom(HotelName);
+		int number = 0;
+		for(int i=0;i<list.size();i++){
+			number = number+list.get(i).getroomnum();
+		}
+		if(number==0){
+			return false;
+		}
+		return true;
+	}
+	
+	/**
 	 * 录入可用客房
 	 * @param hotelname String
 	 * @param roomtype String
@@ -391,7 +409,7 @@ public class Hotel{
 	 */
 	public boolean UpdateRoom(String hotelName,String roomtype,int peoplenum,int roomnum,int price)throws SQLException{
 		HotelPO hotelpo = hoteldataservice.findByName(hotelName);
-		if(hotelpo.getminprice()>price){
+		if(hotelpo.getminprice()==0||hotelpo.getminprice()>price){
 			hotelpo.setMinprice(price);
 		}
 		hoteldataservice.update(hotelpo);

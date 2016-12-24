@@ -17,7 +17,7 @@
             <TableColumn fx:id="star" prefWidth="50.0" text="星级" />
             <TableColumn fx:id="grade" prefWidth="50.0" text="评分" />
             <TableColumn fx:id="minprice" text="房间最低价格" />
-            <TableColumn fx:id="view" prefWidth="60.0" text="查看房间" />
+            <TableColumn fx:id="view" prefWidth="60.0" text="查看" />
             <TableColumn fx:id="link" prefWidth="79.0" text="下单" />
         </columns>
       </TableView>

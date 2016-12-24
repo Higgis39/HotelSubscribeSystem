@@ -11,17 +11,32 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import vo.FrameToFrameVO;
+import vo.OrderVO;
 import vo.RoomVO;
 
 public class UserViewRoomFrameController {
 	@FXML
 	private TableView<RoomVO> tableview;
 	@FXML
+	private TableView<OrderVO> order;
+	@FXML
 	private TableColumn<RoomVO,String> roomtype;
 	@FXML
 	private TableColumn<RoomVO,Number> peoplenum;
 	@FXML
 	private TableColumn<RoomVO,Number> price;
+	@FXML
+	private TableColumn<OrderVO,String> orderid;
+	@FXML
+	private TableColumn<OrderVO,String> status;
+	@FXML
+	private TableColumn<OrderVO,String> begindate;
+	@FXML
+	private TableColumn<OrderVO,String> enddate;
+	@FXML
+	private TableColumn<OrderVO,Number> orderprice;
+	@FXML
+	private TableColumn<OrderVO,Boolean> again;
 	
 	private UserViewRoomFrame userviewroomframe;
 	

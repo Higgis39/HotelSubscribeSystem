@@ -76,6 +76,7 @@ public class SearchResultFrameController {
 			phonenumber.setCellValueFactory(cellData->cellData.getValue().getPhonenumberProperty());
 			star.setCellValueFactory(cellData->cellData.getValue().getStarProperty());
 			grade.setCellValueFactory(cellData->cellData.getValue().getGradeProperty());
+			minprice.setCellValueFactory(cellData->cellData.getValue().getminpriceProperty());
 			
 			IsIn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HotelVO,Boolean>,ObservableValue<Boolean>>(){
 				@Override
@@ -84,7 +85,7 @@ public class SearchResultFrameController {
 				}   
 			});
 			
-			IsIn.setCellFactory( CheckBoxTableCell.forTableColumn(IsIn));
+			IsIn.setCellFactory(CheckBoxTableCell.forTableColumn(IsIn));
 			
 			view.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HotelVO, Boolean>, ObservableValue<Boolean>>() {
 	            @Override
@@ -135,6 +136,7 @@ public class SearchResultFrameController {
 			phonenumber.setCellValueFactory(cellData->cellData.getValue().getPhonenumberProperty());
 			star.setCellValueFactory(cellData->cellData.getValue().getStarProperty());
 			grade.setCellValueFactory(cellData->cellData.getValue().getGradeProperty());
+			minprice.setCellValueFactory(cellData->cellData.getValue().getminpriceProperty());
 			
 			IsIn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HotelVO,Boolean>,ObservableValue<Boolean>>(){
 				@Override
@@ -143,7 +145,7 @@ public class SearchResultFrameController {
 				}   
 			});
 			
-			IsIn.setCellFactory( CheckBoxTableCell.forTableColumn(IsIn));
+			IsIn.setCellFactory(CheckBoxTableCell.forTableColumn(IsIn));
 			
 			view.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HotelVO, Boolean>, ObservableValue<Boolean>>() {
 	            @Override
