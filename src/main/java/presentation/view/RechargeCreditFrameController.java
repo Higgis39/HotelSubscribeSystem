@@ -32,9 +32,14 @@ public class RechargeCreditFrameController {
 	private void confirmAction(){
 		String id = enterid.getText();
 		int creditrecharge = Integer.valueOf(enterrecharge.getText());
-		service.RechargeCredit("网站营销人员",id,creditrecharge);
-		rechargecreditframe.getPrimaryStage().close();
-		FrameToFrameVO.setword("充值成功");
+		boolean result = service.RechargeCredit("网站营销人员",id,creditrecharge);
+		if(result==true){
+			rechargecreditframe.getPrimaryStage().close();
+			FrameToFrameVO.setword("充值成功");
+		}else{
+			FrameToFrameVO.setword("充值失败");
+		}
+		
 		viewcontrol.openSuccessSaveFrame();
 	}
 	

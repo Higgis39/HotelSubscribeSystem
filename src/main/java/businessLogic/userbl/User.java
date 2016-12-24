@@ -110,8 +110,13 @@ public class User{
 	public boolean RechargeCredit(String usertype,String clientid,int creditRecharge){
 		if(!usertype.equals("网站营销人员")){
 			return false;
+		}else if(creditRecharge<0){
+			return false;
 		}else{
 			UserPO userpo = userdataservice.find(clientid);
+			if(userpo==null){
+				return false;
+			}
 			//更改信用值
 			int creditvalue = userpo.getcreditvalue();
 			creditvalue = creditvalue+creditRecharge;
