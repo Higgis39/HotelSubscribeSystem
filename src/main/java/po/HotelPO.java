@@ -16,7 +16,8 @@ public class HotelPO {
 	int numberofevaluators;
 	
 	//构造函数
-	public HotelPO(String hotelid,String password,String hotelname,String phonenumber,String city,String address,String businessarea,String introduction,String facilities,int star,double grade,int minprice, int numberofevaluators){
+	public HotelPO(String hotelid,String password,String hotelname,String phonenumber,String city,String address,String businessarea,String introduction,
+			       String facilities,int star,double grade,int minprice, int numberofevaluators){
 		this.hotelid = hotelid;
 		this.password = password;
 		this.hotelname = hotelname;
